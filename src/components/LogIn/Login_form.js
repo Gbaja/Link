@@ -27,9 +27,10 @@ class LogInForm extends Component {
   onSubmit = values => {
     console.log(values);
     this.props.logIn(values, res => {
-      if (res.accountType === "mentor") {
+      console.log("RES: ", res);
+      if (res.accountType === "Mentor") {
         this.props.history.push(`/${res.id}/mentor/dashboard`);
-      } else if (res.accountType === "mentee") {
+      } else if (res.accountType === "Mentee") {
         this.props.history.push(`/${res.id}/mentee/dashboard`);
       }
     });
