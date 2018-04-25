@@ -25,10 +25,10 @@ const MentorRegistrations = (sequelize, DataTypes) => {
 
   MentorRegistrations.associate = models => {
     MentorRegistrations.hasOne(models.MentorOfferings, {
-      foreignKey: "MentorId"
+      foreignKey: "mentorId"
     });
     MentorRegistrations.hasOne(models.MentorMotivations, {
-      foreignKey: "MentorId"
+      foreignKey: "mentorId"
     });
   };
 
