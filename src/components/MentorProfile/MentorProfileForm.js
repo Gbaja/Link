@@ -76,12 +76,6 @@ class MyProfileForm extends Component {
             component={this.renderField}
           />
           <Field
-            label="currentCompany"
-            name="currentCompant"
-            type="text"
-            component={this.renderField}
-          />
-          <Field
             label="Age"
             name="age"
             component={this.renderField}
@@ -100,10 +94,42 @@ class MyProfileForm extends Component {
             textarea
             component={this.renderField}
           />
+          <p> What professional skills could you help mentee develop?</p>
           <Field
-            label="Motivation for Mentoring"
-            name="biography"
-            textarea
+            label="Career planning"
+            name="careerPlanning"
+            type="checkbox"
+            component={this.renderField}
+          />
+          <Field
+            label="CV writing and tips"
+            name="cv"
+            type="checkbox"
+            component={this.renderField}
+          />
+          <Field
+            label="Job search and interview skills"
+            name="jobsAndInterview"
+            type="checkbox"
+            component={this.renderField}
+          />
+          <p> Please indicate your motivations for mentoring</p>
+          <Field
+            label="To develop my professional and personal skills"
+            name="developSkills"
+            type="checkbox"
+            component={this.renderField}
+          />
+          <Field
+            label="To gain a better understanding of young people in my community"
+            name="understandingYoungPeople"
+            type="checkbox"
+            component={this.renderField}
+          />
+          <Field
+            label="It is a rewarding experience"
+            name="rewarding"
+            type="checkbox"
             component={this.renderField}
           />
           <button type="submit">Update profile</button>

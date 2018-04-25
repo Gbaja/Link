@@ -15,9 +15,7 @@ class SignUpForm extends Component {
     };
   }
   renderField(field) {
-    const {
-      meta: { touched, error }
-    } = field;
+    const { meta: { touched, error } } = field;
     return (
       <div>
         {field.select ? (
@@ -57,7 +55,6 @@ class SignUpForm extends Component {
     };
     this.props.signUp(signUpData, res => {
       console.log("SIGN UP RES: ", res);
-      this.props.history.push(`/${res.id}/mentor/dashboard`);
       if (res.accountType === "mentor") {
         this.props.history.push(`/${res.id}/mentor/dashboard`);
       } else if (res.accountType === "mentee") {

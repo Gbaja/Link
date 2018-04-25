@@ -26,8 +26,9 @@ if (process.env.USERS_DB_URL) {
   });
 }
 const models = {
-  Registration: sequelize.import("./registration"),
-  Mentors: sequelize.import("./mentor")
+  MentorRegistrations: sequelize.import("./mentor_registration"),
+  MentorOfferings: sequelize.import("./mentor_offering"),
+  MentorMotivations: sequelize.import("./mentor_motivation")
 };
 
 Object.keys(models).forEach(modelName => {
