@@ -1,7 +1,14 @@
 const models = require("../models");
 
 exports.put = (req, res) => {
-  const { cv, careerPlanning, jobsAndInterview } = req.body;
+  const {
+    cv,
+    careerPlanning,
+    jobsAndInterview,
+    developSkills,
+    understandingYoungPeople,
+    rewarding
+  } = req.body;
   return models.MentorRegistrations.update(
     {
       firstName: req.body.firstName,
@@ -22,7 +29,7 @@ exports.put = (req, res) => {
         where: { mentorId: updatedProfile.id }
       }).then(existingMentor => {
         if (existingMentor) {
-          return models.MentorOfferings.update(
+          models.MentorOfferings.update(
             {
               careerPlanning: req.body.careerPlanning,
               cv: req.body.cv,
@@ -32,13 +39,34 @@ exports.put = (req, res) => {
           );
         } else {
           const mentorId = updatedProfile.id;
-          return models.MentorOfferings.create({
+          models.MentorOfferings.create({
             cv,
             careerPlanning,
             jobsAndInterview,
             mentorId
-          }).then(data => {
-            console.log(data);
+          });
+        }
+      });
+      models.MentorMotivations.findOne({
+        where: { mentorId: updatedProfile.id }
+      }).then(motivationExistingMentor => {
+        if (motivationExistingMentor) {
+          console.log("EXISTING MENTOR TWO");
+          models.MentorMotivations.update(
+            {
+              developSkills: req.body.developSkills,
+              understandingYoungPeople: req.body.understandingYoungPeople,
+              rewarding: req.body.rewarding
+            },
+            { returning: true, where: { mentorId: updatedProfile.id } }
+          );
+        } else {
+          const mentorId = updatedProfile.id;
+          models.MentorMotivations.create({
+            developSkills,
+            understandingYoungPeople,
+            rewarding,
+            mentorId
           });
         }
       });
