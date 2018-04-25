@@ -7,7 +7,7 @@ const isValidPassword = function(userpass, password) {
 
 exports.post = (req, res) => {
   const { email, password } = req.body;
-  return models.Registration.findOne({ where: { email } })
+  return models.MentorRegistrations.findOne({ where: { email } })
     .then(user => {
       if (!user) {
         res.status(422).send("User does not exists, please create an account.");

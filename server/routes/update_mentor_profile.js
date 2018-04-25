@@ -1,7 +1,7 @@
 const models = require("../models");
 
 exports.put = (req, res) => {
-  return models.Registration.update(
+  return models.MentorRegistrations.update(
     {
       firstName: req.body.firstName,
       lastName: req.body.lastName,

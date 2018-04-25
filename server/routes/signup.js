@@ -2,7 +2,7 @@ const models = require("../models");
 
 exports.post = (req, res) => {
   const { firstName, lastName, accountType, email, password } = req.body;
-  return models.Registration.findOne({
+  return models.MentorRegistrations.findOne({
     where: { email: email.toLowerCase() }
   }).then(existingUser => {
     if (existingUser) {
@@ -12,7 +12,7 @@ exports.post = (req, res) => {
           "This email address has already been used to create an account with Young&giving, please try logging in."
         );
     } else {
-      return models.Registration.create({
+      return models.MentorRegistrations.create({
         firstName,
         lastName,
         accountType,
