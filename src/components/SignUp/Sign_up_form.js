@@ -15,7 +15,9 @@ class SignUpForm extends Component {
     };
   }
   renderField(field) {
-    const { meta: { touched, error } } = field;
+    const {
+      meta: { touched, error }
+    } = field;
     return (
       <div>
         {field.select ? (
@@ -55,9 +57,9 @@ class SignUpForm extends Component {
     };
     this.props.signUp(signUpData, res => {
       console.log("SIGN UP RES: ", res);
-      if (res.accountType === "mentor") {
+      if (res.accountType === "Mentor") {
         this.props.history.push(`/${res.id}/mentor/dashboard`);
-      } else if (res.accountType === "mentee") {
+      } else if (res.accountType === "Mentee") {
         this.props.history.push(`/${res.id}/mentee/dashboard`);
       }
     });
@@ -87,9 +89,9 @@ class SignUpForm extends Component {
             component={this.renderField}
             select
             options={{
-              select: "select",
-              mentor: "Mentor",
-              mentee: "Mentee"
+              select: "select your account type",
+              Mentor: "Mentor",
+              Mentee: "Mentee"
             }}
           />
           <Field label="Email" name="email" component={this.renderField} />
