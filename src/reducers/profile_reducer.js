@@ -1,8 +1,9 @@
-import { USER_PROFILE } from "../actions/types";
+import { MENTOR_PROFILE, MENTEE_PROFILE } from "../actions/types";
 
 export default function(state = null, action) {
   switch (action.type) {
-  case USER_PROFILE:
+  case MENTOR_PROFILE:
+  case MENTEE_PROFILE:
     if (action.payload) {
       return action.payload;
     }

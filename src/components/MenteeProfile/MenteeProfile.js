@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { mentorProfile } from "../../actions/get_requests";
+import { menteeProfile } from "../../actions/get_requests";
 
 class Profile extends Component {
   componentDidMount() {
-    this.data = this.props.mentorProfile(this.props.match.params.id);
+    this.data = this.props.menteeProfile(this.props.match.params.id);
   }
   render() {
     if (this.props.profile === null) return <div> Loading</div>;
@@ -19,16 +19,15 @@ class Profile extends Component {
         <p>Last name: {data.lastName}</p>
         <p>Email: {data.email}</p>
         <p>Account type: {data.accountType}</p>
-        <p>Current role: {data.currentRole}</p>
-        <p>Current company: {data.currentCompany}</p>
-        <p>Age: {data.age}</p>
+        <p>Your current location: {data.baseArea}</p>
+        <p>Current motive: {data.currentMotive}</p>
+        <p>Reason: {data.reason}</p>
         <p>Short biography: {data.biography}</p>
-        <p>What you can offer: {data.offerTags}</p>
-        <p>Motivation for mentoring: {data.motivation}</p>
+        <p>What industry you want a mentor from?{data.mentorIndustry}</p>
         <p>Date joined: {data.createdAt.split("T")[0]}</p>
-        <Link to={`/${this.props.match.params.id}/mentor/my_profile/edit`}>
+        {/* <Link to={`/${this.props.match.params.id}/mentor/my_profile/edit`}>
           Edit profile
-        </Link>
+        </Link> */}
       </div>
     );
   }
@@ -37,6 +36,4 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps, { mentorProfile })(Profile);
-
-//export default Profile;
+export default connect(mapStateToProps, { menteeProfile })(Profile);

@@ -4,7 +4,7 @@ exports.get = (req, res) => {
   try {
     const userId = req.params.id;
     console.log("USER ID: ", userId);
-    return models.MentorRegistrations.findOne({ where: { id: userId } }).then(
+    return models.MenteeRegistrations.findOne({ where: { id: userId } }).then(
       data => {
         console.log("RES: ", data.dataValues);
         res.send(data.dataValues);

@@ -6,8 +6,8 @@ exports.post = (req, res) => {
     where: { email: email.toLowerCase() }
   }).then(existingUser => {
     if (existingUser) {
-      return res
-        .sendStatus(422)
+      res
+        .status(422)
         .send(
           "This email address has already been used to create an account with Young&giving, please try logging in."
         );
@@ -20,6 +20,7 @@ exports.post = (req, res) => {
         password
       }).then(data => {
         req.session.user_id = data.dataValues.id;
+        req.session.accountType = data.dataValues.accountType;
         console.log("SIGN UP COOKIE: ", req.session);
         console.log("sign up data : ", data.dataValues.id);
         res.send(data.dataValues);

@@ -3,17 +3,12 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { logIn } from "../../actions/post_requests";
+import { logIn, resetError } from "../../actions/post_requests";
 import { RESET_ERROR } from "../../actions/types";
 
 class LogInForm extends Component {
   componentDidMount() {
-    return dispatch => {
-      dispatch({
-        type: RESET_ERROR,
-        payload: ""
-      });
-    };
+    this.props.resetError();
   }
   renderField(field) {
     return (
@@ -79,4 +74,4 @@ const mapStateToProps = state => ({
 export default reduxForm({
   validate,
   form: "LogInForm"
-})(connect(mapStateToProps, { logIn })(LogInForm));
+})(connect(mapStateToProps, { logIn, resetError })(LogInForm));

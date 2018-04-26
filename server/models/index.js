@@ -28,7 +28,8 @@ if (process.env.USERS_DB_URL) {
 const models = {
   MentorRegistrations: sequelize.import("./mentor_registration"),
   MentorOfferings: sequelize.import("./mentor_offering"),
-  MentorMotivations: sequelize.import("./mentor_motivation")
+  MentorMotivations: sequelize.import("./mentor_motivation"),
+  MenteeRegistrations: sequelize.import("./mentee_registration")
 };
 
 Object.keys(models).forEach(modelName => {

@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
-const session = require("express-session");
+const cookieSession = require("cookie-session");
 const passport = require("passport");
 
 const app = express();
@@ -10,10 +10,9 @@ const routes = require("./routes/index");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
-  session({
+  cookieSession({
+    name: "session",
     secret: process.env.SESSION_SECRET,
-    resave: true,
-    saveUninitialized: true,
     cookie: { maxAge: 27 * 60 * 60 * 1000 }
   })
 );

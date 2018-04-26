@@ -6,7 +6,8 @@ export default (state = "", action) => {
     console.log("ERROR: ", action.payload);
     return action.payload;
   case RESET_ERROR:
-    return;
+    console.log("RESET ERROR REDUCER");
+    return "";
   default:
     return state;
   }

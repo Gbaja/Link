@@ -3,6 +3,11 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 
 class MyProfileForm extends Component {
+  constructor(props) {
+    super(props);
+    // this.props.dispatch(initialize("MyProfileForm", this.props.initialValues));
+  }
+
   renderField(field) {
     return (
       <div>

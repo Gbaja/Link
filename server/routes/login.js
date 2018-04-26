@@ -15,6 +15,7 @@ exports.post = (req, res) => {
         res.status(422).send("Password incorrect");
       } else {
         req.session.user_id = user.id;
+        req.session.accountType = user.accountType;
         console.log("LOG IN COOKIE: ", req.session);
         res.send(user);
       }

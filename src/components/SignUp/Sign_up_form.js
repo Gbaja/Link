@@ -3,16 +3,16 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { signUp } from "../../actions/post_requests";
-import { RESET_ERROR } from "../../actions/types";
+import {
+  signupMentor,
+  resetError,
+  signupMentee
+} from "../../actions/post_requests";
+
 class SignUpForm extends Component {
   componentDidMount() {
-    return dispatch => {
-      dispatch({
-        type: RESET_ERROR,
-        payload: ""
-      });
-    };
+    console.log("mount sign up form");
+    this.props.resetError();
   }
   renderField(field) {
     const {
@@ -55,14 +55,23 @@ class SignUpForm extends Component {
       email: values.email,
       password: values.password
     };
-    this.props.signUp(signUpData, res => {
-      console.log("SIGN UP RES: ", res);
-      if (res.accountType === "Mentor") {
+    if (values.accountType === "Mentor") {
+      this.props.signupMentor(signUpData, res => {
         this.props.history.push(`/${res.id}/mentor/dashboard`);
-      } else if (res.accountType === "Mentee") {
+      });
+    } else if (values.accountType === "Mentee") {
+      this.props.signupMentee(signUpData, res => {
         this.props.history.push(`/${res.id}/mentee/dashboard`);
-      }
-    });
+      });
+    }
+    // this.props.signupMentor(signUpData, res => {
+    //   console.log("SIGN UP RES: ", res);
+    //   if (res.accountType === "Mentor") {
+    //     this.props.history.push(`/${res.id}/mentor/dashboard`);
+    //   } else if (res.accountType === "Mentee") {
+    //     this.props.history.push(`/${res.id}/mentee/dashboard`);
+    //   }
+    // });
   };
   render() {
     const { handleSubmit, error } = this.props;
@@ -119,6 +128,7 @@ class SignUpForm extends Component {
     );
   }
 }
+
 const validate = values => {
   const errors = {};
   if (!values.firstName) {
@@ -149,4 +159,8 @@ const mapStateToProps = state => ({
 export default reduxForm({
   validate: validate,
   form: "SignUpForm"
-})(connect(mapStateToProps, { signUp })(SignUpForm));
+})(
+  connect(mapStateToProps, { signupMentor, resetError, signupMentee })(
+    SignUpForm
+  )
+);
