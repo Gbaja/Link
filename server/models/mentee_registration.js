@@ -20,6 +20,12 @@ const MenteeRegistrations = (sequelize, DataTypes) => {
       type: DataTypes.DATE(3)
     }
   });
+
+  MenteeRegistrations.beforeCreate((user, options) => {
+    return hashPassword(user.password).then(hashedPw => {
+      user.password = hashedPw;
+    });
+  });
   return MenteeRegistrations;
 };
 
