@@ -5,12 +5,13 @@ export const signupMentor = (data, callback) => {
   return dispatch => {
     axios
       .post("/api/signupMentor", data)
-      .then(res => callback(res.data))
-      .then(() => {
+      .then(res => {
         dispatch({
           type: AUTH_USER,
-          payload: true
+          payload: res.data
         });
+        //console.log("AFTER DISPATCH");
+        callback(res.data);
       })
       .catch(err => {
         if (err.message.includes("422")) {
@@ -31,12 +32,13 @@ export const signupMentee = (data, callback) => {
   return dispatch => {
     axios
       .post("/api/signupMentee", data)
-      .then(res => callback(res.data))
-      .then(() => {
+      .then(res => {
         dispatch({
           type: AUTH_USER,
-          payload: true
+          payload: res.data
         });
+        //console.log("AFTER DISPATCH");
+        callback(res.data);
       })
       .catch(err => {
         if (err.message.includes("422")) {
@@ -59,14 +61,12 @@ export const logIn = (data, callback) => {
     axios
       .post("/api/logIn", data)
       .then(res => {
-        callback(res.data);
-      })
-      .then(() => {
-        console.log("HHAH");
         dispatch({
           type: AUTH_USER,
-          payload: true
+          payload: res.data
         });
+        //console.log("AFTER DISPATCH");
+        callback(res.data);
       })
       .catch(err => {
         if (err.message.includes("422")) {

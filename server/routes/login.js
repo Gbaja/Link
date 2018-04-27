@@ -30,7 +30,6 @@ exports.post = (req, res) => {
         res.status(422).send("Password incorrect");
       } else {
         req.session.mentor_id = mentor.id;
-        req.session.accountType = mentor.accountType;
         console.log("LOG IN COOKIE: ", req.session);
         res.send(mentor);
       }

@@ -20,7 +20,6 @@ exports.post = (req, res) => {
         password
       }).then(data => {
         req.session.user_id = data.dataValues.id;
-        req.session.accountType = data.dataValues.accountType;
         console.log("SIGN UP COOKIE: ", req.session);
         console.log("sign up data : ", data.dataValues.id);
         res.send(data.dataValues);

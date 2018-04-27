@@ -59,7 +59,7 @@ export const currentUser = () => {
         console.log("API CALL CURRET USER: ", response.data);
         dispatch({
           type: CURRENT_USER,
-          payload: response.data
+          payload: response.data === "" ? null : response.data
         });
       })
       .catch(err => {
