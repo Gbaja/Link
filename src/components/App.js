@@ -20,29 +20,22 @@ class App extends Component {
   isMentor = () => this.props.auth.accountType === "Mentor";
   isMentee = () => this.props.auth.accountType === "Mentee";
 
-  renderMentorDashboard = () => {
-    const loggedIn = this.props.auth;
-    const hasAccess = loggedIn && this.isMentor();
-    const renderPage = props => <MentorDashboard {...props} />;
-    return this.renderProtected({ hasAccess, renderPage });
-  };
-
-  renderMenteeDashboard = () => {
-    const loggedIn = this.props.auth;
-    const hasAccess = loggedIn && this.isMentee();
-    const renderPage = props => <MenteeDashboard {...props} />;
-    return this.renderProtected({ hasAccess, renderPage });
-  };
-
-  renderMentorProfile = () => {
-    const loggedIn = this.props.auth;
-    const hasAccess = loggedIn && this.isMentor();
-    const renderPage = props => <MentorProfile {...props} />;
-    return this.renderProtected({ hasAccess, renderPage });
-  };
   renderProtected = ({ hasAccess, renderPage }) => {
     return props =>
       hasAccess ? renderPage(props) : <RedirectPage {...props} />;
+  };
+  renderMentorPages = Component => {
+    const loggedIn = this.props.auth;
+    const hasAccess = loggedIn && this.isMentor();
+    const renderPage = props => <Component {...props} />;
+    return this.renderProtected({ hasAccess, renderPage });
+  };
+
+  renderMenteePages = Component => {
+    const loggedIn = this.props.auth;
+    const hasAccess = loggedIn && this.isMentee();
+    const renderPage = props => <Component {...props} />;
+    return this.renderProtected({ hasAccess, renderPage });
   };
 
   render() {
@@ -52,7 +45,7 @@ class App extends Component {
           <Route
             exact
             path="/:id/mentor/dashboard"
-            render={this.renderMentorDashboard()}
+            component={this.renderMentorPages(MentorDashboard)}
           />
           <Route exact path="/" component={Landing} />
           <Route exact path="/signup_form" component={SignupForm} />
@@ -60,22 +53,22 @@ class App extends Component {
           <Route
             exact
             path="/:id/mentee/dashboard"
-            render={this.renderMenteeDashboard()}
+            render={this.renderMenteePages(MenteeDashboard)}
           />
           <Route
             exact
             path="/:id/mentor/my_profile"
-            render={this.renderMentorProfile()}
+            render={this.renderMentorPages(MentorProfile)}
           />
           <Route
             exact
             path="/:id/mentee/my_profile"
-            component={MenteeProfile}
+            component={this.renderMenteePages(MenteeProfile)}
           />
           <Route
             exact
             path="/:id/mentor/my_profile/edit"
-            component={MentorProfileForm}
+            component={this.renderMentorPages(MentorProfileForm)}
           />
         </Switch>
       </BrowserRouter>
