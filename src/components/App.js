@@ -10,6 +10,7 @@ import MenteeDashboard from "./MenteeDashboard/MenteeDashboard";
 import MentorProfile from "./MentorProfile/MentorProfile";
 import MenteeProfile from "./MenteeProfile/MenteeProfile";
 import MentorProfileForm from "./MentorProfile/MentorProfileForm";
+import RedirectPage from "./redirect";
 
 class App extends Component {
   componentDidMount() {
@@ -41,7 +42,7 @@ class App extends Component {
   };
   renderProtected = ({ hasAccess, renderPage }) => {
     return props =>
-      hasAccess ? renderPage(props) : <Redirect push to="/login_form" />;
+      hasAccess ? renderPage(props) : <RedirectPage {...props} />;
   };
 
   render() {
