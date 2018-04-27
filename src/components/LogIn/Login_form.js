@@ -1,15 +1,8 @@
 import React, { Component } from "react";
-import { Field, reduxForm } from "redux-form";
-import { connect } from "react-redux";
+import { Field } from "redux-form";
 import { Link } from "react-router-dom";
 
-import { logIn, resetError } from "../../actions/post_requests";
-import { RESET_ERROR } from "../../actions/types";
-
 class LogInForm extends Component {
-  componentDidMount() {
-    this.props.resetError();
-  }
   renderField(field) {
     return (
       <div>
@@ -19,23 +12,11 @@ class LogInForm extends Component {
     );
   }
 
-  onSubmit = values => {
-    console.log(values);
-    this.props.logIn(values, res => {
-      console.log("RES: ", res);
-      if (res.accountType === "Mentor") {
-        this.props.history.push(`/${res.id}/mentor/dashboard`);
-      } else if (res.accountType === "Mentee") {
-        this.props.history.push(`/${res.id}/mentee/dashboard`);
-      }
-    });
-  };
   render() {
-    const { handleSubmit, error } = this.props;
+    const { handleSubmit, onSubmit, error } = this.props;
     return (
       <div>
-        <form onSubmit={handleSubmit(this.onSubmit)}>
-          <h3> Log in </h3>
+        <form onSubmit={handleSubmit(onSubmit)}>
           {error && <p>{error}</p>}
           <Field label="Email" name="email" component={this.renderField} />
           <Field
@@ -56,22 +37,5 @@ class LogInForm extends Component {
     );
   }
 }
-const validate = values => {
-  const errors = {};
-  if (!values.email) {
-    errors.email = "Please enter an email address";
-  }
-  if (!values.password) {
-    errors.password = "Please enter a password";
-  }
-  return errors;
-};
 
-const mapStateToProps = state => ({
-  error: state.error
-});
-
-export default reduxForm({
-  validate,
-  form: "LogInForm"
-})(connect(mapStateToProps, { logIn, resetError })(LogInForm));
+export default LogInForm;

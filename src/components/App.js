@@ -4,7 +4,7 @@ import { currentUser } from "../actions/get_requests";
 import React, { Component } from "react";
 import Landing from "./Landing/Landing";
 import SignupContainer from "./SignUp/SignUpContainer";
-import LoginForm from "./LogIn/Login_form";
+import LoginFormContainer from "./LogIn/LoginContainer";
 import MentorDashboard from "./MentorDashboard/MentorDashboard";
 import MenteeDashboard from "./MenteeDashboard/MenteeDashboard";
 import MentorProfile from "./MentorProfile/MentorProfile";
@@ -49,7 +49,7 @@ class App extends Component {
           />
           <Route exact path="/" component={Landing} />
           <Route exact path="/signup_form" component={SignupContainer} />
-          <Route exact path="/login_form" component={LoginForm} />
+          <Route exact path="/login_form" component={LoginFormContainer} />
           <Route
             exact
             path="/:id/mentee/dashboard"
