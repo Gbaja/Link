@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm, initialize } from "redux-form";
 import { connect } from "react-redux";
-import { updateMentee } from "../../actions/put_requests";
+import { updateProfile } from "../../actions/put_requests";
 
 class MyProfileForm extends Component {
   constructor(props) {
@@ -40,7 +40,7 @@ class MyProfileForm extends Component {
     );
   }
   onSubmit = values => {
-    this.props.updateMentee(values, res => {
+    this.props.updateProfile(values, `/api/updateMenteeProfile`, res => {
       this.props.history.push(`/${res.id}/mentee/my_profile`);
     });
   };
@@ -137,6 +137,6 @@ export default reduxForm({
   form: "MyProfileForm"
 })(
   connect(mapStateToProps, {
-    updateMentee
+    updateProfile
   })(MyProfileForm)
 );

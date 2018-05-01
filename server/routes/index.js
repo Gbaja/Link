@@ -18,8 +18,8 @@ router.post("/api/signupMentor", signupMentor.post);
 router.post("/api/signupMentee", signupMentee.post);
 router.post("/api/login", login.post);
 router.get("/api/logout", logout.get);
-router.put("/api/updateMentorProfile/:id", updateMentorProfile.put);
-router.put("/api/updateMenteeProfile/:id", updateMenteeProfile.put);
+router.put("/api/updateMentorProfile", updateMentorProfile.put);
+router.put("/api/updateMenteeProfile", updateMenteeProfile.put);
 router.get("/api/currentUser", getCurrentUser.get);
 
 module.exports = router;
