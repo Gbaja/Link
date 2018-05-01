@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm, initialize } from "redux-form";
 import { connect } from "react-redux";
-import { updateMentor } from "../../actions/put_requests";
+import { updateMentee } from "../../actions/put_requests";
 
 class MyProfileForm extends Component {
   constructor(props) {
@@ -40,12 +40,10 @@ class MyProfileForm extends Component {
     );
   }
   onSubmit = values => {
-    console.log("values: ", values);
-    this.props.updateMentor(values, res => {
-      this.props.history.push(`/${res.id}/mentor/my_profile`);
+    this.props.updateMentee(values, res => {
+      this.props.history.push(`/${res.id}/mentee/my_profile`);
     });
   };
-  xd;
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -65,23 +63,13 @@ class MyProfileForm extends Component {
             component={this.renderField}
           />
           <Field
-            label="Account Type"
-            name="accountType"
-            component={this.renderField}
-            select
-            options={{
-              mentor: "Mentor",
-              mentee: "Mentee"
-            }}
-          />
-          <Field
-            label="Current Role"
-            name="currentRole"
+            label="Current Location"
+            name="baseArea"
             component={this.renderField}
           />
           <Field
-            label="currentCompany"
-            name="currentCompany"
+            label="Current Motive"
+            name="currentMotive"
             type="text"
             component={this.renderField}
           />
@@ -91,11 +79,11 @@ class MyProfileForm extends Component {
             component={this.renderField}
             select
             options={{
-              "18 - 21": "18 - 21",
-              "22 - 26": "22 - 26",
-              "27 - 32": "27 - 32",
-              "33- 40": "33- 40",
-              "41+": "41+"
+              "18": "18",
+              "19": "19",
+              "20": "20",
+              "21": "21",
+              "22": "22"
             }}
           />
           <Field
@@ -105,14 +93,14 @@ class MyProfileForm extends Component {
             component={this.renderField}
           />
           <Field
-            label="What are your motivations for mentoring?"
-            name="motivation"
+            label="Why do you want a mentor?"
+            name="reason"
             textarea
             component={this.renderField}
           />
           <Field
-            label="What can you help a mentee with?"
-            name="offer"
+            label="What industry would you like a mentor from?"
+            name="mentorIndustry"
             textarea
             component={this.renderField}
           />
@@ -138,6 +126,7 @@ class MyProfileForm extends Component {
 //   }
 //   return errors;
 // };
+
 const mapStateToProps = ({ auth }) => ({
   initialValues: {
     ...auth
@@ -146,4 +135,8 @@ const mapStateToProps = ({ auth }) => ({
 export default reduxForm({
   //validate: validate,
   form: "MyProfileForm"
-})(connect(mapStateToProps, { updateMentor })(MyProfileForm));
+})(
+  connect(mapStateToProps, {
+    updateMentee
+  })(MyProfileForm)
+);

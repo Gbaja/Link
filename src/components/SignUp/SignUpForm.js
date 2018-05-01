@@ -1,19 +1,9 @@
 import React, { Component } from "react";
-import { Field, reduxForm } from "redux-form";
-import { connect } from "react-redux";
+import { Field } from "redux-form";
+
 import { Link } from "react-router-dom";
 
-import { signUp } from "../../actions/post_requests";
-import { RESET_ERROR } from "../../actions/types";
 class SignUpForm extends Component {
-  componentDidMount() {
-    return dispatch => {
-      dispatch({
-        type: RESET_ERROR,
-        payload: ""
-      });
-    };
-  }
   renderField(field) {
     const {
       meta: { touched, error }
@@ -36,7 +26,6 @@ class SignUpForm extends Component {
           </div>
         ) : (
           <div>
-            {" "}
             <label>{field.label}</label>
             <input type={field.type} {...field.input} />
             <p>{touched ? error : ""}</p>
@@ -46,31 +35,11 @@ class SignUpForm extends Component {
     );
   }
 
-  onSubmit = values => {
-    console.log("hey");
-    const signUpData = {
-      firstName: values.firstName,
-      lastName: values.lastName,
-      accountType: values.accountType,
-      email: values.email,
-      password: values.password
-    };
-    this.props.signUp(signUpData, res => {
-      console.log("SIGN UP RES: ", res);
-      this.props.history.push(`/${res.id}/mentor/dashboard`);
-      if (res.accountType === "mentor") {
-        this.props.history.push(`/${res.id}/mentor/dashboard`);
-      } else if (res.accountType === "mentee") {
-        this.props.history.push(`/${res.id}/mentee/dashboard`);
-      }
-    });
-  };
   render() {
-    const { handleSubmit, error } = this.props;
+    const { handleSubmit, onSubmit, error } = this.props;
     return (
       <div>
-        <form onSubmit={handleSubmit(this.onSubmit)}>
-          <h3> Sign up </h3>
+        <form onSubmit={handleSubmit(onSubmit)}>
           {error && <p>{error}</p>}
           <Field
             label="First Name"
@@ -90,9 +59,9 @@ class SignUpForm extends Component {
             component={this.renderField}
             select
             options={{
-              select: "select",
-              mentor: "Mentor",
-              mentee: "Mentee"
+              select: "select your account type",
+              Mentor: "Mentor",
+              Mentee: "Mentee"
             }}
           />
           <Field label="Email" name="email" component={this.renderField} />
@@ -120,34 +89,5 @@ class SignUpForm extends Component {
     );
   }
 }
-const validate = values => {
-  const errors = {};
-  if (!values.firstName) {
-    errors.firstName = "Enter your first name.";
-  }
-  if (!values.lastName) {
-    errors.lastName = "Enter your last name.";
-  }
-  if (!values.accountType || values.accountType === "select") {
-    errors.accountType = "Please select an account type.";
-  }
-  if (!values.email) {
-    errors.email = "Enter your email.";
-  }
-  if (!values.password) {
-    errors.password = "Enter a password.";
-  }
-  if (values.password !== values.confirmPassword) {
-    errors.confirmPassword = "Passwords do not match.";
-  }
-  return errors;
-};
 
-const mapStateToProps = state => ({
-  error: state.error
-});
-
-export default reduxForm({
-  validate: validate,
-  form: "SignUpForm"
-})(connect(mapStateToProps, { signUp })(SignUpForm));
+export default SignUpForm;

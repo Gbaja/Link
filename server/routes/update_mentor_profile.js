@@ -1,7 +1,7 @@
 const models = require("../models");
 
 exports.put = (req, res) => {
-  return models.Registration.update(
+  return models.MentorRegistrations.update(
     {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -10,12 +10,15 @@ exports.put = (req, res) => {
       currentCompany: req.body.currentCompany,
       age: req.body.age,
       biography: req.body.biography,
-      offerTags: req.body.offerTags,
+      offer: req.body.offerTags,
       motivation: req.body.motivation
     },
-    { returning: true, where: { id: req.params.id } }
+    { returning: true, where: { email: req.body.email } }
   )
-    .then(([rowsUpdate, [updatedProfile]]) => res.json(updatedProfile))
+    .then(([rowsUpdate, [updatedProfile]]) => {
+      console.log("MENTOR UPDATE RES: ", updatedProfile);
+      res.json(updatedProfile);
+    })
     .catch(err => {
       console.log("My profile error: ", err);
     });
