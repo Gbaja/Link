@@ -11,7 +11,7 @@ export const updateMentee = (data, callback) => {
           type: UPDATE_PROFILE,
           payload: response.data
         });
-        callback();
+        callback(response.data);
       })
       .catch(err => {
         dispatch({

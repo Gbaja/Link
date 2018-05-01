@@ -10,7 +10,7 @@ exports.put = (req, res) => {
       currentCompany: req.body.currentCompany,
       age: req.body.age,
       biography: req.body.biography,
-      offer: req.body.offerTags,
+      offer: req.body.offer,
       motivation: req.body.motivation
     },
     { returning: true, where: { email: req.body.email } }
