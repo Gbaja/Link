@@ -22,7 +22,7 @@ exports.post = (req, res) => {
               req.session.mentee_id = mentee.id;
               req.session.accountType = mentee.accountType;
               console.log("LOG IN COOKIE: ", req.session);
-              res.send(mentee);
+              return res.send(mentee);
             }
           }
         );
@@ -31,7 +31,7 @@ exports.post = (req, res) => {
       } else {
         req.session.mentor_id = mentor.id;
         console.log("LOG IN COOKIE: ", req.session);
-        res.send(mentor);
+        return res.send(mentor);
       }
     })
     .catch(err => {

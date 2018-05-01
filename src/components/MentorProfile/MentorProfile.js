@@ -5,12 +5,9 @@ import { connect } from "react-redux";
 import { mentorProfile } from "../../actions/get_requests";
 
 class Profile extends Component {
-  componentDidMount() {
-    this.data = this.props.mentorProfile(this.props.match.params.id);
-  }
   render() {
-    if (this.props.profile === null) return <div> Loading</div>;
-    const data = this.props.profile;
+    if (this.props.auth === null) return <div> Loading</div>;
+    const data = this.props.auth;
     console.log(data.firstName);
     return (
       <div>
@@ -23,7 +20,7 @@ class Profile extends Component {
         <p>Current company: {data.currentCompany}</p>
         <p>Age: {data.age}</p>
         <p>Short biography: {data.biography}</p>
-        <p>What you can offer: {data.offerTags}</p>
+        <p>What you can offer: {data.offer}</p>
         <p>Motivation for mentoring: {data.motivation}</p>
         <p>Date joined: {data.createdAt.split("T")[0]}</p>
         <Link to={`/${this.props.match.params.id}/mentor/my_profile/edit`}>
@@ -34,9 +31,9 @@ class Profile extends Component {
   }
 }
 const mapStateToProps = state => ({
-  profile: state.profile
+  auth: state.auth
 });
 
-export default connect(mapStateToProps, { mentorProfile })(Profile);
+export default connect(mapStateToProps, null)(Profile);
 
 //export default Profile;

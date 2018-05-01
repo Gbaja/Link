@@ -10,6 +10,7 @@ const MenteeRegistrations = (sequelize, DataTypes) => {
     accountType: DataTypes.STRING,
     baseArea: DataTypes.STRING,
     currentMotive: DataTypes.STRING,
+    age: DataTypes.STRING,
     mentorIndustry: DataTypes.STRING,
     reason: DataTypes.STRING,
     biography: DataTypes.STRING,

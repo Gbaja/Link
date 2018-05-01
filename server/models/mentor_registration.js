@@ -13,6 +13,8 @@ const MentorRegistrations = (sequelize, DataTypes) => {
     currentCompany: DataTypes.STRING,
     age: DataTypes.STRING,
     biography: DataTypes.STRING,
+    motivation: DataTypes.STRING,
+    offer: DataTypes.STRING,
     createdAt: {
       type: DataTypes.DATE(3)
     },
@@ -20,15 +22,6 @@ const MentorRegistrations = (sequelize, DataTypes) => {
       type: DataTypes.DATE(3)
     }
   });
-
-  MentorRegistrations.associate = models => {
-    MentorRegistrations.hasOne(models.MentorOfferings, {
-      foreignKey: "mentorId"
-    });
-    MentorRegistrations.hasOne(models.MentorMotivations, {
-      foreignKey: "mentorId"
-    });
-  };
 
   MentorRegistrations.beforeCreate((user, options) => {
     return hashPassword(user.password).then(hashedPw => {
