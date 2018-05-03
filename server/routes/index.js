@@ -9,6 +9,7 @@ const logout = require("./logout");
 const updateMentorProfile = require("./update_mentor_profile");
 const updateMenteeProfile = require("./update_mentee_profile");
 const getCurrentUser = require("./get_current_user");
+const getMentors = require("./get_mentors");
 
 router.get("/", (req, res) => {
   res.send("heyyy");
@@ -21,5 +22,6 @@ router.get("/api/logout", logout.get);
 router.put("/api/updateMentorProfile", updateMentorProfile.put);
 router.put("/api/updateMenteeProfile", updateMenteeProfile.put);
 router.get("/api/currentUser", getCurrentUser.get);
+router.get("/api/getMentors/:pageNum", getMentors.get);
 
 module.exports = router;
