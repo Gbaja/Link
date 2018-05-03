@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm, initialize } from "redux-form";
 import { connect } from "react-redux";
-import { updateMentee } from "../../actions/put_requests";
+import { updateProfile } from "../../actions/put_requests";
 
 class MyProfileForm extends Component {
   constructor(props) {
@@ -40,7 +40,7 @@ class MyProfileForm extends Component {
     );
   }
   onSubmit = values => {
-    this.props.updateMentee(values, res => {
+    this.props.updateProfile(values, `/api/updateMenteeProfile`, res => {
       this.props.history.push(`/${res.id}/mentee/my_profile`);
     });
   };
@@ -110,22 +110,11 @@ class MyProfileForm extends Component {
     );
   }
 }
-// const validate = values => {
-//   const errors = {};
-//   if (!values.firstName) {
-//     errors.firstName = "Enter your first name!";
-//   }
-//   if (!values.lastName) {
-//     errors.lastName = "Enter some last name";
-//   }
-//   if (!values.email) {
-//     errors.email = "Enter some email.";
-//   }
-//   if (!values.password) {
-//     errors.email = "Enter some email.";
-//   }
-//   return errors;
-// };
+const validate = values => {
+  const errors = {};
+
+  return errors;
+};
 
 const mapStateToProps = ({ auth }) => ({
   initialValues: {
@@ -133,10 +122,10 @@ const mapStateToProps = ({ auth }) => ({
   }
 });
 export default reduxForm({
-  //validate: validate,
+  validate: validate,
   form: "MyProfileForm"
 })(
   connect(mapStateToProps, {
-    updateMentee
+    updateProfile
   })(MyProfileForm)
 );

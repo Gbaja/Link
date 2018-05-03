@@ -13,9 +13,7 @@ class LoginFormContainer extends Component {
   }
 
   handleFormSubmission = values => {
-    console.log(values);
     this.props.logIn(values, res => {
-      console.log("RES: ", res);
       if (res.accountType === "Mentor") {
         this.props.history.push(`/${res.id}/mentor/dashboard`);
       } else if (res.accountType === "Mentee") {

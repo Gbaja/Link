@@ -11,6 +11,7 @@ import MentorProfile from "./MentorProfile/MentorProfile";
 import MenteeProfile from "./MenteeProfile/MenteeProfile";
 import MentorProfileForm from "./MentorProfile/MentorProfileForm";
 import MenteeProfileForm from "./MenteeProfile/MenteeProfileForm";
+import MentorsDirectory from "./MentorsDirectory/MentorsDirectory";
 import RedirectPage from "./redirect";
 
 class App extends Component {
@@ -64,18 +65,19 @@ class App extends Component {
           <Route
             exact
             path="/:id/mentee/my_profile"
-            component={this.renderMenteePages(MenteeProfile)}
+            render={this.renderMenteePages(MenteeProfile)}
           />
           <Route
             exact
             path="/:id/mentor/my_profile/edit"
-            component={this.renderMentorPages(MentorProfileForm)}
+            render={this.renderMentorPages(MentorProfileForm)}
           />
           <Route
             exact
             path="/:id/mentee/my_profile/edit"
-            component={this.renderMenteePages(MenteeProfileForm)}
+            render={this.renderMenteePages(MenteeProfileForm)}
           />
+          <Route exact path="/mentors_directory" component={MentorsDirectory} />
         </Switch>
       </BrowserRouter>
     );

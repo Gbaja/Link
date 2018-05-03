@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm, initialize } from "redux-form";
 import { connect } from "react-redux";
-import { updateMentor } from "../../actions/put_requests";
+import { updateProfile } from "../../actions/put_requests";
 
 class MyProfileForm extends Component {
   constructor(props) {
@@ -40,8 +40,7 @@ class MyProfileForm extends Component {
     );
   }
   onSubmit = values => {
-    console.log("values: ", values);
-    this.props.updateMentor(values, res => {
+    this.props.updateProfile(values, `/api/updateMentorProfile`, res => {
       this.props.history.push(`/${res.id}/mentor/my_profile`);
     });
   };
@@ -146,4 +145,4 @@ const mapStateToProps = ({ auth }) => ({
 export default reduxForm({
   //validate: validate,
   form: "MyProfileForm"
-})(connect(mapStateToProps, { updateMentor })(MyProfileForm));
+})(connect(mapStateToProps, { updateProfile })(MyProfileForm));

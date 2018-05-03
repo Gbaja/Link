@@ -1,31 +1,11 @@
 import axios from "axios";
 
-import { UPDATE_PROFILE, ADD_ERROR } from "./types";
+import { UPDATE_PROFILE } from "./types";
 
-export const updateMentee = (data, callback) => {
+export const updateProfile = (data, url, callback) => {
   return dispatch => {
     axios
-      .put("/api/updateMenteeProfile/:id", data)
-      .then(response => {
-        dispatch({
-          type: UPDATE_PROFILE,
-          payload: response.data
-        });
-        callback();
-      })
-      .catch(err => {
-        dispatch({
-          type: ADD_ERROR,
-          payload: err
-        });
-      });
-  };
-};
-
-export const updateMentor = (data, callback) => {
-  return dispatch => {
-    axios
-      .put("/api/updateMentorProfile/:id", data)
+      .put(url, data)
       .then(response => {
         dispatch({
           type: UPDATE_PROFILE,
@@ -34,10 +14,7 @@ export const updateMentor = (data, callback) => {
         callback(response.data);
       })
       .catch(err => {
-        dispatch({
-          type: ADD_ERROR,
-          payload: err
-        });
+        console.log("UPDATE PROFILE ERROR: ", err);
       });
   };
 };
