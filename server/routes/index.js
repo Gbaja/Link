@@ -11,10 +11,6 @@ const updateMenteeProfile = require("./update_mentee_profile");
 const getCurrentUser = require("./get_current_user");
 const getMentors = require("./get_mentors");
 
-router.get("/", (req, res) => {
-  res.send("heyyy");
-});
-
 router.post("/api/signupMentor", signupMentor.post);
 router.post("/api/signupMentee", signupMentee.post);
 router.post("/api/login", login.post);
