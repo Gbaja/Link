@@ -29,10 +29,10 @@ export const currentUser = () => {
   };
 };
 
-export const fetchMentors = () => {
+export const fetchMentors = pageNum => {
   return dispatch => {
     axios
-      .get("/api/getMentors/:pageNum")
+      .get(`/api/getMentors/${pageNum}`)
       .then(response => {
         dispatch({
           type: FETCH_MENTORS,
