@@ -4,3 +4,4 @@ export const UNAUTH_USER = "UNAUTH_USER";
 export const ADD_ERROR = "ADD_ERROR";
 export const CURRENT_USER = "CURRENT_USER";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
+export const FETCH_MENTORS = "FETCH_MENTORS";

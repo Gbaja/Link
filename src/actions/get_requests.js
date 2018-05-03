@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { UNAUTH_USER, CURRENT_USER } from "./types";
+import { UNAUTH_USER, CURRENT_USER, FETCH_MENTORS } from "./types";
 
 export const logOut = callback => {
   return dispatch => {
@@ -25,6 +25,22 @@ export const currentUser = () => {
       })
       .catch(err => {
         console.log("CURRENT USER ERROR: ", err);
+      });
+  };
+};
+
+export const fetchMentors = () => {
+  return dispatch => {
+    axios
+      .get("/api/getMentors/:pageNum")
+      .then(response => {
+        dispatch({
+          type: FETCH_MENTORS,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        console.log("FETCH MENTORS ERROR: ", err);
       });
   };
 };
