@@ -25,7 +25,7 @@ class LogInForm extends Component {
             type="password"
             component={this.renderField}
           />
-          <button type="submit">Sign up</button>
+          <button type="submit">Log in</button>
           <Link to="/">Cancel</Link>
         </form>
         <div>

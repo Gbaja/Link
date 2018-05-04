@@ -9,7 +9,7 @@ class MentorsDirectory extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNum: 1,
+      pageNumbers: 1,
       dataCount: 0
     };
   }
@@ -25,24 +25,25 @@ class MentorsDirectory extends Component {
     return arr;
   };
   render() {
-    if (!this.props.mentors) return <div>Loading</div>;
-    else {
+    if (Object.getOwnPropertyNames(this.props.mentors).length === 0) {
+      console.log("NONE");
+      return <div>Loading</div>;
+    } else {
       const pageNumbers = this.range(this.props.mentors.count);
-      console.log("PAGE NUMBERS: ", pageNumbers);
-      console.log("MENTORS: ", this.props.mentors.rows);
+      const mentorsDetails = this.props.mentors.rows;
       return (
         <div>
-          <h1>Mentors</h1>
+          <h1>People</h1>
+          {mentorsDetails.map(data => {
+            return (
+              <div key={data.id}>
+                <p> First Name : {data.firstName}</p>
+              </div>
+            );
+          })}
           {pageNumbers.map(num => {
             return <span key={num}> {num} </span>;
           })}
-          {/* {this.props.mentors.rows.map(data => {
-            return (
-              <div>
-                <p> {data.firstName}</p>
-              </div>
-            );
-          })} */}
         </div>
       );
     }
