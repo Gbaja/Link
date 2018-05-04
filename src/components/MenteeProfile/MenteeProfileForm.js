@@ -3,12 +3,7 @@ import { Field, reduxForm, initialize } from "redux-form";
 import { connect } from "react-redux";
 import { updateProfile } from "../../actions/put_requests";
 
-class MyProfileForm extends Component {
-  constructor(props) {
-    super(props);
-    this.props.dispatch(initialize("MyProfileForm", this.props.initialValues));
-  }
-
+class MenteeProfileForm extends Component {
   renderField(field) {
     return (
       <div>
@@ -39,17 +34,11 @@ class MyProfileForm extends Component {
       </div>
     );
   }
-  onSubmit = values => {
-    this.props.updateProfile(values, `/api/updateMenteeProfile`, res => {
-      this.props.history.push(`/${res.id}/mentee/my_profile`);
-    });
-  };
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, onSubmit } = this.props;
     return (
       <div>
-        <form onSubmit={handleSubmit(this.onSubmit)}>
-          <h3> Update Profile </h3>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Field
             label="First name"
             name="firstName"
@@ -110,22 +99,5 @@ class MyProfileForm extends Component {
     );
   }
 }
-const validate = values => {
-  const errors = {};
 
-  return errors;
-};
-
-const mapStateToProps = ({ auth }) => ({
-  initialValues: {
-    ...auth
-  }
-});
-export default reduxForm({
-  validate: validate,
-  form: "MyProfileForm"
-})(
-  connect(mapStateToProps, {
-    updateProfile
-  })(MyProfileForm)
-);
+export default MenteeProfileForm;

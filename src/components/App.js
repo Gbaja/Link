@@ -9,22 +9,18 @@ import MentorDashboard from "./MentorDashboard/MentorDashboard";
 import MenteeDashboard from "./MenteeDashboard/MenteeDashboard";
 import MentorProfile from "./MentorProfile/MentorProfile";
 import MenteeProfile from "./MenteeProfile/MenteeProfile";
-import MentorProfileForm from "./MentorProfile/MentorProfileForm";
-import MenteeProfileForm from "./MenteeProfile/MenteeProfileForm";
+import MentorProfileForm from "./MentorProfile/MentorProfileFormContainer";
+import MenteeProfileForm from "./MenteeProfile/MenteeProfileFormContainer";
 import MentorsDirectory from "./MentorsDirectory/MentorsDirectory";
 import RedirectPage from "./redirect";
 
 class App extends Component {
-  componentDidMount() {
-    this.props.currentUser();
-  }
-
   isMentor = () => this.props.auth.accountType === "Mentor";
   isMentee = () => this.props.auth.accountType === "Mentee";
 
   renderProtected = ({ hasAccess, renderPage }) => {
     return props =>
-      hasAccess ? renderPage(props) : <RedirectPage {...props} />;
+      hasAccess ? renderPage(props) : <Redirect push to="/unathorised" />;
   };
   renderMentorPages = Component => {
     const loggedIn = this.props.auth;
@@ -78,6 +74,7 @@ class App extends Component {
             render={this.renderMenteePages(MenteeProfileForm)}
           />
           <Route exact path="/mentors_directory" component={MentorsDirectory} />
+          <Route exact path="/unathorised" component={RedirectPage} />
         </Switch>
       </BrowserRouter>
     );
@@ -85,4 +82,4 @@ class App extends Component {
 }
 
 const mapStateToProps = ({ auth }) => ({ auth });
-export default connect(mapStateToProps, { currentUser })(App);
+export default connect(mapStateToProps, null)(App);

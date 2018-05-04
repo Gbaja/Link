@@ -3,12 +3,7 @@ import { Field, reduxForm, initialize } from "redux-form";
 import { connect } from "react-redux";
 import { updateProfile } from "../../actions/put_requests";
 
-class MyProfileForm extends Component {
-  constructor(props) {
-    super(props);
-    this.props.dispatch(initialize("MyProfileForm", this.props.initialValues));
-  }
-
+class MentorProfileForm extends Component {
   renderField(field) {
     return (
       <div>
@@ -39,18 +34,12 @@ class MyProfileForm extends Component {
       </div>
     );
   }
-  onSubmit = values => {
-    this.props.updateProfile(values, `/api/updateMentorProfile`, res => {
-      this.props.history.push(`/${res.id}/mentor/my_profile`);
-    });
-  };
-  xd;
+
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, onSubmit } = this.props;
     return (
       <div>
-        <form onSubmit={handleSubmit(this.onSubmit)}>
-          <h3> Update Profile </h3>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Field
             label="First name"
             name="firstName"
@@ -121,28 +110,5 @@ class MyProfileForm extends Component {
     );
   }
 }
-// const validate = values => {
-//   const errors = {};
-//   if (!values.firstName) {
-//     errors.firstName = "Enter your first name!";
-//   }
-//   if (!values.lastName) {
-//     errors.lastName = "Enter some last name";
-//   }
-//   if (!values.email) {
-//     errors.email = "Enter some email.";
-//   }
-//   if (!values.password) {
-//     errors.email = "Enter some email.";
-//   }
-//   return errors;
-// };
-const mapStateToProps = ({ auth }) => ({
-  initialValues: {
-    ...auth
-  }
-});
-export default reduxForm({
-  //validate: validate,
-  form: "MyProfileForm"
-})(connect(mapStateToProps, { updateProfile })(MyProfileForm));
+
+export default MentorProfileForm;

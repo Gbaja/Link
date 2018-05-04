@@ -13,6 +13,7 @@ class MenteeProfile extends Component {
         <p>Last name: {menteeProfileData.lastName}</p>
         <p>Email: {menteeProfileData.email}</p>
         <p>Account type: {menteeProfileData.accountType}</p>
+        <p> Age: {menteeProfileData.age}</p>
         <p>Your current location: {menteeProfileData.baseArea}</p>
         <p>Current motive: {menteeProfileData.currentMotive}</p>
         <p>Reason: {menteeProfileData.reason}</p>
@@ -30,6 +31,7 @@ class MenteeProfile extends Component {
     );
   }
 }
+
 const mapStateToProps = state => ({
   auth: state.auth
 });
