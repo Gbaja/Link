@@ -27,6 +27,7 @@ class MentorProfileFormContainer extends Component {
         <MentorProfileForm
           onSubmit={this.onSubmit}
           handleSubmit={handleSubmit}
+          auth={this.props.auth}
         />
       </div>
     );
@@ -51,7 +52,8 @@ class MentorProfileFormContainer extends Component {
 const mapStateToProps = ({ auth }) => ({
   initialValues: {
     ...auth
-  }
+  },
+  auth
 });
 export default reduxForm({
   //validate: validate,

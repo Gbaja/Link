@@ -36,10 +36,12 @@ class MentorProfileForm extends Component {
   }
 
   render() {
-    const { handleSubmit, onSubmit } = this.props;
+    const { handleSubmit, onSubmit, auth } = this.props;
     return (
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
+          <p>Email: {auth.email}</p>
+          <p>Account type: {auth.accountType}</p>
           <Field
             label="First name"
             name="firstName"
@@ -52,16 +54,7 @@ class MentorProfileForm extends Component {
             type="text"
             component={this.renderField}
           />
-          <Field
-            label="Account Type"
-            name="accountType"
-            component={this.renderField}
-            select
-            options={{
-              mentor: "Mentor",
-              mentee: "Mentee"
-            }}
-          />
+
           <Field
             label="Current Role"
             name="currentRole"

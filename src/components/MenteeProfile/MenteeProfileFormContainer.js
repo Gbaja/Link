@@ -26,6 +26,7 @@ class MenteeProfileFormContainer extends Component {
         <MenteeProfileForm
           onSubmit={this.onSubmit}
           handleSubmit={handleSubmit}
+          auth={this.props.auth}
         />
       </div>
     );
@@ -40,7 +41,8 @@ const validate = values => {
 const mapStateToProps = ({ auth }) => ({
   initialValues: {
     ...auth
-  }
+  },
+  auth
 });
 export default reduxForm({
   validate: validate,

@@ -35,10 +35,12 @@ class MenteeProfileForm extends Component {
     );
   }
   render() {
-    const { handleSubmit, onSubmit } = this.props;
+    const { handleSubmit, onSubmit, auth } = this.props;
     return (
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
+          <p>{auth.email}</p>
+          <p>{auth.accountType}</p>
           <Field
             label="First name"
             name="firstName"
