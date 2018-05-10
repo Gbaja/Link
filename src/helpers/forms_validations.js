@@ -4,7 +4,7 @@ export const checkPassword = string => {
 };
 
 export const checkEmail = string => {
-  const regex = new RegExp("/[A-Za-z0-9._-]+@[A-Za-z0-9._-]+.[A-Za-z]");
+  const regex = new RegExp("[A-Za-z0-9._-]+@[A-Za-z0-9._-]+.[A-Za-z]");
   return regex.test(string);
 };
 
