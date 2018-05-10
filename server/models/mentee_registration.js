@@ -14,6 +14,7 @@ const MenteeRegistrations = (sequelize, DataTypes) => {
     mentorIndustry: DataTypes.STRING,
     reason: DataTypes.STRING,
     biography: DataTypes.STRING,
+    confirmDetails: DataTypes.BOOLEAN,
     createdAt: {
       type: DataTypes.DATE(3)
     },

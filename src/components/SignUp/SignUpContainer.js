@@ -24,7 +24,8 @@ class SignUpContainer extends Component {
       lastName: values.lastName,
       accountType: values.accountType,
       email: values.email,
-      password: values.password
+      password: values.password,
+      confirmDetails: values.confirmDetails
     };
     if (values.accountType === "Mentor") {
       this.props.signupMentor(signUpData, res => {
@@ -71,6 +72,9 @@ const validate = values => {
   }
   if (values.password !== values.confirmPassword) {
     errors.confirmPassword = "Passwords do not match.";
+  }
+  if (!values.confirmDetails) {
+    errors.confirmDetails = "Please agree to the terms and conditions.";
   }
   return errors;
 };

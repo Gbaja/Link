@@ -47,7 +47,12 @@ class SignUpForm extends Component {
             type="password"
             component={renderFormFields}
           />
-
+          <Field
+            type="checkbox"
+            label="I confirm that the information I have given are mine and accurate. I have ready the Privacy Policy and know how young & giving uses my data"
+            name="confirmDetails"
+            component={renderFormFields}
+          />
           <button type="submit">Sign up</button>
         </form>
         <div>

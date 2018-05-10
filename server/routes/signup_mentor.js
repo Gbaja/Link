@@ -1,7 +1,14 @@
 const models = require("../models");
 
 exports.post = (req, res) => {
-  const { firstName, lastName, accountType, email, password } = req.body;
+  const {
+    firstName,
+    lastName,
+    accountType,
+    email,
+    password,
+    confirmDetails
+  } = req.body;
   return models.MentorRegistrations.findOne({
     where: { email: email.toLowerCase() }
   }).then(existingUser => {
@@ -17,8 +24,10 @@ exports.post = (req, res) => {
         lastName,
         accountType,
         email,
-        password
+        password,
+        confirmDetails
       }).then(data => {
+        console.log("SIGN UP DATA: ", data);
         req.session.mentor_id = data.dataValues.id;
         console.log("SIGN UP COOKIE: ", req.session);
         res.send(data.dataValues);

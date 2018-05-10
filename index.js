@@ -3,7 +3,7 @@ const models = require("./server/models");
 
 const PORT = process.env.PORT || 5000;
 
-models.sequelize.sync().then(() => {
+models.sequelize.sync({ force: true }).then(() => {
   server.listen(PORT, () => {
     console.log(`Server is running on localhost:${PORT}`);
   });
