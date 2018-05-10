@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Field, reduxForm, initialize } from "redux-form";
 import { connect } from "react-redux";
-import { updateProfile } from "../../actions/put_requests";
 
+import { updateProfile } from "../../actions/put_requests";
 import MentorProfileForm from "./MentorProfileForm";
 
 class MentorProfileFormContainer extends Component {
@@ -33,22 +33,16 @@ class MentorProfileFormContainer extends Component {
     );
   }
 }
-// const validate = values => {
-//   const errors = {};
-//   if (!values.firstName) {
-//     errors.firstName = "Enter your first name!";
-//   }
-//   if (!values.lastName) {
-//     errors.lastName = "Enter some last name";
-//   }
-//   if (!values.email) {
-//     errors.email = "Enter some email.";
-//   }
-//   if (!values.password) {
-//     errors.email = "Enter some email.";
-//   }
-//   return errors;
-// };
+const validate = values => {
+  const errors = {};
+  if (!values.firstName) {
+    errors.firstName = "All mentors must have a first name.";
+  }
+  if (!values.lastName) {
+    errors.lastName = "All mentors must have a last name.";
+  }
+  return errors;
+};
 const mapStateToProps = ({ auth }) => ({
   initialValues: {
     ...auth
@@ -56,6 +50,6 @@ const mapStateToProps = ({ auth }) => ({
   auth
 });
 export default reduxForm({
-  //validate: validate,
+  validate: validate,
   form: "MentorProfileForm"
 })(connect(mapStateToProps, { updateProfile })(MentorProfileFormContainer));

@@ -2,28 +2,21 @@ import React, { Component } from "react";
 import { Field } from "redux-form";
 import { Link } from "react-router-dom";
 
-class LogInForm extends Component {
-  renderField(field) {
-    return (
-      <div>
-        <label>{field.label}</label>
-        <input type={field.type} {...field.input} />
-      </div>
-    );
-  }
+import { renderFormFields } from "../../helpers/reduxFields";
 
+class LogInForm extends Component {
   render() {
     const { handleSubmit, onSubmit, error } = this.props;
     return (
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
           {error && <p>{error}</p>}
-          <Field label="Email" name="email" component={this.renderField} />
+          <Field label="Email" name="email" component={renderFormFields} />
           <Field
             label="Password"
             name="password"
             type="password"
-            component={this.renderField}
+            component={renderFormFields}
           />
           <button type="submit">Log in</button>
           <Link to="/">Cancel</Link>

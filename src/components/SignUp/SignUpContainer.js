@@ -10,6 +10,8 @@ import {
 } from "../../actions/post_requests";
 import SignUpForm from "./SignUpForm";
 
+import { checkPassword, checkEmail } from "../../helpers/forms_validations";
+
 class SignUpContainer extends Component {
   componentDidMount() {
     console.log("mount sign up form");
@@ -22,7 +24,8 @@ class SignUpContainer extends Component {
       lastName: values.lastName,
       accountType: values.accountType,
       email: values.email,
-      password: values.password
+      password: values.password,
+      confirmDetails: values.confirmDetails
     };
     if (values.accountType === "Mentor") {
       this.props.signupMentor(signUpData, res => {
@@ -60,14 +63,18 @@ const validate = values => {
   if (!values.accountType || values.accountType === "select") {
     errors.accountType = "Please select an account type.";
   }
-  if (!values.email) {
-    errors.email = "Enter your email.";
+  if (!values.email || !checkEmail(values.email)) {
+    errors.email = "Enter a valid email.";
   }
-  if (!values.password) {
-    errors.password = "Enter a password.";
+  if (!values.password || !checkPassword(values.password)) {
+    errors.password =
+      "Password must include one uppercase letter, one number and a minimum of 6 characters. It cannot be empty.";
   }
   if (values.password !== values.confirmPassword) {
     errors.confirmPassword = "Passwords do not match.";
+  }
+  if (!values.confirmDetails) {
+    errors.confirmDetails = "Please agree to the terms and conditions.";
   }
   return errors;
 };

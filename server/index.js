@@ -8,7 +8,7 @@ const app = express();
 const routes = require("./routes/index");
 
 if (process.env.NODE_ENV !== "production") {
-  require("env2")(".env");
+  require("env2")("config.env");
 }
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

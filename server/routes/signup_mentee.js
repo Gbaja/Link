@@ -7,11 +7,7 @@ exports.post = (req, res) => {
     accountType,
     email,
     password,
-    baseArea,
-    currentMotive,
-    mentorIndustry,
-    reason,
-    biography
+    confirmDetails
   } = req.body;
   return models.MenteeRegistrations.findOne({
     where: { email: email.toLowerCase() }
@@ -29,11 +25,7 @@ exports.post = (req, res) => {
         accountType,
         email,
         password,
-        baseArea,
-        currentMotive,
-        mentorIndustry,
-        reason,
-        biography
+        confirmDetails
       }).then(data => {
         req.session.user_id = data.dataValues.id;
         console.log("SIGN UP COOKIE: ", req.session);
