@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { Field, reduxForm, initialize } from "redux-form";
 import { connect } from "react-redux";
+
 import { updateProfile } from "../../actions/put_requests";
+import { textareaWordCountCheck } from "../../helpers/forms_validations";
 
 class MentorProfileForm extends Component {
   renderField(field) {
+    const {
+      meta: { touched, error }
+    } = field;
     return (
       <div>
         {field.select ? (
@@ -19,16 +24,19 @@ class MentorProfileForm extends Component {
                 );
               })}
             </select>
+            <p>{touched ? error : ""}</p>
           </div>
         ) : field.textarea ? (
           <div>
             <label>{field.label}</label>
             <textarea {...field.input} />
+            <p>{touched ? error : ""}</p>
           </div>
         ) : (
           <div>
             <label>{field.label}</label>
             <input type={field.type} {...field.input} />
+            <p>{touched ? error : ""}</p>
           </div>
         )}
       </div>
@@ -84,6 +92,7 @@ class MentorProfileForm extends Component {
             name="biography"
             textarea
             component={this.renderField}
+            // validate={textareaWordCountCheck}
           />
           <Field
             label="What are your motivations for mentoring?"

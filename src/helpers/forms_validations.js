@@ -8,6 +8,14 @@ export const checkEmail = string => {
   return regex.test(string);
 };
 
-export const textAreaLineBreaks = string => {
+export const textareaLineBreaks = string => {
   return string.replace(/\r?\n/g, "<br />");
+};
+
+export const textareaWordCountCheck = string => {
+  const wordCount = string.replace(/\s/g, "").length;
+  console.log("WORD COUNT: ", wordCount);
+  return wordCount > 2
+    ? "The word count in your biography must not be greater that 250."
+    : "";
 };

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Field, reduxForm, initialize } from "redux-form";
 import { connect } from "react-redux";
-import { updateProfile } from "../../actions/put_requests";
 
+import { updateProfile } from "../../actions/put_requests";
 import MentorProfileForm from "./MentorProfileForm";
 
 class MentorProfileFormContainer extends Component {
@@ -41,7 +41,6 @@ const validate = values => {
   if (!values.lastName) {
     errors.lastName = "All mentors must have a last name.";
   }
-
   return errors;
 };
 const mapStateToProps = ({ auth }) => ({
@@ -51,6 +50,6 @@ const mapStateToProps = ({ auth }) => ({
   auth
 });
 export default reduxForm({
-  //validate: validate,
+  validate: validate,
   form: "MentorProfileForm"
 })(connect(mapStateToProps, { updateProfile })(MentorProfileFormContainer));
