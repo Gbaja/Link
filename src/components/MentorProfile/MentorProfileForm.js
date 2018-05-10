@@ -7,43 +7,6 @@ import { renderFormFields } from "../../helpers/reduxFields";
 import { textareaWordCountCheck } from "../../helpers/forms_validations";
 
 class MentorProfileForm extends Component {
-  // renderField(field) {
-  //   const {
-  //     meta: { touched, error }
-  //   } = field;
-  //   return (
-  //     <div>
-  //       {field.select ? (
-  //         <div>
-  //           <label>{field.label}</label>
-  //           <select {...field.input}>
-  //             {Object.keys(field.options).map(val => {
-  //               return (
-  //                 <option key={val} value={val}>
-  //                   {field.options[val]}
-  //                 </option>
-  //               );
-  //             })}
-  //           </select>
-  //           <p>{touched ? error : ""}</p>
-  //         </div>
-  //       ) : field.textarea ? (
-  //         <div>
-  //           <label>{field.label}</label>
-  //           <textarea {...field.input} />
-  //           <p>{touched ? error : ""}</p>
-  //         </div>
-  //       ) : (
-  //         <div>
-  //           <label>{field.label}</label>
-  //           <input type={field.type} {...field.input} />
-  //           <p>{touched ? error : ""}</p>
-  //         </div>
-  //       )}
-  //     </div>
-  //   );
-  // }
-
   render() {
     const { handleSubmit, onSubmit, auth } = this.props;
     return (
@@ -93,7 +56,7 @@ class MentorProfileForm extends Component {
             name="biography"
             textarea
             component={renderFormFields}
-            // validate={textareaWordCountCheck}
+            validate={textareaWordCountCheck}
           />
           <Field
             label="What are your motivations for mentoring?"

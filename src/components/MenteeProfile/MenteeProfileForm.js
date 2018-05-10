@@ -1,39 +1,10 @@
 import React, { Component } from "react";
 import { Field, reduxForm, initialize } from "redux-form";
 import { connect } from "react-redux";
-import { updateProfile } from "../../actions/put_requests";
+
+import { renderFormFields } from "../../helpers/reduxFields";
 
 class MenteeProfileForm extends Component {
-  renderField(field) {
-    return (
-      <div>
-        {field.select ? (
-          <div>
-            <label>{field.label}</label>
-            <select {...field.input}>
-              {Object.keys(field.options).map(val => {
-                return (
-                  <option key={val} value={val}>
-                    {field.options[val]}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-        ) : field.textarea ? (
-          <div>
-            <label>{field.label}</label>
-            <textarea {...field.input} />
-          </div>
-        ) : (
-          <div>
-            <label>{field.label}</label>
-            <input type={field.type} {...field.input} />
-          </div>
-        )}
-      </div>
-    );
-  }
   render() {
     const { handleSubmit, onSubmit, auth } = this.props;
     return (
@@ -45,29 +16,29 @@ class MenteeProfileForm extends Component {
             label="First name"
             name="firstName"
             type="text"
-            component={this.renderField}
+            component={renderFormFields}
           />
           <Field
             label="Last Name"
             name="lastName"
             type="text"
-            component={this.renderField}
+            component={renderFormFields}
           />
           <Field
             label="Current Location"
             name="baseArea"
-            component={this.renderField}
+            component={renderFormFields}
           />
           <Field
             label="Current Motive"
             name="currentMotive"
             type="text"
-            component={this.renderField}
+            component={renderFormFields}
           />
           <Field
             label="Age"
             name="age"
-            component={this.renderField}
+            component={renderFormFields}
             select
             options={{
               "18": "18",
@@ -81,19 +52,19 @@ class MenteeProfileForm extends Component {
             label="Short biography"
             name="biography"
             textarea
-            component={this.renderField}
+            component={renderFormFields}
           />
           <Field
             label="Why do you want a mentor?"
             name="reason"
             textarea
-            component={this.renderField}
+            component={renderFormFields}
           />
           <Field
             label="What industry would you like a mentor from?"
             name="mentorIndustry"
             textarea
-            component={this.renderField}
+            component={renderFormFields}
           />
           <button type="submit">Update profile</button>
         </form>

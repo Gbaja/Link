@@ -5,37 +5,6 @@ import { Link } from "react-router-dom";
 import { renderFormFields } from "../../helpers/reduxFields";
 
 class SignUpForm extends Component {
-  // renderField(field) {
-  //   const {
-  //     meta: { touched, error }
-  //   } = field;
-  //   return (
-  //     <div>
-  //       {field.select ? (
-  //         <div>
-  //           <label>{field.label}</label>
-  //           <select {...field.input}>
-  //             {Object.keys(field.options).map(val => {
-  //               return (
-  //                 <option key={val} value={val}>
-  //                   {field.options[val]}
-  //                 </option>
-  //               );
-  //             })}
-  //           </select>
-  //           <p>{touched ? error : ""}</p>
-  //         </div>
-  //       ) : (
-  //         <div>
-  //           <label>{field.label}</label>
-  //           <input type={field.type} {...field.input} />
-  //           <p>{touched ? error : ""}</p>
-  //         </div>
-  //       )}
-  //     </div>
-  //   );
-  // }
-
   render() {
     const { handleSubmit, onSubmit, error } = this.props;
     return (

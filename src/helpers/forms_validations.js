@@ -13,7 +13,8 @@ export const textareaLineBreaks = string => {
 };
 
 export const textareaWordCountCheck = string => {
-  const wordCount = string.replace(/\s/g, "").length;
+  string = string || "";
+  const wordCount = string.trim().split(/\s+/).length;
   console.log("WORD COUNT: ", wordCount);
   return wordCount > 2
     ? "The word count in your biography must not be greater that 250."

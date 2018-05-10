@@ -1,7 +1,6 @@
 import React from "react";
 
 export const renderFormFields = field => {
-  console.log("FIELD :", field);
   const {
     meta: { touched, error }
   } = field;
