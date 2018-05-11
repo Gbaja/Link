@@ -19,6 +19,7 @@ class Profile extends Component {
         <p>Current role: {data.currentRole}</p>
         <p>Current company: {data.currentCompany}</p>
         <p>Age: {data.age}</p>
+        <p>Location: {data.location}</p>
         <p>Short biography: {data.biography}</p>
         <p>What you can offer: {data.offer}</p>
         <p>Motivation for mentoring: {data.motivation}</p>

@@ -26,8 +26,14 @@ class MenteeProfileForm extends Component {
           />
           <Field
             label="Current Location"
-            name="baseArea"
+            name="location"
             component={renderFormFields}
+            select
+            options={{
+              Select: "Select",
+              UK: "United-Kingdom",
+              Nigeria: "Nigeria"
+            }}
           />
           <Field
             label="Current Motive"
@@ -41,6 +47,7 @@ class MenteeProfileForm extends Component {
             component={renderFormFields}
             select
             options={{
+              "select age": "select age",
               "18": "18",
               "19": "19",
               "20": "20",

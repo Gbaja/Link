@@ -34,7 +34,15 @@ class MenteeProfileFormContainer extends Component {
 }
 const validate = values => {
   const errors = {};
-
+  if (!values.firstName) {
+    errors.firstName = "All mentors must have a first name.";
+  }
+  if (!values.lastName) {
+    errors.lastName = "All mentors must have a last name.";
+  }
+  if (values.location === "Select") {
+    errors.location = "Please select your location.";
+  }
   return errors;
 };
 

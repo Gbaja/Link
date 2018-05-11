@@ -8,7 +8,7 @@ const MenteeRegistrations = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     accountType: DataTypes.STRING,
-    baseArea: DataTypes.STRING,
+    location: DataTypes.STRING,
     currentMotive: DataTypes.STRING,
     age: DataTypes.STRING,
     mentorIndustry: DataTypes.STRING,

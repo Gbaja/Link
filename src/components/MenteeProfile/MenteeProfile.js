@@ -14,7 +14,7 @@ class MenteeProfile extends Component {
         <p>Email: {menteeProfileData.email}</p>
         <p>Account type: {menteeProfileData.accountType}</p>
         <p> Age: {menteeProfileData.age}</p>
-        <p>Your current location: {menteeProfileData.baseArea}</p>
+        <p>Your current location: {menteeProfileData.location}</p>
         <p>Current motive: {menteeProfileData.currentMotive}</p>
         <p>Reason: {menteeProfileData.reason}</p>
         <p>Short biography: {menteeProfileData.biography}</p>

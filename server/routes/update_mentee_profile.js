@@ -7,7 +7,7 @@ exports.put = (req, res) => {
     {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      baseArea: req.body.baseArea,
+      location: req.body.location,
       currentMotive: req.body.currentMotive,
       age: req.body.age,
       biography: req.body.biography,
