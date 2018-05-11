@@ -75,12 +75,14 @@ class MentorProfileForm extends Component {
             name="motivation"
             textarea
             component={renderFormFields}
+            validate={textareaWordCountCheck}
           />
           <Field
             label="What can you help a mentee with?"
             name="offer"
             textarea
             component={renderFormFields}
+            validate={textareaWordCountCheck}
           />
           <button type="submit">Update profile</button>
         </form>

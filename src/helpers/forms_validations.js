@@ -17,6 +17,6 @@ export const textareaWordCountCheck = string => {
   const wordCount = string.trim().split(/\s+/).length;
   console.log("WORD COUNT: ", wordCount);
   return wordCount > 2
-    ? "The word count in your biography must not be greater that 250."
+    ? "The word count in a text area must not be greater that 250."
     : "";
 };

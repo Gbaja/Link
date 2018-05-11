@@ -3,6 +3,7 @@ import { Field, reduxForm, initialize } from "redux-form";
 import { connect } from "react-redux";
 
 import { renderFormFields } from "../../helpers/reduxFields";
+import { textareaWordCountCheck } from "../../helpers/forms_validations";
 
 class MenteeProfileForm extends Component {
   render() {
@@ -60,18 +61,21 @@ class MenteeProfileForm extends Component {
             name="biography"
             textarea
             component={renderFormFields}
+            validate={textareaWordCountCheck}
           />
           <Field
             label="Why do you want a mentor?"
             name="reason"
             textarea
             component={renderFormFields}
+            validate={textareaWordCountCheck}
           />
           <Field
             label="What industry would you like a mentor from?"
             name="mentorIndustry"
             textarea
             component={renderFormFields}
+            validate={textareaWordCountCheck}
           />
           <button type="submit">Update profile</button>
         </form>
