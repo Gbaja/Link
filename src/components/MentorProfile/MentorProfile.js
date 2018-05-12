@@ -12,14 +12,15 @@ class Profile extends Component {
     return (
       <div>
         <h1> Your Profile </h1>
+        <p>Account type: {data.accountType}</p>
         <p>First name: {data.firstName}</p>
         <p>Last name: {data.lastName}</p>
         <p>Email: {data.email}</p>
-        <p>Account type: {data.accountType}</p>
-        <p>Current role: {data.currentRole}</p>
-        <p>Current company: {data.currentCompany}</p>
         <p>Age: {data.age}</p>
         <p>Location: {data.location}</p>
+        <p>Current Industry: {data.currentIndustry}</p>
+        <p>Current role: {data.currentRole}</p>
+        <p>Current company: {data.currentCompany}</p>
         <p>Short biography: {data.biography}</p>
         <p>What you can offer: {data.offer}</p>
         <p>Motivation for mentoring: {data.motivation}</p>

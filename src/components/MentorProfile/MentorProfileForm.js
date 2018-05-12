@@ -26,14 +26,41 @@ class MentorProfileForm extends Component {
             type="text"
             component={renderFormFields}
           />
-
           <Field
-            label="Current Role"
+            label="Age"
+            name="age"
+            component={renderFormFields}
+            select
+            options={{
+              "": "",
+              "Rather not say": "Rather not say",
+              "18 - 21": "18 - 21",
+              "22 - 26": "22 - 26",
+              "27 - 32": "27 - 32",
+              "33- 40": "33- 40",
+              "41+": "41+"
+            }}
+          />
+          <Field
+            label="What industry do you currently work in?"
+            name="currentIndustry"
+            component={renderFormFields}
+            select
+            options={{
+              "": "",
+              "Not disclosed": "Not disclosed",
+              "Banking&Finance": "Banking&Finance",
+              Technology: "Technology",
+              "Digital Media": "Digital Media"
+            }}
+          />
+          <Field
+            label="Job title"
             name="currentRole"
             component={renderFormFields}
           />
           <Field
-            label="currentCompany"
+            label="Current Company"
             name="currentCompany"
             type="text"
             component={renderFormFields}
@@ -44,23 +71,10 @@ class MentorProfileForm extends Component {
             component={renderFormFields}
             select
             options={{
+              "": "",
               None: "None",
               UK: "United-Kingdom",
               Nigeria: "Nigeria"
-            }}
-          />
-          <Field
-            label="Age"
-            name="age"
-            component={renderFormFields}
-            select
-            options={{
-              "Rather not say": "Rather not say",
-              "18 - 21": "18 - 21",
-              "22 - 26": "22 - 26",
-              "27 - 32": "27 - 32",
-              "33- 40": "33- 40",
-              "41+": "41+"
             }}
           />
           <Field

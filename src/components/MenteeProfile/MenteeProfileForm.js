@@ -26,6 +26,21 @@ class MenteeProfileForm extends Component {
             component={renderFormFields}
           />
           <Field
+            label="Age"
+            name="age"
+            component={renderFormFields}
+            select
+            options={{
+              "18": 18,
+              "19": 19,
+              "20": 20,
+              "21": 21,
+              "22": 22,
+              "": "",
+              "Rather not say": "Rather not say"
+            }}
+          />
+          <Field
             label="Current Location"
             name="location"
             component={renderFormFields}
@@ -43,17 +58,16 @@ class MenteeProfileForm extends Component {
             component={renderFormFields}
           />
           <Field
-            label="Age"
-            name="age"
+            label="What industry would you like a mentor from?"
+            name="mentorIndustry"
             component={renderFormFields}
             select
             options={{
-              "Rather not say": "Rather not say",
-              "18": "18",
-              "19": "19",
-              "20": "20",
-              "21": "21",
-              "22": "22"
+              "": "",
+              "Not disclosed": "Not disclosed",
+              "Banking&Finance": "Banking&Finance",
+              Technology: "Technology",
+              "Digital Media": "Digital Media"
             }}
           />
           <Field
@@ -66,13 +80,6 @@ class MenteeProfileForm extends Component {
           <Field
             label="Why do you want a mentor?"
             name="reason"
-            textarea
-            component={renderFormFields}
-            validate={textareaWordCountCheck}
-          />
-          <Field
-            label="What industry would you like a mentor from?"
-            name="mentorIndustry"
             textarea
             component={renderFormFields}
             validate={textareaWordCountCheck}
