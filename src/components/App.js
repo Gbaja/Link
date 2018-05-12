@@ -21,7 +21,7 @@ class App extends Component {
 
   renderProtected = ({ hasAccess, renderPage }) => {
     return props =>
-      hasAccess ? renderPage(props) : <Redirect push to="/unathorised" />;
+      hasAccess ? renderPage(props) : <RedirectPage {...props} />;
   };
   renderMentorPages = Component => {
     const loggedIn = this.props.auth;
