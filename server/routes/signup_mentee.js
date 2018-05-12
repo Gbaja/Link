@@ -1,4 +1,5 @@
 const models = require("../models");
+const signupTemplate = require("../utils/email_templates/signup_email");
 
 exports.post = (req, res) => {
   const {
@@ -30,6 +31,7 @@ exports.post = (req, res) => {
         req.session.user_id = data.dataValues.id;
         console.log("SIGN UP COOKIE: ", req.session);
         console.log("sign up data : ", data.dataValues.id);
+        signupTemplate(data.dataValues);
         res.send(data.dataValues);
       });
     }
