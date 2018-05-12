@@ -44,7 +44,7 @@ class MentorProfileForm extends Component {
             component={renderFormFields}
             select
             options={{
-              Select: "Select",
+              None: "None",
               UK: "United-Kingdom",
               Nigeria: "Nigeria"
             }}
@@ -55,7 +55,7 @@ class MentorProfileForm extends Component {
             component={renderFormFields}
             select
             options={{
-              "Select-age": "Select age",
+              "Rather not say": "Rather not say",
               "18 - 21": "18 - 21",
               "22 - 26": "22 - 26",
               "27 - 32": "27 - 32",

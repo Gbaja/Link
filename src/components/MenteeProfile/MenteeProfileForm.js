@@ -31,7 +31,7 @@ class MenteeProfileForm extends Component {
             component={renderFormFields}
             select
             options={{
-              Select: "Select",
+              None: "None",
               UK: "United-Kingdom",
               Nigeria: "Nigeria"
             }}
@@ -48,7 +48,7 @@ class MenteeProfileForm extends Component {
             component={renderFormFields}
             select
             options={{
-              "select age": "select age",
+              "Rather not say": "Rather not say",
               "18": "18",
               "19": "19",
               "20": "20",
