@@ -15,6 +15,8 @@ const MenteeRegistrations = (sequelize, DataTypes) => {
     reason: DataTypes.STRING,
     biography: DataTypes.STRING,
     confirmDetails: DataTypes.BOOLEAN,
+    passwordResetToken: DataTypes.STRING,
+    passwordResetTokenExpires: DataTypes.STRING,
     createdAt: {
       type: DataTypes.DATE(3)
     },
