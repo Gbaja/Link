@@ -14,6 +14,7 @@ import MenteeProfileForm from "./MenteeProfile/MenteeProfileFormContainer";
 import MentorsDirectory from "./MentorsDirectory/MentorsDirectory";
 import RedirectPage from "./redirect";
 import ForgotPasswordForm from "./ForgotPassword/ForgotPasswordFormContainer";
+import ResetPasswordForm from "./ForgotPassword/ResetPasswordFormContainer";
 
 class App extends Component {
   isMentor = () => this.props.auth.accountType === "Mentor";
@@ -76,6 +77,7 @@ class App extends Component {
           />
           <Route exact path="/mentors_directory" component={MentorsDirectory} />
           <Route exact path="/forgot_password" component={ForgotPasswordForm} />
+          <Route exact path="/reset_password" component={ResetPasswordForm} />
           <Route exact path="/unathorised" component={RedirectPage} />
         </Switch>
       </BrowserRouter>
