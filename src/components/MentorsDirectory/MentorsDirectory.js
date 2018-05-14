@@ -9,27 +9,34 @@ class MentorsDirectory extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNumbers: 1,
-      dataCount: 0
+      currentPage: 0,
+      numberOfPages: []
     };
   }
   componentDidMount() {
-    this.props.fetchMentors(1);
+    this.props.fetchMentors(1).then(data => {
+      this.setPageNumbers(this.props.mentors.count);
+    });
   }
-  range = number => {
-    let total = Math.ceil(number / 10);
+  setPageNumbers = number => {
+    let total = Math.ceil(number / 1);
     let arr = [];
     while (total > 0) {
       arr.unshift(total--);
     }
-    return arr;
+    this.setState({ numberOfPages: arr });
   };
+
+  showPage = pageNum => () => {
+    this.props.fetchMentors(pageNum);
+  };
+
   render() {
     if (Object.getOwnPropertyNames(this.props.mentors).length === 0) {
       console.log("NONE");
       return <div>Loading</div>;
     } else {
-      const pageNumbers = this.range(this.props.mentors.count);
+      this.props.mentors.count;
       const mentorsDetails = this.props.mentors.rows;
       return (
         <div>
@@ -41,8 +48,12 @@ class MentorsDirectory extends Component {
               </div>
             );
           })}
-          {pageNumbers.map(num => {
-            return <span key={num}> {num} </span>;
+          {this.state.numberOfPages.map(num => {
+            return (
+              <span key={num} onClick={this.showPage(num)}>
+                {num}
+              </span>
+            );
           })}
         </div>
       );

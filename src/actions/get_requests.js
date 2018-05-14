@@ -14,7 +14,7 @@ export const logOut = callback => {
 
 export const fetchMentors = pageNum => {
   return dispatch => {
-    axios
+    return axios
       .get(`/api/getMentors/${pageNum}`)
       .then(response => {
         dispatch({
