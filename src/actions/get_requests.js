@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { UNAUTH_USER, CURRENT_USER, FETCH_MENTORS } from "./types";
+import { ADD_ERROR, UNAUTH_USER, CURRENT_USER, FETCH_MENTORS } from "./types";
 
 export const logOut = callback => {
   return dispatch => {
@@ -8,6 +8,13 @@ export const logOut = callback => {
     dispatch({
       type: UNAUTH_USER,
       payload: false
+    }).catch(err => {
+      console.log("LOG OUT ERR: ", err);
+      dispatch({
+        type: ADD_ERROR,
+        payload:
+          "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+      });
     });
   };
 };
@@ -24,7 +31,12 @@ export const currentUser = () => {
         });
       })
       .catch(err => {
-        console.log("CURRENT USER ERROR: ", err);
+        console.log("CURRENT USER ERR: ", err);
+        dispatch({
+          type: ADD_ERROR,
+          payload:
+            "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+        });
       });
   };
 };
@@ -40,7 +52,12 @@ export const fetchMentors = pageNum => {
         });
       })
       .catch(err => {
-        console.log("FETCH MENTORS ERROR: ", err);
+        console.log("FETCH MENTORS ERR: ", err);
+        dispatch({
+          type: ADD_ERROR,
+          payload:
+            "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+        });
       });
   };
 };
