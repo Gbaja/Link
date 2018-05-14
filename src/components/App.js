@@ -1,6 +1,5 @@
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { currentUser } from "../actions/get_requests";
 import React, { Component } from "react";
 import Landing from "./Landing/Landing";
 import SignupContainer from "./SignUp/SignUpContainer";
