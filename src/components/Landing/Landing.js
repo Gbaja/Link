@@ -5,9 +5,13 @@ class Landing extends Component {
   render() {
     return (
       <div>
-        <h1>Link </h1>
-        <Link to="/signup_form"> Sign up now</Link>
-        <Link to="/login_form"> Log in </Link>
+        <h1>Young & Giving </h1>
+        <p>
+          <Link to="/signup_form"> Sign up</Link>
+        </p>
+        <p>
+          <Link to="/login_form"> Log in </Link>
+        </p>
       </div>
     );
   }

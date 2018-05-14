@@ -8,13 +8,6 @@ export const logOut = callback => {
     dispatch({
       type: UNAUTH_USER,
       payload: false
-    }).catch(err => {
-      console.log("LOG OUT ERR: ", err);
-      dispatch({
-        type: ADD_ERROR,
-        payload:
-          "There was an error on our side. Please try again letter or contact a member of out team for assistance."
-      });
     });
   };
 };

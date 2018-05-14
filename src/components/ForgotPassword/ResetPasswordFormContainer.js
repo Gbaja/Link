@@ -15,6 +15,7 @@ class ResetPasswordFormContainer extends Component {
   handleFormSubmission = values => {
     const params = new URL(document.location).searchParams;
     const token = params.get("token");
+    console.log("TOKEN: ", token);
     values.token = token;
     this.props.resetPassword(values);
   };

@@ -11,9 +11,7 @@ exports.post = (req, res) => {
           where: { email: req.body.email }
         }).then(mentee => {
           if (!mentee) {
-            res
-              .status(422)
-              .send("User does not exists, please create an account.");
+            res.send("User does not exists, please create an account.");
           } else {
             models.MenteeRegistrations.update(
               {
@@ -22,7 +20,9 @@ exports.post = (req, res) => {
               { returning: true, where: { email: req.body.email } }
             ).then(([rowsUpdate, [updatedProfile]]) => {
               forgotPasswordEmail(updatedProfile, req);
-              res.send(updatedProfile);
+              res.send(
+                "Please check your email for instructions on how to reset your password."
+              );
             });
           }
         });
