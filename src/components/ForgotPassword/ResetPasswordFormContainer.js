@@ -3,7 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { resetError } from "../../actions/post_requests";
+import { resetPassword, resetError } from "../../actions/post_requests";
 import { RESET_ERROR } from "../../actions/types";
 import ResetPasswordForm from "./ResetPasswordForm";
 
@@ -13,7 +13,10 @@ class ResetPasswordFormContainer extends Component {
   }
 
   handleFormSubmission = values => {
-    console.log(values);
+    const params = new URL(document.location).searchParams;
+    const token = params.get("token");
+    values.token = token;
+    this.props.resetPassword(values);
   };
   render() {
     const { handleSubmit, error } = this.props;
@@ -48,4 +51,8 @@ const mapStateToProps = state => ({
 export default reduxForm({
   validate,
   form: "ResetPasswordForm"
-})(connect(mapStateToProps, { resetError })(ResetPasswordFormContainer));
+})(
+  connect(mapStateToProps, { resetPassword, resetError })(
+    ResetPasswordFormContainer
+  )
+);

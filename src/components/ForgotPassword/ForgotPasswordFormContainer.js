@@ -3,7 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { resetError } from "../../actions/post_requests";
+import { forgotPassword, resetError } from "../../actions/post_requests";
 import { RESET_ERROR } from "../../actions/types";
 import ForgotPasswordForm from "./ForgotPasswordForm";
 
@@ -13,7 +13,7 @@ class ForgotPasswordFormContainer extends Component {
   }
 
   handleFormSubmission = values => {
-    console.log(values);
+    this.props.forgotPassword(values);
   };
   render() {
     const { handleSubmit, error } = this.props;
@@ -44,4 +44,9 @@ const mapStateToProps = state => ({
 export default reduxForm({
   validate,
   form: "ForgotPasswordForm"
-})(connect(mapStateToProps, { resetError })(ForgotPasswordFormContainer));
+})(
+  connect(mapStateToProps, {
+    forgotPassword,
+    resetError
+  })(ForgotPasswordFormContainer)
+);

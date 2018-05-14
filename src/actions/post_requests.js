@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AUTH_USER, ADD_ERROR, RESET_ERROR } from "./types";
+import { AUTH_USER, ADD_ERROR, RESET_ERROR, ADD_SUCCESS } from "./types";
 
 export const signupMentor = (data, callback) => {
   return dispatch => {
@@ -81,6 +81,28 @@ export const logIn = (data, callback) => {
           });
         }
       });
+  };
+};
+
+export const forgotPassword = data => {
+  return dispatch => {
+    axios.post("/api/forgotPassword", data).then(res => {
+      dispatch({
+        type: ADD_SUCCESS,
+        payload: res.data
+      });
+    });
+  };
+};
+
+export const resetPassword = data => {
+  return dispatch => {
+    axios.post("/api/resetPassword", data).then(res => {
+      dispatch({
+        type: ADD_SUCCESS,
+        payload: res.data
+      });
+    });
   };
 };
 

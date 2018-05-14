@@ -3,13 +3,13 @@ const resetPasswordEmail = require("../utils/email_templates/reset_password_emai
 const hashPassword = require("../utils/hash_password");
 
 exports.post = (req, res) => {
-  console.log({ password: req.body.password, token: req.query.token });
+  console.log({ password: req.body.password, token: req.body.token });
   models.MentorRegistrations.findOne({
-    where: { passwordResetToken: req.query.token }
+    where: { passwordResetToken: req.body.token }
   }).then(mentor => {
     if (!mentor) {
       models.MenteeRegistrations.findOne({
-        where: { passwordResetToken: req.query.token }
+        where: { passwordResetToken: req.body.token }
       }).then(mentee => {
         if (!mentee) {
           res.status(422).send("Invalid password token.");
@@ -21,15 +21,12 @@ exports.post = (req, res) => {
               },
               {
                 returning: true,
-                where: { passwordResetToken: req.query.token }
+                where: { passwordResetToken: req.body.token }
               }
             ).then(([rowsUpdate, [updatedProfile]]) => {
               console.log("UPDATED PROFILE: ", updatedProfile);
               resetPasswordEmail(updatedProfile, req);
-              res.send({
-                message: "Your password has been updated, please sign in! ",
-                data: updatedProfile
-              });
+              res.send("Your password has been updated, please sign in!");
             });
           });
         }
@@ -40,14 +37,11 @@ exports.post = (req, res) => {
           {
             password: password
           },
-          { returning: true, where: { passwordResetToken: req.query.token } }
+          { returning: true, where: { passwordResetToken: req.body.token } }
         ).then(([rowsUpdate, [updatedProfile]]) => {
           console.log("UPDATED PROFILE: ", updatedProfile);
           resetPasswordEmail(updatedProfile, req);
-          res.send({
-            message: "Your password has been updated, please sign in! ",
-            data: updatedProfile
-          });
+          res.send("Your password has been updated, please sign in! ");
         });
       });
     }
