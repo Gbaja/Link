@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { resetPassword, resetError } from "../../actions/post_requests";
 import { RESET_ERROR } from "../../actions/types";
 import ResetPasswordForm from "./ResetPasswordForm";
+import { checkPassword } from "../../helpers/forms_validations";
 
 class ResetPasswordFormContainer extends Component {
   componentDidMount() {
@@ -34,8 +35,9 @@ class ResetPasswordFormContainer extends Component {
 }
 const validate = values => {
   const errors = {};
-  if (!values.password) {
-    errors.password = "Please enter a password";
+  if (!values.password || !checkPassword(values.password)) {
+    errors.password =
+      "Password must include one uppercase letter, one number and a minimum of 6 characters. It cannot be empty.";
   }
   if (!values.confirmPassword || values.password !== values.confirmPassword) {
     errors.confirmPassword =
