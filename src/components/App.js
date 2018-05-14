@@ -11,6 +11,7 @@ import MenteeProfile from "./MenteeProfile/MenteeProfile";
 import MentorProfileForm from "./MentorProfile/MentorProfileFormContainer";
 import MenteeProfileForm from "./MenteeProfile/MenteeProfileFormContainer";
 import MentorsDirectory from "./MentorsDirectory/MentorsDirectory";
+import MenteesDirectory from "./MenteesDirectory/MenteesDirectory";
 import RedirectPage from "./redirect";
 import ForgotPasswordForm from "./ForgotPassword/ForgotPasswordFormContainer";
 import ResetPasswordForm from "./ForgotPassword/ResetPasswordFormContainer";
@@ -79,6 +80,7 @@ class App extends Component {
             path="/mentors_directory"
             render={this.renderMenteePages(MentorsDirectory)}
           />
+          <Route exact path="/mentees_directory" component={MenteesDirectory} />
           <Route exact path="/forgot_password" component={ForgotPasswordForm} />
           <Route exact path="/reset_password" component={ResetPasswordForm} />
           <Route exact path="/unathorised" component={RedirectPage} />
