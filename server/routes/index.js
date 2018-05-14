@@ -9,6 +9,7 @@ const logout = require("./logout");
 const updateMentorProfile = require("./update_mentor_profile");
 const updateMenteeProfile = require("./update_mentee_profile");
 const getMentors = require("./get_mentors");
+const getMentees = require("./get_mentees");
 const forgotPassword = require("./forgot_password");
 const resetPassword = require("./reset_password");
 
@@ -19,6 +20,7 @@ router.get("/api/logout", logout.get);
 router.put("/api/updateMentorProfile", updateMentorProfile.put);
 router.put("/api/updateMenteeProfile", updateMenteeProfile.put);
 router.get("/api/getMentors/:pageNum", getMentors.get);
+router.get("/api/getMentees/:pageNum", getMentees.get);
 router.post("/api/forgotPassword", forgotPassword.post);
 router.post("/api/resetPassword", resetPassword.post);
 
