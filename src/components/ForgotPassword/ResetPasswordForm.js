@@ -5,11 +5,11 @@ import { renderFormFields } from "../../helpers/reduxFields";
 
 class ResetPasswordForm extends Component {
   render() {
-    const { handleSubmit, onSubmit, error } = this.props;
+    const { handleSubmit, onSubmit, alert } = this.props;
     return (
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          {error && <p>{error}</p>}
+          {alert && <p>{alert}</p>}
           <Field
             label="Password"
             name="password"

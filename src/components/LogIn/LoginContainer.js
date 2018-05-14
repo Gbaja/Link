@@ -22,14 +22,14 @@ class LoginFormContainer extends Component {
     });
   };
   render() {
-    const { handleSubmit, error } = this.props;
+    const { handleSubmit, alert } = this.props;
     return (
       <div>
         <h1> Log in </h1>
         <LogInForm
           onSubmit={this.handleFormSubmission}
           handleSubmit={handleSubmit}
-          error={error}
+          alert={alert}
         />
       </div>
     );
@@ -47,7 +47,7 @@ const validate = values => {
 };
 
 const mapStateToProps = state => ({
-  error: state.error
+  alert: state.alert
 });
 
 export default reduxForm({

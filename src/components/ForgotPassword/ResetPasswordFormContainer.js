@@ -19,14 +19,14 @@ class ResetPasswordFormContainer extends Component {
     this.props.resetPassword(values);
   };
   render() {
-    const { handleSubmit, error } = this.props;
+    const { handleSubmit, alert } = this.props;
     return (
       <div>
         <h1> Change password </h1>
         <ResetPasswordForm
           onSubmit={this.handleFormSubmission}
           handleSubmit={handleSubmit}
-          error={error}
+          alert={alert}
         />
       </div>
     );
@@ -45,7 +45,7 @@ const validate = values => {
 };
 
 const mapStateToProps = state => ({
-  error: state.error
+  alert: state.alert
 });
 
 export default reduxForm({

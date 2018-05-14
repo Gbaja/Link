@@ -6,11 +6,11 @@ import { renderFormFields } from "../../helpers/reduxFields";
 
 class ForgotPasswordForm extends Component {
   render() {
-    const { handleSubmit, onSubmit, error } = this.props;
+    const { handleSubmit, onSubmit, alert } = this.props;
     return (
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          {error && <p>{error}</p>}
+          {alert && <p>{alert}</p>}
           <Field
             label="Email"
             name="email"

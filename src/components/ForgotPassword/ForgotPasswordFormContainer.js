@@ -16,14 +16,14 @@ class ForgotPasswordFormContainer extends Component {
     this.props.forgotPassword(values);
   };
   render() {
-    const { handleSubmit, error } = this.props;
+    const { handleSubmit, alert } = this.props;
     return (
       <div>
         <h1> Reset Password </h1>
         <ForgotPasswordForm
           onSubmit={this.handleFormSubmission}
           handleSubmit={handleSubmit}
-          error={error}
+          alert={alert}
         />
       </div>
     );
@@ -38,7 +38,7 @@ const validate = values => {
 };
 
 const mapStateToProps = state => ({
-  error: state.error
+  alert: state.alert
 });
 
 export default reduxForm({
