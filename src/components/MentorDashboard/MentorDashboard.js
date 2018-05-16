@@ -8,11 +8,20 @@ class MentorDashboard extends Component {
       <div>
         <h1>Welcome</h1>
         <LogOutBtn />
-        <Link to={`/${this.props.match.params.id}/mentor/my_profile`}>
-          My profile
-        </Link>
-        <Link to="/mentees_directory"> View mentees </Link>
-        <Link to="/1/mentee/dashboard">Mentee profile</Link>
+        <p>
+          {" "}
+          <Link to={`/${this.props.match.params.id}/mentor/my_profile`}>
+            My profile
+          </Link>
+        </p>
+        <p>
+          {" "}
+          <Link to="/mentees_directory"> View mentees </Link>
+        </p>
+        <p>
+          <Link to="/1/mentee/dashboard">Mentee profile</Link>
+        </p>
+        <button> Delete </button>
       </div>
     );
   }
