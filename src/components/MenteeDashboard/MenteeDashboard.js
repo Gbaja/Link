@@ -19,7 +19,7 @@ class MenteeDashboard extends Component {
           {" "}
           <Link to="/mentors_directory"> View mentors </Link>
         </p>
-        <button> Delete </button>
+        <button> Delete my account</button>
       </div>
     );
   }

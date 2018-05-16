@@ -109,8 +109,9 @@ class MenteeProfileForm extends Component {
             select
             options={{
               "": "",
-              "Available to mentor": "Available to mentor",
-              "Unavailable to mentor": "Unavailable to mentor"
+              "Looking for a mentor": "Looking for a mentor",
+              "Not currently looking for to mentor":
+                "Not currently looking for to mentor"
             }}
           />
           <button type="submit">Update profile</button>

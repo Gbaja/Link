@@ -33,9 +33,7 @@ class MentorDashboard extends Component {
           {" "}
           <Link to="/mentees_directory"> View mentees </Link>
         </p>
-        <p>
-          <Link to="/1/mentee/dashboard">Mentee profile</Link>
-        </p>
+
         <button onClick={this.deleteAccount(this.props.auth.email)}>
           {" "}
           Delete{" "}

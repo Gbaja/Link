@@ -17,7 +17,8 @@ exports.post = (req, res) => {
           hashPassword(req.body.password).then(password => {
             models.MenteeRegistrations.update(
               {
-                password: password
+                password: password,
+                passwordResetToken: null
               },
               {
                 returning: true,
@@ -35,7 +36,8 @@ exports.post = (req, res) => {
       hashPassword(req.body.password).then(password => {
         models.MentorRegistrations.update(
           {
-            password: password
+            password: password,
+            passwordResetToken: null
           },
           { returning: true, where: { passwordResetToken: req.body.token } }
         ).then(([rowsUpdate, [updatedProfile]]) => {
