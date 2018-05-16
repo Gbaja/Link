@@ -6,6 +6,8 @@ exports.put = (req, res) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       accountType: req.body.accountType,
+      universityName: req.body.universityName,
+      degree: req.body.degree,
       currentRole: req.body.currentRole,
       currentCompany: req.body.currentCompany,
       currentIndustry: req.body.currentIndustry,

@@ -21,6 +21,8 @@ class Landing extends Component {
       lastName,
       age,
       location,
+      universityName,
+      degree,
       currentIndustry,
       currentRole,
       currentCompany,
@@ -36,6 +38,8 @@ class Landing extends Component {
         <p>Last name: {lastName}</p>
         <p>Age: {age}</p>
         <p>Location: {location}</p>
+        <p>University name: {universityName}</p>
+        <p>Degree: {degree}</p>
         <p>Current Industry: {currentIndustry}</p>
         <p>Current Job title: {currentRole}</p>
         <p>Current company: {currentCompany}</p>

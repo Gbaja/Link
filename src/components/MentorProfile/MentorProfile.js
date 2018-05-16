@@ -18,6 +18,8 @@ class Profile extends Component {
         <p>Email: {data.email}</p>
         <p>Age: {data.age}</p>
         <p>Location: {data.location}</p>
+        <p> University attended: {data.universityName}</p>
+        <p> Degree: {data.degree}</p>
         <p>
           LinkedIn or other social media url:{" "}
           <a href={data.socialMediaUrl}>{data.socialMediaUrl}</a>

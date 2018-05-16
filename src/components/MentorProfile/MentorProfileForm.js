@@ -48,6 +48,18 @@ class MentorProfileForm extends Component {
             component={renderFormFields}
           />
           <Field
+            label="University attended"
+            name="universityName"
+            type="text"
+            component={renderFormFields}
+          />
+          <Field
+            label="What degree did you do?"
+            name="degree"
+            type="text"
+            component={renderFormFields}
+          />
+          <Field
             label="What industry do you currently work in?"
             name="currentIndustry"
             component={renderFormFields}
