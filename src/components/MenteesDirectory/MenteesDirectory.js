@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import { fetchMentees } from "../../actions/get_requests";
 import LogOutBtn from "../logout";
+import SearchFormContainer from "../SearchForm/SearchFormContainer";
 
 class MenteesDirectory extends Component {
   constructor(props) {
@@ -41,7 +42,9 @@ class MenteesDirectory extends Component {
       const menteesDetails = this.props.mentees.rows;
       return (
         <div>
-          <h1>People</h1>
+          <h1>All mentees</h1>
+          <SearchFormContainer />
+          <h3>People</h3>
           {menteesDetails.map(data => {
             return (
               <div key={data.id}>

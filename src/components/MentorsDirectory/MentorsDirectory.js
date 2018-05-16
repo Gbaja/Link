@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import { fetchMentors } from "../../actions/get_requests";
 import LogOutBtn from "../logout";
+import SearchFormContainer from "../SearchForm/SearchFormContainer";
 
 class MentorsDirectory extends Component {
   constructor(props) {
@@ -40,7 +41,9 @@ class MentorsDirectory extends Component {
       const mentorsDetails = this.props.mentors.rows;
       return (
         <div>
-          <h1>People</h1>
+          <h1>All mentors</h1>
+          <SearchFormContainer />
+          <h3> People </h3>
           {mentorsDetails.map(data => {
             return (
               <div key={data.id}>
