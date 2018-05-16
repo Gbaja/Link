@@ -53,7 +53,10 @@ class MentorsDirectory extends Component {
                 <p> Location: {data.location}</p>
                 <p>
                   {" "}
-                  <Link to={`profile/${data.id}`}> More info</Link>{" "}
+                  <Link to={`profile/${data.accountType}/${data.id}`}>
+                    {" "}
+                    More info
+                  </Link>{" "}
                 </p>
               </div>
             );

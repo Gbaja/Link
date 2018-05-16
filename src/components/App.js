@@ -87,7 +87,11 @@ class App extends Component {
             path="/mentees_directory"
             render={this.renderMentorPages(MenteesDirectory)}
           />
-          <Route exact path="/profile/:id" component={IndividualProfile} />
+          <Route
+            exact
+            path="/profile/:accountType/:id"
+            component={IndividualProfile}
+          />
           <Route exact path="/forgot_password" component={ForgotPasswordForm} />
           <Route exact path="/reset_password" component={ResetPasswordForm} />
           <Route exact path="/unathorised" component={RedirectPage} />

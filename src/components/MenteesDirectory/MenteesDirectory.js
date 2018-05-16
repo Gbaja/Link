@@ -45,7 +45,19 @@ class MenteesDirectory extends Component {
           {menteesDetails.map(data => {
             return (
               <div key={data.id}>
-                <p> First Name : {data.firstName}</p>
+                <p>
+                  {" "}
+                  Name : {data.firstName} {data.lastName}
+                </p>
+                <p> University: {data.universityName}</p>
+                <p>Location: {data.location}</p>
+                <p>Industry I need a mentor from {data.mentorIndustry}</p>
+                <p>
+                  <Link to={`profile/${data.accountType}/${data.id}`}>
+                    {" "}
+                    More info
+                  </Link>
+                </p>
               </div>
             );
           })}
