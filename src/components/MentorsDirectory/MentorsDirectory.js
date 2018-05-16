@@ -44,7 +44,17 @@ class MentorsDirectory extends Component {
           {mentorsDetails.map(data => {
             return (
               <div key={data.id}>
-                <p> First Name : {data.firstName}</p>
+                <p>
+                  {" "}
+                  Name : {data.firstName} {data.lastName}
+                </p>
+                <p> Current Job : {data.currentRole}</p>
+                <p> Current Industry: {data.currentIndustry}</p>
+                <p> Location: {data.location}</p>
+                <p>
+                  {" "}
+                  <Link to={`profile/${data.id}`}> More info</Link>{" "}
+                </p>
               </div>
             );
           })}
