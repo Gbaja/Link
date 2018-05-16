@@ -60,8 +60,14 @@ class MenteeProfileForm extends Component {
           <Field
             label="Name of university"
             name="universityName"
-            type="text"
             component={renderFormFields}
+            select
+            options={{
+              select: "select university",
+              "Durham University": "Durham University",
+              LSE: "LSE",
+              "Kings College London": "Kings College London"
+            }}
           />
           <Field
             label="Name of degree"

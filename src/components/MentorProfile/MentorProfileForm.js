@@ -48,10 +48,16 @@ class MentorProfileForm extends Component {
             component={renderFormFields}
           />
           <Field
-            label="University attended"
+            label="Unversity attended"
             name="universityName"
-            type="text"
             component={renderFormFields}
+            select
+            options={{
+              select: "select university",
+              "Durham University": "Durham University",
+              LSE: "LSE",
+              "Kings College London": "Kings College London"
+            }}
           />
           <Field
             label="What degree did you do?"
