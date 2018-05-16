@@ -12,6 +12,9 @@ const getMentors = require("./get_mentors");
 const getMentees = require("./get_mentees");
 const forgotPassword = require("./forgot_password");
 const resetPassword = require("./reset_password");
+const individualMentorProfile = require("./individual_mentor");
+const individualMenteeProfile = require("./individual_mentee");
+const deleteAccount = require("./delete_account");
 
 router.post("/api/signupMentor", signupMentor.post);
 router.post("/api/signupMentee", signupMentee.post);
@@ -23,5 +26,8 @@ router.get("/api/getMentors/:pageNum", getMentors.get);
 router.get("/api/getMentees/:pageNum", getMentees.get);
 router.post("/api/forgotPassword", forgotPassword.post);
 router.post("/api/resetPassword", resetPassword.post);
+router.get("/api/mentorProfile/:id", individualMentorProfile.get);
+router.get("/api/menteeProfile/:id", individualMenteeProfile.get);
+router.delete("/api/delete", deleteAccount.delete);
 
 module.exports = router;

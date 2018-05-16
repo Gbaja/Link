@@ -15,6 +15,14 @@ class MenteeProfile extends Component {
         <p>Email: {menteeProfileData.email}</p>
         <p> Age: {menteeProfileData.age}</p>
         <p>Your current location: {menteeProfileData.location}</p>
+        <p> University name {menteeProfileData.universityName}</p>
+        <p> Degree: {menteeProfileData.degree}</p>
+        <p>
+          LinkedIn or other social media url:{" "}
+          <a href={menteeProfileData.socialMediaUrl}>
+            {menteeProfileData.socialMediaUrl}
+          </a>
+        </p>
         <p>Current motive: {menteeProfileData.currentMotive}</p>
         <p>
           What industry you want a mentor from?{" "}
@@ -22,6 +30,7 @@ class MenteeProfile extends Component {
         </p>
         <p>Reason: {menteeProfileData.reason}</p>
         <p>Short biography: {menteeProfileData.biography}</p>
+        <p> Availability: {menteeProfileData.status}</p>
         <p>Date joined: {menteeProfileData.createdAt.split("T")[0]}</p>
         <Link to={`/${this.props.match.params.id}/mentee/my_profile/edit`}>
           Edit profile

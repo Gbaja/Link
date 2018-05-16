@@ -1,9 +1,13 @@
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import React, { Component } from "react";
+
 import Landing from "./Landing/Landing";
 import SignupContainer from "./SignUp/SignUpContainer";
 import LoginFormContainer from "./LogIn/LoginContainer";
+import RedirectPage from "./redirect";
+import ForgotPasswordForm from "./ForgotPassword/ForgotPasswordFormContainer";
+import ResetPasswordForm from "./ForgotPassword/ResetPasswordFormContainer";
 import MentorDashboard from "./MentorDashboard/MentorDashboard";
 import MenteeDashboard from "./MenteeDashboard/MenteeDashboard";
 import MentorProfile from "./MentorProfile/MentorProfile";
@@ -12,9 +16,7 @@ import MentorProfileForm from "./MentorProfile/MentorProfileFormContainer";
 import MenteeProfileForm from "./MenteeProfile/MenteeProfileFormContainer";
 import MentorsDirectory from "./MentorsDirectory/MentorsDirectory";
 import MenteesDirectory from "./MenteesDirectory/MenteesDirectory";
-import RedirectPage from "./redirect";
-import ForgotPasswordForm from "./ForgotPassword/ForgotPasswordFormContainer";
-import ResetPasswordForm from "./ForgotPassword/ResetPasswordFormContainer";
+import IndividualProfile from "./IndividualProfile/IndividualProfile";
 
 class App extends Component {
   isMentor = () => this.props.auth.accountType === "Mentor";
@@ -84,6 +86,11 @@ class App extends Component {
             exact
             path="/mentees_directory"
             render={this.renderMentorPages(MenteesDirectory)}
+          />
+          <Route
+            exact
+            path="/profile/:accountType/:id"
+            component={IndividualProfile}
           />
           <Route exact path="/forgot_password" component={ForgotPasswordForm} />
           <Route exact path="/reset_password" component={ResetPasswordForm} />
