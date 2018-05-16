@@ -17,7 +17,7 @@ const individualMenteeProfile = require("./individual_mentee");
 const deleteAccount = require("./delete_account");
 
 router.post("/api/signupMentor", signupMentor.post);
-router.post("/api/signupMentee", signupMentee.post);
+router.post("/api/signupMentee", signupMentor.post);
 router.post("/api/login", login.post);
 router.get("/api/logout", logout.get);
 router.put("/api/updateMentorProfile", updateMentorProfile.put);
