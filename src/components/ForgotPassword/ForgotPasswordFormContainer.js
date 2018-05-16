@@ -3,30 +3,24 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { logIn, resetError } from "../../actions/post_requests";
+import { forgotPassword, resetError } from "../../actions/post_requests";
 import { RESET_ERROR } from "../../actions/types";
-import LogInForm from "./Login_form";
+import ForgotPasswordForm from "./ForgotPasswordForm";
 
-class LoginFormContainer extends Component {
+class ForgotPasswordFormContainer extends Component {
   componentDidMount() {
     this.props.resetError();
   }
 
   handleFormSubmission = values => {
-    this.props.logIn(values, res => {
-      if (res.accountType === "Mentor") {
-        this.props.history.push(`/${res.id}/mentor/dashboard`);
-      } else if (res.accountType === "Mentee") {
-        this.props.history.push(`/${res.id}/mentee/dashboard`);
-      }
-    });
+    this.props.forgotPassword(values);
   };
   render() {
     const { handleSubmit, alert } = this.props;
     return (
       <div>
-        <h1> Log in </h1>
-        <LogInForm
+        <h1> Reset Password </h1>
+        <ForgotPasswordForm
           onSubmit={this.handleFormSubmission}
           handleSubmit={handleSubmit}
           alert={alert}
@@ -40,9 +34,6 @@ const validate = values => {
   if (!values.email) {
     errors.email = "Please enter an email address";
   }
-  if (!values.password) {
-    errors.password = "Please enter a password";
-  }
   return errors;
 };
 
@@ -52,5 +43,10 @@ const mapStateToProps = state => ({
 
 export default reduxForm({
   validate,
-  form: "LogInForm"
-})(connect(mapStateToProps, { logIn, resetError })(LoginFormContainer));
+  form: "ForgotPasswordForm"
+})(
+  connect(mapStateToProps, {
+    forgotPassword,
+    resetError
+  })(ForgotPasswordFormContainer)
+);

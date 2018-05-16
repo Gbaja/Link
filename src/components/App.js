@@ -1,6 +1,5 @@
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { currentUser } from "../actions/get_requests";
 import React, { Component } from "react";
 import Landing from "./Landing/Landing";
 import SignupContainer from "./SignUp/SignUpContainer";
@@ -12,7 +11,10 @@ import MenteeProfile from "./MenteeProfile/MenteeProfile";
 import MentorProfileForm from "./MentorProfile/MentorProfileFormContainer";
 import MenteeProfileForm from "./MenteeProfile/MenteeProfileFormContainer";
 import MentorsDirectory from "./MentorsDirectory/MentorsDirectory";
+import MenteesDirectory from "./MenteesDirectory/MenteesDirectory";
 import RedirectPage from "./redirect";
+import ForgotPasswordForm from "./ForgotPassword/ForgotPasswordFormContainer";
+import ResetPasswordForm from "./ForgotPassword/ResetPasswordFormContainer";
 
 class App extends Component {
   isMentor = () => this.props.auth.accountType === "Mentor";
@@ -20,7 +22,7 @@ class App extends Component {
 
   renderProtected = ({ hasAccess, renderPage }) => {
     return props =>
-      hasAccess ? renderPage(props) : <Redirect push to="/unathorised" />;
+      hasAccess ? renderPage(props) : <RedirectPage {...props} />;
   };
   renderMentorPages = Component => {
     const loggedIn = this.props.auth;
@@ -73,7 +75,18 @@ class App extends Component {
             path="/:id/mentee/my_profile/edit"
             render={this.renderMenteePages(MenteeProfileForm)}
           />
-          <Route exact path="/mentors_directory" component={MentorsDirectory} />
+          <Route
+            exact
+            path="/mentors_directory"
+            render={this.renderMenteePages(MentorsDirectory)}
+          />
+          <Route
+            exact
+            path="/mentees_directory"
+            render={this.renderMentorPages(MenteesDirectory)}
+          />
+          <Route exact path="/forgot_password" component={ForgotPasswordForm} />
+          <Route exact path="/reset_password" component={ResetPasswordForm} />
           <Route exact path="/unathorised" component={RedirectPage} />
         </Switch>
       </BrowserRouter>

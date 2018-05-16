@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const cookieSession = require("cookie-session");
-const passport = require("passport");
 
 const app = express();
 const routes = require("./routes/index");
@@ -19,8 +18,7 @@ app.use(
     cookie: { maxAge: 27 * 60 * 60 * 1000 }
   })
 );
-app.use(passport.initialize());
-app.use(passport.session());
+
 app.use(routes);
 if (process.env.NODE_ENV === "production") {
   const buildPath = path.join(__dirname, "..", "/build/");

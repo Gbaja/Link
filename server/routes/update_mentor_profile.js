@@ -8,6 +8,8 @@ exports.put = (req, res) => {
       accountType: req.body.accountType,
       currentRole: req.body.currentRole,
       currentCompany: req.body.currentCompany,
+      currentIndustry: req.body.currentIndustry,
+      location: req.body.location,
       age: req.body.age,
       biography: req.body.biography,
       offer: req.body.offer,

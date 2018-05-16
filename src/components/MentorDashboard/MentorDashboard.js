@@ -11,7 +11,8 @@ class MentorDashboard extends Component {
         <Link to={`/${this.props.match.params.id}/mentor/my_profile`}>
           My profile
         </Link>
-        <Link to="/1/mentee/dashboard">My profile</Link>
+        <Link to="/mentees_directory"> View mentees </Link>
+        <Link to="/1/mentee/dashboard">Mentee profile</Link>
       </div>
     );
   }

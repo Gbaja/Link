@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { fetchMentors } from "../../actions/get_requests";
+import { fetchMentees } from "../../actions/get_requests";
 import LogOutBtn from "../logout";
 
-class MentorsDirectory extends Component {
+class MenteesDirectory extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,8 +14,9 @@ class MentorsDirectory extends Component {
     };
   }
   componentDidMount() {
-    this.props.fetchMentors(1).then(data => {
-      this.setPageNumbers(this.props.mentors.count);
+    this.props.fetchMentees(1).then(data => {
+      console.log("DATA: ", data);
+      this.setPageNumbers(this.props.mentees.count);
     });
   }
   setPageNumbers = number => {
@@ -28,20 +29,20 @@ class MentorsDirectory extends Component {
   };
 
   showPage = pageNum => () => {
-    this.props.fetchMentors(pageNum);
+    this.props.fetchMentees(pageNum);
   };
 
   render() {
-    if (Object.getOwnPropertyNames(this.props.mentors).length === 0) {
+    if (Object.getOwnPropertyNames(this.props.mentees).length === 0) {
       console.log("NONE");
       return <div>Loading</div>;
     } else {
-      this.props.mentors.count;
-      const mentorsDetails = this.props.mentors.rows;
+      this.props.mentees.count;
+      const menteesDetails = this.props.mentees.rows;
       return (
         <div>
           <h1>People</h1>
-          {mentorsDetails.map(data => {
+          {menteesDetails.map(data => {
             return (
               <div key={data.id}>
                 <p> First Name : {data.firstName}</p>
@@ -61,7 +62,7 @@ class MentorsDirectory extends Component {
   }
 }
 const mapStateToProps = state => ({
-  mentors: state.mentors
+  mentees: state.mentees
 });
 
-export default connect(mapStateToProps, { fetchMentors })(MentorsDirectory);
+export default connect(mapStateToProps, { fetchMentees })(MenteesDirectory);

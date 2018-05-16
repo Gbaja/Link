@@ -9,13 +9,17 @@ const MentorRegistrations = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     accountType: DataTypes.STRING,
+    age: DataTypes.STRING,
+    location: DataTypes.STRING,
+    currentIndustry: DataTypes.STRING,
     currentRole: DataTypes.STRING,
     currentCompany: DataTypes.STRING,
-    age: DataTypes.STRING,
     biography: DataTypes.STRING,
     motivation: DataTypes.STRING,
     offer: DataTypes.STRING,
     confirmDetails: DataTypes.BOOLEAN,
+    passwordResetToken: DataTypes.STRING,
+    passwordResetTokenExpires: DataTypes.STRING,
     createdAt: {
       type: DataTypes.DATE(3)
     },

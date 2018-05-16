@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { UNAUTH_USER, CURRENT_USER, FETCH_MENTORS } from "./types";
+import { ADD_ERROR, UNAUTH_USER, FETCH_MENTORS, FETCH_MENTEES } from "./types";
 
 export const logOut = callback => {
   return dispatch => {
@@ -12,26 +12,9 @@ export const logOut = callback => {
   };
 };
 
-export const currentUser = () => {
-  return dispatch => {
-    axios
-      .get("/api/currentUser")
-      .then(response => {
-        console.log("API CALL CURRET USER: ", response.data);
-        dispatch({
-          type: CURRENT_USER,
-          payload: response.data === "" ? null : response.data
-        });
-      })
-      .catch(err => {
-        console.log("CURRENT USER ERROR: ", err);
-      });
-  };
-};
-
 export const fetchMentors = pageNum => {
   return dispatch => {
-    axios
+    return axios
       .get(`/api/getMentors/${pageNum}`)
       .then(response => {
         dispatch({
@@ -40,7 +23,33 @@ export const fetchMentors = pageNum => {
         });
       })
       .catch(err => {
-        console.log("FETCH MENTORS ERROR: ", err);
+        console.log("FETCH MENTORS ERR: ", err);
+        dispatch({
+          type: ADD_ERROR,
+          payload:
+            "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+        });
+      });
+  };
+};
+
+export const fetchMentees = pageNum => {
+  return dispatch => {
+    return axios
+      .get(`/api/getMentees/${pageNum}`)
+      .then(response => {
+        dispatch({
+          type: FETCH_MENTEES,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        console.log("FETCH MENTEES ERR: ", err);
+        dispatch({
+          type: ADD_ERROR,
+          payload:
+            "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+        });
       });
   };
 };

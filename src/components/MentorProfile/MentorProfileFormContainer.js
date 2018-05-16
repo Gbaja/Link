@@ -41,6 +41,9 @@ const validate = values => {
   if (!values.lastName) {
     errors.lastName = "All mentors must have a last name.";
   }
+  if (values.location === "Select") {
+    errors.location = "Please select your location.";
+  }
   return errors;
 };
 const mapStateToProps = ({ auth }) => ({

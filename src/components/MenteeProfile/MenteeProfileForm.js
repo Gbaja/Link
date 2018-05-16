@@ -3,6 +3,7 @@ import { Field, reduxForm, initialize } from "redux-form";
 import { connect } from "react-redux";
 
 import { renderFormFields } from "../../helpers/reduxFields";
+import { textareaWordCountCheck } from "../../helpers/forms_validations";
 
 class MenteeProfileForm extends Component {
   render() {
@@ -25,9 +26,30 @@ class MenteeProfileForm extends Component {
             component={renderFormFields}
           />
           <Field
-            label="Current Location"
-            name="baseArea"
+            label="Age"
+            name="age"
             component={renderFormFields}
+            select
+            options={{
+              "18": 18,
+              "19": 19,
+              "20": 20,
+              "21": 21,
+              "22": 22,
+              "": "",
+              "Rather not say": "Rather not say"
+            }}
+          />
+          <Field
+            label="Current Location"
+            name="location"
+            component={renderFormFields}
+            select
+            options={{
+              None: "None",
+              UK: "United-Kingdom",
+              Nigeria: "Nigeria"
+            }}
           />
           <Field
             label="Current Motive"
@@ -36,16 +58,16 @@ class MenteeProfileForm extends Component {
             component={renderFormFields}
           />
           <Field
-            label="Age"
-            name="age"
+            label="What industry would you like a mentor from?"
+            name="mentorIndustry"
             component={renderFormFields}
             select
             options={{
-              "18": "18",
-              "19": "19",
-              "20": "20",
-              "21": "21",
-              "22": "22"
+              "": "",
+              "Not disclosed": "Not disclosed",
+              "Banking&Finance": "Banking&Finance",
+              Technology: "Technology",
+              "Digital Media": "Digital Media"
             }}
           />
           <Field
@@ -53,18 +75,14 @@ class MenteeProfileForm extends Component {
             name="biography"
             textarea
             component={renderFormFields}
+            validate={textareaWordCountCheck}
           />
           <Field
             label="Why do you want a mentor?"
             name="reason"
             textarea
             component={renderFormFields}
-          />
-          <Field
-            label="What industry would you like a mentor from?"
-            name="mentorIndustry"
-            textarea
-            component={renderFormFields}
+            validate={textareaWordCountCheck}
           />
           <button type="submit">Update profile</button>
         </form>
