@@ -18,12 +18,17 @@ class Profile extends Component {
         <p>Email: {data.email}</p>
         <p>Age: {data.age}</p>
         <p>Location: {data.location}</p>
+        <p>
+          LinkedIn or other social media url:{" "}
+          <a href={data.socialMediaUrl}>{data.socialMediaUrl}</a>
+        </p>
         <p>Current Industry: {data.currentIndustry}</p>
         <p>Current role: {data.currentRole}</p>
         <p>Current company: {data.currentCompany}</p>
         <p>Short biography: {data.biography}</p>
         <p>What you can offer: {data.offer}</p>
         <p>Motivation for mentoring: {data.motivation}</p>
+        <p> Availability: {data.status}</p>
         <p>Date joined: {data.createdAt.split("T")[0]}</p>
         <Link to={`/${this.props.match.params.id}/mentor/my_profile/edit`}>
           Edit profile

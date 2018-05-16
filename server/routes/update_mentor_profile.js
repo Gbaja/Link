@@ -13,7 +13,9 @@ exports.put = (req, res) => {
       age: req.body.age,
       biography: req.body.biography,
       offer: req.body.offer,
-      motivation: req.body.motivation
+      motivation: req.body.motivation,
+      socialMediaUrl: req.body.socialMediaUrl,
+      status: req.body.status
     },
     { returning: true, where: { email: req.body.email } }
   )

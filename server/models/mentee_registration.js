@@ -11,12 +11,15 @@ const MenteeRegistrations = (sequelize, DataTypes) => {
     location: DataTypes.STRING,
     currentMotive: DataTypes.STRING,
     age: DataTypes.STRING,
+    universityName: DataTypes.STRING,
+    degree: DataTypes.STRING,
     mentorIndustry: DataTypes.STRING,
     reason: DataTypes.STRING,
     biography: DataTypes.STRING,
     confirmDetails: DataTypes.BOOLEAN,
     passwordResetToken: DataTypes.STRING,
-    passwordResetTokenExpires: DataTypes.STRING,
+    socialMediaUrl: DataTypes.STRING,
+    status: DataTypes.STRING,
     createdAt: {
       type: DataTypes.DATE(3)
     },

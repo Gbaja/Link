@@ -42,6 +42,12 @@ class MentorProfileForm extends Component {
             }}
           />
           <Field
+            label="LinkedIn or professional social media account url"
+            name="socialMediaUrl"
+            type="url"
+            component={renderFormFields}
+          />
+          <Field
             label="What industry do you currently work in?"
             name="currentIndustry"
             component={renderFormFields}
@@ -97,6 +103,17 @@ class MentorProfileForm extends Component {
             textarea
             component={renderFormFields}
             validate={textareaWordCountCheck}
+          />
+          <Field
+            label="Availability"
+            name="status"
+            component={renderFormFields}
+            select
+            options={{
+              "": "",
+              "Available to mentor": "Available to mentor",
+              "Unavailable to mentor": "Unavailable to mentor"
+            }}
           />
           <button type="submit">Update profile</button>
         </form>

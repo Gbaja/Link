@@ -41,6 +41,12 @@ class MenteeProfileForm extends Component {
             }}
           />
           <Field
+            label="LinkedIn or professional social media account url"
+            name="socialMediaUrl"
+            type="url"
+            component={renderFormFields}
+          />
+          <Field
             label="Current Location"
             name="location"
             component={renderFormFields}
@@ -50,6 +56,18 @@ class MenteeProfileForm extends Component {
               UK: "United-Kingdom",
               Nigeria: "Nigeria"
             }}
+          />
+          <Field
+            label="Name of university"
+            name="universityName"
+            type="text"
+            component={renderFormFields}
+          />
+          <Field
+            label="Name of degree"
+            name="degree"
+            type="text"
+            component={renderFormFields}
           />
           <Field
             label="Current Motive"
@@ -83,6 +101,17 @@ class MenteeProfileForm extends Component {
             textarea
             component={renderFormFields}
             validate={textareaWordCountCheck}
+          />
+          <Field
+            label="Availability"
+            name="status"
+            component={renderFormFields}
+            select
+            options={{
+              "": "",
+              "Available to mentor": "Available to mentor",
+              "Unavailable to mentor": "Unavailable to mentor"
+            }}
           />
           <button type="submit">Update profile</button>
         </form>
