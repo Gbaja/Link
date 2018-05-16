@@ -5,7 +5,7 @@ module.exports = data => {
   const msg = {
     to: data.email,
     from: "no-reply@youngandgiving.com",
-    subject: "Young&Giving Registration Confirmatio ",
+    subject: "Young&Giving Registration Confirmation",
     html: `<p>Hello ${
       data.firstName
     },</p><p>Thank you signing up to Young & Giving as a ${
