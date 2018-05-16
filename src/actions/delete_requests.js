@@ -4,9 +4,11 @@ import { ADD_SUCCESS, ADD_ERROR } from "./types";
 
 export const deleteAccount = data => {
   return dispatch => {
-    axios
-      .post("/api/delete", data)
+    return axios
+      .delete("/api/delete", data)
       .then(res => {
+        console.log("DATA :", data);
+        console.log("RESSSS: ", res.data);
         dispatch({
           type: ADD_SUCCESS,
           payload: res.data

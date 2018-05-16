@@ -1,6 +1,7 @@
 const models = require("../models");
 
 exports.delete = (req, res) => {
+  console.log("REQUEST BODY: ", req.body);
   const email = req.body.email;
   return models.MentorRegistrations.destroy({
     where: {
