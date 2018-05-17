@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import LogOutBtn from "../logout";
-import DeleteAccount from "../DeleteAccount";
+import LogOutBtn from "../Shared/Logout";
+import DeleteAccount from "../Shared/DeleteAccount";
 
 class MenteeDashboard extends Component {
   render() {

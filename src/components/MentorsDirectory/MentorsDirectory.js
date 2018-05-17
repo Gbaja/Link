@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { fetchMentors } from "../../actions/get_requests";
-import LogOutBtn from "../logout";
 import SearchFormContainer from "../SearchForm/SearchFormContainer";
 
 class MentorsDirectory extends Component {

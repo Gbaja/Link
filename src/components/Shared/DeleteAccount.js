@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import { deleteAccount } from "../actions/delete_requests";
+import { deleteAccount } from "../../actions/delete_requests";
 
 class MentorDashboard extends Component {
   deleteAccount = data => () => {
