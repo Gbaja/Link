@@ -10,10 +10,12 @@ import {
 
 export const logOut = callback => {
   return dispatch => {
-    axios.get("/api/logout").then(() => callback());
-    dispatch({
-      type: UNAUTH_USER,
-      payload: false
+    axios.get("/api/logout").then(() => {
+      callback();
+      dispatch({
+        type: UNAUTH_USER,
+        payload: false
+      });
     });
   };
 };

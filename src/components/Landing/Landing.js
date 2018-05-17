@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { resetError } from "../../actions/post_requests";
 
 class Landing extends Component {
-  componentDidMount() {
+  componentWillUnmount() {
     this.props.resetError();
   }
 

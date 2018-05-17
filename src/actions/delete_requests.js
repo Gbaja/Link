@@ -5,7 +5,7 @@ import { ADD_SUCCESS, ADD_ERROR } from "./types";
 export const deleteAccount = data => {
   return dispatch => {
     return axios
-      .delete("/api/delete", data)
+      .delete("/api/delete", { data })
       .then(res => {
         console.log("DATA :", data);
         console.log("RESSSS: ", res.data);

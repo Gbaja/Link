@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import LogOutBtn from "../logout";
+import DeleteAccount from "../DeleteAccount";
 
 class MenteeDashboard extends Component {
   render() {
@@ -19,7 +20,7 @@ class MenteeDashboard extends Component {
           {" "}
           <Link to="/mentors_directory"> View mentors </Link>
         </p>
-        <button> Delete my account</button>
+        <DeleteAccount />
       </div>
     );
   }
