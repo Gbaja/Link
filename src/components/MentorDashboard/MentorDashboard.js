@@ -21,6 +21,10 @@ class MentorDashboard extends Component {
           {" "}
           <Link to="/mentees_directory"> View mentees </Link>
         </p>
+        <p>
+          {" "}
+          <Link to="/mentors_directory"> View mentors </Link>
+        </p>
         <DeleteAccount />
       </div>
     );
