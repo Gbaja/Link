@@ -62,31 +62,10 @@ export const fetchMentees = pageNum => {
   };
 };
 
-export const fetchMentorProfile = id => {
+export const fetchProfile = (id, accountType) => {
   return dispatch => {
     return axios
-      .get(`/api/mentorProfile/${id}`)
-      .then(response => {
-        dispatch({
-          type: FETCH_PROFILE,
-          payload: response.data
-        });
-      })
-      .catch(err => {
-        console.log("FETCH PROFILE ERR: ", err);
-        dispatch({
-          type: ADD_ERROR,
-          payload:
-            "There was an error on our side. Please try again letter or contact a member of out team for assistance."
-        });
-      });
-  };
-};
-
-export const fetchMenteeProfile = id => {
-  return dispatch => {
-    return axios
-      .get(`/api/menteeProfile/${id}`)
+      .get(`/api/profile/${id}/${accountType}`)
       .then(response => {
         dispatch({
           type: FETCH_PROFILE,
