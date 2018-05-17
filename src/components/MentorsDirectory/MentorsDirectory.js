@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import { fetchMentors } from "../../actions/get_requests";
 import SearchFormContainer from "../SearchForm/SearchFormContainer";
+import Pagination from "../Shared/Pagination";
 
 class MentorsDirectory extends Component {
   constructor(props) {
@@ -63,13 +64,14 @@ class MentorsDirectory extends Component {
               </div>
             );
           })}
-          {this.state.numberOfPages.map(num => {
+          <Pagination numberOfPages={this.state.numberOfPages} />
+          {/* {this.state.numberOfPages.map(num => {
             return (
               <span key={num} onClick={this.showPage(num)}>
                 {num}
               </span>
             );
-          })}
+          })} */}
         </div>
       );
     }
