@@ -4,6 +4,5 @@ export const UNAUTH_USER = "UNAUTH_USER";
 export const ADD_ERROR = "ADD_ERROR";
 export const ADD_SUCCESS = "ADD_SUCCESS";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
-export const FETCH_MENTORS = "FETCH_MENTORS";
-export const FETCH_MENTEES = "FETCH_MENTEES";
+export const FETCH_DIRECTORY = "FETCH_DIRECTORY";
 export const FETCH_PROFILE = "FETCH_PROFILE";

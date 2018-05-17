@@ -40,6 +40,12 @@ class App extends Component {
     return this.renderProtected({ hasAccess, renderPage });
   };
 
+  renderSharedPages = Component => {
+    const hasAccess = this.props.auth;
+    const renderPage = props => <Component {...props} />;
+    return this.renderProtected({ hasAccess, renderPage });
+  };
+
   render() {
     return (
       <BrowserRouter>
@@ -80,17 +86,17 @@ class App extends Component {
           <Route
             exact
             path="/mentors_directory"
-            render={this.renderMenteePages(MentorsDirectory)}
+            render={this.renderSharedPages(MentorsDirectory)}
           />
           <Route
             exact
             path="/mentees_directory"
-            render={this.renderMentorPages(MenteesDirectory)}
+            render={this.renderSharedPages(MenteesDirectory)}
           />
           <Route
             exact
             path="/profile/:accountType/:id"
-            component={IndividualProfile}
+            render={this.renderSharedPages(IndividualProfile)}
           />
           <Route exact path="/forgot_password" component={ForgotPasswordForm} />
           <Route exact path="/reset_password" component={ResetPasswordForm} />

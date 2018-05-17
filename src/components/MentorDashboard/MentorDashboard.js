@@ -2,22 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import LogOutBtn from "../logout";
-import { deleteAccount } from "../../actions/delete_requests";
+import LogOutBtn from "../Shared/Logout";
+import DeleteAccount from "../Shared/DeleteAccount";
 
 class MentorDashboard extends Component {
-  deleteAccount = data => () => {
-    const body = {
-      email: data
-    };
-    console.log(body);
-    this.props.deleteAccount(body);
-    // .then(res => {
-    //   console.log(res);
-    //   this.props.history.push("/");
-    // });
-  };
-
   render() {
     return (
       <div>
@@ -33,11 +21,11 @@ class MentorDashboard extends Component {
           {" "}
           <Link to="/mentees_directory"> View mentees </Link>
         </p>
-
-        <button onClick={this.deleteAccount(this.props.auth.email)}>
+        <p>
           {" "}
-          Delete{" "}
-        </button>
+          <Link to="/mentors_directory"> View mentors </Link>
+        </p>
+        <DeleteAccount />
       </div>
     );
   }
@@ -46,4 +34,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { deleteAccount })(MentorDashboard);
+export default connect(mapStateToProps, null)(MentorDashboard);

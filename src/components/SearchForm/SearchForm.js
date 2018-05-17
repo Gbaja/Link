@@ -37,6 +37,18 @@ class SearchForm extends Component {
               "Kings College London": "Kings College London"
             }}
           />
+          <Field
+            name="mentorIndustry"
+            component={renderFormFields}
+            select
+            options={{
+              "": "",
+              "Not disclosed": "Not disclosed",
+              "Banking&Finance": "Banking&Finance",
+              Technology: "Technology",
+              "Digital Media": "Digital Media"
+            }}
+          />
           <button type="submit">Search</button>
         </form>
       </div>

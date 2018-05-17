@@ -1,4 +1,5 @@
 const models = require("../models");
+const { menteeDetails } = require("../utils/details");
 
 exports.put = (req, res) => {
   console.log("body: ", req.body);
@@ -20,6 +21,6 @@ exports.put = (req, res) => {
     },
     { returning: true, where: { email: req.body.email } }
   ).then(([rowsUpdate, [updatedProfile]]) => {
-    res.send(updatedProfile);
+    res.send(menteeDetails(updatedProfile));
   });
 };

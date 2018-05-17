@@ -2,18 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import {
-  fetchMentorProfile,
-  fetchMenteeProfile
-} from "../../actions/get_requests";
+import { fetchProfile } from "../../actions/get_requests";
 
-class Landing extends Component {
+class IndividualProfilePage extends Component {
   componentDidMount() {
-    if (this.props.match.params.accountType === "Mentor") {
-      this.props.fetchMentorProfile(this.props.match.params.id);
-    } else if (this.props.match.params.accountType === "Mentee") {
-      this.props.fetchMenteeProfile(this.props.match.params.id);
-    }
+    const { id, accountType } = this.props.match.params;
+    this.props.fetchProfile(id, accountType);
   }
   renderMentor() {
     const {
@@ -103,6 +97,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, {
-  fetchMenteeProfile,
-  fetchMentorProfile
-})(Landing);
+  fetchProfile
+})(IndividualProfilePage);
