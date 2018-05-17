@@ -3,7 +3,6 @@ const express = require("express");
 const router = express.Router();
 
 const signupMentor = require("./signup_mentor");
-const signupMentee = require("./signup_mentee");
 const login = require("./login");
 const logout = require("./logout");
 const updateMentorProfile = require("./update_mentor_profile");
