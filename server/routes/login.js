@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const models = require("../models");
+const { mentorDetails, menteeDetails } = require("../utils/details");
 
 const isValidPassword = function(userpass, password) {
   return bcrypt.compareSync(password, userpass);
@@ -21,7 +22,7 @@ exports.post = (req, res) => {
             } else {
               req.session.mentee_id = mentee.id;
               console.log("LOG IN COOKIE: ", req.session);
-              return res.send(mentee);
+              return res.send(menteeDetails(mentee));
             }
           }
         );
@@ -30,7 +31,7 @@ exports.post = (req, res) => {
       } else {
         req.session.mentor_id = mentor.id;
         console.log("LOG IN COOKIE: ", req.session);
-        return res.send(mentor);
+        return res.send(mentorDetails(mentor));
       }
     })
     .catch(err => {

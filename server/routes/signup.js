@@ -1,6 +1,7 @@
 const models = require("../models");
 const signupTemplate = require("../utils/email_templates/signup_email");
 const getModelFromType = require("../utils/model_type");
+const { mentorDetails, menteeDetails } = require("../utils/details");
 
 exports.post = (req, res) => {
   const {
@@ -44,7 +45,11 @@ exports.post = (req, res) => {
         req.session.mentor_id = data.dataValues.id;
         console.log("SIGN UP COOKIE: ", req.session);
         signupTemplate(data.dataValues);
-        res.send(data.dataValues);
+        if (data.dataValues.accountType === "Mentor") {
+          res.send(mentorDetails(data.dataValues));
+        } else if (data.dataValues.accountType === "Mentee") {
+          res.send(menteeDetails(data.dataValues));
+        }
       });
   });
 };

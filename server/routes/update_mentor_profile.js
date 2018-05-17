@@ -1,4 +1,5 @@
 const models = require("../models");
+const { mentorDetails } = require("../utils/details");
 
 exports.put = (req, res) => {
   return models.MentorRegistrations.update(
@@ -23,7 +24,7 @@ exports.put = (req, res) => {
   )
     .then(([rowsUpdate, [updatedProfile]]) => {
       console.log("MENTOR UPDATE RES: ", updatedProfile);
-      res.json(updatedProfile);
+      res.send(mentorDetails(updatedProfile));
     })
     .catch(err => {
       console.log("My profile error: ", err);
