@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { fetchMentors } from "../../actions/get_requests";
+import { fetchDirectory } from "../../actions/get_requests";
 import SearchFormContainer from "../SearchForm/SearchFormContainer";
 import Pagination from "../Shared/Pagination";
 
@@ -15,8 +15,8 @@ class MentorsDirectory extends Component {
     };
   }
   componentDidMount() {
-    this.props.fetchMentors(1).then(data => {
-      this.setPageNumbers(this.props.mentors.count);
+    this.props.fetchDirectory(1, "mentor").then(data => {
+      this.setPageNumbers(this.props.directory.count);
     });
   }
   setPageNumbers = number => {
@@ -29,16 +29,16 @@ class MentorsDirectory extends Component {
   };
 
   showPage = pageNum => () => {
-    this.props.fetchMentors(pageNum);
+    this.props.fetchDirectory(pageNum, "mentor");
   };
 
   render() {
-    if (Object.getOwnPropertyNames(this.props.mentors).length === 0) {
+    if (Object.getOwnPropertyNames(this.props.directory).length === 0) {
       console.log("NONE");
       return <div>Loading</div>;
     } else {
-      this.props.mentors.count;
-      const mentorsDetails = this.props.mentors.rows;
+      this.props.directory.count;
+      const mentorsDetails = this.props.directory.rows;
       return (
         <div>
           <h1>All mentors</h1>
@@ -64,21 +64,21 @@ class MentorsDirectory extends Component {
               </div>
             );
           })}
-          <Pagination numberOfPages={this.state.numberOfPages} />
-          {/* {this.state.numberOfPages.map(num => {
+          {/* <Pagination numberOfPages={this.state.numberOfPages} /> */}
+          {this.state.numberOfPages.map(num => {
             return (
               <span key={num} onClick={this.showPage(num)}>
                 {num}
               </span>
             );
-          })} */}
+          })}
         </div>
       );
     }
   }
 }
 const mapStateToProps = state => ({
-  mentors: state.mentors
+  directory: state.directory
 });
 
-export default connect(mapStateToProps, { fetchMentors })(MentorsDirectory);
+export default connect(mapStateToProps, { fetchDirectory })(MentorsDirectory);

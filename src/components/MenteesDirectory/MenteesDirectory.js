@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { fetchMentees } from "../../actions/get_requests";
+import { fetchDirectory } from "../../actions/get_requests";
 import SearchFormContainer from "../SearchForm/SearchFormContainer";
 
 class MenteesDirectory extends Component {
@@ -14,9 +14,9 @@ class MenteesDirectory extends Component {
     };
   }
   componentDidMount() {
-    this.props.fetchMentees(1).then(data => {
+    this.props.fetchDirectory(1, "mentee").then(data => {
       console.log("DATA: ", data);
-      this.setPageNumbers(this.props.mentees.count);
+      this.setPageNumbers(this.props.directory.count);
     });
   }
   setPageNumbers = number => {
@@ -29,16 +29,15 @@ class MenteesDirectory extends Component {
   };
 
   showPage = pageNum => () => {
-    this.props.fetchMentees(pageNum);
+    this.props.fetchDirectory(pageNum, "mentee");
   };
 
   render() {
-    if (Object.getOwnPropertyNames(this.props.mentees).length === 0) {
+    if (Object.getOwnPropertyNames(this.props.directory).length === 0) {
       console.log("NONE");
       return <div>Loading</div>;
     } else {
-      this.props.mentees.count;
-      const menteesDetails = this.props.mentees.rows;
+      const menteesDetails = this.props.directory.rows;
       return (
         <div>
           <h1>All mentees</h1>
@@ -76,7 +75,7 @@ class MenteesDirectory extends Component {
   }
 }
 const mapStateToProps = state => ({
-  mentees: state.mentees
+  directory: state.directory
 });
 
-export default connect(mapStateToProps, { fetchMentees })(MenteesDirectory);
+export default connect(mapStateToProps, { fetchDirectory })(MenteesDirectory);
