@@ -1,14 +1,6 @@
 const models = require("../models");
 const signupTemplate = require("../utils/email_templates/signup_email");
-
-const getModelFromType = type => {
-  if (type === "Mentor") {
-    return "MentorRegistrations";
-  }
-  if (type === "Mentee") {
-    return "MenteeRegistrations";
-  }
-};
+const getModelFromType = require("../utils/model_type");
 
 exports.post = (req, res) => {
   const {
@@ -20,7 +12,7 @@ exports.post = (req, res) => {
     confirmDetails
   } = req.body;
 
-  const type = getModelFromType(accountType);
+  const type = getModelFromType(accountType.toLowerCase());
 
   Promise.all([
     models.MentorRegistrations.findOne({
@@ -34,7 +26,7 @@ exports.post = (req, res) => {
       res
         .status(422)
         .send(
-          "This email address has already been used to create a mentor account with Young&giving, please try logging in."
+          "This email address has already been used to create an account with Young&giving, please try logging in."
         );
       return;
     }
