@@ -13,9 +13,7 @@ class MentorDashboard extends Component {
         <LogOutBtn />
         <p>
           {" "}
-          <Link to={`/${this.props.match.params.id}/mentor/my_profile`}>
-            My profile
-          </Link>
+          <Link to="/mentor/my_profile">My profile</Link>
         </p>
         <p>
           {" "}

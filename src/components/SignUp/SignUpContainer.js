@@ -29,11 +29,11 @@ class SignUpContainer extends Component {
     };
     if (values.accountType === "Mentor") {
       this.props.signupMentor(signUpData, res => {
-        this.props.history.push(`/${res.id}/mentor/dashboard`);
+        this.props.history.push(`/mentor/dashboard`);
       });
     } else if (values.accountType === "Mentee") {
       this.props.signupMentee(signUpData, res => {
-        this.props.history.push(`/${res.id}/mentee/dashboard`);
+        this.props.history.push(`/mentee/dashboard`);
       });
     }
   };

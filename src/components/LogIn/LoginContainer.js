@@ -15,9 +15,9 @@ class LoginFormContainer extends Component {
   handleFormSubmission = values => {
     this.props.logIn(values, res => {
       if (res.accountType === "Mentor") {
-        this.props.history.push(`/${res.id}/mentor/dashboard`);
+        this.props.history.push(`/mentor/dashboard`);
       } else if (res.accountType === "Mentee") {
-        this.props.history.push(`/${res.id}/mentee/dashboard`);
+        this.props.history.push(`/mentee/dashboard`);
       }
     });
   };
