@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { fetchDirectory } from "../../actions/get_requests";
 import SearchFormContainer from "../SearchForm/SearchFormContainer";
 import Pagination from "../Shared/Pagination";
+import Directory from "../Directory";
 
 class MentorsDirectory extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class MentorsDirectory extends Component {
     };
   }
   componentDidMount() {
-    this.props.fetchDirectory(1, "mentor").then(data => {
+    this.props.fetchDirectory(1, this.props.match.params.type).then(data => {
       this.setPageNumbers(this.props.directory.count);
     });
   }
@@ -29,7 +30,7 @@ class MentorsDirectory extends Component {
   };
 
   showPage = pageNum => () => {
-    this.props.fetchDirectory(pageNum, "mentor");
+    this.props.fetchDirectory(pageNum, this.props.match.params.type);
   };
 
   render() {

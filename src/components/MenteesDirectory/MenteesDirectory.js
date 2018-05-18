@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import { fetchDirectory } from "../../actions/get_requests";
 import SearchFormContainer from "../SearchForm/SearchFormContainer";
+import Directory from "../Directory";
 
 class MenteesDirectory extends Component {
   constructor(props) {
@@ -14,11 +15,14 @@ class MenteesDirectory extends Component {
     };
   }
   componentDidMount() {
-    this.props.fetchDirectory(1, "mentee").then(data => {
+    this.props.fetchDirectory(1, this.type()).then(data => {
       console.log("DATA: ", data);
       this.setPageNumbers(this.props.directory.count);
     });
   }
+  type = () => {
+    return this.props.match.params.type || "mentee";
+  };
   setPageNumbers = number => {
     let total = Math.ceil(number / 1);
     let arr = [];
@@ -29,7 +33,7 @@ class MenteesDirectory extends Component {
   };
 
   showPage = pageNum => () => {
-    this.props.fetchDirectory(pageNum, "mentee");
+    this.props.fetchDirectory(pageNum, this.type());
   };
 
   render() {
@@ -42,7 +46,7 @@ class MenteesDirectory extends Component {
         <div>
           <h1>All mentees</h1>
           <SearchFormContainer />
-          <h3>People</h3>
+          <h3> People </h3>
           {menteesDetails.map(data => {
             return (
               <div key={data.id}>
@@ -50,18 +54,20 @@ class MenteesDirectory extends Component {
                   {" "}
                   Name : {data.firstName} {data.lastName}
                 </p>
-                <p> University: {data.universityName}</p>
-                <p>Location: {data.location}</p>
-                <p>Industry I need a mentor from {data.mentorIndustry}</p>
+                <p> Current Job : {data.currentMotive}</p>
+                <p> Current Industry: {data.mentorIndustry}</p>
+                <p> Location: {data.location}</p>
                 <p>
+                  {" "}
                   <Link to={`profile/${data.accountType}/${data.id}`}>
                     {" "}
                     More info
-                  </Link>
+                  </Link>{" "}
                 </p>
               </div>
             );
           })}
+          {/* <Pagination numberOfPages={this.state.numberOfPages} /> */}
           {this.state.numberOfPages.map(num => {
             return (
               <span key={num} onClick={this.showPage(num)}>

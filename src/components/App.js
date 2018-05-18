@@ -17,6 +17,7 @@ import MenteeProfileForm from "./MenteeProfile/MenteeProfileFormContainer";
 import MentorsDirectory from "./MentorsDirectory/MentorsDirectory";
 import MenteesDirectory from "./MenteesDirectory/MenteesDirectory";
 import IndividualProfile from "./IndividualProfile/IndividualProfile";
+import Directory from "./Directory";
 
 class App extends Component {
   isMentor = () => this.props.auth.accountType === "Mentor";
@@ -87,6 +88,11 @@ class App extends Component {
             exact
             path="/mentors_directory"
             render={this.renderSharedPages(MentorsDirectory)}
+          />
+          <Route
+            exact
+            path="/directory/:type"
+            render={this.renderSharedPages(Directory)}
           />
           <Route
             exact
