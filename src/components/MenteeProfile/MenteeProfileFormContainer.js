@@ -14,8 +14,9 @@ class MenteeProfileFormContainer extends Component {
   }
 
   onSubmit = values => {
+    console.log("VALUES: ", values);
     this.props.updateProfile(values, `/api/updateMenteeProfile`, res => {
-      this.props.history.push(`/${res.id}/mentee/my_profile`);
+      this.props.history.push(`/mentee/my_profile`);
     });
   };
   render() {

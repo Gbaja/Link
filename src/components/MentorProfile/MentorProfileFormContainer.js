@@ -15,7 +15,7 @@ class MentorProfileFormContainer extends Component {
 
   onSubmit = values => {
     this.props.updateProfile(values, `/api/updateMentorProfile`, res => {
-      this.props.history.push(`/${res.id}/mentor/my_profile`);
+      this.props.history.push(`/mentor/my_profile`);
     });
   };
   xd;

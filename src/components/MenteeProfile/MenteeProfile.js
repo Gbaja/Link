@@ -30,11 +30,9 @@ class MenteeProfile extends Component {
         </p>
         <p>Reason: {menteeProfileData.reason}</p>
         <p>Short biography: {menteeProfileData.biography}</p>
-        <p> Availability: {menteeProfileData.status}</p>
+        <p> Availability: {menteeProfileData.availability}</p>
         <p>Date joined: {menteeProfileData.createdAt.split("T")[0]}</p>
-        <Link to={`/${this.props.match.params.id}/mentee/my_profile/edit`}>
-          Edit profile
-        </Link>
+        <Link to="/mentee/my_profile/edit">Edit profile</Link>
       </div>
     );
   }

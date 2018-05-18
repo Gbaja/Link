@@ -32,9 +32,7 @@ class Profile extends Component {
         <p>Motivation for mentoring: {data.motivation}</p>
         <p> Availability: {data.status}</p>
         <p>Date joined: {data.createdAt.split("T")[0]}</p>
-        <Link to={`/${this.props.match.params.id}/mentor/my_profile/edit`}>
-          Edit profile
-        </Link>
+        <Link to="/mentor/my_profile/edit">Edit profile</Link>
       </div>
     );
   }

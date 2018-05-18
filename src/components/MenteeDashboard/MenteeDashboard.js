@@ -12,9 +12,7 @@ class MenteeDashboard extends Component {
         <h1>Mentee Dashboard</h1>
         <LogOutBtn />
         <p>
-          <Link to={`/${this.props.match.params.id}/mentee/my_profile`}>
-            My profile
-          </Link>
+          <Link to="/mentee/my_profile">My profile</Link>
         </p>
         <p>
           {" "}

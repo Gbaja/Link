@@ -23,17 +23,18 @@ class SignUpContainer extends Component {
       firstName: values.firstName,
       lastName: values.lastName,
       accountType: values.accountType,
+      universityName: values.universityName,
       email: values.email,
       password: values.password,
       confirmDetails: values.confirmDetails
     };
     if (values.accountType === "Mentor") {
       this.props.signupMentor(signUpData, res => {
-        this.props.history.push(`/${res.id}/mentor/dashboard`);
+        this.props.history.push(`/mentor/dashboard`);
       });
     } else if (values.accountType === "Mentee") {
       this.props.signupMentee(signUpData, res => {
-        this.props.history.push(`/${res.id}/mentee/dashboard`);
+        this.props.history.push(`/mentee/dashboard`);
       });
     }
   };
@@ -62,6 +63,9 @@ const validate = values => {
   }
   if (!values.accountType || values.accountType === "select") {
     errors.accountType = "Please select an account type.";
+  }
+  if (!values.universityName || values.universityName === "select") {
+    errors.universityName = "Please select a university name from the list.";
   }
   if (!values.email || !checkEmail(values.email)) {
     errors.email = "Enter a valid email.";

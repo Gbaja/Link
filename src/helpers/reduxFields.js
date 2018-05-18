@@ -1,4 +1,5 @@
 import React from "react";
+import { FormsLabel, FormsInput } from "./FormElements.styled";
 
 export const renderFormFields = field => {
   const {
@@ -9,7 +10,7 @@ export const renderFormFields = field => {
     console.log("MATCHED TEXTAREA: ", field.textarea);
     return (
       <div>
-        <label>{field.label}</label>
+        <FormsLabel>{field.label}</FormsLabel>
         <textarea {...field.input} />
         <p>{touched ? error : ""}</p>
       </div>
@@ -17,17 +18,17 @@ export const renderFormFields = field => {
   case field.type === "checkbox":
     return (
       <div>
-        <label>
+        <FormsLabel>
           <input type="checkbox" {...field.input} />
           {field.label}
-        </label>
+        </FormsLabel>
         <p>{touched ? error : ""}</p>
       </div>
     );
   case field.select === true:
     return (
       <div>
-        <label>{field.label}</label>
+        <FormsLabel>{field.label}</FormsLabel>
         <select {...field.input}>
           {Object.keys(field.options).map(val => {
             return (
@@ -43,8 +44,8 @@ export const renderFormFields = field => {
   default:
     return (
       <div>
-        {field.label && <label>{field.label}</label>}
-        <input type={field.type} {...field.input} />
+        {field.label && <FormsLabel>{field.label}</FormsLabel>}
+        <FormsInput type={field.type} {...field.input} />
         <p>{touched ? error : ""}</p>
       </div>
     );

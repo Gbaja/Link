@@ -17,6 +17,7 @@ import MenteeProfileForm from "./MenteeProfile/MenteeProfileFormContainer";
 import MentorsDirectory from "./MentorsDirectory/MentorsDirectory";
 import MenteesDirectory from "./MenteesDirectory/MenteesDirectory";
 import IndividualProfile from "./IndividualProfile/IndividualProfile";
+import Directory from "./Directory";
 
 class App extends Component {
   isMentor = () => this.props.auth.accountType === "Mentor";
@@ -52,7 +53,7 @@ class App extends Component {
         <Switch>
           <Route
             exact
-            path="/:id/mentor/dashboard"
+            path="/mentor/dashboard"
             component={this.renderMentorPages(MentorDashboard)}
           />
           <Route exact path="/" component={Landing} />
@@ -60,33 +61,38 @@ class App extends Component {
           <Route exact path="/login_form" component={LoginFormContainer} />
           <Route
             exact
-            path="/:id/mentee/dashboard"
+            path="/mentee/dashboard"
             render={this.renderMenteePages(MenteeDashboard)}
           />
           <Route
             exact
-            path="/:id/mentor/my_profile"
+            path="/mentor/my_profile"
             render={this.renderMentorPages(MentorProfile)}
           />
           <Route
             exact
-            path="/:id/mentee/my_profile"
+            path="/mentee/my_profile"
             render={this.renderMenteePages(MenteeProfile)}
           />
           <Route
             exact
-            path="/:id/mentor/my_profile/edit"
+            path="/mentor/my_profile/edit"
             render={this.renderMentorPages(MentorProfileForm)}
           />
           <Route
             exact
-            path="/:id/mentee/my_profile/edit"
+            path="/mentee/my_profile/edit"
             render={this.renderMenteePages(MenteeProfileForm)}
           />
           <Route
             exact
             path="/mentors_directory"
             render={this.renderSharedPages(MentorsDirectory)}
+          />
+          <Route
+            exact
+            path="/directory/:type"
+            render={this.renderSharedPages(Directory)}
           />
           <Route
             exact

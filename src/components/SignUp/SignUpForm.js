@@ -34,6 +34,18 @@ class SignUpForm extends Component {
               Mentee: "Mentee"
             }}
           />
+          <Field
+            label="University name"
+            name="universityName"
+            component={renderFormFields}
+            select
+            options={{
+              select: "select university",
+              "Durham University": "Durham University",
+              LSE: "LSE",
+              "Kings College London": "Kings College London"
+            }}
+          />
           <Field label="Email" name="email" component={renderFormFields} />
           <Field
             label="Password"
