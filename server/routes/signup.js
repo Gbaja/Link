@@ -8,6 +8,7 @@ exports.post = (req, res) => {
     firstName,
     lastName,
     accountType,
+    universityName,
     email,
     password,
     confirmDetails
@@ -36,6 +37,7 @@ exports.post = (req, res) => {
         firstName,
         lastName,
         accountType,
+        universityName,
         email,
         password,
         confirmDetails

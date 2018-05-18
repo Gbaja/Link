@@ -10,6 +10,7 @@ const MentorRegistrations = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     accountType: DataTypes.STRING,
     age: DataTypes.STRING,
+    imageUrl: DataTypes.STRING,
     location: DataTypes.STRING,
     universityName: DataTypes.STRING,
     degree: DataTypes.STRING,
@@ -22,6 +23,7 @@ const MentorRegistrations = (sequelize, DataTypes) => {
     confirmDetails: DataTypes.BOOLEAN,
     passwordResetToken: DataTypes.STRING,
     socialMediaUrl: DataTypes.STRING,
+    availability: DataTypes.STRING,
     status: DataTypes.STRING,
     createdAt: {
       type: DataTypes.DATE(3)

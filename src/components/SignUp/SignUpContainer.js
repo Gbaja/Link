@@ -23,6 +23,7 @@ class SignUpContainer extends Component {
       firstName: values.firstName,
       lastName: values.lastName,
       accountType: values.accountType,
+      universityName: values.universityName,
       email: values.email,
       password: values.password,
       confirmDetails: values.confirmDetails
@@ -62,6 +63,9 @@ const validate = values => {
   }
   if (!values.accountType || values.accountType === "select") {
     errors.accountType = "Please select an account type.";
+  }
+  if (!values.universityName || values.universityName === "select") {
+    errors.universityName = "Please select a university name from the list.";
   }
   if (!values.email || !checkEmail(values.email)) {
     errors.email = "Enter a valid email.";

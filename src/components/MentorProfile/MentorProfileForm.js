@@ -124,7 +124,7 @@ class MentorProfileForm extends Component {
           />
           <Field
             label="Availability"
-            name="status"
+            name="availability"
             component={renderFormFields}
             select
             options={{
