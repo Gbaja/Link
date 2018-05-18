@@ -3,6 +3,7 @@ import { Field } from "redux-form";
 import { Link } from "react-router-dom";
 
 import { renderFormFields } from "../../helpers/reduxFields";
+import { LoginButton } from "./Login.Styled";
 
 class LogInForm extends Component {
   render() {
@@ -18,7 +19,7 @@ class LogInForm extends Component {
             type="password"
             component={renderFormFields}
           />
-          <button type="submit">Log in</button>
+          <LoginButton type="submit">Sign in</LoginButton>
         </form>
       </div>
     );

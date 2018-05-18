@@ -4,6 +4,13 @@ import { connect } from "react-redux";
 
 import { resetError } from "../../actions/post_requests";
 import LoginForm from "../LogIn/LoginContainer";
+import {
+  ContainerDiv,
+  ContentContainerDiv,
+  ContainerTextDiv,
+  ContainerFormDiv,
+  ContainerFormTextDiv
+} from "./Landing.styled";
 
 class Landing extends Component {
   componentWillUnmount() {
@@ -13,10 +20,10 @@ class Landing extends Component {
   render() {
     const { alert } = this.props;
     return (
-      <div>
+      <ContainerDiv>
         {alert && <p>{alert}</p>}
-        <div>
-          <div>
+        <ContentContainerDiv>
+          <ContainerTextDiv>
             <h1>Young & Giving University </h1>
             <p>
               {" "}
@@ -29,27 +36,28 @@ class Landing extends Component {
               platform.
             </p>
             <p> Sign up today!</p>
-          </div>
-          <div>
+          </ContainerTextDiv>
+          <ContainerFormDiv>
             <LoginForm />
-            <p>or</p>
-            <p>Log in with social</p>
-            <p>
-              <i className="fab fa-linkedin-in" />
-            </p>
-            <p>
-              By clicking submit, you agree to Young & Giving's Terms of Service
-              and Privacy Policy
-            </p>
-            <p>
-              <Link to="/signup_form">Sign up</Link>
-            </p>
-            <p>
-              <Link to="/forgot_password">Forgot password</Link>
-            </p>
-          </div>
-        </div>
-      </div>
+            <ContainerFormTextDiv>
+              <p>OR</p>
+              <p>Log in with social</p>
+              <p>
+                <i className="fab fa-linkedin-in" />
+              </p>
+              <p>
+                By clicking submit, you agree to Young & Giving's Terms of
+                Service and Privacy Policy
+              </p>
+              <p>
+                <Link to="/signup_form">Sign up</Link>
+
+                <Link to="/forgot_password">Forgot password</Link>
+              </p>
+            </ContainerFormTextDiv>
+          </ContainerFormDiv>
+        </ContentContainerDiv>
+      </ContainerDiv>
     );
   }
 }

@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import { logIn, resetError } from "../../actions/post_requests";
 import { RESET_ERROR } from "../../actions/types";
 import LogInForm from "./Login_form";
+import Logo from "./Logo.png";
+import { LogoImg } from "./Login.Styled";
 
 class LoginFormContainer extends Component {
   componentDidMount() {
@@ -25,7 +28,7 @@ class LoginFormContainer extends Component {
     const { handleSubmit, alert } = this.props;
     return (
       <div>
-        <h1> Log in </h1>
+        <LogoImg src={`${Logo}`} />
         <LogInForm
           onSubmit={this.handleFormSubmission}
           handleSubmit={handleSubmit}
@@ -53,4 +56,8 @@ const mapStateToProps = state => ({
 export default reduxForm({
   validate,
   form: "LogInForm"
-})(connect(mapStateToProps, { logIn, resetError })(LoginFormContainer));
+})(
+  withRouter(
+    connect(mapStateToProps, { logIn, resetError })(LoginFormContainer)
+  )
+);
