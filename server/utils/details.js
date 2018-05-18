@@ -15,7 +15,7 @@ const mentorDetails = data => {
     motivation: data.motivation,
     offer: data.offer,
     socialMediaUrl: data.socialMediaUrl,
-    status: data.status,
+    availability: data.availability,
     createdAt: data.createdAt
   };
   return details;
@@ -37,7 +37,7 @@ const menteeDetails = data => {
     biography: data.biography,
     reason: data.reason,
     socialMediaUrl: data.socialMediaUrl,
-    status: data.status,
+    availability: data.availability,
     createdAt: data.createdAt
   };
   return details;

@@ -17,7 +17,7 @@ exports.put = (req, res) => {
       mentorIndustry: req.body.mentorIndustry,
       universityName: req.body.universityName,
       degree: req.body.degree,
-      status: req.body.status
+      availability: req.body.availability
     },
     { returning: true, where: { email: req.body.email } }
   ).then(([rowsUpdate, [updatedProfile]]) => {

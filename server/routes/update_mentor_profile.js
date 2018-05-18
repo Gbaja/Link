@@ -18,7 +18,7 @@ exports.put = (req, res) => {
       offer: req.body.offer,
       motivation: req.body.motivation,
       socialMediaUrl: req.body.socialMediaUrl,
-      status: req.body.status
+      availability: req.body.availability
     },
     { returning: true, where: { email: req.body.email } }
   )
