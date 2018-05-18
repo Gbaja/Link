@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { resetError } from "../../actions/post_requests";
+import LoginForm from "../LogIn/LoginContainer";
 
 class Landing extends Component {
   componentWillUnmount() {
@@ -13,14 +14,41 @@ class Landing extends Component {
     const { alert } = this.props;
     return (
       <div>
-        <h1>Young & Giving </h1>
         {alert && <p>{alert}</p>}
-        <p>
-          <Link to="/signup_form"> Sign up</Link>
-        </p>
-        <p>
-          <Link to="/login_form"> Log in </Link>
-        </p>
+        <div>
+          <div>
+            <h1>Young & Giving University </h1>
+            <p>
+              {" "}
+              The Young & Giving platform facilitates mentoring relationships
+              that work.
+            </p>
+            <p>
+              {" "}
+              You can also find industry groups events and a job board on the
+              platform.
+            </p>
+            <p> Sign up today!</p>
+          </div>
+          <div>
+            <LoginForm />
+            <p>or</p>
+            <p>Log in with social</p>
+            <p>
+              <i className="fab fa-linkedin-in" />
+            </p>
+            <p>
+              By clicking submit, you agree to Young & Giving's Terms of Service
+              and Privacy Policy
+            </p>
+            <p>
+              <Link to="/signup_form">Sign up</Link>
+            </p>
+            <p>
+              <Link to="/forgot_password">Forgot password</Link>
+            </p>
+          </div>
+        </div>
       </div>
     );
   }

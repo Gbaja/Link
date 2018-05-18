@@ -19,16 +19,7 @@ class LogInForm extends Component {
             component={renderFormFields}
           />
           <button type="submit">Log in</button>
-          <Link to="/">Cancel</Link>
         </form>
-        <div>
-          <p>
-            New to Young & Giving? <Link to="/signup_form">Sign up</Link>
-          </p>
-          <p>
-            Forgot your password? <Link to="/forgot_password">Reset here</Link>
-          </p>
-        </div>
       </div>
     );
   }
