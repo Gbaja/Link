@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import LandingBackgroundPic from "./LandingBackgroundPic.jpg";
+import LandingBackgroundPic from "../LandingBackgroundPic.jpg";
 
 export const ContainerDiv = styled.div`
   background-image: url(${LandingBackgroundPic});
@@ -38,4 +38,12 @@ export const ContainerFormDiv = styled.div`
 
 export const ContainerFormTextDiv = styled.div`
   text-align: center;
+`;
+
+export const ContainerOrP = styled.p`
+color: blue;
+&:before {
+  content:"hey",
+  border: 30px solid black;
+}
 `;

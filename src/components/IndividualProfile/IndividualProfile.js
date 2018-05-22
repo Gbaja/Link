@@ -9,84 +9,48 @@ class IndividualProfilePage extends Component {
     const { id, accountType } = this.props.match.params;
     this.props.fetchProfile(id, accountType);
   }
-  renderMentor() {
-    const {
-      firstName,
-      lastName,
-      age,
-      location,
-      universityName,
-      degree,
-      currentIndustry,
-      currentRole,
-      currentCompany,
-      biography,
-      motivation,
-      offer,
-      socialMediaUrl,
-      status
-    } = this.props.profile;
-    return (
-      <div>
-        <p>First name: {firstName}</p>
-        <p>Last name: {lastName}</p>
-        <p>Age: {age}</p>
-        <p>Location: {location}</p>
-        <p>University name: {universityName}</p>
-        <p>Degree: {degree}</p>
-        <p>Current Industry: {currentIndustry}</p>
-        <p>Current Job title: {currentRole}</p>
-        <p>Current company: {currentCompany}</p>
-        <p>Biography: {biography}</p>
-        <p>Motivation: {motivation}</p>
-        <p>What I can offer: {offer}</p>
-        <p>Social media url: {socialMediaUrl}</p>
-        <p>Availability: {status}</p>
-      </div>
-    );
-  }
-
-  renderMentee() {
-    const {
-      firstName,
-      lastName,
-      location,
-      currentMotive,
-      age,
-      universityName,
-      degree,
-      mentorIndustry,
-      reason,
-      biography,
-      socialMediaUrl,
-      status
-    } = this.props.profile;
-    return (
-      <div>
-        <p>First name: {firstName}</p>
-        <p>Last name: {lastName}</p>
-        <p>Location: {location}</p>
-        <p>Current motive: {currentMotive}</p>
-        <p>Age: {age}</p>
-        <p>University name: {universityName}</p>
-        <p>Degree: {degree}</p>
-        <p>What industry I want a mentor from: {mentorIndustry}</p>
-        <p>Reason I want a mentor: {reason}</p>
-        <p>Biography: {biography}</p>
-        <p>Social media url: {socialMediaUrl}</p>
-        <p>{status}</p>
-      </div>
-    );
-  }
-
   render() {
     console.log(this.props.profile);
+    const {
+      firstName,
+      lastName,
+      location,
+      gender,
+      ethnicity,
+      imageUrl,
+      universityName,
+      degree,
+      graduationYear,
+      jobTitle,
+      company,
+      dateStarted,
+      endDate,
+      industry,
+      biography,
+      reason,
+      socialMediaUrl,
+      availability
+    } = this.props.profile;
     return (
       <div>
         <h3>Pofile page</h3>
-        {this.props.match.params.accountType === "Mentor"
-          ? this.renderMentor()
-          : this.renderMentee()}
+        <p>
+          {firstName} {lastName}
+        </p>
+        <p>{biography}</p>
+        <p>{location}</p>
+        <p>{gender}</p>
+        <p>{ethnicity}</p>
+        <p>{universityName}</p>
+        <p>{degree}</p>
+        <p>{graduationYear}</p>
+        <p>{jobTitle}</p>
+        <p>{company}</p>
+        <p>{dateStarted}</p>
+        <p>{industry}</p>
+        <p>{reason}</p>
+        <p>{socialMediaUrl}</p>
+        <p>{availability}</p>
       </div>
     );
   }

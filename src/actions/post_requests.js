@@ -3,7 +3,7 @@ import { AUTH_USER, ADD_ERROR, RESET_ERROR, ADD_SUCCESS } from "./types";
 
 export const signupMentor = (data, callback) => {
   return dispatch => {
-    axios
+    return axios
       .post("/api/signupMentor", data)
       .then(res => {
         dispatch({
@@ -21,8 +21,11 @@ export const signupMentor = (data, callback) => {
         } else {
           dispatch({
             type: ADD_ERROR,
-            payload:
-              "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+            payload: {
+              type: "error",
+              message:
+                "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+            }
           });
         }
       });
@@ -30,7 +33,7 @@ export const signupMentor = (data, callback) => {
 };
 export const signupMentee = (data, callback) => {
   return dispatch => {
-    axios
+    return axios
       .post("/api/signupMentee", data)
       .then(res => {
         dispatch({
@@ -48,8 +51,11 @@ export const signupMentee = (data, callback) => {
         } else {
           dispatch({
             type: ADD_ERROR,
-            payload:
-              "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+            payload: {
+              type: "error",
+              message:
+                "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+            }
           });
         }
       });
@@ -58,9 +64,10 @@ export const signupMentee = (data, callback) => {
 
 export const logIn = (data, callback) => {
   return dispatch => {
-    axios
-      .post("/api/logIn", data)
+    return axios
+      .post("/api/login", data)
       .then(res => {
+        console.log("LOG IN RES: ", res.data);
         dispatch({
           type: AUTH_USER,
           payload: res.data
@@ -76,8 +83,14 @@ export const logIn = (data, callback) => {
         } else {
           dispatch({
             type: ADD_ERROR,
-            payload:
-              "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+            payload: {
+              type: "error",
+              message: {
+                type: "error",
+                message:
+                  "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+              }
+            }
           });
         }
       });
@@ -97,8 +110,11 @@ export const forgotPassword = data => {
       .catch(err => {
         dispatch({
           type: ADD_ERROR,
-          payload:
-            "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+          payload: {
+            type: "error",
+            message:
+              "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+          }
         });
       });
   };
@@ -117,8 +133,11 @@ export const resetPassword = data => {
       .catch(err => {
         dispatch({
           type: ADD_ERROR,
-          payload:
-            "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+          payload: {
+            type: "error",
+            message:
+              "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+          }
         });
       });
   };

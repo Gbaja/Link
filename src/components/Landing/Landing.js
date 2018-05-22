@@ -9,8 +9,10 @@ import {
   ContentContainerDiv,
   ContainerTextDiv,
   ContainerFormDiv,
-  ContainerFormTextDiv
+  ContainerFormTextDiv,
+  ContainerOrP
 } from "./Landing.styled";
+import Alert from "../Shared/Alert";
 
 class Landing extends Component {
   componentWillUnmount() {
@@ -21,7 +23,7 @@ class Landing extends Component {
     const { alert } = this.props;
     return (
       <ContainerDiv>
-        {alert && <p>{alert}</p>}
+        {alert && <Alert alert={alert} />}
         <ContentContainerDiv>
           <ContainerTextDiv>
             <h1>Young & Giving University </h1>
@@ -40,7 +42,7 @@ class Landing extends Component {
           <ContainerFormDiv>
             <LoginForm />
             <ContainerFormTextDiv>
-              <p>OR</p>
+              <ContainerOrP>OR</ContainerOrP>
               <p>Log in with social</p>
               <p>
                 <i className="fab fa-linkedin-in" />

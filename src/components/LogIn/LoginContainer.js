@@ -9,6 +9,7 @@ import { RESET_ERROR } from "../../actions/types";
 import LogInForm from "./Login_form";
 import Logo from "./Logo.png";
 import { LogoImg } from "./Login.Styled";
+import Alert from "../Shared/Alert";
 
 class LoginFormContainer extends Component {
   componentDidMount() {
@@ -17,7 +18,10 @@ class LoginFormContainer extends Component {
 
   handleFormSubmission = values => {
     this.props.logIn(values, res => {
-      if (res.accountType === "Mentor") {
+      console.log("COMPONENT RES: ", res);
+      if (res.email === "info@youngandgiving.com") {
+        this.props.history.push(`/owner`);
+      } else if (res.accountType === "Mentor") {
         this.props.history.push(`/mentor/dashboard`);
       } else if (res.accountType === "Mentee") {
         this.props.history.push(`/mentee/dashboard`);
@@ -29,6 +33,7 @@ class LoginFormContainer extends Component {
     return (
       <div>
         <LogoImg src={`${Logo}`} />
+        {alert && <Alert alert={alert} />}
         <LogInForm
           onSubmit={this.handleFormSubmission}
           handleSubmit={handleSubmit}

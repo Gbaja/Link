@@ -1,21 +1,27 @@
 const models = require("../models");
 const getModelFromType = require("../utils/model_type");
-const { mentorDetails, menteeDetails } = require("../utils/details");
+const { details } = require("../utils/details");
 
 exports.get = (req, res) => {
-  const { pageNum, accountType } = req.params;
+  const { pageNum, accountType, universityName } = req.params;
   const type = getModelFromType(accountType.toLowerCase());
+  console.log(req);
   return models[type]
     .findAndCountAll({
+      where: {
+        universityName
+      },
       limit: 1,
       offset: (pageNum - 1) * 1
     })
     .then(data => {
-      res.send(data);
-      // if (type === "mentor") {
-      //   res.send(mentorDetails(data));
-      // } else if (type === "mentee") {
-      //   res.send({menteeDetails(data.rows)});
-      // }
+      const dataToSend = {
+        count: data.count,
+        rows: data.rows.map(each => {
+          return details(each);
+        })
+      };
+      console.log("DIRECTORY: ", dataToSend);
+      res.send(dataToSend);
     });
 };

@@ -17,8 +17,11 @@ export const deleteAccount = data => {
       .catch(err => {
         dispatch({
           type: ADD_ERROR,
-          payload:
-            "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+          payload: {
+            type: "error",
+            message:
+              "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+          }
         });
       });
   };

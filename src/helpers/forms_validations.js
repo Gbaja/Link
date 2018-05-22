@@ -15,7 +15,6 @@ export const textareaLineBreaks = string => {
 export const textareaWordCountCheck = string => {
   string = string || "";
   const wordCount = string.trim().split(/\s+/).length;
-  console.log("WORD COUNT: ", wordCount);
   return wordCount > 250
     ? "The word count in a text area must not be greater that 250."
     : "";

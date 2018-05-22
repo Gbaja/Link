@@ -3,76 +3,87 @@ import { Field } from "redux-form";
 
 import { Link } from "react-router-dom";
 import { renderFormFields } from "../../helpers/reduxFields";
+import {
+  SignupFormDiv,
+  SignupH1,
+  SignupLoginP,
+  SignupLoginA
+} from "./Signup.styled";
+import Alert from "../Shared/Alert";
+import { FormsSubmitButton } from "../Shared/Shared.styled";
 
 class SignUpForm extends Component {
   render() {
     const { handleSubmit, onSubmit, alert } = this.props;
     return (
       <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {alert && <p>{alert}</p>}
-          <Field
-            label="First Name"
-            name="firstName"
-            type="text"
-            component={renderFormFields}
-          />
-          <Field
-            label="Last Name"
-            name="lastName"
-            type="text"
-            component={renderFormFields}
-          />
-          <Field
-            label="Account Type"
-            name="accountType"
-            component={renderFormFields}
-            select
-            options={{
-              select: "select your account type",
-              Mentor: "Mentor",
-              Mentee: "Mentee"
-            }}
-          />
-          <Field
-            label="University name"
-            name="universityName"
-            component={renderFormFields}
-            select
-            options={{
-              select: "select university",
-              "Durham University": "Durham University",
-              LSE: "LSE",
-              "Kings College London": "Kings College London"
-            }}
-          />
-          <Field label="Email" name="email" component={renderFormFields} />
-          <Field
-            label="Password"
-            name="password"
-            type="password"
-            component={renderFormFields}
-          />
-          <Field
-            label="Confirm Password"
-            name="confirmPassword"
-            type="password"
-            component={renderFormFields}
-          />
-          <Field
-            type="checkbox"
-            label="I confirm that the information I have given are mine and accurate. I have ready the Privacy Policy and know how young & giving uses my data"
-            name="confirmDetails"
-            component={renderFormFields}
-          />
-          <button type="submit">Sign up</button>
-        </form>
-        <div>
-          <p>
-            <Link to="/">Cancel</Link>
-            Already have an account? <Link to="/login_form">Log in</Link>
-          </p>
-        </div>
+        <SignupFormDiv>
+          <SignupH1>Sign up</SignupH1>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            {alert && <Alert alert={alert} />}
+            <Field
+              label="First Name"
+              name="firstName"
+              type="text"
+              component={renderFormFields}
+            />
+            <Field
+              label="Last Name"
+              name="lastName"
+              type="text"
+              component={renderFormFields}
+            />
+            <Field
+              label="Account Type"
+              name="accountType"
+              component={renderFormFields}
+              select
+              options={{
+                select: "select your account type",
+                Mentor: "Mentor",
+                Mentee: "Mentee"
+              }}
+            />
+            <Field
+              label="University name"
+              name="universityName"
+              component={renderFormFields}
+              select
+              options={{
+                select: "select university",
+                "Durham University": "Durham University",
+                LSE: "LSE",
+                "Kings College London": "Kings College London"
+              }}
+            />
+            <Field label="Email" name="email" component={renderFormFields} />
+            <Field
+              label="Password"
+              name="password"
+              type="password"
+              component={renderFormFields}
+            />
+            <Field
+              label="Confirm Password"
+              name="confirmPassword"
+              type="password"
+              component={renderFormFields}
+            />
+            <Field
+              type="checkbox"
+              label="I confirm that the information I have given are mine and accurate. I have ready the Privacy Policy and know how young & giving uses my data"
+              name="confirmDetails"
+              component={renderFormFields}
+            />
+            <FormsSubmitButton type="submit">Sign up</FormsSubmitButton>
+          </form>
+          <div>
+            <SignupLoginP>
+              Already have an account?{" "}
+              <SignupLoginA to="/">Log in</SignupLoginA>
+            </SignupLoginP>
+          </div>
+        </SignupFormDiv>
       </div>
     );
   }

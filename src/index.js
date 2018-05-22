@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
+import { injectGlobal } from "styled-components";
 
 import reducers from "./reducers";
 import App from "./components/App";
@@ -26,6 +27,19 @@ store.subscribe(() => {
     auth: store.getState().auth
   });
 });
+
+injectGlobal`
+html {
+  box-sizing: border-box
+}
+* {
+  margin:0;
+  box-sizing: inherit;
+}
+svg {
+  box-sizing: content-box;
+}
+`;
 
 ReactDOM.render(
   <Provider store={store}>
