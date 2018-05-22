@@ -15,7 +15,6 @@ import { checkPassword, checkEmail } from "../../helpers/forms_validations";
 
 class SignUpContainer extends Component {
   componentDidMount() {
-    console.log("mount sign up form");
     this.props.resetError();
   }
 

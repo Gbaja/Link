@@ -7,6 +7,7 @@ export const ContainerDiv = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
+  overflow: auto;
 `;
 
 export const ContentContainerDiv = styled.div`
@@ -41,7 +42,9 @@ export const ContainerFormTextDiv = styled.div`
 `;
 
 export const ContainerOrP = styled.p`
-color: blue;
+color: gray;
+font-weight: bold;
+font-size: 1.5rem;
 &:before {
   content:"hey",
   border: 30px solid black;
