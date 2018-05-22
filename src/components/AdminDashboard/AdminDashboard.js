@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import LogOutBtn from "../Shared/Logout";
 import DeleteAccount from "../Shared/DeleteAccount";
+import NewUniversityForm from "../NewUniversity/NewUniversityFormContainer";
 
 class MentorDashboard extends Component {
   render() {
@@ -11,18 +12,7 @@ class MentorDashboard extends Component {
       <div>
         <h1>Welcome</h1>
         <LogOutBtn />
-        <p>
-          {" "}
-          <Link to="/mentor/my_profile">My profile</Link>
-        </p>
-        <p>
-          {" "}
-          <Link to="/directory/mentee"> View mentees </Link>
-        </p>
-        <p>
-          {" "}
-          <Link to="/directory/mentor"> View mentors </Link>
-        </p>
+        <NewUniversityForm />
         <DeleteAccount />
       </div>
     );

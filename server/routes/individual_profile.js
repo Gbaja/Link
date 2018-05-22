@@ -1,6 +1,6 @@
 const getModelFromType = require("../utils/model_type");
 const models = require("../models");
-const { mentorDetails, menteeDetails } = require("../utils/details");
+const { details } = require("../utils/details");
 
 exports.get = (req, res) => {
   const { id, accountType } = req.params;
@@ -12,10 +12,6 @@ exports.get = (req, res) => {
       where: { id: id }
     })
     .then(data => {
-      if (data.accountType === "Mentor") {
-        res.send(mentorDetails(data));
-      } else if (data.accountType === "Mentee") {
-        res.send(menteeDetails(data));
-      }
+      res.send(details(data));
     });
 };

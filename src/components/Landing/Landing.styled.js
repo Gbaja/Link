@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import LandingBackgroundPic from "./LandingBackgroundPic.jpg";
+import LandingBackgroundPic from "../LandingBackgroundPic.jpg";
 
 export const ContainerDiv = styled.div`
   background-image: url(${LandingBackgroundPic});
@@ -7,6 +7,7 @@ export const ContainerDiv = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
+  overflow: auto;
 `;
 
 export const ContentContainerDiv = styled.div`
@@ -38,4 +39,14 @@ export const ContainerFormDiv = styled.div`
 
 export const ContainerFormTextDiv = styled.div`
   text-align: center;
+`;
+
+export const ContainerOrP = styled.p`
+color: gray;
+font-weight: bold;
+font-size: 1.5rem;
+&:before {
+  content:"hey",
+  border: 30px solid black;
+}
 `;

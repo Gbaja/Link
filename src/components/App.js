@@ -10,14 +10,12 @@ import ForgotPasswordForm from "./ForgotPassword/ForgotPasswordFormContainer";
 import ResetPasswordForm from "./ForgotPassword/ResetPasswordFormContainer";
 import MentorDashboard from "./MentorDashboard/MentorDashboard";
 import MenteeDashboard from "./MenteeDashboard/MenteeDashboard";
-import MentorProfile from "./MentorProfile/MentorProfile";
-import MenteeProfile from "./MenteeProfile/MenteeProfile";
-import MentorProfileForm from "./MentorProfile/MentorProfileFormContainer";
-import MenteeProfileForm from "./MenteeProfile/MenteeProfileFormContainer";
-import MentorsDirectory from "./MentorsDirectory/MentorsDirectory";
-import MenteesDirectory from "./MenteesDirectory/MenteesDirectory";
 import IndividualProfile from "./IndividualProfile/IndividualProfile";
-import Directory from "./Directory";
+import Directory from "./Directory/Directory";
+import MyProfileDetails from "./MyProfile/MyProfileDetails";
+import MyProfileForm from "./MyProfile/MyProfileFormContainer";
+import RequestForm from "./RequestMentorship/RequestMentorshipFormContainer";
+import AdminDashboard from "./AdminDashboard/AdminDashboard";
 
 class App extends Component {
   isMentor = () => this.props.auth.accountType === "Mentor";
@@ -67,27 +65,22 @@ class App extends Component {
           <Route
             exact
             path="/mentor/my_profile"
-            render={this.renderMentorPages(MentorProfile)}
+            render={this.renderSharedPages(MyProfileDetails)}
           />
           <Route
             exact
             path="/mentee/my_profile"
-            render={this.renderMenteePages(MenteeProfile)}
+            render={this.renderSharedPages(MyProfileDetails)}
           />
           <Route
             exact
             path="/mentor/my_profile/edit"
-            render={this.renderMentorPages(MentorProfileForm)}
+            render={this.renderSharedPages(MyProfileForm)}
           />
           <Route
             exact
             path="/mentee/my_profile/edit"
-            render={this.renderMenteePages(MenteeProfileForm)}
-          />
-          <Route
-            exact
-            path="/mentors_directory"
-            render={this.renderSharedPages(MentorsDirectory)}
+            render={this.renderSharedPages(MyProfileForm)}
           />
           <Route
             exact
@@ -96,14 +89,15 @@ class App extends Component {
           />
           <Route
             exact
-            path="/mentees_directory"
-            render={this.renderSharedPages(MenteesDirectory)}
-          />
-          <Route
-            exact
             path="/profile/:accountType/:id"
             render={this.renderSharedPages(IndividualProfile)}
           />
+          <Route
+            exact
+            path="/request_mentorship/:id"
+            render={this.renderMenteePages(RequestForm)}
+          />
+          <Route exact path="/owner" component={AdminDashboard} />
           <Route exact path="/forgot_password" component={ForgotPasswordForm} />
           <Route exact path="/reset_password" component={ResetPasswordForm} />
           <Route exact path="/unathorised" component={RedirectPage} />

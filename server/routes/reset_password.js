@@ -12,7 +12,10 @@ exports.post = (req, res) => {
         where: { passwordResetToken: req.body.token }
       }).then(mentee => {
         if (!mentee) {
-          res.status(422).send("Invalid password token.");
+          res
+            .status(422)
+            .status(422)
+            .send("Invalid password token.");
         } else {
           hashPassword(req.body.password).then(password => {
             models.MenteeRegistrations.update(
@@ -27,7 +30,10 @@ exports.post = (req, res) => {
             ).then(([rowsUpdate, [updatedProfile]]) => {
               console.log("UPDATED PROFILE: ", updatedProfile);
               resetPasswordEmail(updatedProfile, req);
-              res.send("Your password has been updated, please sign in!");
+              res.status(422).send({
+                type: "success",
+                message: "Your password has been updated, please sign in!"
+              });
             });
           });
         }
@@ -43,7 +49,10 @@ exports.post = (req, res) => {
         ).then(([rowsUpdate, [updatedProfile]]) => {
           console.log("UPDATED PROFILE: ", updatedProfile);
           resetPasswordEmail(updatedProfile, req);
-          res.send("Your password has been updated, please sign in! ");
+          res.status(422).send({
+            type: "success",
+            message: "Your password has been updated, please sign in!"
+          });
         });
       });
     }

@@ -19,10 +19,10 @@ export const logOut = callback => {
   };
 };
 
-export const fetchDirectory = (pageNum, accountType) => {
+export const fetchDirectory = (pageNum, accountType, uni) => {
   return dispatch => {
     return axios
-      .get(`/api/directory/${pageNum}/${accountType}`)
+      .get(`/api/directory/${pageNum}/${accountType}/${uni}`)
       .then(response => {
         dispatch({
           type: FETCH_DIRECTORY,
@@ -33,8 +33,11 @@ export const fetchDirectory = (pageNum, accountType) => {
         console.log("FETCH MENTORS ERR: ", err);
         dispatch({
           type: ADD_ERROR,
-          payload:
-            "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+          payload: {
+            type: "error",
+            message:
+              "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+          }
         });
       });
   };
@@ -54,8 +57,11 @@ export const fetchProfile = (id, accountType) => {
         console.log("FETCH PROFILE ERR: ", err);
         dispatch({
           type: ADD_ERROR,
-          payload:
-            "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+          payload: {
+            type: "error",
+            message:
+              "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+          }
         });
       });
   };

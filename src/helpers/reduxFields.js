@@ -1,5 +1,5 @@
 import React from "react";
-import { FormsLabel, FormsInput } from "./FormElements.styled";
+import { FormsLabel, FormsInput, FormsErrorsP } from "./FormElements.styled";
 
 export const renderFormFields = field => {
   const {
@@ -7,12 +7,11 @@ export const renderFormFields = field => {
   } = field;
   switch (true) {
   case field.textarea:
-    console.log("MATCHED TEXTAREA: ", field.textarea);
     return (
       <div>
         <FormsLabel>{field.label}</FormsLabel>
         <textarea {...field.input} />
-        <p>{touched ? error : ""}</p>
+        <FormsErrorsP>{touched ? error : ""}</FormsErrorsP>
       </div>
     );
   case field.type === "checkbox":
@@ -22,7 +21,7 @@ export const renderFormFields = field => {
           <input type="checkbox" {...field.input} />
           {field.label}
         </FormsLabel>
-        <p>{touched ? error : ""}</p>
+        <FormsErrorsP>{touched ? error : ""}</FormsErrorsP>
       </div>
     );
   case field.select === true:
@@ -38,7 +37,7 @@ export const renderFormFields = field => {
             );
           })}
         </select>
-        <p>{touched ? error : ""}</p>
+        <FormsErrorsP>{touched ? error : ""}</FormsErrorsP>
       </div>
     );
   default:
@@ -46,8 +45,34 @@ export const renderFormFields = field => {
       <div>
         {field.label && <FormsLabel>{field.label}</FormsLabel>}
         <FormsInput type={field.type} {...field.input} />
-        <p>{touched ? error : ""}</p>
+        <FormsErrorsP>{touched ? error : ""}</FormsErrorsP>
       </div>
     );
   }
+};
+
+const adaptFileEventToValue = delegate => e => delegate(e.target.files[0]);
+
+export const renderFileInput = ({
+  input: { value: omitValue, onChange, onBlur, ...inputProps },
+  meta: omitMeta,
+  ...props
+}) => {
+  const { touched, error } = omitMeta;
+  return (
+    <div>
+      <label>Upload picture</label>
+
+      <input
+        onChange={adaptFileEventToValue(onChange)}
+        onBlur={adaptFileEventToValue(onBlur)}
+        type="file"
+        id="imageUrl"
+        accept="image/*"
+        {...props.input}
+        {...props}
+      />
+      <p>{touched ? error : ""}</p>
+    </div>
+  );
 };

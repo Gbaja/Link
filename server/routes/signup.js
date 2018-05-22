@@ -1,7 +1,7 @@
 const models = require("../models");
 const signupTemplate = require("../utils/email_templates/signup_email");
 const getModelFromType = require("../utils/model_type");
-const { mentorDetails, menteeDetails } = require("../utils/details");
+const { details } = require("../utils/details");
 
 exports.post = (req, res) => {
   const {
@@ -25,11 +25,11 @@ exports.post = (req, res) => {
     })
   ]).then(([mentor, mentee]) => {
     if (mentor || mentee) {
-      res
-        .status(422)
-        .send(
+      res.send({
+        type: "error",
+        message:
           "This email address has already been used to create an account with Young&giving, please try logging in."
-        );
+      });
       return;
     }
     models[type]
@@ -44,14 +44,10 @@ exports.post = (req, res) => {
       })
       .then(data => {
         console.log("SIGN UP DATA: ", data);
-        req.session.mentor_id = data.dataValues.id;
+        req.session.user_id = data.dataValues.id;
         console.log("SIGN UP COOKIE: ", req.session);
         signupTemplate(data.dataValues);
-        if (data.dataValues.accountType === "Mentor") {
-          res.send(mentorDetails(data.dataValues));
-        } else if (data.dataValues.accountType === "Mentee") {
-          res.send(menteeDetails(data.dataValues));
-        }
+        res.send(details(data.dataValues));
       });
   });
 };

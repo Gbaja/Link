@@ -9,12 +9,12 @@ import {
   signupMentee
 } from "../../actions/post_requests";
 import SignUpForm from "./SignUpForm";
+import { SignupContainerDiv } from "./Signup.styled";
 
 import { checkPassword, checkEmail } from "../../helpers/forms_validations";
 
 class SignUpContainer extends Component {
   componentDidMount() {
-    console.log("mount sign up form");
     this.props.resetError();
   }
 
@@ -28,27 +28,25 @@ class SignUpContainer extends Component {
       password: values.password,
       confirmDetails: values.confirmDetails
     };
-    if (values.accountType === "Mentor") {
-      this.props.signupMentor(signUpData, res => {
+    this.props.signupMentor(signUpData, res => {
+      if (res.accountType === "Mentor") {
         this.props.history.push(`/mentor/dashboard`);
-      });
-    } else if (values.accountType === "Mentee") {
-      this.props.signupMentee(signUpData, res => {
+      } else if (res.accountType === "Mentee") {
         this.props.history.push(`/mentee/dashboard`);
-      });
-    }
+      }
+    });
   };
+
   render() {
     const { handleSubmit, alert } = this.props;
     return (
-      <div>
-        <h1>Sign up</h1>
+      <SignupContainerDiv>
         <SignUpForm
           onSubmit={this.handleFormSubmission}
           handleSubmit={handleSubmit}
           alert={alert}
         />
-      </div>
+      </SignupContainerDiv>
     );
   }
 }

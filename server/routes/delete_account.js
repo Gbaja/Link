@@ -14,10 +14,10 @@ exports.delete = (req, res) => {
           email: email
         }
       }).then(affectedRows => {
-        res.send("Account deleted.");
+        res.status(422).send({ type: "sucess", message: "Account deleted." });
       });
     } else {
-      res.send("Account deleted.");
+      res.status(422).send({ type: "sucess", message: "Account deleted." });
     }
   });
 };

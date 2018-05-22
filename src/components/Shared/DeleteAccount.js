@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 
 import { deleteAccount } from "../../actions/delete_requests";
 
-class MentorDashboard extends Component {
+class DeleteButton extends Component {
   deleteAccount = data => () => {
     const body = {
       email: data
@@ -32,5 +32,5 @@ const mapStateToProps = state => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, { deleteAccount })(MentorDashboard)
+  connect(mapStateToProps, { deleteAccount })(DeleteButton)
 );

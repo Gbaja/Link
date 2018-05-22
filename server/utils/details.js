@@ -1,49 +1,31 @@
-const mentorDetails = data => {
-  const details = {
+const details = data => {
+  const info = {
+    id: data.id,
+    accountType: data.accountType,
     firstName: data.firstName,
     lastName: data.lastName,
     email: data.email,
-    accountType: data.accountType,
-    age: data.age,
     location: data.location,
+    gender: data.gender,
+    ethnicity: data.ethnicity,
+    imageUrl: data.imageUrl,
     universityName: data.universityName,
     degree: data.degree,
-    currentIndustry: data.currentIndustry,
-    currentRole: data.currentRole,
-    currentCompany: data.currentCompany,
-    biography: data.biography,
-    motivation: data.motivation,
-    offer: data.offer,
-    socialMediaUrl: data.socialMediaUrl,
-    availability: data.availability,
-    createdAt: data.createdAt
-  };
-  return details;
-};
-
-const menteeDetails = data => {
-  const details = {
-    firstName: data.firstName,
-    lastName: data.lastName,
-    email: data.email,
-    accountType: data.accountType,
-    age: data.age,
-    location: data.location,
-    universityName: data.universityName,
-    degree: data.degree,
-    currentMotive: data.currentMotive,
-    mentorIndustry: data.mentorIndustry,
-    currentCompany: data.currentCompany,
+    graduationYear: data.graduationYear,
+    jobTitle: data.jobTitle,
+    company: data.company,
+    dateStarted: data.dateStarted,
+    endDate: data.endDate,
+    industry: data.industry,
     biography: data.biography,
     reason: data.reason,
     socialMediaUrl: data.socialMediaUrl,
     availability: data.availability,
     createdAt: data.createdAt
   };
-  return details;
+  return info;
 };
 
 module.exports = {
-  mentorDetails,
-  menteeDetails
+  details
 };

@@ -3,22 +3,21 @@ import { Field } from "redux-form";
 import { Link } from "react-router-dom";
 
 import { renderFormFields } from "../../helpers/reduxFields";
-import { FormsSubmitButton } from "../Shared/Shared.styled";
 
 class LogInForm extends Component {
   render() {
-    const { handleSubmit, onSubmit } = this.props;
+    const { handleSubmit, onSubmit, alert } = this.props;
     return (
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <Field label="Email" name="email" component={renderFormFields} />
+          {alert && <p>{alert}</p>}
           <Field
-            label="Password"
-            name="password"
-            type="password"
+            label="Message"
+            name="message"
+            textarea
             component={renderFormFields}
           />
-          <FormsSubmitButton type="submit">Sign in</FormsSubmitButton>
+          <button type="submit">Request</button>
         </form>
       </div>
     );

@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Field, reduxForm, initialize } from "redux-form";
 import { connect } from "react-redux";
 
-import { renderFormFields } from "../../helpers/reduxFields";
+import { renderFormFields, renderFileInput } from "../../helpers/reduxFields";
 import { textareaWordCountCheck } from "../../helpers/forms_validations";
 
-class MenteeProfileForm extends Component {
+class MyProfileForm extends Component {
   render() {
     const { handleSubmit, onSubmit, auth } = this.props;
     return (
@@ -13,6 +13,13 @@ class MenteeProfileForm extends Component {
         <form onSubmit={handleSubmit(onSubmit)}>
           <p>{auth.email}</p>
           <p>{auth.accountType}</p>
+          <p>{auth.university}</p>
+          <Field
+            label="Picture"
+            name="imageUrl"
+            type="file"
+            component={renderFileInput}
+          />
           <Field
             label="First name"
             name="firstName"
@@ -26,36 +33,34 @@ class MenteeProfileForm extends Component {
             component={renderFormFields}
           />
           <Field
-            label="Age"
-            name="age"
-            component={renderFormFields}
-            select
-            options={{
-              "18": 18,
-              "19": 19,
-              "20": 20,
-              "21": 21,
-              "22": 22,
-              "": "",
-              "Rather not say": "Rather not say"
-            }}
-          />
-          <Field
-            label="LinkedIn or professional social media account url"
-            name="socialMediaUrl"
-            type="url"
-            component={renderFormFields}
-          />
-          <Field
             label="Current Location"
             name="location"
             component={renderFormFields}
             select
             options={{
+              "": "",
               None: "None",
               UK: "United-Kingdom",
               Nigeria: "Nigeria"
             }}
+          />
+          <Field
+            label="Gender"
+            name="gender"
+            component={renderFormFields}
+            select
+            options={{
+              "": "",
+              Male: "Male",
+              Female: "Female",
+              "Rather not say": "Rather not say"
+            }}
+          />
+          <Field
+            label="Ethnicity"
+            name="ethnicity"
+            type="text"
+            component={renderFormFields}
           />
           <Field
             label="Name of university"
@@ -76,23 +81,40 @@ class MenteeProfileForm extends Component {
             component={renderFormFields}
           />
           <Field
-            label="Current Motive"
-            name="currentMotive"
+            label="Graduation year"
+            name="graduationYear"
+            type="month"
+            component={renderFormFields}
+          />
+          <Field
+            label="Job title"
+            name="jobTitle"
             type="text"
             component={renderFormFields}
           />
           <Field
-            label="What industry would you like a mentor from?"
-            name="mentorIndustry"
+            label="Company"
+            name="company"
+            type="text"
             component={renderFormFields}
-            select
-            options={{
-              "": "",
-              "Not disclosed": "Not disclosed",
-              "Banking&Finance": "Banking&Finance",
-              Technology: "Technology",
-              "Digital Media": "Digital Media"
-            }}
+          />
+          <Field
+            label="Date started"
+            name="dateStarted"
+            type="month"
+            component={renderFormFields}
+          />
+          <Field
+            label="Industry"
+            name="industry"
+            type="text"
+            component={renderFormFields}
+          />
+          <Field
+            label="LinkedIn or professional social media account url"
+            name="socialMediaUrl"
+            type="url"
+            component={renderFormFields}
           />
           <Field
             label="Short biography"
@@ -127,4 +149,4 @@ class MenteeProfileForm extends Component {
   }
 }
 
-export default MenteeProfileForm;
+export default MyProfileForm;
