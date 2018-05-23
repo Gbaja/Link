@@ -5,6 +5,7 @@ const Admins = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     role: DataTypes.STRING,
+    accountType: DataTypes.STRING,
     password: DataTypes.STRING,
     passwordResetToken: DataTypes.STRING,
     createdAt: {

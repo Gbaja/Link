@@ -4,6 +4,7 @@ const Universities = (sequelize, DataTypes) => {
   const Universities = sequelize.define("Universities", {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
+    accountType: DataTypes.STRING,
     password: DataTypes.STRING,
     passwordResetToken: DataTypes.STRING,
     createdAt: {
@@ -14,7 +15,7 @@ const Universities = (sequelize, DataTypes) => {
     }
   });
 
-  Universities.beforeCreate((user, options) => {
+  Universities.beforeUpdate((user, options) => {
     return hashPassword(user.password).then(hashedPw => {
       user.password = hashedPw;
     });
