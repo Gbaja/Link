@@ -3,6 +3,7 @@ import { Field } from "redux-form";
 import { Link } from "react-router-dom";
 
 import { renderFormFields } from "../../helpers/reduxFields";
+import Alert from "../Shared/Alert";
 
 class ForgotPasswordForm extends Component {
   render() {
@@ -10,7 +11,7 @@ class ForgotPasswordForm extends Component {
     return (
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          {alert && <p>{alert}</p>}
+          {alert && <Alert alert={alert} />}
           <Field
             label="Email"
             name="email"

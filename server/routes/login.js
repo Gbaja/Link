@@ -1,37 +1,55 @@
-const bcrypt = require("bcryptjs");
 const models = require("../models");
 const { details } = require("../utils/details");
+const { isValidPassword } = require("../utils/hash_password");
 
-const isValidPassword = function(userpass, password) {
-  return bcrypt.compareSync(password, userpass);
-};
 exports.post = (req, res) => {
   const { email, password } = req.body;
   Promise.all([
     models.MenteeRegistrations.findOne({ where: { email } }),
     models.MentorRegistrations.findOne({ where: { email } }),
-    models.Universities.findOne({ where: { email } })
+    models.Universities.findOne({ where: { email } }),
+    models.Admins.findOne({ where: { email } })
   ]).then(data => {
-    if (data[2] !== null) {
-      req.session.user_id = data[2].id;
-      res.send(data[2]);
-    } else if (data.every(x => x === null)) {
-      res.status(422).send({
+    if (data.every(x => x === null)) {
+      return res.status(422).send({
         type: "error",
         message: "User does not exists, please create an account."
       });
-    } else {
-      const user = data.filter(each => {
-        return each !== null;
+    }
+    const user = data.filter(each => {
+      return each !== null;
+    });
+    console.log("USERRRR: ", user[0]);
+    if (user[0].accountType === "Admin") {
+      req.session.user_id = user[0].id;
+      res.send({
+        name: user[0].name,
+        email: user[0].email,
+        accountType: user[0].accountType
       });
+    } else {
+      if (user[0].password === null) {
+        return res.status(422).send({
+          type: "error",
+          message: "Please make sure you have reset your password."
+        });
+      }
       if (!isValidPassword(user[0].password, password)) {
-        res.status(422).send({
+        return res.status(422).send({
           type: "error",
           message: "Password incorrect."
         });
       } else {
         req.session.user_id = user[0].id;
-        res.send(details(user[0]));
+        if (user[0].accountType === "University") {
+          return res.send({
+            name: user[0].name,
+            email: user[0].email,
+            accountType: user[0].accountType
+          });
+        } else {
+          return res.send(details(user[0]));
+        }
       }
     }
   });

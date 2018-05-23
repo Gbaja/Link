@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Field } from "redux-form";
 
 import { renderFormFields } from "../../helpers/reduxFields";
+import Alert from "../Shared/Alert";
 
 class ResetPasswordForm extends Component {
   render() {
@@ -9,7 +10,7 @@ class ResetPasswordForm extends Component {
     return (
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          {alert && <p>{alert}</p>}
+          {alert && <Alert alert={alert} />}
           <Field
             label="Password"
             name="password"

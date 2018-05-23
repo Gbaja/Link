@@ -1,6 +1,6 @@
 const models = require("../models");
 const resetPasswordEmail = require("../utils/email_templates/reset_password_email");
-const hashPassword = require("../utils/hash_password");
+const { hashPassword } = require("../utils/hash_password");
 
 exports.post = (req, res) => {
   console.log({ password: req.body.password, token: req.body.token });
@@ -12,10 +12,7 @@ exports.post = (req, res) => {
         where: { passwordResetToken: req.body.token }
       }).then(mentee => {
         if (!mentee) {
-          res
-            .status(422)
-            .status(422)
-            .send("Invalid password token.");
+          res.status(422).send("Invalid password token.");
         } else {
           hashPassword(req.body.password).then(password => {
             models.MenteeRegistrations.update(

@@ -1,6 +1,6 @@
 //LOOK INTO DATATYPE VISUAL FOR PASSWORD
 const models = require("./index");
-const hashPassword = require("../utils/hash_password");
+const { hashPassword } = require("../utils/hash_password");
 
 const MentorRegistrations = (sequelize, DataTypes) => {
   const MentorRegistrations = sequelize.define("MentorRegistration", {
