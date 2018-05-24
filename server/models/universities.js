@@ -15,11 +15,6 @@ const Universities = (sequelize, DataTypes) => {
     }
   });
 
-  Universities.beforeUpdate((user, options) => {
-    return hashPassword(user.password).then(hashedPw => {
-      user.password = hashedPw;
-    });
-  });
   return Universities;
 };
 
