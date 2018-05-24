@@ -139,14 +139,21 @@ export const resetPassword = data => {
         });
       })
       .catch(err => {
-        dispatch({
-          type: ADD_ERROR,
-          payload: {
-            type: "error",
-            message:
-              "There was an error on our side. Please try again letter or contact a member of out team for assistance."
-          }
-        });
+        if (err.message.includes("422")) {
+          dispatch({
+            type: ADD_ERROR,
+            payload: err.response.data
+          });
+        } else {
+          dispatch({
+            type: ADD_ERROR,
+            payload: {
+              type: "error",
+              message:
+                "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+            }
+          });
+        }
       });
   };
 };
