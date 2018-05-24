@@ -10,6 +10,14 @@ class UniversityDashboard extends Component {
     return (
       <div>
         <h1>Welcome {this.props.auth.name}</h1>
+        <p>
+          {" "}
+          <Link to="/directory/mentee"> View mentees </Link>
+        </p>
+        <p>
+          {" "}
+          <Link to="/directory/mentor"> View mentors </Link>
+        </p>
         <LogOutBtn />
         <DeleteAccount />
       </div>

@@ -13,6 +13,7 @@ const individualProfile = require("./individual_profile");
 const deleteAccount = require("./delete_account");
 const requestMentorship = require("./request_mentorship");
 const newUniversity = require("./new_uni");
+const allUniversities = require("./all_uni");
 const all = require("./all");
 
 router.post("/api/signupMentor", signup.post);
@@ -31,4 +32,5 @@ router.delete("/api/delete", deleteAccount.delete);
 router.get("/api/all/:universityName/:pageNumber", all.get);
 router.post("/api/request", requestMentorship.post);
 router.post("/api/newUni", newUniversity.post);
+router.get("/api/allUni", allUniversities.get);
 module.exports = router;

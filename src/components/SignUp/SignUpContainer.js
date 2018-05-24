@@ -8,6 +8,7 @@ import {
   resetError,
   signupMentee
 } from "../../actions/post_requests";
+import { fetchUniversities } from "../../actions/get_requests";
 import SignUpForm from "./SignUpForm";
 import { SignupContainerDiv } from "./Signup.styled";
 
@@ -16,6 +17,7 @@ import { checkPassword, checkEmail } from "../../helpers/forms_validations";
 class SignUpContainer extends Component {
   componentDidMount() {
     this.props.resetError();
+    this.props.fetchUniversities();
   }
 
   handleFormSubmission = values => {
@@ -38,16 +40,23 @@ class SignUpContainer extends Component {
   };
 
   render() {
-    const { handleSubmit, alert } = this.props;
-    return (
-      <SignupContainerDiv>
-        <SignUpForm
-          onSubmit={this.handleFormSubmission}
-          handleSubmit={handleSubmit}
-          alert={alert}
-        />
-      </SignupContainerDiv>
-    );
+    const { handleSubmit, alert, universities } = this.props;
+    if (universities.length === 0) {
+      console.log("noo");
+      return <div>Loading</div>;
+    } else {
+      console.log("UNIVERSITIES: ", universities);
+      return (
+        <SignupContainerDiv>
+          <SignUpForm
+            onSubmit={this.handleFormSubmission}
+            handleSubmit={handleSubmit}
+            alert={alert}
+            universities={universities}
+          />
+        </SignupContainerDiv>
+      );
+    }
   }
 }
 
@@ -82,14 +91,18 @@ const validate = values => {
 };
 
 const mapStateToProps = state => ({
-  alert: state.alert
+  alert: state.alert,
+  universities: state.universities
 });
 
 export default reduxForm({
   validate: validate,
   form: "SignUpForm"
 })(
-  connect(mapStateToProps, { signupMentor, resetError, signupMentee })(
-    SignUpContainer
-  )
+  connect(mapStateToProps, {
+    signupMentor,
+    resetError,
+    signupMentee,
+    fetchUniversities
+  })(SignUpContainer)
 );

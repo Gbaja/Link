@@ -2,7 +2,7 @@ const { hashPassword } = require("../utils/hash_password");
 
 const Universities = (sequelize, DataTypes) => {
   const Universities = sequelize.define("Universities", {
-    name: DataTypes.STRING,
+    universityName: DataTypes.STRING,
     email: DataTypes.STRING,
     accountType: DataTypes.STRING,
     password: DataTypes.STRING,

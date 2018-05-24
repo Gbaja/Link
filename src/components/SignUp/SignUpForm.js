@@ -14,7 +14,8 @@ import { FormsSubmitButton } from "../Shared/Shared.styled";
 
 class SignUpForm extends Component {
   render() {
-    const { handleSubmit, onSubmit, alert } = this.props;
+    const { handleSubmit, onSubmit, alert, universities } = this.props;
+    console.log("UNIVERSIRIES SGHKAH: ", universities);
     return (
       <div>
         <SignupFormDiv>
@@ -50,10 +51,8 @@ class SignUpForm extends Component {
               component={renderFormFields}
               select
               options={{
-                select: "select university",
-                "Durham University": "Durham University",
-                LSE: "LSE",
-                "Kings College London": "Kings College London"
+                "Kent University": "Kent University",
+                "Durham university": "Durham university"
               }}
             />
             <Field label="Email" name="email" component={renderFormFields} />
