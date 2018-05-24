@@ -1,9 +1,10 @@
-const hashPassword = require("../utils/hash_password");
+const { hashPassword } = require("../utils/hash_password");
 
 const Universities = (sequelize, DataTypes) => {
   const Universities = sequelize.define("Universities", {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
+    accountType: DataTypes.STRING,
     password: DataTypes.STRING,
     passwordResetToken: DataTypes.STRING,
     createdAt: {
@@ -14,11 +15,6 @@ const Universities = (sequelize, DataTypes) => {
     }
   });
 
-  Universities.beforeCreate((user, options) => {
-    return hashPassword(user.password).then(hashedPw => {
-      user.password = hashedPw;
-    });
-  });
   return Universities;
 };
 

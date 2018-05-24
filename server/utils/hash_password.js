@@ -10,5 +10,7 @@ const hashPassword = password =>
       }
     });
   });
-
-module.exports = hashPassword;
+const isValidPassword = function(userpass, password) {
+  return bcrypt.compareSync(password, userpass);
+};
+module.exports = { hashPassword, isValidPassword };

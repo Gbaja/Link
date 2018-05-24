@@ -1,5 +1,7 @@
 const mentorType = "mentor";
 const menteeType = "mentee";
+const universityType = "university";
+const adminType = "admin";
 
 const getModelFromType = type => {
   if (type === mentorType) {
@@ -7,6 +9,12 @@ const getModelFromType = type => {
   }
   if (type === menteeType) {
     return "MenteeRegistrations";
+  }
+  if (type === universityType) {
+    return "Universities";
+  }
+  if (type === adminType) {
+    return "Admins";
   }
 };
 

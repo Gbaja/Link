@@ -19,7 +19,7 @@ class LoginFormContainer extends Component {
   handleFormSubmission = values => {
     this.props.logIn(values, res => {
       console.log("COMPONENT RES: ", res);
-      if (res.email === "info@youngandgiving.com") {
+      if (res.accountType === "Admin") {
         this.props.history.push(`/owner`);
       } else if (res.accountType === "Mentor") {
         this.props.history.push(`/mentor/dashboard`);

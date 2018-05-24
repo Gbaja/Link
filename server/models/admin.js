@@ -1,10 +1,11 @@
-const hashPassword = require("../utils/hash_password");
+const { hashPassword } = require("../utils/hash_password");
 
 const Admins = (sequelize, DataTypes) => {
   const Admins = sequelize.define("Admin", {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     role: DataTypes.STRING,
+    accountType: DataTypes.STRING,
     password: DataTypes.STRING,
     passwordResetToken: DataTypes.STRING,
     createdAt: {

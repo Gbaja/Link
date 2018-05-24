@@ -24,7 +24,7 @@ exports.post = (req, res) => {
             ).then(([rowsUpdate, [updatedProfile]]) => {
               forgotPasswordEmail(updatedProfile, req);
               res.status(422).send({
-                type: "sucess",
+                type: "success",
                 message:
                   "Please check your email for instructions on how to reset your password."
               });
@@ -39,8 +39,8 @@ exports.post = (req, res) => {
           { returning: true, where: { email: req.body.email } }
         ).then(([rowsUpdate, [updatedProfile]]) => {
           forgotPasswordEmail(updatedProfile, req);
-          res.status(422).send({
-            type: "sucess",
+          res.send({
+            type: "success",
             message:
               "Please check your email for instructions on how to reset your password."
           });

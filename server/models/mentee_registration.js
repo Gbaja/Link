@@ -1,5 +1,5 @@
 const models = require("./index");
-const hashPassword = require("../utils/hash_password");
+const { hashPassword } = require("../utils/hash_password");
 
 const MenteeRegistrations = (sequelize, DataTypes) => {
   const MenteeRegistrations = sequelize.define("MenteeRegistration", {
