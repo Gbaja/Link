@@ -1,23 +1,33 @@
 const models = require("../models");
+const getModelFromType = require("../utils/model_type");
 
 exports.delete = (req, res) => {
-  console.log("REQUEST BODY: ", req.body);
-  const email = req.body.email;
-  return models.MentorRegistrations.destroy({
-    where: {
-      email: email
-    }
-  }).then(affectedRows => {
-    if (affectedRows === 0) {
-      return models.MenteeRegistrations.destroy({
-        where: {
-          email: email
-        }
-      }).then(affectedRows => {
-        res.status(422).send({ type: "sucess", message: "Account deleted." });
+  const { email } = req.body;
+  Promise.all([
+    models.MenteeRegistrations.findOne({ where: { email } }),
+    models.MentorRegistrations.findOne({ where: { email } }),
+    models.Universities.findOne({ where: { email } })
+  ]).then(data => {
+    if (data.every(x => x === null)) {
+      return res.status(422).send({
+        type: "error",
+        message: "User does not exists."
       });
     } else {
-      res.status(422).send({ type: "sucess", message: "Account deleted." });
+      const user = data.filter(each => {
+        return each !== null;
+      });
+      const type = getModelFromType(user[0].accountType.toLowerCase());
+      console.log("TYPE: ", type);
+      return models[type]
+        .destroy({
+          where: {
+            email: email
+          }
+        })
+        .then(affectedRows => {
+          res.send({ type: "success", message: "Account deleted." });
+        });
     }
   });
 };
