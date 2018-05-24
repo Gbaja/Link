@@ -3,14 +3,15 @@ import { connect } from "react-redux";
 import { reduxForm } from "redux-form";
 
 import NewUniversityForm from "./NewUniversityForm";
-import { resetError } from "../../actions/post_requests";
+import { resetError, addUni } from "../../actions/post_requests";
 class NewUniversityFormContainer extends Component {
   componentDidMount() {
     this.props.resetError();
   }
   handleFormSubmission = values => {
-    //   this.props.addUniversity(values)
+    values.accountType = "University";
     console.log(values);
+    this.props.addUni(values);
   };
   render() {
     const { handleSubmit, alert } = this.props;
@@ -20,6 +21,7 @@ class NewUniversityFormContainer extends Component {
         <NewUniversityForm
           onSubmit={this.handleFormSubmission}
           handleSubmit={handleSubmit}
+          alert={alert}
         />
       </div>
     );
@@ -43,4 +45,6 @@ const mapStateToProps = state => ({
 export default reduxForm({
   validate: validate,
   form: "NewUniversityForm"
-})(connect(mapStateToProps, { resetError })(NewUniversityFormContainer));
+})(
+  connect(mapStateToProps, { resetError, addUni })(NewUniversityFormContainer)
+);
