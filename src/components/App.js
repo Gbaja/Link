@@ -17,6 +17,7 @@ import MyProfileForm from "./MyProfile/MyProfileFormContainer";
 import RequestForm from "./RequestMentorship/RequestMentorshipFormContainer";
 import AdminDashboard from "./AdminDashboard/AdminDashboard";
 import NewUniversityForm from "./NewUniversity/NewUniversityFormContainer";
+import UniversityDashboard from "./UniversityDashboard/UniversityDashboard";
 
 class App extends Component {
   isMentor = () => this.props.auth.accountType === "Mentor";
@@ -124,6 +125,11 @@ class App extends Component {
             path
             path="/add_new_uni"
             render={this.renderAdminPages(NewUniversityForm)}
+          />
+          <Route
+            exact
+            path="/university_dashboard"
+            render={this.renderUniversityPages(UniversityDashboard)}
           />
           <Route exact path="/forgot_password" component={ForgotPasswordForm} />
           <Route exact path="/reset_password" component={ResetPasswordForm} />
