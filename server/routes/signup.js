@@ -11,6 +11,7 @@ exports.post = (req, res) => {
     universityName,
     email,
     password,
+    status,
     confirmDetails
   } = req.body;
 
@@ -37,12 +38,16 @@ exports.post = (req, res) => {
         universityName,
         email,
         password,
+        status,
         confirmDetails
       })
       .then(data => {
-        req.session.user_id = data.dataValues.id;
         signupTemplate(data.dataValues);
-        res.send(details(data.dataValues));
+        res.send({
+          type: "success",
+          message:
+            "Your application has been sent to your chosen uni. Please wait for a confirmation email before trying to log in."
+        });
       });
   });
 };

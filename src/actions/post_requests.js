@@ -1,16 +1,15 @@
 import axios from "axios";
 import { AUTH_USER, ADD_ERROR, RESET_ERROR, ADD_SUCCESS } from "./types";
 
-export const signupMentor = (data, callback) => {
+export const signupMentor = data => {
   return dispatch => {
     return axios
       .post("/api/signupMentor", data)
       .then(res => {
         dispatch({
-          type: AUTH_USER,
+          type: ADD_SUCCESS,
           payload: res.data
         });
-        callback(res.data);
       })
       .catch(err => {
         if (err.message.includes("422")) {

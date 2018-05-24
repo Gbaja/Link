@@ -16,6 +16,14 @@ class SignUpForm extends Component {
   render() {
     const { handleSubmit, onSubmit, alert, universities } = this.props;
     console.log("UNIVERSIRIES SGHKAH: ", universities);
+    const changeUniToObj = universities => {
+      const uniObj = universities.reduce((acc, curr) => {
+        acc[curr] = curr;
+        return acc;
+      }, {});
+      return uniObj;
+    };
+    const allUni = changeUniToObj(universities);
     return (
       <div>
         <SignupFormDiv>
@@ -50,10 +58,7 @@ class SignUpForm extends Component {
               name="universityName"
               component={renderFormFields}
               select
-              options={{
-                "Kent University": "Kent University",
-                "Durham university": "Durham university"
-              }}
+              options={allUni}
             />
             <Field label="Email" name="email" component={renderFormFields} />
             <Field

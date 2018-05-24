@@ -17,6 +17,7 @@ exports.get = (req, res) => {
     })
   ]).then(([mentee, mentor]) => {
     const allData = mentee.concat(mentor);
+    console.log(allData);
     const dataNeeded = allData.map(each => {
       return details(each);
     });

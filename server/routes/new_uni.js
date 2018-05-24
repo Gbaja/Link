@@ -3,7 +3,7 @@ const crypto = require("crypto");
 const newUniEmail = require("../utils/email_templates/new_uni_email");
 
 exports.post = (req, res) => {
-  const { name, email, accountType } = req.body;
+  const { universityName, email, accountType } = req.body;
   const token = crypto.randomBytes(20).toString("base64");
   Promise.all([
     models.MenteeRegistrations.findOne({ where: { email } }),
@@ -19,7 +19,7 @@ exports.post = (req, res) => {
       });
     } else {
       models.Universities.create({
-        name,
+        universityName,
         email,
         accountType,
         passwordResetToken: token

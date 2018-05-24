@@ -16,8 +16,11 @@ import { checkPassword, checkEmail } from "../../helpers/forms_validations";
 
 class SignUpContainer extends Component {
   componentDidMount() {
-    this.props.resetError();
     this.props.fetchUniversities();
+  }
+
+  componentWillUnmount() {
+    this.props.resetError();
   }
 
   handleFormSubmission = values => {
@@ -28,36 +31,38 @@ class SignUpContainer extends Component {
       universityName: values.universityName,
       email: values.email,
       password: values.password,
-      confirmDetails: values.confirmDetails
+      confirmDetails: values.confirmDetails,
+      status: "Pending"
     };
-    this.props.signupMentor(signUpData, res => {
-      if (res.accountType === "Mentor") {
-        this.props.history.push(`/mentor/dashboard`);
-      } else if (res.accountType === "Mentee") {
-        this.props.history.push(`/mentee/dashboard`);
-      }
-    });
+    this.props.signupMentor(signUpData);
+    // this.props.signupMentor(signUpData, res => {
+    //   if (res.accountType === "Mentor") {
+    //     this.props.history.push(`/mentor/dashboard`);
+    //   } else if (res.accountType === "Mentee") {
+    //     this.props.history.push(`/mentee/dashboard`);
+    //   }
+    // });
   };
 
   render() {
     const { handleSubmit, alert, universities } = this.props;
-    if (universities.length === 0) {
-      console.log("noo");
-      return <div>Loading</div>;
-    } else {
-      console.log("UNIVERSITIES: ", universities);
-      return (
-        <SignupContainerDiv>
-          <SignUpForm
-            onSubmit={this.handleFormSubmission}
-            handleSubmit={handleSubmit}
-            alert={alert}
-            universities={universities}
-          />
-        </SignupContainerDiv>
-      );
-    }
+    // if (universities.length === 0) {
+    //   console.log("noo");
+    //   return <div>Loading</div>;
+    // } else {
+    console.log("UNIVERSITIES: ", universities);
+    return (
+      <SignupContainerDiv>
+        <SignUpForm
+          onSubmit={this.handleFormSubmission}
+          handleSubmit={handleSubmit}
+          alert={alert}
+          universities={universities}
+        />
+      </SignupContainerDiv>
+    );
   }
+  // }
 }
 
 const validate = values => {

@@ -48,7 +48,15 @@ exports.post = (req, res) => {
             accountType: user[0].accountType
           });
         } else {
-          return res.send(details(user[0]));
+          if (user[0].status === "Pending") {
+            return res.status(422).send({
+              type: "error",
+              message:
+                "Your university has not accepted your application. Please wait till you receive a confirmation email before logging in."
+            });
+          } else {
+            return res.send(details(user[0]));
+          }
         }
       }
     }
