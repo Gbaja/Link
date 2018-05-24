@@ -4,15 +4,14 @@ import { connect } from "react-redux";
 
 import LogOutBtn from "../Shared/Logout";
 import DeleteAccount from "../Shared/DeleteAccount";
-import NewUniversityForm from "../NewUniversity/NewUniversityFormContainer";
 
 class MentorDashboard extends Component {
   render() {
     return (
       <div>
         <h1>Welcome</h1>
+        <Link to="add_new_uni">Add new university</Link>
         <LogOutBtn />
-        <NewUniversityForm />
         <DeleteAccount />
       </div>
     );

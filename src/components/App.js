@@ -16,10 +16,13 @@ import MyProfileDetails from "./MyProfile/MyProfileDetails";
 import MyProfileForm from "./MyProfile/MyProfileFormContainer";
 import RequestForm from "./RequestMentorship/RequestMentorshipFormContainer";
 import AdminDashboard from "./AdminDashboard/AdminDashboard";
+import NewUniversityForm from "./NewUniversity/NewUniversityFormContainer";
 
 class App extends Component {
   isMentor = () => this.props.auth.accountType === "Mentor";
   isMentee = () => this.props.auth.accountType === "Mentee";
+  isUniversity = () => this.props.auth.accountType === "University";
+  isAdmin = () => this.props.auth.accountType === "Admin";
 
   renderProtected = ({ hasAccess, renderPage }) => {
     return props =>
@@ -35,6 +38,20 @@ class App extends Component {
   renderMenteePages = Component => {
     const loggedIn = this.props.auth;
     const hasAccess = loggedIn && this.isMentee();
+    const renderPage = props => <Component {...props} />;
+    return this.renderProtected({ hasAccess, renderPage });
+  };
+
+  renderAdminPages = Component => {
+    const loggedIn = this.props.auth;
+    const hasAccess = loggedIn && this.isAdmin();
+    const renderPage = props => <Component {...props} />;
+    return this.renderProtected({ hasAccess, renderPage });
+  };
+
+  renderUniversityPages = Component => {
+    const loggedIn = this.props.auth;
+    const hasAccess = loggedIn && this.isUniversity();
     const renderPage = props => <Component {...props} />;
     return this.renderProtected({ hasAccess, renderPage });
   };
@@ -97,7 +114,17 @@ class App extends Component {
             path="/request_mentorship/:id"
             render={this.renderMenteePages(RequestForm)}
           />
-          <Route exact path="/owner" component={AdminDashboard} />
+          <Route
+            exact
+            path="/owner"
+            render={this.renderAdminPages(AdminDashboard)}
+          />
+          <Route
+            exact
+            path
+            path="/add_new_uni"
+            render={this.renderAdminPages(NewUniversityForm)}
+          />
           <Route exact path="/forgot_password" component={ForgotPasswordForm} />
           <Route exact path="/reset_password" component={ResetPasswordForm} />
           <Route exact path="/unathorised" component={RedirectPage} />
