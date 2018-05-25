@@ -18,6 +18,10 @@ class UniversityDashboard extends Component {
           {" "}
           <Link to="/directory/mentor"> View mentors </Link>
         </p>
+        <p>
+          {" "}
+          <Link to="/pending_applications"> View mentors </Link>
+        </p>
         <LogOutBtn />
         <DeleteAccount />
       </div>

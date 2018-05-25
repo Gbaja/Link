@@ -27,6 +27,7 @@ exports.post = (req, res) => {
         const user = data.filter(each => {
           return each !== null;
         });
+        console.log("USER::: ", user[0]);
         const type = getModelFromType(user[0].accountType.toLowerCase());
         hashPassword(req.body.password).then(password => {
           models[type]

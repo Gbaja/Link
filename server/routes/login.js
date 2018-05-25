@@ -43,7 +43,7 @@ exports.post = (req, res) => {
         req.session.user_id = user[0].id;
         if (user[0].accountType === "University") {
           return res.send({
-            name: user[0].name,
+            universityName: user[0].universityName,
             email: user[0].email,
             accountType: user[0].accountType
           });

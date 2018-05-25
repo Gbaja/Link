@@ -17,7 +17,7 @@ class NewUniversityForm extends Component {
             {alert && <Alert alert={alert} />}
             <Field
               label="UniversityName"
-              name="name"
+              name="universityName"
               type="text"
               component={renderFormFields}
             />
