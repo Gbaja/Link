@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AcceptButton from "./AcceptButton";
+import ActionButtons from "./ActionButtons";
 
 class PendingApplications extends Component {
   render() {
@@ -26,12 +26,14 @@ class PendingApplications extends Component {
                   <td>{data.email}</td>
                   <td>{data.universityName}</td>
                   <td>
-                    <AcceptButton user={data.id} />
+                    <ActionButtons user={data.id} />
                   </td>
                 </tr>
               ))
             ) : (
-              <div>No pending applications</div>
+              <tr>
+                <td>No pending applications</td>
+              </tr>
             )}
           </tbody>
         </table>

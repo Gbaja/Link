@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import Alert from "../Shared/Alert";
 import { fetchPending } from "../../actions/get_requests";
+import { resetError } from "../../actions/post_requests";
 import PendingApplications from "./PendingApplications";
 
 class PendingApplicationsContainer extends Component {
@@ -11,12 +13,16 @@ class PendingApplicationsContainer extends Component {
     }
   }
 
+  // componentWillUnmount() {
+  //   this.props.resetError();
+  // }
+
   render() {
-    console.log(this.props.pending);
-    if (this.props.pending.length === 0) return <div> Loading </div>;
+    const { alert, pending } = this.props;
     return (
       <div>
-        <PendingApplications data={this.props.pending} />
+        {alert && <Alert alert={alert} />}
+        <PendingApplications data={pending} />
       </div>
     );
   }
@@ -24,9 +30,10 @@ class PendingApplicationsContainer extends Component {
 
 const mapStateToProps = state => ({
   pending: state.pending,
-  auth: state.auth
+  auth: state.auth,
+  alert: state.alert
 });
 
-export default connect(mapStateToProps, { fetchPending })(
+export default connect(mapStateToProps, { fetchPending, resetError })(
   PendingApplicationsContainer
 );

@@ -20,7 +20,7 @@ class UniversityDashboard extends Component {
         </p>
         <p>
           {" "}
-          <Link to="/pending_applications"> View mentors </Link>
+          <Link to="/pending_applications"> View pending </Link>
         </p>
         <LogOutBtn />
         <DeleteAccount />

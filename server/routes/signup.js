@@ -42,7 +42,7 @@ exports.post = (req, res) => {
         confirmDetails
       })
       .then(data => {
-        signupTemplate(data.dataValues);
+        // signupTemplate(data.dataValues);
         res.send({
           type: "success",
           message:
