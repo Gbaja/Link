@@ -1,16 +1,15 @@
 import axios from "axios";
 import { AUTH_USER, ADD_ERROR, RESET_ERROR, ADD_SUCCESS } from "./types";
 
-export const signupMentor = (data, callback) => {
+export const signupMentor = data => {
   return dispatch => {
     return axios
       .post("/api/signupMentor", data)
       .then(res => {
         dispatch({
-          type: AUTH_USER,
+          type: ADD_SUCCESS,
           payload: res.data
         });
-        callback(res.data);
       })
       .catch(err => {
         if (err.message.includes("422")) {
@@ -97,6 +96,36 @@ export const logIn = (data, callback) => {
   };
 };
 
+export const addUni = data => {
+  return dispatch => {
+    return axios
+      .post("/api/newUni", data)
+      .then(res => {
+        dispatch({
+          type: ADD_SUCCESS,
+          payload: res.data
+        });
+      })
+      .catch(err => {
+        if (err.message.includes("422")) {
+          dispatch({
+            type: ADD_ERROR,
+            payload: err.response.data
+          });
+        } else {
+          dispatch({
+            type: ADD_ERROR,
+            payload: {
+              type: "error",
+              message:
+                "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+            }
+          });
+        }
+      });
+  };
+};
+
 export const forgotPassword = data => {
   return dispatch => {
     axios
@@ -139,14 +168,21 @@ export const resetPassword = data => {
         });
       })
       .catch(err => {
-        dispatch({
-          type: ADD_ERROR,
-          payload: {
-            type: "error",
-            message:
-              "There was an error on our side. Please try again letter or contact a member of out team for assistance."
-          }
-        });
+        if (err.message.includes("422")) {
+          dispatch({
+            type: ADD_ERROR,
+            payload: err.response.data
+          });
+        } else {
+          dispatch({
+            type: ADD_ERROR,
+            payload: {
+              type: "error",
+              message:
+                "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+            }
+          });
+        }
       });
   };
 };

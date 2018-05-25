@@ -25,6 +25,8 @@ class LoginFormContainer extends Component {
         this.props.history.push(`/mentor/dashboard`);
       } else if (res.accountType === "Mentee") {
         this.props.history.push(`/mentee/dashboard`);
+      } else if (res.accountType === "University") {
+        this.props.history.push("/university_dashboard");
       }
     });
   };

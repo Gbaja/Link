@@ -89,7 +89,7 @@ class Directory extends Component {
                 <p>
                   {data.degree} {data.graduationYear}
                 </p>
-                <Link to={`profile/${data.accountType}/${data.id}`}>
+                <Link to={`/profile/${data.accountType}/${data.id}`}>
                   View profile
                 </Link>
               </div>

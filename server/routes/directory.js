@@ -9,7 +9,8 @@ exports.get = (req, res) => {
   return models[type]
     .findAndCountAll({
       where: {
-        universityName
+        universityName,
+        status: "Accept"
       },
       limit: 1,
       offset: (pageNum - 1) * 1

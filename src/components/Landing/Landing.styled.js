@@ -28,7 +28,7 @@ export const ContainerTextDiv = styled.div`
 `;
 
 export const ContainerFormDiv = styled.div`
-  margin-left: 3rem;
+  margin: 0 auto;
   margin-top: 5rem;
   max-width: 300px;
   background-color: white;

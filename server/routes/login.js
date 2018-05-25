@@ -43,12 +43,20 @@ exports.post = (req, res) => {
         req.session.user_id = user[0].id;
         if (user[0].accountType === "University") {
           return res.send({
-            name: user[0].name,
+            universityName: user[0].universityName,
             email: user[0].email,
             accountType: user[0].accountType
           });
         } else {
-          return res.send(details(user[0]));
+          if (user[0].status === "Pending") {
+            return res.status(422).send({
+              type: "error",
+              message:
+                "Your university has not accepted your application. Please wait till you receive a confirmation email before logging in."
+            });
+          } else {
+            return res.send(details(user[0]));
+          }
         }
       }
     }
