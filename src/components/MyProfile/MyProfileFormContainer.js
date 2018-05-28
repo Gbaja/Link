@@ -13,9 +13,6 @@ class MyProfileFormContainer extends Component {
 
   onSubmit = values => {
     console.log("VALUES: ", values);
-    const formData = new FormData();
-    formData.append("imageUrl", values.image_url);
-    console.log("form data: ", formData);
     this.props.updateProfile(values).then(res => {
       this.props.history.push(`/mentee/my_profile`);
     });

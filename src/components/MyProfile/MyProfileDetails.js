@@ -31,6 +31,7 @@ class MyProfileDetails extends Component {
     return (
       <div>
         <h1> Your Profile </h1>
+        <img src={imageUrl} />
         <p>Account type: {accountType}</p>
         <p>First name: {firstName}</p>
         <p>Last name: {lastName}</p>
