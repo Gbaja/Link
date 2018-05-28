@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import { deleteAccount } from "../../actions/delete_requests";
+import { FormsSubmitButton } from "../Shared/Shared.styled";
 
 class DeleteButton extends Component {
   deleteAccount = data => () => {
@@ -20,9 +21,9 @@ class DeleteButton extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.deleteAccount(this.props.auth.email)}>
+        <FormsSubmitButton onClick={this.deleteAccount(this.props.auth.email)}>
           Delete
-        </button>
+        </FormsSubmitButton>
       </div>
     );
   }

@@ -9,8 +9,9 @@ class ResetPasswordForm extends Component {
     const { handleSubmit, onSubmit, alert } = this.props;
     return (
       <div>
+        <h1> Change password </h1>
+        {alert && <Alert alert={alert} />}
         <form onSubmit={handleSubmit(onSubmit)}>
-          {alert && <Alert alert={alert} />}
           <Field
             label="Password"
             name="password"

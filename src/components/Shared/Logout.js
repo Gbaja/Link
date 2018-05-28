@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import { logOut } from "../../actions/get_requests";
+import { FormsSubmitButton } from "../Shared/Shared.styled";
 
 class LogOutButton extends Component {
   constructor(props) {
@@ -17,7 +18,9 @@ class LogOutButton extends Component {
   }
 
   render() {
-    return <button onClick={this.onClick}>Log out </button>;
+    return (
+      <FormsSubmitButton onClick={this.onClick}>Log out </FormsSubmitButton>
+    );
   }
 }
 

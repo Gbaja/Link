@@ -23,7 +23,6 @@ class ResetPasswordFormContainer extends Component {
     const { handleSubmit, alert } = this.props;
     return (
       <div>
-        <h1> Change password </h1>
         <ResetPasswordForm
           onSubmit={this.handleFormSubmission}
           handleSubmit={handleSubmit}

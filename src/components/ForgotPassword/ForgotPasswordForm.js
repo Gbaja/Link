@@ -10,8 +10,9 @@ class ForgotPasswordForm extends Component {
     const { handleSubmit, onSubmit, alert } = this.props;
     return (
       <div>
+        <h1> Reset Password </h1>
+        {alert && <Alert alert={alert} />}
         <form onSubmit={handleSubmit(onSubmit)}>
-          {alert && <Alert alert={alert} />}
           <Field
             label="Email"
             name="email"
