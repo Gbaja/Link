@@ -11,9 +11,9 @@ class MyProfileForm extends Component {
     return (
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <p>{auth.email}</p>
-          <p>{auth.accountType}</p>
-          <p>{auth.university}</p>
+          <p>Email: {auth.email}</p>
+          <p>Account type: {auth.accountType}</p>
+          <p>University: {auth.universityName}</p>
           <Field
             label="Picture"
             name="imageUrl"
@@ -63,18 +63,6 @@ class MyProfileForm extends Component {
             component={renderFormFields}
           />
           <Field
-            label="Name of university"
-            name="universityName"
-            component={renderFormFields}
-            select
-            options={{
-              select: "select university",
-              "Durham University": "Durham University",
-              LSE: "LSE",
-              "Kings College London": "Kings College London"
-            }}
-          />
-          <Field
             label="Name of degree"
             name="degree"
             type="text"
@@ -115,6 +103,43 @@ class MyProfileForm extends Component {
             name="socialMediaUrl"
             type="url"
             component={renderFormFields}
+          />
+          <p> What you need help with?</p>
+          <Field
+            label="Resume or cover letter tips and review"
+            name="cv"
+            component={renderFormFields}
+            type="checkbox"
+          />
+          <Field
+            label="Job shadow opportunities"
+            name="shadow"
+            component={renderFormFields}
+            type="checkbox"
+          />
+          <Field
+            label="Mock interviews"
+            name="interview"
+            component={renderFormFields}
+            type="checkbox"
+          />
+          <Field
+            label="Post job and internships"
+            name="job"
+            component={renderFormFields}
+            type="checkbox"
+          />
+          <Field
+            label="Post Graduate Application"
+            name="postgrad"
+            component={renderFormFields}
+            type="checkbox"
+          />
+          <Field
+            label="Professional and career exploration"
+            name="career"
+            component={renderFormFields}
+            type="checkbox"
           />
           <Field
             label="Short biography"

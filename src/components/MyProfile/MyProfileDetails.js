@@ -23,6 +23,12 @@ class MyProfileDetails extends Component {
       industry,
       biography,
       reason,
+      cv,
+      shadow,
+      interview,
+      job,
+      postgrad,
+      career,
       socialMediaUrl,
       availability,
       createdAt
@@ -51,6 +57,15 @@ class MyProfileDetails extends Component {
           <a href={socialMediaUrl}>{socialMediaUrl}</a>
         </p>
         <p>Reason: {reason}</p>
+        <p> Areas of focus</p>
+        <ul>
+          {cv ? <li>Resume or cover letter tips</li> : false}
+          {shadow ? <li>Job shadow opportunities</li> : false}
+          {interview ? <li>Mock Interviews</li> : false}
+          {job ? <li>Post job and internships</li> : false}
+          {postgrad ? <li>Post Graduate Application</li> : false}
+          {career ? <li>Professional and career exploration</li> : false}
+        </ul>
         <p>Short biography: {biography}</p>
         <p> Availability: {availability}</p>
         <p>Date joined: {createdAt.split("T")[0]}</p>
