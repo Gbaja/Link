@@ -9,7 +9,7 @@ class MenteeDashboard extends Component {
   render() {
     return (
       <div>
-        <h1>Mentee Dashboard</h1>
+        <h1>Mentee {this.props.auth.firstName}</h1>
         <LogOutBtn />
         <p>
           <Link to="/mentee/my_profile">My profile</Link>

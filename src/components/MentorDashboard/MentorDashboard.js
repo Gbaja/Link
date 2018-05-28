@@ -9,7 +9,7 @@ class MentorDashboard extends Component {
   render() {
     return (
       <div>
-        <h1>Welcome</h1>
+        <h1>Welcome {this.props.auth.firstName}</h1>
         <LogOutBtn />
         <p>
           {" "}

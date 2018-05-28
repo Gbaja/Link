@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import LandingBackgroundPic from "../LandingBackgroundPic.jpg";
+import LandingBackgroundPic from "../Assets/LandingBackgroundPic.jpg";
 
 export const ContainerDiv = styled.div`
   background-image: url(${LandingBackgroundPic});
