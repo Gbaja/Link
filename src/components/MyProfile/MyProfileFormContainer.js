@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Field, reduxForm, initialize } from "redux-form";
 import { connect } from "react-redux";
 import { updateProfile } from "../../actions/put_requests";
-
+import Alert from "../Shared/Alert";
 import MyProfileForm from "./MyProfileForm";
 
 class MyProfileFormContainer extends Component {
@@ -23,6 +23,7 @@ class MyProfileFormContainer extends Component {
     return (
       <div>
         <h3> Update Profile </h3>
+        {alert && <Alert alert={alert} />}
         <MyProfileForm
           onSubmit={this.onSubmit}
           handleSubmit={handleSubmit}

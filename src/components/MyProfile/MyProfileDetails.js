@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import Alert from "../Shared/Alert";
 
 class MyProfileDetails extends Component {
   render() {
@@ -37,6 +38,7 @@ class MyProfileDetails extends Component {
     return (
       <div>
         <h1> Your Profile </h1>
+        {alert && <Alert alert={this.props.alert} />}
         <img src={imageUrl} />
         <p>Account type: {accountType}</p>
         <p>First name: {firstName}</p>
@@ -76,7 +78,8 @@ class MyProfileDetails extends Component {
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  alert: state.alert
 });
 
 export default connect(mapStateToProps, null)(MyProfileDetails);
