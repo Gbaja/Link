@@ -19,6 +19,12 @@ const details = data => {
     industry: data.industry,
     biography: data.biography,
     reason: data.reason,
+    cv: data.cv,
+    shadow: data.shadow,
+    interview: data.interview,
+    job: data.job,
+    postgrad: data.postgrad,
+    career: data.career,
     socialMediaUrl: data.socialMediaUrl,
     availability: data.availability,
     createdAt: data.createdAt

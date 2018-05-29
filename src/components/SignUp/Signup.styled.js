@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import LandingBackgroundPic from "../LandingBackgroundPic.jpg";
+import LandingBackgroundPic from "../Assets/LandingBackgroundPic.jpg";
 
 export const SignupContainerDiv = styled.div`
   background-image: url(${LandingBackgroundPic});

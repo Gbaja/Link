@@ -12,6 +12,7 @@ class IndividualProfilePage extends Component {
   render() {
     console.log(this.props.profile);
     const {
+      id,
       firstName,
       lastName,
       location,
@@ -51,6 +52,7 @@ class IndividualProfilePage extends Component {
         <p>{reason}</p>
         <p>{socialMediaUrl}</p>
         <p>{availability}</p>
+        <Link to="/request_mentorship/id">Request mentorship</Link>
       </div>
     );
   }

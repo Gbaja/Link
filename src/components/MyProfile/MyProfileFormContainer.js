@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Field, reduxForm, initialize } from "redux-form";
 import { connect } from "react-redux";
 import { updateProfile } from "../../actions/put_requests";
-
 import MyProfileForm from "./MyProfileForm";
 
 class MyProfileFormContainer extends Component {
@@ -13,9 +12,6 @@ class MyProfileFormContainer extends Component {
 
   onSubmit = values => {
     console.log("VALUES: ", values);
-    const formData = new FormData();
-    formData.append("imageUrl", values.image_url);
-    console.log("form data: ", formData);
     this.props.updateProfile(values).then(res => {
       this.props.history.push(`/mentee/my_profile`);
     });
@@ -25,7 +21,6 @@ class MyProfileFormContainer extends Component {
     const { handleSubmit } = this.props;
     return (
       <div>
-        <h3> Update Profile </h3>
         <MyProfileForm
           onSubmit={this.onSubmit}
           handleSubmit={handleSubmit}

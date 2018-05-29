@@ -1,13 +1,14 @@
 import React from "react";
+import { AlertErrorP, AlertSuccessP } from "./Alert.styled";
 
 const Alert = props => {
   const alert = props.alert;
   return (
     <div>
       {alert.type === "error" ? (
-        <p>{alert.message}</p>
+        <AlertErrorP>{alert.message}</AlertErrorP>
       ) : alert.type === "success" ? (
-        <p>{alert.message}</p>
+        <AlertSuccessP>{alert.message}</AlertSuccessP>
       ) : (
         <p />
       )}
