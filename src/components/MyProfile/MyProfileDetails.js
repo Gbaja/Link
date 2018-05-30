@@ -11,7 +11,8 @@ import {
   ProfileTextP,
   ProfileWhatP,
   ProfileHeadingH3,
-  ProfileAltImageDiv
+  ProfileAltImageDiv,
+  ProfileIconI
 } from "./MyProfile.styled";
 import { FormsSubmitButton } from "../Shared/Shared.styled";
 
@@ -56,7 +57,10 @@ class MyProfileDetails extends Component {
             <ProfileImg src={imageUrl} />
           ) : (
             <ProfileAltImageDiv>
-              <i className="fas fa-user-alt" />
+              <i
+                style={{ width: "inherit", height: "inherit" }}
+                className="fas fa-user-alt"
+              />
             </ProfileAltImageDiv>
           )}
           <ProfileWhatP>Account type</ProfileWhatP>

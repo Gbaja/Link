@@ -6,7 +6,7 @@ import { pendingAction } from "../../actions/put_requests";
 class ActionButtons extends Component {
   acceptHandler = () => {
     const body = {
-      id: this.props.user,
+      email: this.props.user,
       status: "Accept"
     };
     this.props.pendingAction(body);
@@ -16,12 +16,10 @@ class ActionButtons extends Component {
   };
   rejectHandler = () => {
     const body = {
-      id: this.props.user,
+      email: this.props.user,
       status: "Reject"
     };
-    this.props.pendingAction(body).then(res => {
-      window.location.reload();
-    });
+    this.props.pendingAction(body);
   };
 
   render() {

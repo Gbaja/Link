@@ -2,6 +2,7 @@ const models = require("../models");
 
 exports.get = (req, res) => {
   const { universityName } = req.params;
+  console.log(universityName);
   Promise.all([
     models.MenteeRegistrations.findAll({
       where: { universityName, status: "Pending" }
@@ -10,7 +11,7 @@ exports.get = (req, res) => {
       where: { universityName, status: "Pending" }
     })
   ]).then(([mentee, mentor]) => {
-    console.log([mentee, mentor]);
+    // console.log("PENDING : ", [mentee, mentor]);
     const allData = mentee.concat(mentor);
     const data = allData.map(person => {
       return {

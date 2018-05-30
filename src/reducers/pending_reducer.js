@@ -6,7 +6,7 @@ export default (state = [], action) => {
     return [...state, ...action.payload];
   case "USER_ACCEPTED":
     return state.filter(user => {
-      return user.id !== action.payload;
+      return user.email !== action.payload;
     });
   default:
     return state;

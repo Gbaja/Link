@@ -26,7 +26,7 @@ class PendingApplications extends Component {
                   <td>{data.email}</td>
                   <td>{data.universityName}</td>
                   <td>
-                    <ActionButtons user={data.id} />
+                    <ActionButtons user={data.email} />
                   </td>
                 </tr>
               ))

@@ -4,13 +4,14 @@ const acceptanceEmail = require("../utils/email_templates/acceptance_email");
 const rejectionEmail = require("../utils/email_templates/rejection_email");
 
 exports.put = (req, res) => {
-  const { id, status } = req.body;
+  const { email, status } = req.body;
+  console.log("email: ", email);
   Promise.all([
     models.MentorRegistrations.findOne({
-      where: { id }
+      where: { email }
     }),
     models.MenteeRegistrations.findOne({
-      where: { id }
+      where: { email }
     })
   ]).then(data => {
     if (data.every(x => x === null)) {
@@ -22,6 +23,7 @@ exports.put = (req, res) => {
     const user = data.filter(each => {
       return each !== null;
     });
+    console.log("USER: ", user);
     const type = getModelFromType(user[0].accountType.toLowerCase());
     console.log("TYPE: ", type);
     models[type]
