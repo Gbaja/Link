@@ -3,6 +3,13 @@ import { Link } from "react-router-dom";
 
 const Directory = props => {
   const data = props.details;
+  if (data.length === 0) {
+    return (
+      <div>
+        <p>You currently have no "mentors/mentees" in your directory</p>
+      </div>
+    );
+  }
   return data.map(each => {
     return (
       <div key={each.id}>
