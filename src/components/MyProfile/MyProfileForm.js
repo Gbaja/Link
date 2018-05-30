@@ -171,9 +171,8 @@ class MyProfileForm extends Component {
               select
               options={{
                 "": "",
-                "Looking for a mentor": "Looking for a mentor",
-                "Not currently looking for to mentor":
-                  "Not currently looking for to mentor"
+                "I am available": "I am available",
+                "Currently unavailable": "Currently unavailable"
               }}
             />
             <FormsSubmitButton type="submit">Update profile</FormsSubmitButton>
