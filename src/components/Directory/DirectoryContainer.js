@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { fetchDirectory } from "../../actions/get_requests";
+import { fetchMentees, fetchMentors } from "../../actions/get_requests";
 import SearchFormContainer from "../SearchForm/SearchFormContainer";
 import Directory from "./Directory";
 
@@ -69,8 +69,11 @@ class DirectoryContainer extends Component {
   }
 }
 const mapStateToProps = state => ({
-  directory: state.directory,
+  mentees: state.mentees,
+  mentors: state.mentors,
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { fetchDirectory })(DirectoryContainer);
+export default connect(mapStateToProps, { fetchMentees, fetchMentors })(
+  DirectoryContainer
+);

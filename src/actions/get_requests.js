@@ -6,7 +6,9 @@ import {
   FETCH_DIRECTORY,
   FETCH_PROFILE,
   FETCH_UNIVERSITIES,
-  FETCH_PENDING
+  FETCH_PENDING,
+  FETCH_MENTORS,
+  FETCH_MENTEES
 } from "./types";
 
 export const logOut = callback => {
@@ -33,6 +35,54 @@ export const fetchDirectory = (pageNum, accountType, uni) => {
       })
       .catch(err => {
         console.log("FETCH MENTORS ERR: ", err);
+        dispatch({
+          type: ADD_ERROR,
+          payload: {
+            type: "error",
+            message:
+              "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+          }
+        });
+      });
+  };
+};
+
+export const fetchMentors = (pageNum, accountType, uni) => {
+  return dispatch => {
+    return axios
+      .get(`/api/directory/${pageNum}/${accountType}/${uni}`)
+      .then(response => {
+        dispatch({
+          type: FETCH_MENTORS,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        console.log("FETCH MENTORS ERR: ", err);
+        dispatch({
+          type: ADD_ERROR,
+          payload: {
+            type: "error",
+            message:
+              "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+          }
+        });
+      });
+  };
+};
+
+export const fetchMentees = (pageNum, accountType, uni) => {
+  return dispatch => {
+    return axios
+      .get(`/api/directory/${pageNum}/${accountType}/${uni}`)
+      .then(response => {
+        dispatch({
+          type: FETCH_MENTEES,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        console.log("FETCH MENTEE ERR: ", err);
         dispatch({
           type: ADD_ERROR,
           payload: {
