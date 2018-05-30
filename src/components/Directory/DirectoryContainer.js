@@ -58,6 +58,7 @@ class DirectoryContainer extends Component {
             showPage={this.showPage}
             numberOfPages={this.state.numberOfPages}
           />
+
         </div>
       );
     }
