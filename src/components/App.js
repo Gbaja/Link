@@ -11,7 +11,7 @@ import ResetPasswordForm from "./ForgotPassword/ResetPasswordFormContainer";
 import MentorDashboard from "./MentorDashboard/MentorDashboard";
 import MenteeDashboard from "./MenteeDashboard/MenteeDashboard";
 import IndividualProfile from "./IndividualProfile/IndividualProfile";
-import Directory from "./Directory/Directory";
+import Directory from "./Directory/DirectoryContainer";
 import MyProfileDetails from "./MyProfile/MyProfileDetails";
 import MyProfileForm from "./MyProfile/MyProfileFormContainer";
 import RequestForm from "./RequestMentorship/RequestMentorshipFormContainer";
