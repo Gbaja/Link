@@ -1,5 +1,11 @@
 import React from "react";
-import { FormsLabel, FormsInput, FormsErrorsP } from "./FormElements.styled";
+import {
+  FormsLabel,
+  FormsInput,
+  FormsTextarea,
+  FormsErrorsP,
+  FormsSelect
+} from "./FormElements.styled";
 
 export const renderFormFields = field => {
   const {
@@ -10,7 +16,7 @@ export const renderFormFields = field => {
     return (
       <div>
         <FormsLabel>{field.label}</FormsLabel>
-        <textarea {...field.input} />
+        <FormsTextarea {...field.input} />
         <FormsErrorsP>{touched ? error : ""}</FormsErrorsP>
       </div>
     );
@@ -28,7 +34,7 @@ export const renderFormFields = field => {
     return (
       <div>
         <FormsLabel>{field.label}</FormsLabel>
-        <select {...field.input}>
+        <FormsSelect {...field.input}>
           {Object.keys(field.options).map(val => {
             return (
               <option key={val} value={val}>
@@ -36,7 +42,7 @@ export const renderFormFields = field => {
               </option>
             );
           })}
-        </select>
+        </FormsSelect>
         <FormsErrorsP>{touched ? error : ""}</FormsErrorsP>
       </div>
     );
