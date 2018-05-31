@@ -8,6 +8,7 @@ import profileReducer from "./profile_reducer";
 import univesitiesReducer from "./universities_reducer";
 import pendingReducer from "./pending_reducer";
 import pendingRequestsReducer from "./pending_requests_reducer";
+import filterReducer from "./filter_reducer";
 
 const rootReducer = combineReducers({
   form: formReducer,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   profile: profileReducer,
   universities: univesitiesReducer,
   pending: pendingReducer,
-  pendingRequests: pendingRequestsReducer
+  pendingRequests: pendingRequestsReducer,
+  filter: filterReducer
 });
 
 export default rootReducer;

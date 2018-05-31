@@ -22,10 +22,12 @@ export const logOut = callback => {
   };
 };
 
-export const fetchDirectory = (pageNum, accountType, uni) => {
+export const fetchDirectory = (pageNum, accountType, uni, filterName) => {
   return dispatch => {
     return axios
-      .get(`/api/directory/${pageNum}/${accountType}/${uni}`)
+      .get(`/api/directory/${pageNum}/${accountType}/${uni}`, {
+        params: { name: filterName }
+      })
       .then(response => {
         dispatch({
           type: FETCH_DIRECTORY,
