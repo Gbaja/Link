@@ -3,7 +3,6 @@ require("env2")("./config.env");
 
 let sequelize = null;
 if (process.env.USERS_DB_URL) {
-  console.log("DATABASE: ", process.env.USERS_DB_URL);
   const match = process.env.USERS_DB_URL.match(
     /postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/
   );
