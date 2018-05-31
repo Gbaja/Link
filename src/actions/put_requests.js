@@ -53,7 +53,7 @@ export const pendingAction = data => {
         });
         dispatch({
           type: "USER_ACCEPTED",
-          payload: data.id
+          payload: data.email
         });
       })
       .catch(err => {

@@ -52,17 +52,13 @@ class DirectoryContainer extends Component {
       const mentorsDetails = this.props.directory.rows;
       return (
         <div>
-          <h1>All {`${this.props.match.params.type}s`}</h1>
           <SearchFormContainer />
-          <h3> People </h3>
-          <Directory details={mentorsDetails} />
-          {this.state.numberOfPages.map(num => {
-            return (
-              <span key={num} onClick={this.showPage(num)}>
-                {num}
-              </span>
-            );
-          })}
+          <Directory
+            details={mentorsDetails}
+            showPage={this.showPage}
+            numberOfPages={this.state.numberOfPages}
+          />
+
         </div>
       );
     }
