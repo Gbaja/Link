@@ -6,11 +6,10 @@ import { renderFormFields } from "../../helpers/reduxFields";
 
 class LogInForm extends Component {
   render() {
-    const { handleSubmit, onSubmit, alert } = this.props;
+    const { handleSubmit, onSubmit } = this.props;
     return (
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          {alert && <p>{alert}</p>}
           <p> What you need help with?</p>
           <Field
             label="Resume or cover letter tips and review"
@@ -50,7 +49,7 @@ class LogInForm extends Component {
           />
           <Field
             label="Message"
-            name="message"
+            name="requestMessage"
             textarea
             component={renderFormFields}
           />

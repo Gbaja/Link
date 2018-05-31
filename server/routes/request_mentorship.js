@@ -25,6 +25,7 @@ exports.post = (req, res) => {
         requestMessage,
         mentorEmail: mentor.email
       }).then(data => {
+        console.log("REQUEST MENTORSHIP DATA: ", data);
         res.send({ type: "success", message: "Your request has been sent." });
       });
     }

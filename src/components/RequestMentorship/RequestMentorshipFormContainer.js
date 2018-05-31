@@ -4,9 +4,10 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
-import { resetError } from "../../actions/post_requests";
+import { resetError, requestMentorship } from "../../actions/post_requests";
 import { RESET_ERROR } from "../../actions/types";
 import RequestMentorshipForm from "./RequestMentorshipForm";
+import Alert from "../Shared/Alert";
 
 class RequestMentorshipFormContainer extends Component {
   componentDidMount() {
@@ -14,17 +15,20 @@ class RequestMentorshipFormContainer extends Component {
   }
 
   handleFormSubmission = values => {
-    console.log("Request form values: ", values);
+    values.mentorId = Number(this.props.match.params.id);
+    values.menteeEmail = this.props.auth.email;
+    console.log(values);
+    this.props.requestMentorship(values);
   };
   render() {
     const { handleSubmit, alert } = this.props;
     return (
       <div>
         <h1>Mentorship Request Form </h1>
+        {alert && <Alert alert={alert} />}
         <RequestMentorshipForm
           onSubmit={this.handleFormSubmission}
           handleSubmit={handleSubmit}
-          alert={alert}
         />
       </div>
     );
@@ -36,7 +40,8 @@ const validate = values => {
 };
 
 const mapStateToProps = state => ({
-  alert: state.alert
+  alert: state.alert,
+  auth: state.auth
 });
 
 export default reduxForm({
@@ -44,6 +49,8 @@ export default reduxForm({
   form: "RequestForm"
 })(
   withRouter(
-    connect(mapStateToProps, { resetError })(RequestMentorshipFormContainer)
+    connect(mapStateToProps, { resetError, requestMentorship })(
+      RequestMentorshipFormContainer
+    )
   )
 );

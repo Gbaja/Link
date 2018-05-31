@@ -15,6 +15,7 @@ class IndividualProfilePage extends Component {
       id,
       firstName,
       lastName,
+      email,
       location,
       gender,
       ethnicity,
@@ -52,14 +53,19 @@ class IndividualProfilePage extends Component {
         <p>{reason}</p>
         <p>{socialMediaUrl}</p>
         <p>{availability}</p>
-        <Link to="/request_mentorship/id">Request mentorship</Link>
+        {this.props.auth.accountType !== "Mentor" ? (
+          <Link to={`/request_mentorship/${id}`}>Request mentorship</Link>
+        ) : (
+          ""
+        )}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  profile: state.profile
+  profile: state.profile,
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, {

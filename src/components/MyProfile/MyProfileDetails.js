@@ -11,8 +11,7 @@ import {
   ProfileTextP,
   ProfileWhatP,
   ProfileHeadingH3,
-  ProfileAltImageDiv,
-  ProfileIconI
+  ProfileAltImageDiv
 } from "./MyProfile.styled";
 import { FormsSubmitButton } from "../Shared/Shared.styled";
 

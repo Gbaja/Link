@@ -32,7 +32,7 @@ router.post("/api/resetPassword", resetPassword.post);
 router.get("/api/profile/:id/:accountType", individualProfile.get);
 router.delete("/api/delete", deleteAccount.delete);
 router.get("/api/all/:universityName/:pageNumber", all.get);
-router.post("/api/request", requestMentorship.post);
+router.post("/api/requestMentorship", requestMentorship.post);
 router.post("/api/newUni", newUniversity.post);
 router.get("/api/allUni", allUniversities.get);
 router.get("/api/pending/:universityName", pendingApplications.get);
