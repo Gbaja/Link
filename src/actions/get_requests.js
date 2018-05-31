@@ -6,7 +6,8 @@ import {
   FETCH_DIRECTORY,
   FETCH_PROFILE,
   FETCH_UNIVERSITIES,
-  FETCH_PENDING
+  FETCH_PENDING,
+  FETCH_PENDING_REQUESTS
 } from "./types";
 
 export const logOut = callback => {
@@ -105,6 +106,30 @@ export const fetchPending = uniName => {
       })
       .catch(err => {
         console.log("FETCH PENDING ERR: ", err);
+        dispatch({
+          type: ADD_ERROR,
+          payload: {
+            type: "error",
+            message:
+              "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+          }
+        });
+      });
+  };
+};
+
+export const fetchPendingRequests = mentorEmail => {
+  return dispatch => {
+    axios
+      .get("/api/pendingRequests", { params: { mentorEmail: mentorEmail } })
+      .then(response => {
+        dispatch({
+          type: FETCH_PENDING_REQUESTS,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        console.log("FETCH PENDING REQUEST ERR: ", err);
         dispatch({
           type: ADD_ERROR,
           payload: {

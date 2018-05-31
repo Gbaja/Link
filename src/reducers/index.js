@@ -7,6 +7,7 @@ import directory_reducer from "./directory_reducer";
 import profileReducer from "./profile_reducer";
 import univesitiesReducer from "./universities_reducer";
 import pendingReducer from "./pending_reducer";
+import pendingRequestsReducer from "./pending_requests_reducer";
 
 const rootReducer = combineReducers({
   form: formReducer,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   directory: directory_reducer,
   profile: profileReducer,
   universities: univesitiesReducer,
-  pending: pendingReducer
+  pending: pendingReducer,
+  pendingRequests: pendingRequestsReducer
 });
 
 export default rootReducer;

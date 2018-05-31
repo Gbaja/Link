@@ -19,6 +19,7 @@ import AdminDashboard from "./AdminDashboard/AdminDashboard";
 import NewUniversityForm from "./NewUniversity/NewUniversityFormContainer";
 import UniversityDashboard from "./UniversityDashboard/UniversityDashboard";
 import PendingApplications from "./PendingApplications/PendingApplicationsContainer";
+import PendingRequests from "./PendingRequests/PendingRequestsContainer";
 
 class App extends Component {
   isMentor = () => this.props.auth.accountType === "Mentor";
@@ -136,6 +137,11 @@ class App extends Component {
             exact
             path="/pending_applications"
             render={this.renderUniversityPages(PendingApplications)}
+          />
+          <Route
+            exact
+            path="/mentor/requests"
+            component={this.renderMentorPages(PendingRequests)}
           />
           <Route exact path="/forgot_password" component={ForgotPasswordForm} />
           <Route exact path="/reset_password" component={ResetPasswordForm} />
