@@ -4,11 +4,13 @@ import { connect } from "react-redux";
 
 import LogOutBtn from "../Shared/Logout";
 import DeleteAccount from "../Shared/DeleteAccount";
+import Header from "../Shared/Header";
 
 class MentorDashboard extends Component {
   render() {
     return (
       <div>
+        <Header />
         <h1>Welcome {this.props.auth.firstName}</h1>
         <LogOutBtn />
         <p>

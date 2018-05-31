@@ -5,6 +5,7 @@ import Alert from "../Shared/Alert";
 import { fetchPending } from "../../actions/get_requests";
 import { resetError } from "../../actions/post_requests";
 import PendingApplications from "./PendingApplications";
+import Header from "../Shared/Header";
 
 class PendingApplicationsContainer extends Component {
   componentDidMount() {
@@ -13,14 +14,11 @@ class PendingApplicationsContainer extends Component {
     }
   }
 
-  // componentWillUnmount() {
-  //   this.props.resetError();
-  // }
-
   render() {
     const { alert, pending } = this.props;
     return (
       <div>
+        <Header />
         {alert && <Alert alert={alert} />}
         <PendingApplications data={pending} />
       </div>

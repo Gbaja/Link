@@ -4,12 +4,14 @@ import { connect } from "react-redux";
 
 import LogOutBtn from "../Shared/Logout";
 import DeleteAccount from "../Shared/DeleteAccount";
+import Header from "../Shared/Header";
 
 class MenteeDashboard extends Component {
   render() {
     return (
       <div>
-        <h1>Mentee {this.props.auth.firstName}</h1>
+        <Header />
+        <h1>Welcome {this.props.auth.firstName}</h1>
         <LogOutBtn />
         <p>
           <Link to="/mentee/my_profile">My profile</Link>

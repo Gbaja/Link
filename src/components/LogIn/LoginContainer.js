@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import { logIn, resetError } from "../../actions/post_requests";
 import { RESET_ERROR } from "../../actions/types";
 import LogInForm from "./Login_form";
-import Logo from "./Logo.png";
+import Logo from "../Assets/Logo.png";
 import { LogoImg } from "./Login.Styled";
 
 class LoginFormContainer extends Component {
