@@ -1,5 +1,3 @@
-//const models = require("./models");
-
 const Requests = (sequelize, DataTypes) => {
   const Requests = sequelize.define("Requests", {
     cv: DataTypes.BOOLEAN,
@@ -8,11 +6,8 @@ const Requests = (sequelize, DataTypes) => {
     job: DataTypes.BOOLEAN,
     postgrad: DataTypes.BOOLEAN,
     career: DataTypes.BOOLEAN,
-    menteeEmail: DataTypes.STRING,
-    mentorEmail: DataTypes.STRING,
     requestMessage: DataTypes.STRING,
-    responseMessage: DataTypes.STRING,
-    matched: DataTypes.STRING,
+    status: DataTypes.STRING,
     createdAt: {
       type: DataTypes.DATE(3)
     },
@@ -20,6 +15,11 @@ const Requests = (sequelize, DataTypes) => {
       type: DataTypes.DATE(3)
     }
   });
+
+  Requests.associate = models => {
+    Requests.belongsTo(models.MenteeRegistrations);
+    Requests.belongsTo(models.MentorRegistrations);
+  };
 
   return Requests;
 };

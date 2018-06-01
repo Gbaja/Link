@@ -120,10 +120,12 @@ export const fetchPending = uniName => {
   };
 };
 
-export const fetchPendingRequests = mentorEmail => {
+export const fetchPendingRequests = mentorId => {
   return dispatch => {
     axios
-      .get("/api/pendingRequests", { params: { mentorEmail: mentorEmail } })
+      .get("/api/pendingRequests", {
+        params: { MentorRegistrationId: mentorId }
+      })
       .then(response => {
         dispatch({
           type: FETCH_PENDING_REQUESTS,

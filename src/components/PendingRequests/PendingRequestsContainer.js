@@ -10,13 +10,12 @@ import Heading from "../Shared/Header";
 class PendingApplicationsContainer extends Component {
   componentDidMount() {
     if (this.props.pendingRequests.length === 0) {
-      this.props.fetchPendingRequests(this.props.auth.email);
+      this.props.fetchPendingRequests(this.props.auth.id);
     }
   }
 
   render() {
     const { alert, pendingRequests } = this.props;
-    console.log(pendingRequests);
     return (
       <div>
         <Heading />

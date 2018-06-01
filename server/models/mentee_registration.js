@@ -1,4 +1,3 @@
-const models = require("./index");
 const { hashPassword } = require("../utils/hash_password");
 
 const MenteeRegistrations = (sequelize, DataTypes) => {
@@ -40,20 +39,16 @@ const MenteeRegistrations = (sequelize, DataTypes) => {
       type: DataTypes.DATE(3)
     }
   });
-  MenteeRegistrations.associate = models => {
-    // 1:M
-    MenteeRegistrations.hasMany(models.Requests, {
-      foreignKey: {
-        name: "menteeId",
-        field: "menteeId"
-      }
-    });
-  };
+
   MenteeRegistrations.beforeCreate((user, options) => {
     return hashPassword(user.password).then(hashedPw => {
       user.password = hashedPw;
     });
   });
+
+  MenteeRegistrations.associate = models => {
+    MenteeRegistrations.hasMany(models.Requests);
+  };
 
   return MenteeRegistrations;
 };

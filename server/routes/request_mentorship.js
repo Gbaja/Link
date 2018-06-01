@@ -8,12 +8,24 @@ exports.post = (req, res) => {
     job,
     postgrad,
     career,
-    menteeEmail,
+    MenteeRegistrationId,
     requestMessage,
-    mentorId
+    MentorRegistrationId
   } = req.body;
-  models.MentorRegistrations.findOne({ where: { id: mentorId } }).then(
-    mentor => {
+
+  models.Requests.findOne({
+    where: {
+      MenteeRegistrationId: MenteeRegistrationId,
+      MentorRegistrationId: MentorRegistrationId
+    }
+  }).then(request => {
+    if (request) {
+      return res.status(422).send({
+        type: "error",
+        message:
+          "It seems you have already requested mentorship from this mentor before. Please check your requests for the status of the request"
+      });
+    } else {
       models.Requests.create({
         cv,
         shadow,
@@ -21,13 +33,14 @@ exports.post = (req, res) => {
         job,
         postgrad,
         career,
-        menteeEmail,
         requestMessage,
-        mentorEmail: mentor.email
+        MentorRegistrationId,
+        MenteeRegistrationId,
+        status: "Pending"
       }).then(data => {
         console.log("REQUEST MENTORSHIP DATA: ", data);
         res.send({ type: "success", message: "Your request has been sent." });
       });
     }
-  );
+  });
 };

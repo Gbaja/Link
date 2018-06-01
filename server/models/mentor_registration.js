@@ -1,5 +1,3 @@
-//LOOK INTO DATATYPE VISUAL FOR PASSWORD
-const models = require("./index");
 const { hashPassword } = require("../utils/hash_password");
 
 const MentorRegistrations = (sequelize, DataTypes) => {
@@ -47,6 +45,11 @@ const MentorRegistrations = (sequelize, DataTypes) => {
       user.password = hashedPw;
     });
   });
+
+  MentorRegistrations.associate = models => {
+    MentorRegistrations.hasMany(models.Requests);
+  };
+
   return MentorRegistrations;
 };
 
