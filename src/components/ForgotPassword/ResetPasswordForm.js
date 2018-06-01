@@ -4,7 +4,7 @@ import { Field } from "redux-form";
 import { renderFormFields } from "../../helpers/reduxFields";
 import Alert from "../Shared/Alert";
 import Header from "../Shared/Header";
-import { FormsSubmitButton } from "../Shared/Shared.styled";
+import { FormsSubmitButton, ContainerDiv } from "../Shared/Shared.styled";
 
 class ResetPasswordForm extends Component {
   render() {
@@ -12,23 +12,25 @@ class ResetPasswordForm extends Component {
     return (
       <div>
         <Header />
-        <h1> Change password </h1>
-        {alert && <Alert alert={alert} />}
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Field
-            label="Password"
-            name="password"
-            type="password"
-            component={renderFormFields}
-          />
-          <Field
-            label="Confirm password"
-            name="confirmPassword"
-            type="password"
-            component={renderFormFields}
-          />
-          <FormsSubmitButton type="submit">Save</FormsSubmitButton>
-        </form>
+        <ContainerDiv>
+          <h1> Change password </h1>
+          {alert && <Alert alert={alert} />}
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Field
+              label="Password"
+              name="password"
+              type="password"
+              component={renderFormFields}
+            />
+            <Field
+              label="Confirm password"
+              name="confirmPassword"
+              type="password"
+              component={renderFormFields}
+            />
+            <FormsSubmitButton type="submit">Save</FormsSubmitButton>
+          </form>
+        </ContainerDiv>
       </div>
     );
   }

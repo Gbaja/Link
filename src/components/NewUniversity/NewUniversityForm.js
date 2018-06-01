@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 
 import { renderFormFields } from "../../helpers/reduxFields";
 import Alert from "../Shared/Alert";
-import { FormsSubmitButton } from "../Shared/Shared.styled";
+import {
+  FormsSubmitButton,
+  ContainerDiv,
+  HeadingH1
+} from "../Shared/Shared.styled";
 import Header from "../Shared/Header";
 
 class NewUniversityForm extends Component {
@@ -14,23 +18,25 @@ class NewUniversityForm extends Component {
       <div>
         <div>
           <Header />
-          <h1>New University Form</h1>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            {alert && <Alert alert={alert} />}
-            <Field
-              label="UniversityName"
-              name="universityName"
-              type="text"
-              component={renderFormFields}
-            />
-            <Field
-              label="email"
-              name="email"
-              type="text"
-              component={renderFormFields}
-            />
-            <FormsSubmitButton type="submit">Add</FormsSubmitButton>
-          </form>
+          <ContainerDiv>
+            <HeadingH1>New University Form</HeadingH1>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              {alert && <Alert alert={alert} />}
+              <Field
+                label="University Name"
+                name="universityName"
+                type="text"
+                component={renderFormFields}
+              />
+              <Field
+                label="Email"
+                name="email"
+                type="text"
+                component={renderFormFields}
+              />
+              <FormsSubmitButton type="submit">Add</FormsSubmitButton>
+            </form>
+          </ContainerDiv>
         </div>
       </div>
     );

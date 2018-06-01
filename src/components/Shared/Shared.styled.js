@@ -10,3 +10,14 @@ export const FormsSubmitButton = styled.button`
   margin: 1rem auto;
   margin-right: 0.3rem;
 `;
+
+export const ContainerDiv = styled.div`
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 1rem;
+  text-align: center;
+`;
+
+export const HeadingH1 = styled.h1`
+  margin-bottom: 1rem;
+`;
