@@ -11,7 +11,7 @@ if (process.env.USERS_DB_URL) {
     protocol: "postgres",
     port: match[4],
     host: match[3],
-    logging: false,
+    logging: console.log,
     dialectOptions: {
       ssl: true
     },

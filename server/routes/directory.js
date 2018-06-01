@@ -8,8 +8,11 @@ const { details } = require("../utils/details");
 exports.get = (req, res) => {
   const { pageNum, accountType, universityName } = req.params;
   const type = getModelFromType(accountType.toLowerCase());
+  console.log("QUERYYYYY: ", req.query);
   const name = req.query.name || "";
-  console.log("NAME: ", name);
+  const location = req.query.location || "";
+  const industry = req.query.industry || "";
+  //console.log("NAME: ", name);
   return models[type]
     .findAndCountAll({
       where: {
@@ -18,7 +21,13 @@ exports.get = (req, res) => {
         [Op.or]: [
           { firstName: { [Op.iLike]: name + "%" } },
           { lastName: { [Op.iLike]: name + "%" } }
-        ]
+        ],
+        location: {
+          [Op.iLike]: location + "%"
+        },
+        industry: {
+          [Op.iLike]: industry + "%"
+        }
       },
       limit: 1,
       offset: (pageNum - 1) * 1

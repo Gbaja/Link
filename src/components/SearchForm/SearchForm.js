@@ -22,27 +22,16 @@ class SearchForm extends Component {
             select
             options={{
               select: "select location",
-              "United Kingdom": "United Kingdom",
+              UK: "United Kingdom",
               Nigeria: "Nigeria"
             }}
           />
           <Field
-            name="universityName"
+            name="industry"
             component={renderFormFields}
             select
             options={{
-              select: "select university",
-              "Durham University": "Durham University",
-              LSE: "LSE",
-              "Kings College London": "Kings College London"
-            }}
-          />
-          <Field
-            name="mentorIndustry"
-            component={renderFormFields}
-            select
-            options={{
-              "": "",
+              select: "select industry",
               "Not disclosed": "Not disclosed",
               "Banking&Finance": "Banking&Finance",
               Technology: "Technology",
