@@ -5,23 +5,30 @@ import { withRouter } from "react-router-dom";
 
 import Logo from "../Assets/Logo.png";
 import LogoutButton from "./Logout";
+import { ContainerDiv, ButtonsContainerDiv } from "./Header.Styled";
+import { FormsSubmitButton } from "./Shared.styled";
 
 class Header extends Component {
   render() {
     return (
-      <div>
-        <img src={Logo} style={{ width: "200px", height: "200px" }} />
+      <ContainerDiv>
+        <img src={Logo} style={{ width: "120px", height: "120px" }} />
         {this.props.auth ? (
-          <div>
+          <ButtonsContainerDiv>
             <LogoutButton />
-          </div>
+          </ButtonsContainerDiv>
         ) : (
-          <div>
+          <ButtonsContainerDiv>
             {" "}
-            <Link to="/signup_form">Sign up</Link> <Link to="/">Log in</Link>
-          </div>
+            <FormsSubmitButton>
+              <Link to="/signup_form">Sign up</Link>
+            </FormsSubmitButton>{" "}
+            <FormsSubmitButton>
+              <Link to="/">Log in</Link>
+            </FormsSubmitButton>
+          </ButtonsContainerDiv>
         )}
-      </div>
+      </ContainerDiv>
     );
   }
 }

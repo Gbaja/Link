@@ -12,7 +12,6 @@ class MentorDashboard extends Component {
       <div>
         <Header />
         <h1>Welcome {this.props.auth.firstName}</h1>
-        <LogOutBtn />
         <p>
           {" "}
           <Link to="/mentor/my_profile">My profile</Link>
@@ -27,7 +26,7 @@ class MentorDashboard extends Component {
         </p>
         <p>
           {" "}
-          <Link to="/mentor/requests"> View pending requests </Link>
+          <Link to="/mentor/requests"> View requests </Link>
         </p>
         <DeleteAccount />
       </div>

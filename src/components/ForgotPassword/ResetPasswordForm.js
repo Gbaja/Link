@@ -4,6 +4,7 @@ import { Field } from "redux-form";
 import { renderFormFields } from "../../helpers/reduxFields";
 import Alert from "../Shared/Alert";
 import Header from "../Shared/Header";
+import { FormsSubmitButton } from "../Shared/Shared.styled";
 
 class ResetPasswordForm extends Component {
   render() {
@@ -26,7 +27,7 @@ class ResetPasswordForm extends Component {
             type="password"
             component={renderFormFields}
           />
-          <button type="submit">Save</button>
+          <FormsSubmitButton type="submit">Save</FormsSubmitButton>
         </form>
       </div>
     );

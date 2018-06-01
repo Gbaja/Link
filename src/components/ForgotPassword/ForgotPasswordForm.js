@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { renderFormFields } from "../../helpers/reduxFields";
 import Alert from "../Shared/Alert";
 import Header from "../Shared/Header";
+import { FormsSubmitButton } from "../Shared/Shared.styled";
 
 class ForgotPasswordForm extends Component {
   render() {
@@ -21,8 +22,10 @@ class ForgotPasswordForm extends Component {
             type="email"
             component={renderFormFields}
           />
-          <button type="submit">Reset</button>
-          <Link to="/">Cancel</Link>
+          <FormsSubmitButton type="submit">Reset</FormsSubmitButton>
+          <FormsSubmitButton>
+            <Link to="/">Cancel</Link>
+          </FormsSubmitButton>
         </form>
       </div>
     );

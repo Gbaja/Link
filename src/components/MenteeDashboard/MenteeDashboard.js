@@ -12,7 +12,6 @@ class MenteeDashboard extends Component {
       <div>
         <Header />
         <h1>Welcome {this.props.auth.firstName}</h1>
-        <LogOutBtn />
         <p>
           <Link to="/mentee/my_profile">My profile</Link>
         </p>

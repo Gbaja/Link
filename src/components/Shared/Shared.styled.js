@@ -7,6 +7,5 @@ export const FormsSubmitButton = styled.button`
   padding: 0.5rem;
   width: 110px;
   font-size: 1rem;
-  display: block;
   margin: 1rem auto;
 `;
