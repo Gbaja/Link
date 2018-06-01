@@ -121,11 +121,37 @@ export const fetchPending = uniName => {
   };
 };
 
-export const fetchPendingRequests = mentorId => {
+export const fetchMentorPendingRequests = mentorId => {
   return dispatch => {
     axios
-      .get("/api/pendingRequests", {
+      .get("/api/pendingRequestsMentor", {
         params: { MentorRegistrationId: mentorId }
+      })
+      .then(response => {
+        dispatch({
+          type: FETCH_PENDING_REQUESTS,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        console.log("FETCH PENDING REQUEST ERR: ", err);
+        dispatch({
+          type: ADD_ERROR,
+          payload: {
+            type: "error",
+            message:
+              "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+          }
+        });
+      });
+  };
+};
+
+export const fetchMenteePendingRequests = menteeId => {
+  return dispatch => {
+    axios
+      .get("/api/pendingRequestsMentee", {
+        params: { MenteeRegistrationId: menteeId }
       })
       .then(response => {
         dispatch({

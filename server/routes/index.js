@@ -16,7 +16,8 @@ const newUniversity = require("./new_uni");
 const allUniversities = require("./all_uni");
 const pendingApplications = require("./pending_applications");
 const pendingAction = require("./pending_action");
-const pendingRequests = require("./pending_requests");
+const pendingMentorRequests = require("./pending_requests_mentor");
+const pendingMenteeRequests = require("./pending_requests_mentee");
 const all = require("./all");
 
 router.post("/api/signupMentor", signup.post);
@@ -38,6 +39,7 @@ router.post("/api/newUni", newUniversity.post);
 router.get("/api/allUni", allUniversities.get);
 router.get("/api/pending/:universityName", pendingApplications.get);
 router.put("/api/pendingAction", pendingAction.put);
-router.get("/api/pendingRequests", pendingRequests.get);
+router.get("/api/pendingRequestsMentor", pendingMentorRequests.get);
+router.get("/api/pendingRequestsMentee", pendingMenteeRequests.get);
 
 module.exports = router;

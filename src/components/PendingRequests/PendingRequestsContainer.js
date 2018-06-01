@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Alert from "../Shared/Alert";
-import { fetchPendingRequests } from "../../actions/get_requests";
+import { fetchMentorPendingRequests } from "../../actions/get_requests";
 import { resetError } from "../../actions/post_requests";
 import PendingRequests from "./PendingRequests";
 import Heading from "../Shared/Header";
@@ -10,7 +10,7 @@ import Heading from "../Shared/Header";
 class PendingApplicationsContainer extends Component {
   componentDidMount() {
     if (this.props.pendingRequests.length === 0) {
-      this.props.fetchPendingRequests(this.props.auth.id);
+      this.props.fetchMentorPendingRequests(this.props.auth.id);
     }
   }
 
@@ -33,6 +33,7 @@ const mapStateToProps = state => ({
   alert: state.alert
 });
 
-export default connect(mapStateToProps, { resetError, fetchPendingRequests })(
-  PendingApplicationsContainer
-);
+export default connect(mapStateToProps, {
+  resetError,
+  fetchMentorPendingRequests
+})(PendingApplicationsContainer);
