@@ -1,8 +1,13 @@
-import { FETCH_PENDING_REQUESTS } from "../actions/types";
+import {
+  FETCH_PENDING_REQUESTS_MENTOR,
+  FETCH_PENDING_REQUESTS_MENTEE
+} from "../actions/types";
 
 export default (state = [], action) => {
   switch (action.type) {
-  case FETCH_PENDING_REQUESTS:
+  case FETCH_PENDING_REQUESTS_MENTOR:
+    return [...state, ...action.payload];
+  case FETCH_PENDING_REQUESTS_MENTEE:
     return [...state, ...action.payload];
     //   case "USER_ACCEPTED":
     //     return state.filter(user => {

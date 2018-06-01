@@ -11,7 +11,7 @@ const PendingRequests = props => {
           <tr>
             <th> Date sent</th>
             <th> Request sender </th>
-            <th>Sender Profile</th>
+            <th> Profile</th>
             <th> Request Message </th>
             <th> What I need help with </th>
             <th> Status</th>
@@ -24,16 +24,34 @@ const PendingRequests = props => {
               <tr key={request.requestId}>
                 <td>{request.createdAt.split("T")[0]}</td>
                 <td>
-                  {request.menteeFirstName} {request.menteeLastName}
+                  {request.menteeLastName ? (
+                    <p>
+                      {request.menteeFirstName} {request.menteeLastName}
+                    </p>
+                  ) : (
+                    <p>
+                      {request.mentorFirstName} {request.mentorLastName}
+                    </p>
+                  )}
                 </td>
                 <td>
-                  <Link
-                    to={`/profile/${request.menteeAccountType}/${
-                      request.menteeId
-                    }`}
-                  >
-                    View profile
-                  </Link>
+                  {request.menteeAccountType ? (
+                    <Link
+                      to={`/profile/${request.menteeAccountType}/${
+                        request.menteeId
+                      }`}
+                    >
+                      View profile
+                    </Link>
+                  ) : (
+                    <Link
+                      to={`/profile/${request.mentorAccountType}/${
+                        request.mentorId
+                      }`}
+                    >
+                      View profile
+                    </Link>
+                  )}
                 </td>
                 <td>{request.requestMessage}</td>
                 <td>

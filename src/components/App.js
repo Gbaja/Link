@@ -140,8 +140,8 @@ class App extends Component {
           />
           <Route
             exact
-            path="/mentor/requests"
-            component={this.renderMentorPages(PendingRequests)}
+            path="/requests"
+            component={this.renderSharedPages(PendingRequests)}
           />
           <Route exact path="/forgot_password" component={ForgotPasswordForm} />
           <Route exact path="/reset_password" component={ResetPasswordForm} />

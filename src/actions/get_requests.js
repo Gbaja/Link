@@ -7,7 +7,8 @@ import {
   FETCH_PROFILE,
   FETCH_UNIVERSITIES,
   FETCH_PENDING,
-  FETCH_PENDING_REQUESTS
+  FETCH_PENDING_REQUESTS_MENTOR,
+  FETCH_PENDING_REQUESTS_MENTEE
 } from "./types";
 
 export const logOut = callback => {
@@ -129,7 +130,7 @@ export const fetchMentorPendingRequests = mentorId => {
       })
       .then(response => {
         dispatch({
-          type: FETCH_PENDING_REQUESTS,
+          type: FETCH_PENDING_REQUESTS_MENTOR,
           payload: response.data
         });
       })
@@ -155,7 +156,7 @@ export const fetchMenteePendingRequests = menteeId => {
       })
       .then(response => {
         dispatch({
-          type: FETCH_PENDING_REQUESTS,
+          type: FETCH_PENDING_REQUESTS_MENTEE,
           payload: response.data
         });
       })

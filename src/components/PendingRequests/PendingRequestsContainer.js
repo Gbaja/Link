@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Alert from "../Shared/Alert";
-import { fetchMentorPendingRequests } from "../../actions/get_requests";
+import {
+  fetchMentorPendingRequests,
+  fetchMenteePendingRequests
+} from "../../actions/get_requests";
 import { resetError } from "../../actions/post_requests";
 import PendingRequests from "./PendingRequests";
 import Heading from "../Shared/Header";
@@ -10,7 +13,12 @@ import Heading from "../Shared/Header";
 class PendingApplicationsContainer extends Component {
   componentDidMount() {
     if (this.props.pendingRequests.length === 0) {
-      this.props.fetchMentorPendingRequests(this.props.auth.id);
+      if (this.props.auth.accountType === "Mentor") {
+        return this.props.fetchMentorPendingRequests(this.props.auth.id);
+      }
+      if (this.props.auth.accountType === "Mentee") {
+        return this.props.fetchMenteePendingRequests(this.props.auth.id);
+      }
     }
   }
 
@@ -35,5 +43,6 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   resetError,
-  fetchMentorPendingRequests
+  fetchMentorPendingRequests,
+  fetchMenteePendingRequests
 })(PendingApplicationsContainer);
