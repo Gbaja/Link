@@ -8,4 +8,5 @@ export const FormsSubmitButton = styled.button`
   width: 110px;
   font-size: 1rem;
   margin: 1rem auto;
+  margin-right: 0.3rem;
 `;

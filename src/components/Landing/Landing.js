@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 
 import { resetError } from "../../actions/post_requests";
 import LoginForm from "../LogIn/LoginContainer";
+import { FormsSubmitButton } from "../Shared/Shared.styled";
+
 import {
   ContainerDiv,
   ContentContainerDiv,
@@ -52,9 +54,12 @@ class Landing extends Component {
                 Service and Privacy Policy
               </p>
               <p>
-                <Link to="/signup_form">Sign up</Link>
-
-                <Link to="/forgot_password">Forgot password</Link>
+                <FormsSubmitButton>
+                  <Link to="/signup_form">Sign up</Link>
+                </FormsSubmitButton>
+                <FormsSubmitButton>
+                  <Link to="/forgot_password">Forgot password</Link>
+                </FormsSubmitButton>
               </p>
             </ContainerFormTextDiv>
           </ContainerFormDiv>
