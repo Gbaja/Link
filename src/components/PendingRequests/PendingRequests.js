@@ -1,29 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import {
+  Table,
+  TableDataTH,
+  TableDataTD,
+  TableDataTR
+} from "../Shared/Pending.Styled";
+
 const PendingRequests = props => {
   const requests = props.data;
   console.log("REQUESTSSS: ", requests);
   return (
     <div>
-      <table>
+      <Table>
         <thead>
-          <tr>
-            <th> Date sent</th>
-            <th> Request sender </th>
-            <th> Profile</th>
-            <th> Request Message </th>
-            <th> What I need help with </th>
-            <th> Status</th>
-            <th> Action </th>
-          </tr>
+          <TableDataTR>
+            <TableDataTH> Date sent</TableDataTH>
+            <TableDataTH> Request sender </TableDataTH>
+            <TableDataTH> Profile</TableDataTH>
+            <TableDataTH> Request Message </TableDataTH>
+            <TableDataTH> What I need help with </TableDataTH>
+            <TableDataTH> Status</TableDataTH>
+            <TableDataTH> Action </TableDataTH>
+          </TableDataTR>
         </thead>
         <tbody>
           {requests.length > 0 ? (
             requests.map(request => (
-              <tr key={request.requestId}>
-                <td>{request.createdAt.split("T")[0]}</td>
-                <td>
+              <TableDataTR key={request.requestId}>
+                <TableDataTD>{request.createdAt.split("T")[0]}</TableDataTD>
+                <TableDataTD>
                   {request.menteeLastName ? (
                     <p>
                       {request.menteeFirstName} {request.menteeLastName}
@@ -33,8 +40,8 @@ const PendingRequests = props => {
                       {request.mentorFirstName} {request.mentorLastName}
                     </p>
                   )}
-                </td>
-                <td>
+                </TableDataTD>
+                <TableDataTD>
                   {request.menteeAccountType ? (
                     <Link
                       to={`/profile/${request.menteeAccountType}/${
@@ -52,9 +59,9 @@ const PendingRequests = props => {
                       View profile
                     </Link>
                   )}
-                </td>
-                <td>{request.requestMessage}</td>
-                <td>
+                </TableDataTD>
+                <TableDataTD>{request.requestMessage}</TableDataTD>
+                <TableDataTD>
                   <ul>
                     {request.cv ? <li>Resume or cover letter tips</li> : false}
                     {request.shadow ? <li>Job shadow opportunities</li> : false}
@@ -71,20 +78,20 @@ const PendingRequests = props => {
                       false
                     )}
                   </ul>
-                </td>
-                <td>{request.status}</td>
-                <td>
+                </TableDataTD>
+                <TableDataTD>{request.status}</TableDataTD>
+                <TableDataTD>
                   <button>Accept</button>
-                </td>
-              </tr>
+                </TableDataTD>
+              </TableDataTR>
             ))
           ) : (
-            <tr>
-              <td>No pending applications</td>
-            </tr>
+            <TableDataTR>
+              <TableDataTD>No pending applications</TableDataTD>
+            </TableDataTR>
           )}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 };

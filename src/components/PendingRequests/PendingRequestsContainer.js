@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import Alert from "../Shared/Alert";
 import {
   fetchMentorPendingRequests,
-  fetchMenteePendingRequests
+  fetchMenteePendingRequests,
+  removePending
 } from "../../actions/get_requests";
 import { resetError } from "../../actions/post_requests";
 import PendingRequests from "./PendingRequests";
@@ -15,11 +16,14 @@ class PendingApplicationsContainer extends Component {
     if (this.props.pendingRequests.length === 0) {
       if (this.props.auth.accountType === "Mentor") {
         return this.props.fetchMentorPendingRequests(this.props.auth.id);
-      }
-      if (this.props.auth.accountType === "Mentee") {
+      } else if (this.props.auth.accountType === "Mentee") {
         return this.props.fetchMenteePendingRequests(this.props.auth.id);
       }
     }
+  }
+
+  componentWillUnmount() {
+    this.props.removePending();
   }
 
   render() {
@@ -44,5 +48,6 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   resetError,
   fetchMentorPendingRequests,
-  fetchMenteePendingRequests
+  fetchMenteePendingRequests,
+  removePending
 })(PendingApplicationsContainer);

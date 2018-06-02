@@ -5,29 +5,36 @@ import { connect } from "react-redux";
 import LogOutBtn from "../Shared/Logout";
 import DeleteAccount from "../Shared/DeleteAccount";
 import Header from "../Shared/Header";
+import {
+  DashboardHeadingH1,
+  DashboardContainerDiv,
+  DashboardP,
+  DashboardLinks
+} from "../Shared/Dashboard.Styled";
 
 class MenteeDashboard extends Component {
   render() {
     return (
       <div>
         <Header />
-        <h1>Welcome {this.props.auth.firstName}</h1>
-        <p>
-          <Link to="/mentee/my_profile">My profile</Link>
-        </p>
-        <p>
-          {" "}
-          <Link to="/directory/mentee"> View mentees </Link>
-        </p>
-        <p>
-          {" "}
-          <Link to="/directory/mentor"> View mentors </Link>
-        </p>
-        <p>
-          {" "}
-          <Link to="/requests"> View requests </Link>
-        </p>
-        <DeleteAccount />
+        <DashboardHeadingH1>
+          Welcome {this.props.auth.firstName}
+        </DashboardHeadingH1>
+        <DashboardContainerDiv>
+          <DashboardP>
+            <DashboardLinks to="/mentee/my_profile">My profile</DashboardLinks>
+          </DashboardP>
+          <DashboardP>
+            <DashboardLinks to="/directory/mentee">View mentee</DashboardLinks>
+          </DashboardP>
+          <DashboardP>
+            <DashboardLinks to="/directory/mentor">View mentor</DashboardLinks>
+          </DashboardP>
+          <DashboardP>
+            <DashboardLinks to="/requests"> View requests </DashboardLinks>
+          </DashboardP>
+          <DeleteAccount />
+        </DashboardContainerDiv>
       </div>
     );
   }

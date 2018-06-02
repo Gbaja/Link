@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import { deleteAccount } from "../../actions/delete_requests";
-import { FormsSubmitButton } from "../Shared/Shared.styled";
+import { DashboardDeleteButton, DashboardDeleteDiv } from "./Dashboard.Styled";
 
 class DeleteButton extends Component {
   deleteAccount = data => () => {
@@ -20,11 +20,13 @@ class DeleteButton extends Component {
 
   render() {
     return (
-      <div>
-        <FormsSubmitButton onClick={this.deleteAccount(this.props.auth.email)}>
-          Delete
-        </FormsSubmitButton>
-      </div>
+      <DashboardDeleteDiv>
+        <DashboardDeleteButton
+          onClick={this.deleteAccount(this.props.auth.email)}
+        >
+          Delete account
+        </DashboardDeleteButton>
+      </DashboardDeleteDiv>
     );
   }
 }
