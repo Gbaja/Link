@@ -22,7 +22,7 @@ class DirectoryContainer extends Component {
         1,
         this.props.match.params.type,
         this.props.auth.universityName,
-        this.state.filter
+        this.props.filter.name
       )
       .then(data => {
         this.setPageNumbers(this.props.directory.count);
@@ -43,19 +43,18 @@ class DirectoryContainer extends Component {
       pageNum,
       this.props.match.params.type,
       this.props.auth.universityName,
-      this.state.filter
+      this.state.filter.name
     );
   };
 
   setFilter = filter => {
     this.setState({ filter });
-    //console.log()
     this.props
       .fetchDirectory(
         1,
         this.props.match.params.type,
         this.props.auth.universityName,
-        this.state.filter
+        filter.name
       )
       .then(data => {
         this.setPageNumbers(this.props.directory.count);
@@ -63,7 +62,7 @@ class DirectoryContainer extends Component {
   };
 
   render() {
-    console.log("FILTERRRRR: ", this.state.filter);
+    console.log("FILTERRRRR: ", this.props.filter);
     if (Object.getOwnPropertyNames(this.props.directory).length === 0) {
       console.log("NONE");
       return <div>Loading</div>;

@@ -6,7 +6,6 @@ import SearchForm from "./SearchForm";
 
 class SearchFormContainer extends Component {
   onSubmit = values => {
-    console.log("VALUES: ", values);
     this.props.setFilter(values);
   };
   render() {
