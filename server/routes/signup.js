@@ -32,11 +32,11 @@ exports.post = (req, res) => {
     }
     models[type]
       .create({
-        firstName,
-        lastName,
+        firstName: firstName.toLowerCase(),
+        lastName: lastName.toLowerCase(),
         accountType,
         universityName,
-        email,
+        email: email.toLowerCase(),
         password,
         status,
         confirmDetails

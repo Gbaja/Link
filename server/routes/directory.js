@@ -72,8 +72,8 @@ exports.get = (req, res) => {
         universityName,
         status: "Accept",
         [Op.or]: [
-          { firstName: { [Op.iLike]: name + "%" } },
-          { lastName: { [Op.iLike]: name + "%" } }
+          { firstName: { [Op.iLike]: name.toLowerCase() + "%" } },
+          { lastName: { [Op.iLike]: name.toLowerCase() + "%" } }
         ],
         location: {
           [Op.iLike]: location + "%"
