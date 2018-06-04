@@ -30,6 +30,7 @@ exports.get = (req, res) => {
         mentorId: each.MentorRegistration.id
       };
     });
+    console.log(dataToSend);
     res.send(dataToSend);
   });
 };

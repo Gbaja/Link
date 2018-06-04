@@ -9,8 +9,9 @@ import univesitiesReducer from "./universities_reducer";
 import pendingReducer from "./pending_reducer";
 import pendingRequestsReducer from "./pending_requests_reducer";
 import filterReducer from "./filter_reducer";
+import { UNAUTH_USER } from "../actions/types";
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   form: formReducer,
   auth: authReducer,
   alert: alertReducer,
@@ -21,5 +22,12 @@ const rootReducer = combineReducers({
   pendingRequests: pendingRequestsReducer,
   filter: filterReducer
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === UNAUTH_USER) {
+    state = undefined;
+  }
+  return appReducer(state, action);
+};
 
 export default rootReducer;

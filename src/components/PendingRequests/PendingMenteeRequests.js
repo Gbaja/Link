@@ -8,7 +8,7 @@ import {
   TableDataTR
 } from "../Shared/Pending.Styled";
 
-const PendingRequests = props => {
+const PendingMenteeRequests = props => {
   const requests = props.data;
   console.log("REQUESTSSS: ", requests);
   return (
@@ -17,12 +17,11 @@ const PendingRequests = props => {
         <thead>
           <TableDataTR>
             <TableDataTH> Date sent</TableDataTH>
-            <TableDataTH> Request sender </TableDataTH>
-            <TableDataTH> Profile</TableDataTH>
+            <TableDataTH> Request receiver </TableDataTH>
+            <TableDataTH> Mentor Profile</TableDataTH>
             <TableDataTH> Request Message </TableDataTH>
             <TableDataTH> What I need help with </TableDataTH>
             <TableDataTH> Status</TableDataTH>
-            <TableDataTH> Action </TableDataTH>
           </TableDataTR>
         </thead>
         <tbody>
@@ -31,34 +30,18 @@ const PendingRequests = props => {
               <TableDataTR key={request.requestId}>
                 <TableDataTD>{request.createdAt.split("T")[0]}</TableDataTD>
                 <TableDataTD>
-                  {request.menteeLastName ? (
-                    <p>
-                      {request.menteeFirstName} {request.menteeLastName}
-                    </p>
-                  ) : (
-                    <p>
-                      {request.mentorFirstName} {request.mentorLastName}
-                    </p>
-                  )}
+                  <p>
+                    {request.mentorFirstName} {request.mentorLastName}
+                  </p>
                 </TableDataTD>
                 <TableDataTD>
-                  {request.menteeAccountType ? (
-                    <Link
-                      to={`/profile/${request.menteeAccountType}/${
-                        request.menteeId
-                      }`}
-                    >
-                      View profile
-                    </Link>
-                  ) : (
-                    <Link
-                      to={`/profile/${request.mentorAccountType}/${
-                        request.mentorId
-                      }`}
-                    >
-                      View profile
-                    </Link>
-                  )}
+                  <Link
+                    to={`/profile/${request.mentorAccountType}/${
+                      request.mentorId
+                    }`}
+                  >
+                    View profile
+                  </Link>
                 </TableDataTD>
                 <TableDataTD>{request.requestMessage}</TableDataTD>
                 <TableDataTD>
@@ -80,9 +63,6 @@ const PendingRequests = props => {
                   </ul>
                 </TableDataTD>
                 <TableDataTD>{request.status}</TableDataTD>
-                <TableDataTD>
-                  <button>Accept</button>
-                </TableDataTD>
               </TableDataTR>
             ))
           ) : (
@@ -96,12 +76,4 @@ const PendingRequests = props => {
   );
 };
 
-export default PendingRequests;
-//  <p>Request message</p>
-//     {requests.cv ? <p>Resume or cover letter tips</p> : false}
-//     {requests.shadow ? <p>Job shadow opportunities</p> : false}
-//     {requests.interview ? <p>Mock Interviews</p> : false}
-//     {requests.job ? <p>Post job and internships</p> : false}
-//     {requests.postgrad ? <p>Post Graduate Application</p> : false}
-//     {requests.career ? <p>Professional and career exploration</p> : false}
-//   </div>
+export default PendingMenteeRequests;

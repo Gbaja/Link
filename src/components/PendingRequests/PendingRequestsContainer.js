@@ -8,11 +8,14 @@ import {
   removePending
 } from "../../actions/get_requests";
 import { resetError } from "../../actions/post_requests";
-import PendingRequests from "./PendingRequests";
 import Heading from "../Shared/Header";
+import PendingMenteeRequests from "./PendingMenteeRequests";
+import PendingMentorRequests from "./PendingMentorRequests";
 
 class PendingApplicationsContainer extends Component {
   componentDidMount() {
+    window.scrollTo(0, 0);
+
     if (this.props.pendingRequests.length === 0) {
       if (this.props.auth.accountType === "Mentor") {
         return this.props.fetchMentorPendingRequests(this.props.auth.id);
@@ -27,13 +30,17 @@ class PendingApplicationsContainer extends Component {
   }
 
   render() {
-    const { alert, pendingRequests } = this.props;
+    const { alert, pendingRequests, auth } = this.props;
     return (
       <div>
         <Heading />
         <h1> Pending requests </h1>
         {alert && <Alert alert={alert} />}
-        <PendingRequests data={pendingRequests} />
+        {auth.accountType === "Mentor" ? (
+          <PendingMentorRequests data={pendingRequests} />
+        ) : (
+          <PendingMenteeRequests data={pendingRequests} />
+        )}
       </div>
     );
   }
