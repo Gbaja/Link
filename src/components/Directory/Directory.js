@@ -6,7 +6,10 @@ const Directory = props => {
   if (data.length === 0) {
     return (
       <div>
-        <p>You currently have no "mentors/mentees" in your directory</p>
+        <p>
+          There are currently no mentors/mentees from your university signed up
+          to Young & Giving
+        </p>
       </div>
     );
   }

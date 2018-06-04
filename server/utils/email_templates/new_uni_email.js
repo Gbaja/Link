@@ -7,7 +7,7 @@ module.exports = data => {
     from: "no-reply@youngandgiving.com",
     subject: "Young&Giving University Account Details",
     html: `<p>To ${
-      data.name
+      data.universityName
     },</p><p>Thank you signing up to Young & Giving as a ${
       data.accountType
     } .</p><p>Your account has been created. The email address used to create your account can be found below:</p><p>Email: ${
