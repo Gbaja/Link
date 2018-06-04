@@ -9,7 +9,8 @@ exports.get = (req, res) => {
       {
         model: models.MentorRegistrations
       }
-    ]
+    ],
+    order: [[("DESC", "status")]]
   }).then(data => {
     //res.send(data);
     const dataToSend = data.map(each => {

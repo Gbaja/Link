@@ -1,6 +1,11 @@
 import axios from "axios";
 
-import { ADD_ERROR, UPDATE_PROFILE, ADD_SUCCESS } from "./types";
+import {
+  ADD_ERROR,
+  UPDATE_PROFILE,
+  ADD_SUCCESS,
+  MENTORSHIP_ACTION
+} from "./types";
 
 export const updateProfile = data => async dispatch => {
   try {
@@ -54,6 +59,31 @@ export const pendingAction = data => {
         dispatch({
           type: "USER_ACCEPTED",
           payload: data.email
+        });
+      })
+      .catch(err => {
+        console.log("PENDING ACTION ERROR: ", err);
+        dispatch({
+          type: ADD_ERROR,
+          payload:
+            "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+        });
+      });
+  };
+};
+
+export const mentorshipRequestAction = data => {
+  return dispatch => {
+    return axios
+      .put("/api/mentorshipRequest", data)
+      .then(response => {
+        dispatch({
+          type: ADD_SUCCESS,
+          payload: response.data
+        });
+        dispatch({
+          type: MENTORSHIP_ACTION,
+          payload: data
         });
       })
       .catch(err => {

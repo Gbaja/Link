@@ -8,8 +8,7 @@ import {
   FETCH_UNIVERSITIES,
   FETCH_PENDING,
   FETCH_PENDING_REQUESTS_MENTOR,
-  FETCH_PENDING_REQUESTS_MENTEE,
-  REMOVE_PENDING_REQUEST
+  FETCH_PENDING_REQUESTS_MENTEE
 } from "./types";
 
 export const logOut = callback => {
@@ -172,11 +171,5 @@ export const fetchMenteePendingRequests = menteeId => {
           }
         });
       });
-  };
-};
-
-export const removePending = () => {
-  return {
-    type: REMOVE_PENDING_REQUEST
   };
 };

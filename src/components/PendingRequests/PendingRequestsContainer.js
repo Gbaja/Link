@@ -25,10 +25,6 @@ class PendingApplicationsContainer extends Component {
     }
   }
 
-  componentWillUnmount() {
-    this.props.removePending();
-  }
-
   render() {
     const { alert, pendingRequests, auth } = this.props;
     return (
@@ -55,6 +51,5 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   resetError,
   fetchMentorPendingRequests,
-  fetchMenteePendingRequests,
-  removePending
+  fetchMenteePendingRequests
 })(PendingApplicationsContainer);

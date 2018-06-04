@@ -7,6 +7,7 @@ import {
   TableDataTD,
   TableDataTR
 } from "../Shared/Pending.Styled";
+import ActionButtons from "./ActionButtons";
 
 const PendingMentorRequests = props => {
   const requests = props.data;
@@ -65,7 +66,12 @@ const PendingMentorRequests = props => {
                 </TableDataTD>
                 <TableDataTD>{request.status}</TableDataTD>
                 <TableDataTD>
-                  <button>Accept</button>
+                  {request.status === "Accept" ||
+                  request.status === "Reject" ? (
+                    <p>Action completed</p>
+                    ) : (
+                      <ActionButtons request={request.requestId} />
+                    )}
                 </TableDataTD>
               </TableDataTR>
             ))
