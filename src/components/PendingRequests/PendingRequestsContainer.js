@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import Alert from "../Shared/Alert";
 import {
@@ -31,6 +32,7 @@ class PendingApplicationsContainer extends Component {
       <div>
         <Heading />
         <h1> Pending requests </h1>
+        <Link to="/mentor/dashboard">Back to dashboard</Link>
         {alert && <Alert alert={alert} />}
         {auth.accountType === "Mentor" ? (
           <PendingMentorRequests data={pendingRequests} />

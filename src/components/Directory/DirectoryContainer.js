@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { fetchDirectory } from "../../actions/get_requests";
 import SearchFormContainer from "../SearchForm/SearchFormContainer";
 import Directory from "./Directory";
+import Header from "../Shared/Header";
 
 class DirectoryContainer extends Component {
   constructor(props) {
@@ -80,6 +81,16 @@ class DirectoryContainer extends Component {
       const mentorsDetails = this.props.directory.rows;
       return (
         <div>
+          <Header />
+          {this.props.auth.accountType === "University" ? (
+            <Link to="/university_dashboard">Back to dashboard</Link>
+          ) : this.props.auth.accountType === "Mentor" ? (
+            <Link to="/mentor/dashboard">Back to dashboard</Link>
+          ) : this.props.auth.accountType === "Mentee" ? (
+            <Link to="/mentee/dashboard">Back to dashboard</Link>
+          ) : (
+            ""
+          )}
           <SearchFormContainer setFilter={this.setFilter} />
           <Directory
             details={mentorsDetails}

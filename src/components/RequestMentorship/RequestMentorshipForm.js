@@ -3,14 +3,20 @@ import { Field } from "redux-form";
 import { Link } from "react-router-dom";
 
 import { renderFormFields } from "../../helpers/reduxFields";
+import {
+  FormsSubmitButton,
+  ContainerDiv,
+  HeadingH1
+} from "../Shared/Shared.styled";
 
 class LogInForm extends Component {
   render() {
     const { handleSubmit, onSubmit } = this.props;
     return (
-      <div>
+      <ContainerDiv>
+        <HeadingH1>Mentorship Request Form </HeadingH1>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <p> What you need help with?</p>
+          <h2> What you need help with?</h2>
           <Field
             label="Resume or cover letter tips and review"
             name="cv"
@@ -53,9 +59,9 @@ class LogInForm extends Component {
             textarea
             component={renderFormFields}
           />
-          <button type="submit">Request</button>
+          <FormsSubmitButton type="submit">Request</FormsSubmitButton>
         </form>
-      </div>
+      </ContainerDiv>
     );
   }
 }

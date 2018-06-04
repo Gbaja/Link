@@ -18,6 +18,7 @@ class NewUniversityForm extends Component {
       <div>
         <div>
           <Header />
+          <Link to="/owner">Back to dashboard</Link>
           <ContainerDiv>
             <HeadingH1>New University Form</HeadingH1>
             <form onSubmit={handleSubmit(onSubmit)}>

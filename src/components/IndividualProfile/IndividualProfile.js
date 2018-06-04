@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { fetchProfile } from "../../actions/get_requests";
+import Header from "../Shared/Header";
 
 class IndividualProfilePage extends Component {
   componentDidMount() {
@@ -35,6 +36,14 @@ class IndividualProfilePage extends Component {
     } = this.props.profile;
     return (
       <div>
+        <Header />
+        {this.props.match.params.accountType === "Mentor" ? (
+          <Link to="/directory/mentor">Back to mentor directory</Link>
+        ) : this.props.match.params.accountType === "Mentee" ? (
+          <Link to="/directory/mentee">Back to mentee directory</Link>
+        ) : (
+          ""
+        )}
         <h3>Pofile page</h3>
         <p>
           {firstName} {lastName}
@@ -53,11 +62,12 @@ class IndividualProfilePage extends Component {
         <p>{reason}</p>
         <p>{socialMediaUrl}</p>
         <p>{availability}</p>
-        {this.props.auth.accountType !== "Mentor" ? (
+        {this.props.auth.accountType !== "Mentor" &&
+        this.props.match.params.accountType !== "Mentee" ? (
           <Link to={`/request_mentorship/${id}`}>Request mentorship</Link>
-        ) : (
-          ""
-        )}
+          ) : (
+            ""
+          )}
       </div>
     );
   }

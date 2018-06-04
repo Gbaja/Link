@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import Alert from "../Shared/Alert";
 import { fetchPending } from "../../actions/get_requests";
@@ -19,6 +20,7 @@ class PendingApplicationsContainer extends Component {
     return (
       <div>
         <Header />
+        <Link to="/university_dashboard">Back to dashboard</Link>
         {alert && <Alert alert={alert} />}
         <PendingApplications data={pending} />
       </div>

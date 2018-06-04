@@ -8,6 +8,7 @@ import { resetError, requestMentorship } from "../../actions/post_requests";
 import { RESET_ERROR } from "../../actions/types";
 import RequestMentorshipForm from "./RequestMentorshipForm";
 import Alert from "../Shared/Alert";
+import Header from "../Shared/Header";
 
 class RequestMentorshipFormContainer extends Component {
   componentDidMount() {
@@ -24,7 +25,10 @@ class RequestMentorshipFormContainer extends Component {
     const { handleSubmit, alert } = this.props;
     return (
       <div>
-        <h1>Mentorship Request Form </h1>
+        <Header />
+        <Link to={`/profile/Mentor/${this.props.match.params.id}`}>
+          Back to profile
+        </Link>
         {alert && <Alert alert={alert} />}
         <RequestMentorshipForm
           onSubmit={this.handleFormSubmission}
