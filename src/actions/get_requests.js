@@ -23,11 +23,22 @@ export const logOut = callback => {
   };
 };
 
-export const fetchDirectory = (pageNum, accountType, uni, filterName) => {
+export const fetchDirectory = (
+  pageNum,
+  accountType,
+  uni,
+  filterName,
+  filterLocation,
+  filterIndustry
+) => {
   return dispatch => {
     return axios
       .get(`/api/directory/${pageNum}/${accountType}/${uni}`, {
-        params: { name: filterName }
+        params: {
+          name: filterName,
+          location: filterLocation,
+          industry: filterIndustry
+        }
       })
       .then(response => {
         dispatch({

@@ -17,12 +17,15 @@ class DirectoryContainer extends Component {
   }
 
   componentDidMount() {
+    console.log("NAME: ", this.props.filter.name);
     this.props
       .fetchDirectory(
         1,
         this.props.match.params.type,
         this.props.auth.universityName,
-        this.props.filter.name
+        this.state.filter.name,
+        this.state.filter.location,
+        this.state.filter.industry
       )
       .then(data => {
         this.setPageNumbers(this.props.directory.count);
@@ -39,22 +42,28 @@ class DirectoryContainer extends Component {
   };
 
   showPage = pageNum => () => {
+    console.log(this.state.filter.location);
     this.props.fetchDirectory(
       pageNum,
       this.props.match.params.type,
       this.props.auth.universityName,
-      this.state.filter.name
+      this.state.filter.name,
+      this.state.filter.location,
+      this.state.filter.industry
     );
   };
 
   setFilter = filter => {
+    console.log("SET FILTER: ", filter);
     this.setState({ filter });
     this.props
       .fetchDirectory(
         1,
         this.props.match.params.type,
         this.props.auth.universityName,
-        filter.name
+        filter.name,
+        filter.location,
+        filter.industry
       )
       .then(data => {
         this.setPageNumbers(this.props.directory.count);
