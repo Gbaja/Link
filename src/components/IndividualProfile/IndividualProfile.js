@@ -4,12 +4,17 @@ import { connect } from "react-redux";
 
 import { fetchProfile } from "../../actions/get_requests";
 import Header from "../Shared/Header";
+import { FormsSubmitButton } from "../Shared/Shared.styled";
 
 class IndividualProfilePage extends Component {
   componentDidMount() {
     const { id, accountType } = this.props.match.params;
     this.props.fetchProfile(id, accountType);
   }
+
+  goBackBtn = () => {
+    this.props.history.goBack();
+  };
   render() {
     console.log(this.props.profile);
     const {
@@ -37,13 +42,9 @@ class IndividualProfilePage extends Component {
     return (
       <div>
         <Header />
-        {this.props.match.params.accountType === "Mentor" ? (
-          <Link to="/directory/mentor">Back to mentor directory</Link>
-        ) : this.props.match.params.accountType === "Mentee" ? (
-          <Link to="/directory/mentee">Back to mentee directory</Link>
-        ) : (
-          ""
-        )}
+        <FormsSubmitButton onClick={this.goBackBtn}>
+          <p>Go back</p>
+        </FormsSubmitButton>
         <h3>Pofile page</h3>
         <p>
           {firstName} {lastName}
@@ -65,9 +66,9 @@ class IndividualProfilePage extends Component {
         {this.props.auth.accountType !== "Mentor" &&
         this.props.match.params.accountType !== "Mentee" ? (
           <Link to={`/request_mentorship/${id}`}>Request mentorship</Link>
-          ) : (
-            ""
-          )}
+        ) : (
+          ""
+        )}
       </div>
     );
   }
@@ -78,6 +79,9 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, {
-  fetchProfile
-})(IndividualProfilePage);
+export default connect(
+  mapStateToProps,
+  {
+    fetchProfile
+  }
+)(IndividualProfilePage);

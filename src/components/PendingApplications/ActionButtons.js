@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { pendingAction } from "../../actions/put_requests";
+import { FormsSubmitButton } from "../Shared/Shared.styled";
 
 class ActionButtons extends Component {
   acceptHandler = () => {
@@ -25,11 +26,18 @@ class ActionButtons extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.acceptHandler}>Accept</button>
-        <button onClick={this.rejectHandler}>Reject</button>
+        <FormsSubmitButton onClick={this.acceptHandler}>
+          Accept
+        </FormsSubmitButton>
+        <FormsSubmitButton onClick={this.rejectHandler}>
+          Reject
+        </FormsSubmitButton>
       </div>
     );
   }
 }
 
-export default connect(null, { pendingAction })(ActionButtons);
+export default connect(
+  null,
+  { pendingAction }
+)(ActionButtons);

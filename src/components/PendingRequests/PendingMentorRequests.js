@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import {
+  TableContainerDiv,
   Table,
   TableDataTH,
   TableDataTD,
@@ -13,7 +14,7 @@ const PendingMentorRequests = props => {
   const requests = props.data;
   console.log("REQUESTSSS: ", requests);
   return (
-    <div>
+    <TableContainerDiv>
       <Table>
         <thead>
           <TableDataTR>
@@ -82,7 +83,7 @@ const PendingMentorRequests = props => {
           )}
         </tbody>
       </Table>
-    </div>
+    </TableContainerDiv>
   );
 };
 

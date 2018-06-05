@@ -7,7 +7,8 @@ import Alert from "../Shared/Alert";
 import {
   FormsSubmitButton,
   ContainerDiv,
-  HeadingH1
+  HeadingH1,
+  Links
 } from "../Shared/Shared.styled";
 import Header from "../Shared/Header";
 
@@ -18,7 +19,9 @@ class NewUniversityForm extends Component {
       <div>
         <div>
           <Header />
-          <Link to="/owner">Back to dashboard</Link>
+          <FormsSubmitButton>
+            <Links to="/owner">Back to dashboard</Links>
+          </FormsSubmitButton>
           <ContainerDiv>
             <HeadingH1>New University Form</HeadingH1>
             <form onSubmit={handleSubmit(onSubmit)}>

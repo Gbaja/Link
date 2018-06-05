@@ -25,10 +25,10 @@ class MentorDashboard extends Component {
             <DashboardLinks to="/mentee/my_profile">My profile</DashboardLinks>
           </DashboardP>
           <DashboardP>
-            <DashboardLinks to="/directory/mentee">View mentee</DashboardLinks>
+            <DashboardLinks to="/directory/mentee">View mentees</DashboardLinks>
           </DashboardP>
           <DashboardP>
-            <DashboardLinks to="/directory/mentor">View mentor</DashboardLinks>
+            <DashboardLinks to="/directory/mentor">View mentors</DashboardLinks>
           </DashboardP>
           <DashboardP>
             <DashboardLinks to="/requests"> View requests </DashboardLinks>
@@ -43,4 +43,7 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, null)(MentorDashboard);
+export default connect(
+  mapStateToProps,
+  null
+)(MentorDashboard);

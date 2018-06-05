@@ -12,6 +12,7 @@ import { resetError } from "../../actions/post_requests";
 import Heading from "../Shared/Header";
 import PendingMenteeRequests from "./PendingMenteeRequests";
 import PendingMentorRequests from "./PendingMentorRequests";
+import { FormsSubmitButton, Links } from "../Shared/Shared.styled";
 
 class PendingApplicationsContainer extends Component {
   componentDidMount() {
@@ -31,8 +32,10 @@ class PendingApplicationsContainer extends Component {
     return (
       <div>
         <Heading />
+        <FormsSubmitButton>
+          <Links to="/mentor/dashboard">Back to dashboard</Links>
+        </FormsSubmitButton>
         <h1> Pending requests </h1>
-        <Link to="/mentor/dashboard">Back to dashboard</Link>
         {alert && <Alert alert={alert} />}
         {auth.accountType === "Mentor" ? (
           <PendingMentorRequests data={pendingRequests} />
@@ -50,8 +53,11 @@ const mapStateToProps = state => ({
   alert: state.alert
 });
 
-export default connect(mapStateToProps, {
-  resetError,
-  fetchMentorPendingRequests,
-  fetchMenteePendingRequests
-})(PendingApplicationsContainer);
+export default connect(
+  mapStateToProps,
+  {
+    resetError,
+    fetchMentorPendingRequests,
+    fetchMenteePendingRequests
+  }
+)(PendingApplicationsContainer);

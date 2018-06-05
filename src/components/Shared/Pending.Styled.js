@@ -4,6 +4,10 @@ export const HeadingH1 = styled.h1`
   margin-left: 2rem;
 `;
 
+export const TableContainerDiv = styled.div`
+  overflow: auto;
+  margin-bottom: 2rem;
+`;
 export const Table = styled.table`
   border-collapse: collapse;
   width: 80%;

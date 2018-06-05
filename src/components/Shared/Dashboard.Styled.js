@@ -17,12 +17,12 @@ export const DashboardContainerDiv = styled.div`
   }
 `;
 
-export const DashboardP = styled.p`
-  width: 60%;
+export const DashboardP = styled.div`
+  width: 70%;
   background-color: #e3c800;
   text-align: center;
   margin: 1rem auto;
-  padding: 3rem 2rem;
+  padding: 2rem;
   @media screen and (min-width: 700px) {
     width: 27%;
     margin: 1rem;
@@ -30,11 +30,11 @@ export const DashboardP = styled.p`
 `;
 
 export const DashboardDeleteDiv = styled.div`
-  width: 60%;
+  width: 70%;
   background-color: #e3c800;
   text-align: center;
   margin: 1rem auto;
-  padding: 3rem;
+  padding: 2rem;
   @media screen and (min-width: 700px) {
     width: 27%;
     margin: 1rem;

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 import Alert from "../Shared/Alert";
 import { fetchPending } from "../../actions/get_requests";
 import { resetError } from "../../actions/post_requests";
 import PendingApplications from "./PendingApplications";
 import Header from "../Shared/Header";
+import { FormsSubmitButton, Links } from "../Shared/Shared.styled";
 
 class PendingApplicationsContainer extends Component {
   componentDidMount() {
@@ -20,7 +20,9 @@ class PendingApplicationsContainer extends Component {
     return (
       <div>
         <Header />
-        <Link to="/university_dashboard">Back to dashboard</Link>
+        <FormsSubmitButton>
+          <Links to="/university_dashboard">Back to dashboard</Links>
+        </FormsSubmitButton>
         {alert && <Alert alert={alert} />}
         <PendingApplications data={pending} />
       </div>
@@ -34,6 +36,7 @@ const mapStateToProps = state => ({
   alert: state.alert
 });
 
-export default connect(mapStateToProps, { fetchPending, resetError })(
-  PendingApplicationsContainer
-);
+export default connect(
+  mapStateToProps,
+  { fetchPending, resetError }
+)(PendingApplicationsContainer);

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const FormsSubmitButton = styled.button`
   background-color: #e3c800;
@@ -20,4 +21,9 @@ export const ContainerDiv = styled.div`
 
 export const HeadingH1 = styled.h1`
   margin-bottom: 1rem;
+`;
+
+export const Links = styled(Link)`
+  color: white;
+  text-decoration: none;
 `;

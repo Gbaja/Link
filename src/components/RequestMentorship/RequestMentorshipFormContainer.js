@@ -9,6 +9,7 @@ import { RESET_ERROR } from "../../actions/types";
 import RequestMentorshipForm from "./RequestMentorshipForm";
 import Alert from "../Shared/Alert";
 import Header from "../Shared/Header";
+import { FormsSubmitButton, Links } from "../Shared/Shared.styled";
 
 class RequestMentorshipFormContainer extends Component {
   componentDidMount() {
@@ -26,9 +27,11 @@ class RequestMentorshipFormContainer extends Component {
     return (
       <div>
         <Header />
-        <Link to={`/profile/Mentor/${this.props.match.params.id}`}>
-          Back to profile
-        </Link>
+        <FormsSubmitButton>
+          <Links to={`/profile/Mentor/${this.props.match.params.id}`}>
+            Back to profile
+          </Links>
+        </FormsSubmitButton>
         {alert && <Alert alert={alert} />}
         <RequestMentorshipForm
           onSubmit={this.handleFormSubmission}
@@ -53,8 +56,9 @@ export default reduxForm({
   form: "RequestForm"
 })(
   withRouter(
-    connect(mapStateToProps, { resetError, requestMentorship })(
-      RequestMentorshipFormContainer
-    )
+    connect(
+      mapStateToProps,
+      { resetError, requestMentorship }
+    )(RequestMentorshipFormContainer)
   )
 );
