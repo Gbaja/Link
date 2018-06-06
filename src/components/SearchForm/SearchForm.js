@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import { Field } from "redux-form";
 
 import { renderFormFields } from "../../helpers/reduxFields";
+import { FormsSubmitButton } from "../Shared/Shared.styled";
+import { SearchFormContainerDiv } from "./SearchForm.styled";
 
 class SearchForm extends Component {
   render() {
     const { handleSubmit, onSubmit, alert } = this.props;
     return (
-      <div>
+      <SearchFormContainerDiv>
         <form onSubmit={handleSubmit(onSubmit)}>
           {alert && <p>{alert}</p>}
+          <h3> Search </h3>
           <Field
             placeholder="Search by name"
             name="name"
@@ -38,9 +41,10 @@ class SearchForm extends Component {
               "Digital Media": "Digital Media"
             }}
           />
-          <button type="submit">Search</button>
+          <FormsSubmitButton type="submit">Search</FormsSubmitButton>
         </form>
-      </div>
+        <FormsSubmitButton>View all</FormsSubmitButton>
+      </SearchFormContainerDiv>
     );
   }
 }

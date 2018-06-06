@@ -6,13 +6,16 @@ import SearchForm from "./SearchForm";
 
 class SearchFormContainer extends Component {
   onSubmit = values => {
+    if (values.location === "select" || values.industry === "select") {
+      values.location = "";
+      values.industry = "";
+    }
     this.props.setFilter(values);
   };
   render() {
     const { handleSubmit } = this.props;
     return (
       <div>
-        <h3> Search </h3>
         <SearchForm onSubmit={this.onSubmit} handleSubmit={handleSubmit} />
       </div>
     );
@@ -27,4 +30,9 @@ const validate = values => {
 export default reduxForm({
   validate: validate,
   form: "SearchForm"
-})(connect(null, null)(SearchFormContainer));
+})(
+  connect(
+    null,
+    null
+  )(SearchFormContainer)
+);

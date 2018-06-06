@@ -53,8 +53,8 @@ exports.get = (req, res) => {
     return models[type]
       .findAndCountAll({
         where: { universityName, status: "Accept" },
-        limit: 1,
-        offset: (pageNum - 1) * 1
+        limit: 4,
+        offset: (pageNum - 1) * 4
       })
       .then(data => {
         const dataToSend = {
@@ -83,8 +83,8 @@ exports.get = (req, res) => {
           [Op.iLike]: industry + "%"
         }
       },
-      limit: 1,
-      offset: (pageNum - 1) * 1
+      limit: 4,
+      offset: (pageNum - 1) * 4
     })
     .then(data => {
       const dataToSend = {

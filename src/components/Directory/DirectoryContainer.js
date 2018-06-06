@@ -7,6 +7,7 @@ import SearchFormContainer from "../SearchForm/SearchFormContainer";
 import Directory from "./Directory";
 import Header from "../Shared/Header";
 import { FormsSubmitButton, Links } from "../Shared/Shared.styled";
+import { DirectoryContainerDiv } from "./Directory.Styled";
 
 class DirectoryContainer extends Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class DirectoryContainer extends Component {
   }
 
   setPageNumbers = number => {
-    let total = Math.ceil(number / 1);
+    let total = Math.ceil(number / 4);
     let arr = [];
     while (total > 0) {
       arr.unshift(total--);
@@ -99,12 +100,14 @@ class DirectoryContainer extends Component {
           ) : (
             ""
           )}
-          <SearchFormContainer setFilter={this.setFilter} />
-          <Directory
-            details={mentorsDetails}
-            showPage={this.showPage}
-            numberOfPages={this.state.numberOfPages}
-          />
+          <DirectoryContainerDiv>
+            <SearchFormContainer setFilter={this.setFilter} />
+            <Directory
+              details={mentorsDetails}
+              showPage={this.showPage}
+              numberOfPages={this.state.numberOfPages}
+            />
+          </DirectoryContainerDiv>
         </div>
       );
     }

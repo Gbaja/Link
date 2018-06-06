@@ -1,6 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import {
+  DirectoryDiv,
+  ListContainerDiv,
+  PageNumbersDiv,
+  PersonDiv,
+  PersonInfoP,
+  PersonImg
+} from "./Directory.Styled";
+import { FormsSubmitButton, Links } from "../Shared/Shared.styled";
+
 const Directory = props => {
   const data = props.details;
   if (data.length === 0) {
@@ -14,43 +24,57 @@ const Directory = props => {
     );
   }
   return (
-    <div>
-      {data.map(each => {
-        return (
-          <div key={each.id}>
-            {each.imageUrl ? (
-              <img src={each.imageUrl} />
-            ) : (
-              <i className="fas fa-user-alt" />
-            )}
-            <p>
-              {each.firstName} {each.lastName}
-            </p>
-            <p>
-              {" "}
-              {each.jobTitle} at {each.company}
-            </p>
-            <p> {each.industry}</p>
-            <p>{each.location}</p>
-            <p> {each.universityName}</p>
-            <p>
-              {each.degree} {each.graduationYear}
-            </p>
-            <Link to={`/profile/${each.accountType}/${each.id}`}>
-              View profile
-            </Link>
-          </div>
-        );
-      })}
-
-      {props.numberOfPages.map(num => {
-        return (
-          <span key={num} onClick={props.showPage(num)}>
-            {num}
-          </span>
-        );
-      })}
-    </div>
+    <DirectoryDiv>
+      <ListContainerDiv>
+        {data.map(each => {
+          return (
+            <PersonDiv key={each.id}>
+              {each.imageUrl ? (
+                <PersonImg src={each.imageUrl} />
+              ) : (
+                <div>
+                  <i
+                    style={{
+                      width: "100px",
+                      height: "100px",
+                      marginTop: "20px"
+                    }}
+                    className="fas fa-user-alt"
+                  />
+                </div>
+              )}
+              <PersonInfoP>
+                {each.firstName} {each.lastName}
+              </PersonInfoP>
+              <PersonInfoP>
+                {" "}
+                {each.jobTitle}, {each.company}
+              </PersonInfoP>
+              <PersonInfoP> {each.industry}</PersonInfoP>
+              <PersonInfoP>{each.location}</PersonInfoP>
+              <PersonInfoP>
+                {each.degree}, {each.graduationYear}
+              </PersonInfoP>
+              <FormsSubmitButton>
+                <Links to={`/profile/${each.accountType}/${each.id}`}>
+                  View profile
+                </Links>
+              </FormsSubmitButton>
+            </PersonDiv>
+          );
+        })}
+      </ListContainerDiv>
+      <PageNumbersDiv>
+        Pages
+        {props.numberOfPages.map(num => {
+          return (
+            <span key={num} onClick={props.showPage(num)}>
+              {num}
+            </span>
+          );
+        })}
+      </PageNumbersDiv>
+    </DirectoryDiv>
   );
 };
 
