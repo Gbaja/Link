@@ -1,4 +1,5 @@
 const models = require("../models");
+const mentorRequestNotification = require("../utils/email_templates/mentor_request");
 
 exports.post = (req, res) => {
   const {
@@ -39,7 +40,12 @@ exports.post = (req, res) => {
         status: "Pending"
       }).then(data => {
         console.log("REQUEST MENTORSHIP DATA: ", data);
-        res.send({ type: "success", message: "Your request has been sent." });
+        models.MentorRegistrations.findOne({
+          where: { id: data.MenteeRegistrationId }
+        }).then(mentor => {
+          mentorRequestNotification(mentor);
+          res.send({ type: "success", message: "Your request has been sent." });
+        });
       });
     }
   });

@@ -6,6 +6,7 @@ import { fetchDirectory } from "../../actions/get_requests";
 import SearchFormContainer from "../SearchForm/SearchFormContainer";
 import Directory from "./Directory";
 import Header from "../Shared/Header";
+import { FormsSubmitButton, Links } from "../Shared/Shared.styled";
 
 class DirectoryContainer extends Component {
   constructor(props) {
@@ -73,6 +74,7 @@ class DirectoryContainer extends Component {
 
   render() {
     console.log("FILTERRRRR: ", this.props.filter);
+    console.log("PARAMS: ", this.props.match.params.type);
     if (Object.getOwnPropertyNames(this.props.directory).length === 0) {
       console.log("NONE");
       return <div>Loading</div>;
@@ -83,11 +85,17 @@ class DirectoryContainer extends Component {
         <div>
           <Header />
           {this.props.auth.accountType === "University" ? (
-            <Link to="/university_dashboard">Back to dashboard</Link>
+            <FormsSubmitButton>
+              <Links to="/university_dashboard">Back to dashboard</Links>
+            </FormsSubmitButton>
           ) : this.props.auth.accountType === "Mentor" ? (
-            <Link to="/mentor/dashboard">Back to dashboard</Link>
+            <FormsSubmitButton>
+              <Links to="/mentor/dashboard">Back to dashboard</Links>{" "}
+            </FormsSubmitButton>
           ) : this.props.auth.accountType === "Mentee" ? (
-            <Link to="/mentee/dashboard">Back to dashboard</Link>
+            <FormsSubmitButton>
+              <Links to="/mentee/dashboard">Back to dashboard</Links>{" "}
+            </FormsSubmitButton>
           ) : (
             ""
           )}
@@ -108,4 +116,7 @@ const mapStateToProps = state => ({
   filter: state.filter
 });
 
-export default connect(mapStateToProps, { fetchDirectory })(DirectoryContainer);
+export default connect(
+  mapStateToProps,
+  { fetchDirectory }
+)(DirectoryContainer);

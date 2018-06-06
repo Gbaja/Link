@@ -44,6 +44,7 @@ const { details } = require("../utils/details");
 exports.get = (req, res) => {
   const { pageNum, accountType, universityName } = req.params;
   const type = getModelFromType(accountType.toLowerCase());
+  console.log("ACCOUNT TYPEEEE: ", accountType);
   console.log("QUERYYYYY: ", req.query);
   const name = req.query.name || "";
   const location = req.query.location || "";
@@ -72,8 +73,8 @@ exports.get = (req, res) => {
         universityName,
         status: "Accept",
         [Op.or]: [
-          { firstName: { [Op.iLike]: name.toLowerCase() + "%" } },
-          { lastName: { [Op.iLike]: name.toLowerCase() + "%" } }
+          { firstName: { [Op.iLike]: name + "%" } },
+          { lastName: { [Op.iLike]: name + "%" } }
         ],
         location: {
           [Op.iLike]: location + "%"

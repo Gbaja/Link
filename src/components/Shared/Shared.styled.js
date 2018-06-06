@@ -10,6 +10,7 @@ export const FormsSubmitButton = styled.button`
   font-size: 1rem;
   margin: 1rem auto;
   margin-right: 0.3rem;
+  margin-left: 0.2rem;
 `;
 
 export const ContainerDiv = styled.div`
