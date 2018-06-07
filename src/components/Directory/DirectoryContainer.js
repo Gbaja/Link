@@ -5,29 +5,38 @@ import { connect } from "react-redux";
 import { fetchDirectory } from "../../actions/get_requests";
 import SearchFormContainer from "../SearchForm/SearchFormContainer";
 import Directory from "./Directory";
+import Header from "../Shared/Header";
+import { FormsSubmitButton, Links } from "../Shared/Shared.styled";
+import { DirectoryContainerDiv } from "./Directory.Styled";
 
 class DirectoryContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentPage: 0,
-      numberOfPages: []
+      numberOfPages: [],
+      filter: {}
     };
   }
 
   componentDidMount() {
+    console.log("NAME: ", this.props.filter.name);
     this.props
       .fetchDirectory(
         1,
         this.props.match.params.type,
-        this.props.auth.universityName
+        this.props.auth.universityName,
+        this.state.filter.name,
+        this.state.filter.location,
+        this.state.filter.industry
       )
       .then(data => {
         this.setPageNumbers(this.props.directory.count);
       });
   }
+
   setPageNumbers = number => {
-    let total = Math.ceil(number / 1);
+    let total = Math.ceil(number / 4);
     let arr = [];
     while (total > 0) {
       arr.unshift(total--);
@@ -36,14 +45,37 @@ class DirectoryContainer extends Component {
   };
 
   showPage = pageNum => () => {
+    console.log(this.state.filter.location);
     this.props.fetchDirectory(
       pageNum,
       this.props.match.params.type,
-      this.props.auth.universityName
+      this.props.auth.universityName,
+      this.state.filter.name,
+      this.state.filter.location,
+      this.state.filter.industry
     );
   };
 
+  setFilter = filter => {
+    console.log("SET FILTER: ", filter);
+    this.setState({ filter });
+    this.props
+      .fetchDirectory(
+        1,
+        this.props.match.params.type,
+        this.props.auth.universityName,
+        filter.name,
+        filter.location,
+        filter.industry
+      )
+      .then(data => {
+        this.setPageNumbers(this.props.directory.count);
+      });
+  };
+
   render() {
+    console.log("FILTERRRRR: ", this.props.filter);
+    console.log("PARAMS: ", this.props.match.params.type);
     if (Object.getOwnPropertyNames(this.props.directory).length === 0) {
       console.log("NONE");
       return <div>Loading</div>;
@@ -52,13 +84,30 @@ class DirectoryContainer extends Component {
       const mentorsDetails = this.props.directory.rows;
       return (
         <div>
-          <SearchFormContainer />
-          <Directory
-            details={mentorsDetails}
-            showPage={this.showPage}
-            numberOfPages={this.state.numberOfPages}
-          />
-
+          <Header />
+          {this.props.auth.accountType === "University" ? (
+            <FormsSubmitButton>
+              <Links to="/university_dashboard">Back to dashboard</Links>
+            </FormsSubmitButton>
+          ) : this.props.auth.accountType === "Mentor" ? (
+            <FormsSubmitButton>
+              <Links to="/mentor/dashboard">Back to dashboard</Links>{" "}
+            </FormsSubmitButton>
+          ) : this.props.auth.accountType === "Mentee" ? (
+            <FormsSubmitButton>
+              <Links to="/mentee/dashboard">Back to dashboard</Links>{" "}
+            </FormsSubmitButton>
+          ) : (
+            ""
+          )}
+          <DirectoryContainerDiv>
+            <SearchFormContainer setFilter={this.setFilter} />
+            <Directory
+              details={mentorsDetails}
+              showPage={this.showPage}
+              numberOfPages={this.state.numberOfPages}
+            />
+          </DirectoryContainerDiv>
         </div>
       );
     }
@@ -66,7 +115,11 @@ class DirectoryContainer extends Component {
 }
 const mapStateToProps = state => ({
   directory: state.directory,
-  auth: state.auth
+  auth: state.auth,
+  filter: state.filter
 });
 
-export default connect(mapStateToProps, { fetchDirectory })(DirectoryContainer);
+export default connect(
+  mapStateToProps,
+  { fetchDirectory }
+)(DirectoryContainer);

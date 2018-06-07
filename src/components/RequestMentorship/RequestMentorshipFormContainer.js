@@ -4,9 +4,12 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
-import { resetError } from "../../actions/post_requests";
+import { resetError, requestMentorship } from "../../actions/post_requests";
 import { RESET_ERROR } from "../../actions/types";
 import RequestMentorshipForm from "./RequestMentorshipForm";
+import Alert from "../Shared/Alert";
+import Header from "../Shared/Header";
+import { FormsSubmitButton, Links } from "../Shared/Shared.styled";
 
 class RequestMentorshipFormContainer extends Component {
   componentDidMount() {
@@ -14,17 +17,25 @@ class RequestMentorshipFormContainer extends Component {
   }
 
   handleFormSubmission = values => {
-    console.log("Request form values: ", values);
+    values.MentorRegistrationId = Number(this.props.match.params.id);
+    values.MenteeRegistrationId = Number(this.props.auth.id);
+    console.log(values);
+    this.props.requestMentorship(values);
   };
   render() {
     const { handleSubmit, alert } = this.props;
     return (
       <div>
-        <h1>Mentorship Request Form </h1>
+        <Header />
+        <FormsSubmitButton>
+          <Links to={`/profile/Mentor/${this.props.match.params.id}`}>
+            Back to profile
+          </Links>
+        </FormsSubmitButton>
+        {alert && <Alert alert={alert} />}
         <RequestMentorshipForm
           onSubmit={this.handleFormSubmission}
           handleSubmit={handleSubmit}
-          alert={alert}
         />
       </div>
     );
@@ -36,7 +47,8 @@ const validate = values => {
 };
 
 const mapStateToProps = state => ({
-  alert: state.alert
+  alert: state.alert,
+  auth: state.auth
 });
 
 export default reduxForm({
@@ -44,6 +56,9 @@ export default reduxForm({
   form: "RequestForm"
 })(
   withRouter(
-    connect(mapStateToProps, { resetError })(RequestMentorshipFormContainer)
+    connect(
+      mapStateToProps,
+      { resetError, requestMentorship }
+    )(RequestMentorshipFormContainer)
   )
 );

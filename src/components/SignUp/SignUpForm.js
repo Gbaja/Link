@@ -23,7 +23,9 @@ class SignUpForm extends Component {
       }, {});
       return uniObj;
     };
+    const empty = { select: "Select your university" };
     const allUni = changeUniToObj(universities);
+    const all = { ...empty, ...allUni };
     return (
       <div>
         <SignupFormDiv>
@@ -58,7 +60,7 @@ class SignUpForm extends Component {
               name="universityName"
               component={renderFormFields}
               select
-              options={allUni}
+              options={all}
             />
             <Field label="Email" name="email" component={renderFormFields} />
             <Field

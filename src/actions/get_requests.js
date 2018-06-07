@@ -6,7 +6,9 @@ import {
   FETCH_DIRECTORY,
   FETCH_PROFILE,
   FETCH_UNIVERSITIES,
-  FETCH_PENDING
+  FETCH_PENDING,
+  FETCH_PENDING_REQUESTS_MENTOR,
+  FETCH_PENDING_REQUESTS_MENTEE
 } from "./types";
 
 export const logOut = callback => {
@@ -21,10 +23,23 @@ export const logOut = callback => {
   };
 };
 
-export const fetchDirectory = (pageNum, accountType, uni) => {
+export const fetchDirectory = (
+  pageNum,
+  accountType,
+  uni,
+  filterName,
+  filterLocation,
+  filterIndustry
+) => {
   return dispatch => {
     return axios
-      .get(`/api/directory/${pageNum}/${accountType}/${uni}`)
+      .get(`/api/directory/${pageNum}/${accountType}/${uni}`, {
+        params: {
+          name: filterName,
+          location: filterLocation,
+          industry: filterIndustry
+        }
+      })
       .then(response => {
         dispatch({
           type: FETCH_DIRECTORY,
@@ -105,6 +120,58 @@ export const fetchPending = uniName => {
       })
       .catch(err => {
         console.log("FETCH PENDING ERR: ", err);
+        dispatch({
+          type: ADD_ERROR,
+          payload: {
+            type: "error",
+            message:
+              "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+          }
+        });
+      });
+  };
+};
+
+export const fetchMentorPendingRequests = mentorId => {
+  return dispatch => {
+    axios
+      .get("/api/pendingRequestsMentor", {
+        params: { MentorRegistrationId: mentorId }
+      })
+      .then(response => {
+        dispatch({
+          type: FETCH_PENDING_REQUESTS_MENTOR,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        console.log("FETCH PENDING REQUEST ERR: ", err);
+        dispatch({
+          type: ADD_ERROR,
+          payload: {
+            type: "error",
+            message:
+              "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+          }
+        });
+      });
+  };
+};
+
+export const fetchMenteePendingRequests = menteeId => {
+  return dispatch => {
+    axios
+      .get("/api/pendingRequestsMentee", {
+        params: { MenteeRegistrationId: menteeId }
+      })
+      .then(response => {
+        dispatch({
+          type: FETCH_PENDING_REQUESTS_MENTEE,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        console.log("FETCH PENDING REQUEST ERR: ", err);
         dispatch({
           type: ADD_ERROR,
           payload: {

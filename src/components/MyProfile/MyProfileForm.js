@@ -102,10 +102,16 @@ class MyProfileForm extends Component {
               component={renderFormFields}
             />
             <Field
-              label="Industry"
               name="industry"
-              type="text"
               component={renderFormFields}
+              select
+              options={{
+                select: "select industry",
+                "Not disclosed": "Not disclosed",
+                "Banking&Finance": "Banking&Finance",
+                Technology: "Technology",
+                "Digital Media": "Digital Media"
+              }}
             />
             <Field
               label="LinkedIn or professional social media account url"

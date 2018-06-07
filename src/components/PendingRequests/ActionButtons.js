@@ -1,29 +1,28 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { pendingAction } from "../../actions/put_requests";
+import { mentorshipRequestAction } from "../../actions/put_requests";
 import { FormsSubmitButton } from "../Shared/Shared.styled";
 
-class ActionButtons extends Component {
+class MentorActionButtons extends Component {
   acceptHandler = () => {
     const body = {
-      email: this.props.user,
+      requestId: this.props.request,
       status: "Accept"
     };
-    this.props.pendingAction(body);
-    // .then(res => {
-    //   window.location.reload();
-    // });
+    console.log(body);
+    this.props.mentorshipRequestAction(body);
   };
   rejectHandler = () => {
     const body = {
-      email: this.props.user,
+      requestId: this.props.request,
       status: "Reject"
     };
-    this.props.pendingAction(body);
+    this.props.mentorshipRequestAction(body);
   };
 
   render() {
+    console.log("REQUEST: ", this.props.request);
     return (
       <div>
         <FormsSubmitButton onClick={this.acceptHandler}>
@@ -39,5 +38,5 @@ class ActionButtons extends Component {
 
 export default connect(
   null,
-  { pendingAction }
-)(ActionButtons);
+  { mentorshipRequestAction }
+)(MentorActionButtons);

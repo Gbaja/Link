@@ -3,12 +3,15 @@ import styled from "styled-components";
 export const FormsLabel = styled.label`
   display: block;
   padding-top: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
 `;
 
 export const FormsInput = styled.input`
   border: 0;
   border-bottom: 1px solid #d3d3d3;
   width: 100%;
+  height: 30px;
 `;
 export const FormsTextarea = styled.textarea`
   width: 100%;

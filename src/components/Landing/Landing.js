@@ -4,13 +4,17 @@ import { connect } from "react-redux";
 
 import { resetError } from "../../actions/post_requests";
 import LoginForm from "../LogIn/LoginContainer";
+import { FormsSubmitButton } from "../Shared/Shared.styled";
+
 import {
   ContainerDiv,
   ContentContainerDiv,
   ContainerTextDiv,
   ContainerFormDiv,
-  ContainerFormTextDiv,
-  ContainerOrP
+  Headingh1,
+  TextP,
+  LinksP,
+  Links
 } from "./Landing.styled";
 import Alert from "../Shared/Alert";
 
@@ -23,40 +27,31 @@ class Landing extends Component {
     const { alert } = this.props;
     return (
       <ContainerDiv>
-        {alert && <Alert alert={alert} />}
         <ContentContainerDiv>
-          <ContainerTextDiv>
-            <h1>Young & Giving University </h1>
-            <p>
+          <ContainerTextDiv id="content">
+            <Headingh1>Young & Giving University </Headingh1>
+            <TextP>
               {" "}
               The Young & Giving platform facilitates mentoring relationships
               that work.
-            </p>
-            <p>
+            </TextP>
+            <TextP>
               {" "}
               You can also find industry groups events and a job board on the
               platform.
-            </p>
-            <p> Sign up today!</p>
+            </TextP>
+            <TextP> Sign up today!</TextP>
           </ContainerTextDiv>
           <ContainerFormDiv>
             <LoginForm />
-            <ContainerFormTextDiv>
-              <ContainerOrP>OR</ContainerOrP>
-              <p>Log in with social</p>
-              <p>
-                <i className="fab fa-linkedin-in" />
-              </p>
-              <p>
-                By clicking submit, you agree to Young & Giving's Terms of
-                Service and Privacy Policy
-              </p>
-              <p>
-                <Link to="/signup_form">Sign up</Link>
-
-                <Link to="/forgot_password">Forgot password</Link>
-              </p>
-            </ContainerFormTextDiv>
+            <div>
+              <LinksP>
+                Don't have an account? <Links to="/signup_form">Sign up</Links>
+              </LinksP>
+              <LinksP>
+                <Links to="/forgot_password">Forgot password?</Links>
+              </LinksP>
+            </div>
           </ContainerFormDiv>
         </ContentContainerDiv>
       </ContainerDiv>

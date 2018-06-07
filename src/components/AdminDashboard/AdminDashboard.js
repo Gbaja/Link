@@ -4,15 +4,26 @@ import { connect } from "react-redux";
 
 import LogOutBtn from "../Shared/Logout";
 import DeleteAccount from "../Shared/DeleteAccount";
+import Header from "../Shared/Header";
+import {
+  DashboardContainerDiv,
+  DashboardP,
+  DashboardLinks,
+  DashboardHeadingH1
+} from "../Shared/Dashboard.Styled";
 
 class MentorDashboard extends Component {
   render() {
     return (
       <div>
-        <h1>Welcome</h1>
-        <Link to="add_new_uni">Add new university</Link>
-        <LogOutBtn />
-        <DeleteAccount />
+        <Header />
+        <DashboardHeadingH1>Welcome {this.props.auth.name}</DashboardHeadingH1>
+        <DashboardContainerDiv>
+          <DashboardP>
+            <DashboardLinks to="add_new_uni">Add new university</DashboardLinks>
+          </DashboardP>
+          <DeleteAccount />
+        </DashboardContainerDiv>
       </div>
     );
   }

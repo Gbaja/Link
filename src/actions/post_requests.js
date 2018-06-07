@@ -126,6 +126,36 @@ export const addUni = data => {
   };
 };
 
+export const requestMentorship = data => {
+  return dispatch => {
+    axios
+      .post("/api/requestMentorship", data)
+      .then(res => {
+        dispatch({
+          type: ADD_SUCCESS,
+          payload: res.data
+        });
+      })
+      .catch(err => {
+        if (err.message.includes("422")) {
+          dispatch({
+            type: ADD_ERROR,
+            payload: err.response.data
+          });
+        } else {
+          dispatch({
+            type: ADD_ERROR,
+            payload: {
+              type: "error",
+              message:
+                "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+            }
+          });
+        }
+      });
+  };
+};
+
 export const forgotPassword = data => {
   return dispatch => {
     axios
