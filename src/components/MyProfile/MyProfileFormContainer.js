@@ -7,11 +7,15 @@ import MyProfileForm from "./MyProfileForm";
 class MyProfileFormContainer extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      loading: false
+    };
     this.props.dispatch(initialize("MyProfileForm", this.props.initialValues));
   }
 
   onSubmit = values => {
     console.log("VALUES: ", values);
+    this.setState({ loading: true });
     this.props.updateProfile(values).then(res => {
       this.props.history.push(`/mentee/my_profile`);
     });
@@ -25,6 +29,7 @@ class MyProfileFormContainer extends Component {
           onSubmit={this.onSubmit}
           handleSubmit={handleSubmit}
           auth={this.props.auth}
+          loading={this.state.loading}
         />
       </div>
     );
@@ -54,7 +59,10 @@ export default reduxForm({
   validate: validate,
   form: "MyProfileForm"
 })(
-  connect(mapStateToProps, {
-    updateProfile
-  })(MyProfileFormContainer)
+  connect(
+    mapStateToProps,
+    {
+      updateProfile
+    }
+  )(MyProfileFormContainer)
 );

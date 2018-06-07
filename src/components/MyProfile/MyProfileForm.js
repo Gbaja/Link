@@ -11,10 +11,11 @@ import {
   ButtonLink
 } from "./MyProfile.styled";
 import { FormsSubmitButton } from "../Shared/Shared.styled";
+import Loading from "../Shared/Loading";
 
 class MyProfileForm extends Component {
   render() {
-    const { handleSubmit, onSubmit, auth } = this.props;
+    const { handleSubmit, onSubmit, auth, loading } = this.props;
     return (
       <ContainerDiv>
         <SubContainerDiv>
@@ -181,6 +182,7 @@ class MyProfileForm extends Component {
                 "Currently unavailable": "Currently unavailable"
               }}
             />
+            {loading ? <Loading /> : ""}
             <FormsSubmitButton type="submit">Update profile</FormsSubmitButton>
             <FormsSubmitButton>
               <ButtonLink to="/mentee/my_profile">Cancel</ButtonLink>

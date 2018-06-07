@@ -8,6 +8,7 @@ import Directory from "./Directory";
 import Header from "../Shared/Header";
 import { FormsSubmitButton, Links } from "../Shared/Shared.styled";
 import { DirectoryContainerDiv } from "./Directory.Styled";
+import Loading from "../Shared/Loading";
 
 class DirectoryContainer extends Component {
   constructor(props) {
@@ -21,7 +22,6 @@ class DirectoryContainer extends Component {
   }
 
   componentDidMount() {
-    console.log("NAME: ", this.props.filter.name);
     this.setState({ loading: true });
     this.props
       .fetchDirectory(
@@ -53,7 +53,6 @@ class DirectoryContainer extends Component {
   };
 
   showPage = pageNum => () => {
-    console.log(this.state.filter.location);
     this.setState({ loading: true });
     this.props.fetchDirectory(
       pageNum,
@@ -66,7 +65,6 @@ class DirectoryContainer extends Component {
   };
 
   setFilter = filter => {
-    console.log("SET FILTER: ", filter);
     this.setState({ filter });
     this.setState({ loading: true });
     this.props
@@ -84,16 +82,17 @@ class DirectoryContainer extends Component {
   };
 
   render() {
-    console.log("FILTERRRRR: ", this.props.filter);
-    console.log("PARAMS: ", this.props.match.params.type);
     if (
       Object.getOwnPropertyNames(this.props.directory).length === 0 ||
       this.state.loading
     ) {
-      console.log("NONE");
-      return <div>Loading</div>;
+      return (
+        <div>
+          <Header />
+          <Loading />
+        </div>
+      );
     } else {
-      console.log(this.props.directory.rows);
       const mentorsDetails = this.props.directory.rows;
       return (
         <div>

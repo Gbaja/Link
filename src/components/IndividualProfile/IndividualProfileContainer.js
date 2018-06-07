@@ -6,11 +6,25 @@ import { fetchProfile } from "../../actions/get_requests";
 import Header from "../Shared/Header";
 import { FormsSubmitButton } from "../Shared/Shared.styled";
 import DisplayProfile from "./DisplayProfile";
+import Loading from "../Shared/Loading";
 
 class IndividualProfilePage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false
+    };
+  }
   componentDidMount() {
     const { id, accountType } = this.props.match.params;
+    this.setState({ loading: true });
     this.props.fetchProfile(id, accountType);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.profile !== prevProps.profile) {
+      this.setState({ loading: false });
+    }
   }
 
   goBackBtn = () => {
@@ -24,11 +38,15 @@ class IndividualProfilePage extends Component {
         <FormsSubmitButton onClick={this.goBackBtn}>
           <p>Go back</p>
         </FormsSubmitButton>
-        <DisplayProfile
-          profile={this.props.profile}
-          user={this.props.auth.accountType}
-          accountType={this.props.match.params.accountType}
-        />
+        {this.state.loading ? (
+          <Loading />
+        ) : (
+          <DisplayProfile
+            profile={this.props.profile}
+            user={this.props.auth.accountType}
+            accountType={this.props.match.params.accountType}
+          />
+        )}
       </div>
     );
   }
