@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import LogOutBtn from "../Shared/Logout";
 import DeleteAccount from "../Shared/DeleteAccount";
 import Header from "../Shared/Header";
 import {
@@ -52,4 +50,7 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, null)(UniversityDashboard);
+export default connect(
+  mapStateToProps,
+  null
+)(UniversityDashboard);

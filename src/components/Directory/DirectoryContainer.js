@@ -8,11 +8,13 @@ import Directory from "./Directory";
 import Header from "../Shared/Header";
 import { FormsSubmitButton, Links } from "../Shared/Shared.styled";
 import { DirectoryContainerDiv } from "./Directory.Styled";
+import Loading from "../Shared/Loading";
 
 class DirectoryContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: false,
       currentPage: 0,
       numberOfPages: [],
       filter: {}
@@ -20,7 +22,7 @@ class DirectoryContainer extends Component {
   }
 
   componentDidMount() {
-    console.log("NAME: ", this.props.filter.name);
+    this.setState({ loading: true });
     this.props
       .fetchDirectory(
         1,
@@ -35,6 +37,12 @@ class DirectoryContainer extends Component {
       });
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.directory !== prevProps.directory) {
+      this.setState({ loading: false });
+    }
+  }
+
   setPageNumbers = number => {
     let total = Math.ceil(number / 4);
     let arr = [];
@@ -45,7 +53,7 @@ class DirectoryContainer extends Component {
   };
 
   showPage = pageNum => () => {
-    console.log(this.state.filter.location);
+    this.setState({ loading: true });
     this.props.fetchDirectory(
       pageNum,
       this.props.match.params.type,
@@ -57,8 +65,8 @@ class DirectoryContainer extends Component {
   };
 
   setFilter = filter => {
-    console.log("SET FILTER: ", filter);
     this.setState({ filter });
+    this.setState({ loading: true });
     this.props
       .fetchDirectory(
         1,
@@ -74,13 +82,17 @@ class DirectoryContainer extends Component {
   };
 
   render() {
-    console.log("FILTERRRRR: ", this.props.filter);
-    console.log("PARAMS: ", this.props.match.params.type);
-    if (Object.getOwnPropertyNames(this.props.directory).length === 0) {
-      console.log("NONE");
-      return <div>Loading</div>;
+    if (
+      Object.getOwnPropertyNames(this.props.directory).length === 0 ||
+      this.state.loading
+    ) {
+      return (
+        <div>
+          <Header />
+          <Loading />
+        </div>
+      );
     } else {
-      console.log(this.props.directory.rows);
       const mentorsDetails = this.props.directory.rows;
       return (
         <div>

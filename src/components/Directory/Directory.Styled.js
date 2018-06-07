@@ -28,7 +28,7 @@ export const PageNumbersDiv = styled.div`
 `;
 
 export const PersonDiv = styled.div`
-  width: 80%;
+  width: 90%;
   border: 1px solid #e3c800;
   margin: 1rem auto;
   text-align: center;

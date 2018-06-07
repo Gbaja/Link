@@ -35,22 +35,10 @@ class SignUpContainer extends Component {
       status: "Pending"
     };
     this.props.signupMentor(signUpData);
-    // this.props.signupMentor(signUpData, res => {
-    //   if (res.accountType === "Mentor") {
-    //     this.props.history.push(`/mentor/dashboard`);
-    //   } else if (res.accountType === "Mentee") {
-    //     this.props.history.push(`/mentee/dashboard`);
-    //   }
-    // });
   };
 
   render() {
     const { handleSubmit, alert, universities } = this.props;
-    // if (universities.length === 0) {
-    //   console.log("noo");
-    //   return <div>Loading</div>;
-    // } else {
-    console.log("UNIVERSITIES: ", universities);
     return (
       <SignupContainerDiv>
         <SignUpForm
@@ -62,7 +50,6 @@ class SignUpContainer extends Component {
       </SignupContainerDiv>
     );
   }
-  // }
 }
 
 const validate = values => {
@@ -104,10 +91,13 @@ export default reduxForm({
   validate: validate,
   form: "SignUpForm"
 })(
-  connect(mapStateToProps, {
-    signupMentor,
-    resetError,
-    signupMentee,
-    fetchUniversities
-  })(SignUpContainer)
+  connect(
+    mapStateToProps,
+    {
+      signupMentor,
+      resetError,
+      signupMentee,
+      fetchUniversities
+    }
+  )(SignUpContainer)
 );

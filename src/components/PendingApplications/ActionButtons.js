@@ -11,9 +11,6 @@ class ActionButtons extends Component {
       status: "Accept"
     };
     this.props.pendingAction(body);
-    // .then(res => {
-    //   window.location.reload();
-    // });
   };
   rejectHandler = () => {
     const body = {

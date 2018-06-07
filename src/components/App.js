@@ -10,7 +10,7 @@ import ForgotPasswordForm from "./ForgotPassword/ForgotPasswordFormContainer";
 import ResetPasswordForm from "./ForgotPassword/ResetPasswordFormContainer";
 import MentorDashboard from "./MentorDashboard/MentorDashboard";
 import MenteeDashboard from "./MenteeDashboard/MenteeDashboard";
-import IndividualProfile from "./IndividualProfile/IndividualProfile";
+import IndividualProfile from "./IndividualProfile/IndividualProfileContainer";
 import Directory from "./Directory/DirectoryContainer";
 import MyProfileDetails from "./MyProfile/MyProfileDetails";
 import MyProfileForm from "./MyProfile/MyProfileFormContainer";
@@ -20,6 +20,7 @@ import NewUniversityForm from "./NewUniversity/NewUniversityFormContainer";
 import UniversityDashboard from "./UniversityDashboard/UniversityDashboard";
 import PendingApplications from "./PendingApplications/PendingApplicationsContainer";
 import PendingRequests from "./PendingRequests/PendingRequestsContainer";
+import Client from "./ErrorPages/Client";
 
 class App extends Component {
   isMentor = () => this.props.auth.accountType === "Mentor";
@@ -69,12 +70,12 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
+          <Route exact path="/" component={Landing} />
           <Route
             exact
             path="/mentor/dashboard"
             component={this.renderMentorPages(MentorDashboard)}
           />
-          <Route exact path="/" component={Landing} />
           <Route exact path="/signup_form" component={SignupContainer} />
           <Route exact path="/login_form" component={LoginFormContainer} />
           <Route
@@ -146,6 +147,7 @@ class App extends Component {
           <Route exact path="/forgot_password" component={ForgotPasswordForm} />
           <Route exact path="/reset_password" component={ResetPasswordForm} />
           <Route exact path="/unathorised" component={RedirectPage} />
+          <Route path="*" component={Client} />
         </Switch>
       </BrowserRouter>
     );
@@ -153,4 +155,7 @@ class App extends Component {
 }
 
 const mapStateToProps = ({ auth }) => ({ auth });
-export default connect(mapStateToProps, null)(App);
+export default connect(
+  mapStateToProps,
+  null
+)(App);

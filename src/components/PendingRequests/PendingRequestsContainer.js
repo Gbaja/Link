@@ -5,11 +5,10 @@ import { Link } from "react-router-dom";
 import Alert from "../Shared/Alert";
 import {
   fetchMentorPendingRequests,
-  fetchMenteePendingRequests,
-  removePending
+  fetchMenteePendingRequests
 } from "../../actions/get_requests";
 import { resetError } from "../../actions/post_requests";
-import Heading from "../Shared/Header";
+import Header from "../Shared/Header";
 import PendingMenteeRequests from "./PendingMenteeRequests";
 import PendingMentorRequests from "./PendingMentorRequests";
 import { FormsSubmitButton, Links } from "../Shared/Shared.styled";
@@ -31,7 +30,7 @@ class PendingApplicationsContainer extends Component {
     const { alert, pendingRequests, auth } = this.props;
     return (
       <div>
-        <Heading />
+        <Header />
         <FormsSubmitButton>
           <Links to="/mentor/dashboard">Back to dashboard</Links>
         </FormsSubmitButton>

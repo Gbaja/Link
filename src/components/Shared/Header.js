@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 
 import Logo from "../Assets/Logo.png";
 import LogoutButton from "./Logout";
@@ -36,4 +35,7 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, null)(Header);
+export default connect(
+  mapStateToProps,
+  null
+)(Header);
