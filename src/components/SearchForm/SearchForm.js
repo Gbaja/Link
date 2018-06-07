@@ -14,10 +14,11 @@ class SearchForm extends Component {
           {alert && <p>{alert}</p>}
           <h3> Search </h3>
           <Field
-            placeholder="Search by name"
+            label="Search by name"
             name="name"
             type="text"
             component={renderFormFields}
+            placeholder="Search by name"
           />
           <Field
             name="location"
