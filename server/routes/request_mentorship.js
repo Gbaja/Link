@@ -41,7 +41,7 @@ exports.post = (req, res) => {
       }).then(data => {
         console.log("REQUEST MENTORSHIP DATA: ", data);
         models.MentorRegistrations.findOne({
-          where: { id: data.MenteeRegistrationId }
+          where: { id: data.MentorRegistrationId }
         }).then(mentor => {
           mentorRequestNotification(mentor);
           res.send({ type: "success", message: "Your request has been sent." });

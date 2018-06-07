@@ -5,7 +5,7 @@ module.exports = data => {
   const msg = {
     to: data.email,
     from: "no-reply@youngandgiving.com",
-    subject: "Young & Giving Password Reset",
+    subject: "New Young & Giving Mentorship Request",
     html: `<p>Hello ${data.firstName},</p>
     <p>You have a new mentorship request on Young&Giving.</p><p>Click on the link below to find out who it is from</p>
     <p>https://linkmentors.herokuapp.com</p>
