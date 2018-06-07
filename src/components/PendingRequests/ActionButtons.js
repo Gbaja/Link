@@ -10,7 +10,6 @@ class MentorActionButtons extends Component {
       requestId: this.props.request,
       status: "Accept"
     };
-    console.log(body);
     this.props.mentorshipRequestAction(body);
   };
   rejectHandler = () => {

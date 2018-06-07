@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Field, reduxForm, initialize } from "redux-form";
-import { connect } from "react-redux";
+import { Field } from "redux-form";
 
 import { renderFormFields, renderFileInput } from "../../helpers/reduxFields";
 import { textareaWordCountCheck } from "../../helpers/forms_validations";

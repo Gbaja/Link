@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+import Header from "../components/Shared/Header";
+import { FormsSubmitButton } from "./Shared/Shared.styled";
+
 class RedirectPage extends Component {
   goBackBtn = () => {
     this.props.history.goBack();
@@ -7,8 +10,9 @@ class RedirectPage extends Component {
   render() {
     return (
       <div>
+        <Header />
         <h1>Unauthorised user </h1>
-        <button onClick={this.goBackBtn}>Go back</button>
+        <FormsSubmitButton onClick={this.goBackBtn}>Go back</FormsSubmitButton>
       </div>
     );
   }

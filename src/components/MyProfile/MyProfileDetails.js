@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Alert from "../Shared/Alert";
@@ -32,7 +31,6 @@ class MyProfileDetails extends Component {
       jobTitle,
       company,
       dateStarted,
-      endDate,
       industry,
       biography,
       reason,
@@ -131,4 +129,7 @@ const mapStateToProps = state => ({
   alert: state.alert
 });
 
-export default connect(mapStateToProps, null)(MyProfileDetails);
+export default connect(
+  mapStateToProps,
+  null
+)(MyProfileDetails);

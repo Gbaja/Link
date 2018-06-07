@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Field } from "redux-form";
-import { Link } from "react-router-dom";
 
 import { renderFormFields } from "../../helpers/reduxFields";
 import Alert from "../Shared/Alert";

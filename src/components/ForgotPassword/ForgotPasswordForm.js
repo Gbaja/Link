@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Field } from "redux-form";
-import { Link } from "react-router-dom";
 
 import { renderFormFields } from "../../helpers/reduxFields";
 import Alert from "../Shared/Alert";
@@ -8,7 +7,8 @@ import Header from "../Shared/Header";
 import {
   FormsSubmitButton,
   ContainerDiv,
-  HeadingH1
+  HeadingH1,
+  Links
 } from "../Shared/Shared.styled";
 
 class ForgotPasswordForm extends Component {
@@ -29,7 +29,7 @@ class ForgotPasswordForm extends Component {
             />
             <FormsSubmitButton type="submit">Reset</FormsSubmitButton>
             <FormsSubmitButton>
-              <Link to="/">Cancel</Link>
+              <Links to="/">Cancel</Links>
             </FormsSubmitButton>
           </form>
         </ContainerDiv>

@@ -10,7 +10,6 @@ class NewUniversityFormContainer extends Component {
   }
   handleFormSubmission = values => {
     values.accountType = "University";
-    console.log(values);
     this.props.addUni(values);
   };
   render() {
@@ -46,5 +45,8 @@ export default reduxForm({
   validate: validate,
   form: "NewUniversityForm"
 })(
-  connect(mapStateToProps, { resetError, addUni })(NewUniversityFormContainer)
+  connect(
+    mapStateToProps,
+    { resetError, addUni }
+  )(NewUniversityFormContainer)
 );

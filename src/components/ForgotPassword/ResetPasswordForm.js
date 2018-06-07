@@ -28,7 +28,7 @@ class ResetPasswordForm extends Component {
               type="password"
               component={renderFormFields}
             />
-            <FormsSubmitButton type="submit">Save</FormsSubmitButton>
+            <FormsSubmitButton type="submit">Reset</FormsSubmitButton>
           </form>
         </ContainerDiv>
       </div>

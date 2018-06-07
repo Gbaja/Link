@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 import Alert from "../Shared/Alert";
 import {
   fetchMentorPendingRequests,
-  fetchMenteePendingRequests,
-  removePending
+  fetchMenteePendingRequests
 } from "../../actions/get_requests";
 import { resetError } from "../../actions/post_requests";
 import Header from "../Shared/Header";

@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 
 import { resetError } from "../../actions/post_requests";
 import LoginForm from "../LogIn/LoginContainer";
-import { FormsSubmitButton } from "../Shared/Shared.styled";
 
 import {
   ContainerDiv,
@@ -16,7 +15,6 @@ import {
   LinksP,
   Links
 } from "./Landing.styled";
-import Alert from "../Shared/Alert";
 
 class Landing extends Component {
   componentWillUnmount() {
@@ -24,19 +22,16 @@ class Landing extends Component {
   }
 
   render() {
-    const { alert } = this.props;
     return (
       <ContainerDiv>
         <ContentContainerDiv>
           <ContainerTextDiv id="content">
             <Headingh1>Young & Giving University </Headingh1>
             <TextP>
-              {" "}
               The Young & Giving platform facilitates mentoring relationships
               that work.
             </TextP>
             <TextP>
-              {" "}
               You can also find industry groups events and a job board on the
               platform.
             </TextP>
@@ -62,4 +57,7 @@ const mapStateToProps = state => ({
   alert: state.alert
 });
 
-export default connect(mapStateToProps, { resetError })(Landing);
+export default connect(
+  mapStateToProps,
+  { resetError }
+)(Landing);

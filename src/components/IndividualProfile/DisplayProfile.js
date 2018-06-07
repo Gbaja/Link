@@ -37,7 +37,7 @@ const DisplayProfile = props => {
         {firstName} {lastName}
       </h1>
       {imageUrl ? (
-        <img src={imageUrl} />
+        <img src={imageUrl} alt="Individual person" />
       ) : (
         <div>
           <i
