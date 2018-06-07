@@ -9,6 +9,7 @@ import { RESET_ERROR } from "../../actions/types";
 import LogInForm from "./Login_form";
 import Logo from "../Assets/Logo.png";
 import { LogoImg } from "./Login.Styled";
+import Alert from "../Shared/Alert";
 
 class LoginFormContainer extends Component {
   componentDidMount() {
@@ -34,10 +35,10 @@ class LoginFormContainer extends Component {
     return (
       <div>
         <LogoImg src={`${Logo}`} />
+        {alert && <Alert alert={alert} />}
         <LogInForm
           onSubmit={this.handleFormSubmission}
           handleSubmit={handleSubmit}
-          alert={alert}
         />
       </div>
     );
@@ -54,7 +55,18 @@ const validate = values => {
   return errors;
 };
 
+const mapStateToProps = state => ({
+  alert: state.alert
+});
+
 export default reduxForm({
   validate,
   form: "LogInForm"
-})(withRouter(connect(null, { logIn, resetError })(LoginFormContainer)));
+})(
+  withRouter(
+    connect(
+      mapStateToProps,
+      { logIn, resetError }
+    )(LoginFormContainer)
+  )
+);

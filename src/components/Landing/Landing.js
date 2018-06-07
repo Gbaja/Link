@@ -27,7 +27,6 @@ class Landing extends Component {
     const { alert } = this.props;
     return (
       <ContainerDiv>
-        {alert && <Alert alert={alert} />}
         <ContentContainerDiv>
           <ContainerTextDiv id="content">
             <Headingh1>Young & Giving University </Headingh1>
