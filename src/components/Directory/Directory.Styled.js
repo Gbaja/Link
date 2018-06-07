@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const DirectoryContainerDiv = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: #f6f6f6;
   @media screen and (min-width: 900px) {
     flex-direction: row;
   }
@@ -29,9 +30,9 @@ export const PageNumbersDiv = styled.div`
 
 export const PersonDiv = styled.div`
   width: 90%;
-  border: 1px solid #e3c800;
   margin: 1rem auto;
   text-align: center;
+  background-color: white;
   @media screen and (min-width: 900px) {
     width: 27%;
     margin: 1rem;
