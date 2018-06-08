@@ -106,8 +106,6 @@ const DisplayProfile = props => {
           {postgrad ? <li>Post Graduate Application</li> : false}
           {career ? <li>Professional and career exploration</li> : false}
         </ul>
-        <ProfileWhatP>Date joined</ProfileWhatP>
-        <ProfileTextP>{createdAt}</ProfileTextP>
         {props.user !== "Mentor" && props.accountType !== "Mentee" ? (
           <FormsSubmitButton>
             <Links to={`/request_mentorship/${id}`}>Request mentorship</Links>

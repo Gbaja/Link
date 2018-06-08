@@ -9,7 +9,7 @@ module.exports = data => {
     html: `<p>Hello ${data.menteeFirstName},</p>
     <p>Your mentorship request from ${data.mentorFirstName} ${
   data.mentorLastName
-}accepted a request from has been ${
+} has been ${
   data.status
 }ed.</p> <p>If it was accepted, you can expect an email from them.</p><p>If it was rejected, don't be disheartened, you can log back on the platform to browse for other mentors.</p><p>Feel free to contact us if you have any questions/issues</p>
     <p>Kind regards,</p><p>The Young & Giving team.`

@@ -23,7 +23,8 @@ exports.delete = (req, res) => {
         .destroy({
           where: {
             email: email
-          }
+          },
+          cascade: true
         })
         .then(affectedRows => {
           res.send({ type: "success", message: "Account deleted." });
