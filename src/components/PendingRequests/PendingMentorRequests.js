@@ -78,7 +78,7 @@ const PendingMentorRequests = props => {
             ))
           ) : (
             <TableDataTR>
-              <TableDataTD>No pending applications</TableDataTD>
+              <TableDataTD>No pending requests</TableDataTD>
             </TableDataTR>
           )}
         </tbody>

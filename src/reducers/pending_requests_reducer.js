@@ -8,14 +8,14 @@ function isRequest(state, data) {
   return state.requestId === data.requestId;
 }
 
-export default (state = [], action) => {
+export default (state = null, action) => {
   switch (action.type) {
   case FETCH_PENDING_REQUESTS_MENTOR:
-    return [...state, ...action.payload];
+    return action.payload;
   case FETCH_PENDING_REQUESTS_MENTEE:
-    return [...state, ...action.payload];
+    return action.payload;
   case MENTORSHIP_ACTION:
-    return state.reduce((acc, curr) => {
+    return (state || []).reduce((acc, curr) => {
       let toUpdate = curr;
       if (toUpdate.requestId === action.payload.requestId) {
         toUpdate = Object.assign({}, curr, { status: action.payload.status });

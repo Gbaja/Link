@@ -6,7 +6,8 @@ import {
   PageNumbersDiv,
   PersonDiv,
   PersonInfoP,
-  PersonImg
+  PersonImg,
+  PageNumSpan
 } from "./Directory.Styled";
 import { FormsSubmitButton, Links } from "../Shared/Shared.styled";
 
@@ -64,12 +65,12 @@ const Directory = props => {
         })}
       </ListContainerDiv>
       <PageNumbersDiv>
-        Pages
+        <PageNumSpan>Pages: </PageNumSpan>
         {props.numberOfPages.map(num => {
           return (
-            <span key={num} onClick={props.showPage(num)}>
+            <PageNumSpan key={num} onClick={props.showPage(num)}>
               {num}
-            </span>
+            </PageNumSpan>
           );
         })}
       </PageNumbersDiv>

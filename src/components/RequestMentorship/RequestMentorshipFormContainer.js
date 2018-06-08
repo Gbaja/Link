@@ -19,19 +19,27 @@ class RequestMentorshipFormContainer extends Component {
   handleFormSubmission = values => {
     values.MentorRegistrationId = Number(this.props.match.params.id);
     values.MenteeRegistrationId = Number(this.props.auth.id);
-    console.log(values);
     this.props.requestMentorship(values);
+    this.props.reset();
   };
   render() {
-    const { handleSubmit, alert } = this.props;
+    const { handleSubmit, alert, auth } = this.props;
+    const accountType = auth.accountType.toLowerCase();
     return (
       <div>
         <Header />
-        <FormsSubmitButton>
-          <Links to={`/profile/Mentor/${this.props.match.params.id}`}>
-            Back to profile
-          </Links>
-        </FormsSubmitButton>
+        {this.props.auth.accountType === "University" ? (
+          <FormsSubmitButton>
+            <Links to="/university_dashboard">Back to dashboard</Links>
+          </FormsSubmitButton>
+        ) : this.props.auth.accountType === "Mentor" ||
+        this.props.auth.accountType === "Mentee" ? (
+          <FormsSubmitButton>
+            <Links to={`/${accountType}/dashboard`}>Back to dashboard</Links>{" "}
+          </FormsSubmitButton>
+        ) : (
+          ""
+        )}
         {alert && <Alert alert={alert} />}
         <RequestMentorshipForm
           onSubmit={this.handleFormSubmission}

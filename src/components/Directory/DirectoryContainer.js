@@ -23,18 +23,19 @@ class DirectoryContainer extends Component {
 
   componentDidMount() {
     this.setState({ loading: true });
-    this.props
-      .fetchDirectory(
-        1,
-        this.props.match.params.type,
-        this.props.auth.universityName,
-        this.state.filter.name,
-        this.state.filter.location,
-        this.state.filter.industry
-      )
-      .then(data => {
-        this.setPageNumbers(this.props.directory.count);
-      });
+    this.fetchData();
+    // this.props
+    //   .fetchDirectory(
+    //     1,
+    //     this.props.match.params.type,
+    //     this.props.auth.universityName,
+    //     this.state.filter.name,
+    //     this.state.filter.location,
+    //     this.state.filter.industry
+    //   )
+    //   .then(data => {
+    //     this.setPageNumbers(this.props.directory.count);
+    //   });
   }
 
   componentDidUpdate(prevProps) {
@@ -42,6 +43,21 @@ class DirectoryContainer extends Component {
       this.setState({ loading: false });
     }
   }
+
+  fetchData = () => {
+    this.props
+      .fetchDirectory(
+        1,
+        this.props.match.params.type,
+        this.props.auth.universityName,
+        "",
+        "",
+        ""
+      )
+      .then(data => {
+        this.setPageNumbers(this.props.directory.count);
+      });
+  };
 
   setPageNumbers = number => {
     let total = Math.ceil(number / 4);
@@ -94,6 +110,7 @@ class DirectoryContainer extends Component {
       );
     } else {
       const mentorsDetails = this.props.directory.rows;
+      const accountType = this.props.auth.accountType.toLowerCase();
       return (
         <div>
           <Header />
@@ -101,19 +118,19 @@ class DirectoryContainer extends Component {
             <FormsSubmitButton>
               <Links to="/university_dashboard">Back to dashboard</Links>
             </FormsSubmitButton>
-          ) : this.props.auth.accountType === "Mentor" ? (
+          ) : this.props.auth.accountType === "Mentor" ||
+          this.props.auth.accountType === "Mentee" ? (
             <FormsSubmitButton>
-              <Links to="/mentor/dashboard">Back to dashboard</Links>{" "}
-            </FormsSubmitButton>
-          ) : this.props.auth.accountType === "Mentee" ? (
-            <FormsSubmitButton>
-              <Links to="/mentee/dashboard">Back to dashboard</Links>{" "}
+              <Links to={`/${accountType}/dashboard`}>Back to dashboard</Links>{" "}
             </FormsSubmitButton>
           ) : (
             ""
           )}
           <DirectoryContainerDiv>
-            <SearchFormContainer setFilter={this.setFilter} />
+            <SearchFormContainer
+              setFilter={this.setFilter}
+              fetchData={this.fetchData}
+            />
             <Directory
               details={mentorsDetails}
               showPage={this.showPage}

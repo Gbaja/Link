@@ -18,6 +18,7 @@ class ResetPasswordFormContainer extends Component {
     const token = params.get("token");
     values.token = token.replace(/\s/g, "+");
     this.props.resetPassword(values);
+    this.props.reset();
   };
   render() {
     const { handleSubmit, alert } = this.props;
@@ -53,7 +54,8 @@ export default reduxForm({
   validate,
   form: "ResetPasswordForm"
 })(
-  connect(mapStateToProps, { resetPassword, resetError })(
-    ResetPasswordFormContainer
-  )
+  connect(
+    mapStateToProps,
+    { resetPassword, resetError }
+  )(ResetPasswordFormContainer)
 );

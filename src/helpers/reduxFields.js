@@ -9,6 +9,7 @@ import {
 
 export const renderFormFields = field => {
   const {
+    placeholder,
     meta: { touched, error }
   } = field;
   switch (true) {
@@ -50,7 +51,11 @@ export const renderFormFields = field => {
     return (
       <div>
         {field.label && <FormsLabel>{field.label}</FormsLabel>}
-        <FormsInput type={field.type} {...field.input} />
+        <FormsInput
+          type={field.type}
+          {...field.input}
+          placeholder={placeholder}
+        />
         <FormsErrorsP>{touched ? error : ""}</FormsErrorsP>
       </div>
     );

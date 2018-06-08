@@ -24,7 +24,7 @@ export const ListContainerDiv = styled.div`
 `;
 
 export const PageNumbersDiv = styled.div`
-  margin: 0 auto;
+  margin: 2rem auto;
   text-align: center;
 `;
 
@@ -46,4 +46,9 @@ export const PersonImg = styled.img`
   height: 100px;
   width: 100px;
   margin-top: 20px;
+`;
+
+export const PageNumSpan = styled.span`
+  margin: 0 1rem;
+  font-size: 1.3rem;
 `;
