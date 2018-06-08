@@ -47,7 +47,10 @@ const MenteeRegistrations = (sequelize, DataTypes) => {
   });
 
   MenteeRegistrations.associate = models => {
-    MenteeRegistrations.hasMany(models.Requests);
+    MenteeRegistrations.hasMany(models.Requests, {
+      onDelete: "CASCADE",
+      hooks: true
+    });
   };
 
   return MenteeRegistrations;

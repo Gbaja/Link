@@ -35,6 +35,7 @@ class SignUpContainer extends Component {
       status: "Pending"
     };
     this.props.signupMentor(signUpData);
+    this.props.reset();
   };
 
   render() {
