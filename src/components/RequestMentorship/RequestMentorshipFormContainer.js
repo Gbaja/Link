@@ -19,8 +19,8 @@ class RequestMentorshipFormContainer extends Component {
   handleFormSubmission = values => {
     values.MentorRegistrationId = Number(this.props.match.params.id);
     values.MenteeRegistrationId = Number(this.props.auth.id);
-    console.log(values);
     this.props.requestMentorship(values);
+    this.props.reset();
   };
   render() {
     const { handleSubmit, alert } = this.props;

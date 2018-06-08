@@ -35,9 +35,7 @@ class IndividualProfilePage extends Component {
     return (
       <div>
         <Header />
-        <FormsSubmitButton onClick={this.goBackBtn}>
-          <p>Go back</p>
-        </FormsSubmitButton>
+        <FormsSubmitButton onClick={this.goBackBtn}>Go back</FormsSubmitButton>
         {this.state.loading ? (
           <Loading />
         ) : (

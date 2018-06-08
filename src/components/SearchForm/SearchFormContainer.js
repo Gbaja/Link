@@ -12,11 +12,17 @@ class SearchFormContainer extends Component {
     }
     this.props.setFilter(values);
   };
+
   render() {
+    console.log(this.props);
     const { handleSubmit } = this.props;
     return (
       <div>
-        <SearchForm onSubmit={this.onSubmit} handleSubmit={handleSubmit} />
+        <SearchForm
+          onSubmit={this.onSubmit}
+          handleSubmit={handleSubmit}
+          fetchData={() => () => this.props.fetchData()}
+        />
       </div>
     );
   }
@@ -30,9 +36,4 @@ const validate = values => {
 export default reduxForm({
   validate: validate,
   form: "SearchForm"
-})(
-  connect(
-    null,
-    null
-  )(SearchFormContainer)
-);
+})(SearchFormContainer);

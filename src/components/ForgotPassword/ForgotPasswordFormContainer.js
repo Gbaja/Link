@@ -14,6 +14,7 @@ class ForgotPasswordFormContainer extends Component {
 
   handleFormSubmission = values => {
     this.props.forgotPassword(values);
+    this.props.reset();
   };
   render() {
     const { handleSubmit, alert } = this.props;
@@ -44,8 +45,11 @@ export default reduxForm({
   validate,
   form: "ForgotPasswordForm"
 })(
-  connect(mapStateToProps, {
-    forgotPassword,
-    resetError
-  })(ForgotPasswordFormContainer)
+  connect(
+    mapStateToProps,
+    {
+      forgotPassword,
+      resetError
+    }
+  )(ForgotPasswordFormContainer)
 );

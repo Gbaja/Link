@@ -14,7 +14,6 @@ class SearchForm extends Component {
           {alert && <p>{alert}</p>}
           <h3> Search </h3>
           <Field
-            label="Search by name"
             name="name"
             type="text"
             component={renderFormFields}
@@ -44,7 +43,9 @@ class SearchForm extends Component {
           />
           <FormsSubmitButton type="submit">Search</FormsSubmitButton>
         </form>
-        <FormsSubmitButton>View all</FormsSubmitButton>
+        <FormsSubmitButton onClick={this.props.fetchData()}>
+          View all
+        </FormsSubmitButton>
       </SearchFormContainerDiv>
     );
   }
