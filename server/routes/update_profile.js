@@ -3,6 +3,8 @@ const { details } = require("../utils/details");
 const getModelFromType = require("../utils/model_type");
 
 exports.put = (req, res) => {
+  console.log("HEYYYY");
+  console.log("UPDATE PROFILE: ", req.session);
   const {
     firstName,
     lastName,

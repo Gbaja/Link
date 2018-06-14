@@ -24,18 +24,6 @@ class DirectoryContainer extends Component {
   componentDidMount() {
     this.setState({ loading: true });
     this.fetchData();
-    // this.props
-    //   .fetchDirectory(
-    //     1,
-    //     this.props.match.params.type,
-    //     this.props.auth.universityName,
-    //     this.state.filter.name,
-    //     this.state.filter.location,
-    //     this.state.filter.industry
-    //   )
-    //   .then(data => {
-    //     this.setPageNumbers(this.props.directory.count);
-    //   });
   }
 
   componentDidUpdate(prevProps) {
