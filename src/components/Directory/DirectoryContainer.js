@@ -136,6 +136,8 @@ const mapStateToProps = state => ({
   filter: state.filter
 });
 
+export { DirectoryContainer };
+
 export default connect(
   mapStateToProps,
   { fetchDirectory }
