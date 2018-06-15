@@ -13,7 +13,7 @@ import {
 
 export const logOut = callback => {
   return dispatch => {
-    axios.get("/api/logout").then(() => {
+    return axios.get("/api/logout").then(() => {
       callback();
       dispatch({
         type: UNAUTH_USER,
