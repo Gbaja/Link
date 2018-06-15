@@ -87,7 +87,7 @@ export const fetchProfile = (id, accountType) => {
 export const fetchUniversities = () => {
   return dispatch => {
     return axios
-      .get("api/allUni")
+      .get("/api/allUni")
       .then(response => {
         dispatch({
           type: FETCH_UNIVERSITIES,
