@@ -1,6 +1,15 @@
 import { mockStore, mockAxios } from "../test-support";
-import { UNAUTH_USER, FETCH_UNIVERSITIES, ADD_ERROR } from "../actions/types";
-import { fetchUniversities, logOut } from "../actions/get_requests";
+import {
+  UNAUTH_USER,
+  FETCH_UNIVERSITIES,
+  ADD_ERROR,
+  FETCH_PENDING
+} from "../actions/types";
+import {
+  fetchPending,
+  fetchUniversities,
+  logOut
+} from "../actions/get_requests";
 
 describe("Logout action", () => {
   const mockLogout = () => mockAxios.onGet("/api/logout").reply(200);
@@ -68,6 +77,23 @@ describe("Fetch universities", () => {
   });
 });
 
-describe("Fetch profile", () => {
-  it();
-});
+// describe("Fetch pending", () => {
+//   it("Action creator works", () => {
+//     const uni = "Durham university";
+//     const mockFetchPending = () =>
+//       mockAxios.onGet(`/api/pending/${uni}`).reply(200);
+
+//     const store = mockStore();
+//     console.log("eh");
+//     mockFetchPending();
+//     store.dispatch(fetchPending()).then(() => {
+//       console.log("hey");
+//       expect(store.getActions()).toEqual([
+//         {
+//           type: FETCH_PENDING,
+//           payload: [{}]
+//         }
+//       ]);
+//     });
+//   });
+// });

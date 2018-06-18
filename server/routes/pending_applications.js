@@ -23,6 +23,7 @@ exports.get = (req, res) => {
         accountType: person.accountType
       };
     });
+    console.log("PENDING APPLICATIONS: ", data);
     res.send(data);
   });
 };

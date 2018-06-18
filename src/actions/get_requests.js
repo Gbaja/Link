@@ -113,6 +113,8 @@ export const fetchPending = uniName => {
     return axios
       .get(`/api/pending/${uniName}`)
       .then(response => {
+        console.log("HEYY");
+        console.log("RESPONSE: ", response.data);
         dispatch({
           type: FETCH_PENDING,
           payload: response.data
