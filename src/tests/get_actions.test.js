@@ -3,12 +3,14 @@ import {
   UNAUTH_USER,
   FETCH_UNIVERSITIES,
   ADD_ERROR,
-  FETCH_PENDING
+  FETCH_PENDING,
+  FETCH_PENDING_REQUESTS_MENTOR
 } from "../actions/types";
 import {
   fetchPending,
   fetchUniversities,
-  logOut
+  logOut,
+  fetchMentorPendingRequests
 } from "../actions/get_requests";
 
 describe("Logout action", () => {
@@ -76,6 +78,29 @@ describe("Fetch universities", () => {
     });
   });
 });
+
+// describe("Fetch mentor pending requests", () => {
+//   it("Returns data", () => {
+//     const mockFetchMentorPendingRequests = () =>
+//       mockAxios
+//         .onGet("/api/pendingRequestsMentor", {
+//           params: { MentorRegistrationId: 3 }
+//         })
+//         .reply(200);
+//     const store = mockStore();
+//     mockFetchMentorPendingRequests();
+
+//     store.dispatch(fetchMentorPendingRequests()).then(() => {
+//       console.log("hy");
+//       expect(store.getActions()).toEqual([
+//         {
+//           type: FETCH_PENDING_REQUESTS_MENTOR,
+//           payload: []
+//         }
+//       ]);
+//     });
+//   });
+// });
 
 // describe("Fetch pending", () => {
 //   it("Action creator works", () => {

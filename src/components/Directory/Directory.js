@@ -77,5 +77,6 @@ const Directory = props => {
     </DirectoryDiv>
   );
 };
+export { Directory };
 
 export default Directory;

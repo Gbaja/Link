@@ -64,7 +64,7 @@ describe("Pending applications reducer", () => {
     expect(newState).toEqual(expectedNewState.payload);
   });
 
-  it("ACCEPT PENDING USERS", () => {
+  it("Accept pending users and update state", () => {
     const prevState = [
       {
         id: 1,
@@ -78,15 +78,7 @@ describe("Pending applications reducer", () => {
     ];
     const action = {
       type: USER_ACCEPTED,
-      payload: {
-        id: 1,
-        firstName: "Ola",
-        lastName: "Gbaja",
-        email: "ola@example.com",
-        universityName: "Durham university",
-        accountType: "Mentor",
-        status: "Pending"
-      }
+      payload: "ola@example.com"
     };
     deepFreeze(prevState);
     const newState = pendingApplicationReducer(prevState, action);

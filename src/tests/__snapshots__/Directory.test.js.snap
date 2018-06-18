@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Directory component Directory renders as stated 1`] = `
+<div
+  className="sc-gZMcBi ghpCTO"
+>
+  <div
+    className="sc-gqjmRU ZcGBA"
+  >
+    <div
+      className="sc-jTzLTM gcAHAn"
+    >
+      <div>
+        <i
+          className="fas fa-user-alt"
+          style={
+            Object {
+              "height": "100px",
+              "marginTop": "20px",
+              "width": "100px",
+            }
+          }
+        />
+      </div>
+      <p
+        className="sc-fjdhpX frdGgd"
+      >
+        Ola
+         
+        Gbaja
+      </p>
+      <p
+        className="sc-fjdhpX frdGgd"
+      >
+         
+        Dev
+        , 
+        FAC
+      </p>
+      <p
+        className="sc-fjdhpX frdGgd"
+      >
+         
+        tech
+      </p>
+      <p
+        className="sc-fjdhpX frdGgd"
+      >
+        UK
+      </p>
+      <p
+        className="sc-fjdhpX frdGgd"
+      >
+        Economics
+        , 
+        2011
+      </p>
+      <button
+        className="sc-EHOje kCmGdS"
+      >
+        <a
+          className="sc-htoDjs cAGtRz"
+          href="/profile/Mentor/1"
+          onClick={[Function]}
+        >
+          View profile
+        </a>
+      </button>
+    </div>
+  </div>
+  <div
+    className="sc-VigVT Dcaet"
+  >
+    <span
+      className="sc-cSHVUG ivSyoe"
+    >
+      Pages: 
+    </span>
+  </div>
+</div>
+`;
