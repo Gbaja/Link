@@ -20,13 +20,13 @@ describe("Logout action", () => {
     const callback = () => {};
     mockLogout();
 
+    const expectedAction = {
+      type: UNAUTH_USER,
+      payload: false
+    };
+
     store.dispatch(logOut(callback)).then(() => {
-      expect(store.getActions()).toEqual([
-        {
-          type: UNAUTH_USER,
-          payload: false
-        }
-      ]);
+      expect(store.getActions()).toEqual([expectedAction]);
     });
   });
 
