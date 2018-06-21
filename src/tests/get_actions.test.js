@@ -81,16 +81,17 @@ describe("Fetch universities", () => {
 
 // describe("Fetch mentor pending requests", () => {
 //   it("Returns data", () => {
-//     const mockFetchMentorPendingRequests = () =>
+//     const mockFetchMentorPendingRequests = mentorId =>
 //       mockAxios
 //         .onGet("/api/pendingRequestsMentor", {
-//           params: { MentorRegistrationId: 3 }
+//           params: { MentorRegistrationId: mentorId }
 //         })
 //         .reply(200);
 //     const store = mockStore();
-//     mockFetchMentorPendingRequests();
+//     const id = 3;
+//     mockFetchMentorPendingRequests(id);
 
-//     store.dispatch(fetchMentorPendingRequests()).then(() => {
+//     store.dispatch(fetchMentorPendingRequests(id)).then(() => {
 //       console.log("hy");
 //       expect(store.getActions()).toEqual([
 //         {
@@ -105,13 +106,13 @@ describe("Fetch universities", () => {
 // describe("Fetch pending", () => {
 //   it("Action creator works", () => {
 //     const uni = "Durham university";
-//     const mockFetchPending = () =>
+//     const mockFetchPending = uni =>
 //       mockAxios.onGet(`/api/pending/${uni}`).reply(200);
 
 //     const store = mockStore();
 //     console.log("eh");
-//     mockFetchPending();
-//     store.dispatch(fetchPending()).then(() => {
+//     mockFetchPending(uni);
+//     store.dispatch(fetchPending(uni)).then(() => {
 //       console.log("hey");
 //       expect(store.getActions()).toEqual([
 //         {

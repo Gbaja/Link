@@ -110,7 +110,7 @@ describe("Directory component", () => {
         </MemoryRouter>
       )
       .toJSON();
-    console.log("TREE: ", tree);
+    console.log("TREE: ", tree.children.length);
     expect(tree).toMatchSnapshot();
   });
 });

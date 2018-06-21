@@ -5,16 +5,16 @@
 // describe("Log in test", () => {
 //   const data = {
 //     email: "gbajaf@yahoo.co.uk",
-//     password: "Asdfghjkl2"
+//     password: process.env.PASSWORD
 //   };
-//   const mockSignUp = () =>
+//   const mockLogin = data =>
 //     mockAxios.onPost("/api/signupMentor", data).reply(200);
 
 //   const store = mockStore();
 //   const callback = data => {
 //     console.log(data);
 //   };
-//   mockSignUp();
+//   mockLogin(data);
 
 //   store.dispatch(logIn(data, callback)).then(() => {
 //     expect(store.getActions()).toEqual([
