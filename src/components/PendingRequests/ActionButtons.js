@@ -24,10 +24,10 @@ class MentorActionButtons extends Component {
     console.log("REQUEST: ", this.props.request);
     return (
       <div>
-        <FormsSubmitButton onClick={this.acceptHandler}>
+        <FormsSubmitButton onClick={this.acceptHandler} className="accept">
           Accept
         </FormsSubmitButton>
-        <FormsSubmitButton onClick={this.rejectHandler}>
+        <FormsSubmitButton onClick={this.rejectHandler} className="reject">
           Reject
         </FormsSubmitButton>
       </div>
@@ -35,6 +35,7 @@ class MentorActionButtons extends Component {
   }
 }
 
+export { MentorActionButtons };
 export default connect(
   null,
   { mentorshipRequestAction }

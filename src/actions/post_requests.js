@@ -1,6 +1,12 @@
 import axios from "axios";
 import { AUTH_USER, ADD_ERROR, RESET_ERROR, ADD_SUCCESS } from "./types";
 
+const DEFAULT_ERROR = {
+  type: "error",
+  message:
+    "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+};
+
 export const signupMentor = data => {
   return dispatch => {
     return axios
@@ -61,36 +67,55 @@ export const signupMentee = (data, callback) => {
   };
 };
 
+const authUser = user => ({
+  type: AUTH_USER,
+  payload: user
+});
+
+const addError = error => ({
+  type: ADD_ERROR,
+  payload: error
+});
+
 export const logIn = (data, callback) => {
   return dispatch => {
+    //   return axios
+    //     .post("/api/login", data)
+    //     .then(res => {
+    //       dispatch({
+    //         type: AUTH_USER,
+    //         payload: res.data
+    //       });
+    //       callback(res.data);
+    //     })
+    //     .catch(err => {
+    //       if (err.message.includes("422")) {
+    //         dispatch({
+    //           type: ADD_ERROR,
+    //           payload: err.response.data
+    //         });
+    //       } else {
+    //         dispatch({
+    //           type: ADD_ERROR,
+    //           payload: {
+    //             type: "error",
+    //             message:
+    //               "There was an error on our side. Please try again letter or contact a member of out team for assistance."
+    //           }
+    //         });
+    //       }
+    //     });
     return axios
       .post("/api/login", data)
-      .then(res => {
-        console.log("LOG IN RES: ", res.data);
-        dispatch({
-          type: AUTH_USER,
-          payload: res.data
-        });
-        callback(res.data);
+      .then(response => {
+        dispatch(authUser(response.data));
+        callback(response.data);
       })
       .catch(err => {
-        if (err.message.includes("422")) {
-          dispatch({
-            type: ADD_ERROR,
-            payload: err.response.data
-          });
+        if (err.response.status === 422) {
+          dispatch(addError(err.response.data));
         } else {
-          dispatch({
-            type: ADD_ERROR,
-            payload: {
-              type: "error",
-              message: {
-                type: "error",
-                message:
-                  "There was an error on our side. Please try again letter or contact a member of out team for assistance."
-              }
-            }
-          });
+          dispatch(addError(DEFAULT_ERROR));
         }
       });
   };

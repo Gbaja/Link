@@ -4,7 +4,8 @@ import {
   ADD_ERROR,
   UPDATE_PROFILE,
   ADD_SUCCESS,
-  MENTORSHIP_ACTION
+  MENTORSHIP_ACTION,
+  USER_ACCEPTED
 } from "./types";
 
 export const updateProfile = data => async dispatch => {
@@ -57,7 +58,7 @@ export const pendingAction = data => {
           payload: response.data
         });
         dispatch({
-          type: "USER_ACCEPTED",
+          type: USER_ACCEPTED,
           payload: data.email
         });
       })

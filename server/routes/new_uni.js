@@ -12,6 +12,7 @@ exports.post = (req, res) => {
     models.Admins.findOne({ where: { email } })
   ]).then(([Mentee, Mentor, Uni, Admin]) => {
     if (Mentee || Mentor || Uni || Admin) {
+      console.log("HERE");
       res.status(422).send({
         type: "error",
         message:

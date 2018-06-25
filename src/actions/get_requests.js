@@ -13,7 +13,7 @@ import {
 
 export const logOut = callback => {
   return dispatch => {
-    axios.get("/api/logout").then(() => {
+    return axios.get("/api/logout").then(() => {
       callback();
       dispatch({
         type: UNAUTH_USER,
@@ -87,7 +87,7 @@ export const fetchProfile = (id, accountType) => {
 export const fetchUniversities = () => {
   return dispatch => {
     return axios
-      .get("api/allUni")
+      .get("/api/allUni")
       .then(response => {
         dispatch({
           type: FETCH_UNIVERSITIES,
@@ -113,6 +113,8 @@ export const fetchPending = uniName => {
     return axios
       .get(`/api/pending/${uniName}`)
       .then(response => {
+        console.log("HEYY");
+        console.log("RESPONSE: ", response.data);
         dispatch({
           type: FETCH_PENDING,
           payload: response.data
@@ -134,11 +136,12 @@ export const fetchPending = uniName => {
 
 export const fetchMentorPendingRequests = mentorId => {
   return dispatch => {
-    axios
+    return axios
       .get("/api/pendingRequestsMentor", {
         params: { MentorRegistrationId: mentorId }
       })
       .then(response => {
+        console.log("PENDING: ", response.data);
         dispatch({
           type: FETCH_PENDING_REQUESTS_MENTOR,
           payload: response.data

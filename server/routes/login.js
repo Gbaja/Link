@@ -55,6 +55,7 @@ exports.post = (req, res) => {
                 "Your university has not accepted your application. Please wait till you receive a confirmation email before logging in."
             });
           } else {
+            console.log("REQ SESSION: ", req.session);
             return res.send(details(user[0]));
           }
         }
